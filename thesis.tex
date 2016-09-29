@@ -1,0 +1,264 @@
+\documentclass[b5paper]{scrbook} 
+\usepackage{tocstyle}
+\usepackage[hidelinks,linktoc=all]{hyperref}
+
+
+\usepackage[osf,largesc]{newpxtext} 
+\usepackage[varbb]{newpxmath} 
+\usepackage{classico}
+\usepackage{euler}
+\usepackage{microtype}
+\linespread{1.05}
+
+
+\DeclareMathDelimiter{(}{\mathopen}{lettersA}{155}{largesymbols}{130}
+\DeclareMathDelimiter{)}{\mathclose}{lettersA}{156}{largesymbols}{131}
+\DeclareMathDelimiter{[}{\mathopen}{lettersA}{157}{largesymbols}{132}
+\DeclareMathDelimiter{]}{\mathclose}{lettersA}{158}{largesymbols}{133}
+\DeclareMathDelimiter{\lfloor}{\mathopen}{lettersA}{159}{largesymbols}{134}
+\DeclareMathDelimiter{\rfloor}{\mathclose}{lettersA}{160}{largesymbols}{135}
+\DeclareMathDelimiter{\lceil}{\mathopen}{lettersA}{161}{largesymbols}{136}
+\DeclareMathDelimiter{\rceil}{\mathclose}{lettersA}{162}{largesymbols}{137}
+\DeclareMathDelimiter{\lbrace}{\mathopen}{lettersA}{163}{largesymbols}{138}
+\DeclareMathDelimiter{\rbrace}{\mathclose}{lettersA}{164}{largesymbols}{139}
+\DeclareMathDelimiter{\langle}{\mathopen}{lettersA}{165}{largesymbols}{140}
+\DeclareMathDelimiter{\rangle}{\mathclose}{lettersA}{166}{largesymbols}{141}
+\DeclareMathSymbol{\mid}{\mathrel}{lettersA}{96}
+\DeclareMathDelimiter{|}{\mathord}{lettersA}{96}{largesymbols}{128}
+\DeclareMathDelimiter{\arrowvert}{\mathord}{lettersA}{167}{largesymbols}{60}
+\DeclareMathDelimiter{\vert}{\mathord}{lettersA}{96}{largesymbols}{128}
+\DeclareMathDelimiter{\Arrowvert}{\mathord}{lettersA}{168}{largesymbols}{61}
+\DeclareMathDelimiter{\Vert}{\mathord}{lettersA}{128}{largesymbols}{129}
+ \let\|=\Vert
+\DeclareMathDelimiter{\updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{63}
+\DeclareMathDelimiter{\Updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{119}
+
+
+
+
+
+
+
+
+\usepackage{lipsum}
+
+
+\title{Template}
+\author{Jabir Ali Ouassou}
+
+\begin{document}
+\maketitle % Remove this?
+\frontmatter
+\tableofcontents
+\mainmatter 
+
+
+\chapter{The Most Important Chapter}
+\section{Here be random text about \textsc{srt/lrt}}
+\subsection{Introduction to the Usadel difficult diffusion equation}
+This is a test. Let's see how this goes! Btw, $e^{i\pi} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
+Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.
+Also we can point out $I = \{ 1 \pm [\sin(a)\tan(b)]^2\} $.
+Here is another equation:
+\begin{equation}
+  Δ(z) = \int_0^{ω_c} \mathrm{d}ε\;\mathrm{Re}\; f_s(ε) \tanh\!\left(\frac{π}{2e^γ} \frac{ε/Δ_0}{T/T_c}\right)
+\end{equation}
+\begin{equation}
+  \Delta(z) = \int_0^{\omega_c} \mathrm{d}\epsilon\,\mathrm{Re}\, f_s(\epsilon) \tanh\!\left(\frac{\pi}{2e^\gamma} \frac{\epsilon/\Delta_0}{T/T_c}\right)
+\end{equation}
+Here is some normal text. \textit{And here is some emphasized text 1234567890}. Normal 123456789. 
+Say something about the \textsc{bcs} theory and \textsc{bcs-bec} transition \emph{and \textsc{srt/lrt} in italics}.
+This is another test: $1 < 2 > 0 \leq 1 \geq 2$
+\begin{equation}
+  \textit{e}e\mathrm{e}\textsf{e}%\texttt{e}\;
+  \textit{I}I\mathrm{I}\textsf{I}%\texttt{I}\;
+  \textit{m}m\mathrm{m}\textsf{m}%\texttt{m}
+\end{equation}
+%\texttt{And here is some special code: f(a,b) = f(a)f(b).}
+\textsf{And here is some sans-serif text with math $e^{i\varphi}=\textsf{cos}\,\varphi+i\,\textsf{sin}\,\varphi$ and so on.} And here is some normal text again.
+
+\subsection{Miscellaneous symbols}
+\begin{equation}
+\boldsymbol{ABCDEFGHIJKLMOPQRSTUVWXYZ}
+\end{equation} \begin{equation}
+\boldsymbol{abcdefghijklmnopqrstuvwxyz}
+\end{equation} \begin{equation}
+ABCDEFGHIJKLMOPQRSTUVWXYZ
+\end{equation} \begin{equation}
+abcdefghijklmopqrstuvwxyz
+\end{equation} \begin{equation}
+\alpha\beta\gamma\delta\varepsilon\theta\vartheta\phi\varphi\psi\eta\kappa\lambda
+\end{equation} \begin{equation}
+\Gamma\Delta\Theta\Phi\Psi\Lambda
+\end{equation} \begin{equation}
+\boldsymbol{\alpha\beta\gamma\delta\epsilon\varepsilon\theta\vartheta\phi\varphi\psi\eta\kappa\lambda\sigma}
+\end{equation} \begin{equation}
+\boldsymbol{\Gamma\Delta\Theta\Phi\Psi\Lambda}
+\end{equation}
+
+\section{Miscellaneous text (Classico)}
+This piece of text is typeset using the \textsc{newpxtext} font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \emph{This text is italic.}\\[1ex]
+\textsf{This piece of text is typeset using the \textsc{classico (optima)} font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}
+
+%\subsection{Test}
+%\lettrine[lraise=0.15,nindent=0.1em]{\textin{T}}{he Usadel equation} is quite interesting.
+%Donec malesuada magna sem.
+%Fusce vitae lectus id magna convallis euismod.
+%Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+%Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+%Donec placerat neque ac tortor dignissim pellentesque.
+%Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+%Quisque tristique accumsan efficitur.
+%
+%\subsection{Test}
+%\lettrine[lraise=0.15,nindent=0.1em]{H}{owever, } we still have something to discuss..
+%Donec malesuada magna sem.
+%Fusce vitae lectus id magna convallis euismod.
+%Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+%Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+%Donec placerat neque ac tortor dignissim pellentesque.
+%Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+%Quisque tristique accumsan efficitur.
+%
+%\subsection{Test}
+%\lettrine[lraise=0.15,nindent=0.1em]{\textin{I}}{nteresting materials} have special uses.
+%Donec malesuada magna sem.
+%Fusce vitae lectus id magna convallis euismod.
+%Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+%Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+%Donec placerat neque ac tortor dignissim pellentesque.
+%Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+%Quisque tristique accumsan efficitur.
+%
+%\subsection{Test}
+%\lettrine[lraise=0.15,nindent=0.1em]{\textin{W}}{hat other people consider normal.}
+%Donec malesuada magna sem.
+%Fusce vitae lectus id magna convallis euismod.
+%Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+%Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+%Donec placerat neque ac tortor dignissim pellentesque.
+%Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+%Quisque tristique accumsan efficitur.
+
+\clearpage
+\subsection{Lorem ipsum}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Donec malesuada magna sem.
+Fusce vitae lectus id magna convallis euismod.
+Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+Donec placerat neque ac tortor dignissim pellentesque.
+Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+Quisque tristique accumsan efficitur.
+
+Morbi non tortor volutpat, mattis odio at, tincidunt libero.
+Donec pulvinar et mi at varius.
+Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
+Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
+Nam sed ante vitae eros imperdiet bibendum.
+Fusce pretium semper leo eget lobortis.
+Sed dictum erat quis diam faucibus bibendum.
+Integer vitae enim euismod, ornare augue quis, pharetra ante.
+Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Donec malesuada magna sem.
+Fusce vitae lectus id magna convallis euismod.
+Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+Donec placerat neque ac tortor dignissim pellentesque.
+Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+Quisque tristique accumsan efficitur.
+
+Morbi non tortor volutpat, mattis odio at, tincidunt libero.
+Donec pulvinar et mi at varius.
+Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
+Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
+Nam sed ante vitae eros imperdiet bibendum.
+Fusce pretium semper leo eget lobortis.
+Sed dictum erat quis diam faucibus bibendum.
+Integer vitae enim euismod, ornare augue quis, pharetra ante.
+Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Donec malesuada magna sem.
+Fusce vitae lectus id magna convallis euismod.
+Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+Donec placerat neque ac tortor dignissim pellentesque.
+Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+Quisque tristique accumsan efficitur.
+
+
+\subsection{Continuation}
+Morbi non tortor volutpat, mattis odio at, tincidunt libero.
+Donec pulvinar et mi at varius.
+Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
+Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
+Nam sed ante vitae eros imperdiet bibendum.
+Fusce pretium semper leo eget lobortis.
+Sed dictum erat quis diam faucibus bibendum.
+Integer vitae enim euismod, ornare augue quis, pharetra ante.
+Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Donec malesuada magna sem.
+Fusce vitae lectus id magna convallis euismod.
+Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+Donec placerat neque ac tortor dignissim pellentesque.
+Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+Quisque tristique accumsan efficitur.
+
+Morbi non tortor volutpat, mattis odio at, tincidunt libero.
+Donec pulvinar et mi at varius.
+Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
+Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
+Nam sed ante vitae eros imperdiet bibendum.
+Fusce pretium semper leo eget lobortis.
+Sed dictum erat quis diam faucibus bibendum.
+Integer vitae enim euismod, ornare augue quis, pharetra ante.
+Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Donec malesuada magna sem.
+Fusce vitae lectus id magna convallis euismod.
+Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
+Praesent justo nunc, luctus in lectus in, placerat tempus orci.
+Donec placerat neque ac tortor dignissim pellentesque.
+Aenean tellus erat, eleifend id interdum a, volutpat et massa.
+Quisque tristique accumsan efficitur.
+
+Morbi non tortor volutpat, mattis odio at, tincidunt libero.
+Donec pulvinar et mi at varius.
+Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
+Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
+Nam sed ante vitae eros imperdiet bibendum.
+Fusce pretium semper leo eget lobortis.
+Sed dictum erat quis diam faucibus bibendum.
+Integer vitae enim euismod, ornare augue quis, pharetra ante.
+Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+\subsection{Test}
+\section{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+
+\section{Lorem ipsum}
+\lipsum
+
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\subsection{Test}
+\end{document}
