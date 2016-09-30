@@ -1,49 +1,177 @@
-\documentclass[b5paper]{scrbook} 
-\usepackage{tocstyle}
-\usepackage[hidelinks,linktoc=all]{hyperref}
+\documentclass[b5paper,twoside,openright]{scrbook} 
+
+% Select the appropriate document geometry
+%\areaset[9mm]{125mm}{230mm}
 
 
-\usepackage[osf,largesc]{newpxtext} 
-\usepackage[varbb]{newpxmath} 
-\usepackage{classico}
-\usepackage{euler}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   DOCUMENT FONTS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Select a sensible file and font enconding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Load the document fonts
+%\usepackage[osf,largesc]{newpxtext}  % Palatino serif font -- main text font
+\usepackage[largesc]{newpxtext}      % Palatino serif font -- main text font
+\usepackage[varbb]{newpxmath}        % Palatino math font  -- used for braces, brackets, and blackboard
+\usepackage{classico}                % Optima sans font    -- used for titles, captions, and footnotes
+\usepackage{eulerpx}                 % Euler math font     -- used for almost all mathematical symbols
+
+% Enable microtypography and increase the line spread
 \usepackage{microtype}
-
 \linespread{1.05}
 
+% Replace the Euler brackets with Palatino ones
+%\DeclareMathDelimiter{(}{\mathopen}{lettersA}{155}{largesymbols}{130}
+%\DeclareMathDelimiter{)}{\mathclose}{lettersA}{156}{largesymbols}{131}
+%\DeclareMathDelimiter{[}{\mathopen}{lettersA}{157}{largesymbols}{132}
+%\DeclareMathDelimiter{]}{\mathclose}{lettersA}{158}{largesymbols}{133}
+%\DeclareMathDelimiter{\lfloor}{\mathopen}{lettersA}{159}{largesymbols}{134}
+%\DeclareMathDelimiter{\rfloor}{\mathclose}{lettersA}{160}{largesymbols}{135}
+%\DeclareMathDelimiter{\lceil}{\mathopen}{lettersA}{161}{largesymbols}{136}
+%\DeclareMathDelimiter{\rceil}{\mathclose}{lettersA}{162}{largesymbols}{137}
+%\DeclareMathDelimiter{\lbrace}{\mathopen}{lettersA}{163}{largesymbols}{138}
+%\DeclareMathDelimiter{\rbrace}{\mathclose}{lettersA}{164}{largesymbols}{139}
+%\DeclareMathDelimiter{\langle}{\mathopen}{lettersA}{165}{largesymbols}{140}
+%\DeclareMathDelimiter{\rangle}{\mathclose}{lettersA}{166}{largesymbols}{141}
+%\DeclareMathSymbol{\mid}{\mathrel}{lettersA}{96}
+%\DeclareMathDelimiter{|}{\mathord}{lettersA}{96}{largesymbols}{128}
+%\DeclareMathDelimiter{\arrowvert}{\mathord}{lettersA}{167}{largesymbols}{60}
+%\DeclareMathDelimiter{\vert}{\mathord}{lettersA}{96}{largesymbols}{128}
+%\DeclareMathDelimiter{\Arrowvert}{\mathord}{lettersA}{168}{largesymbols}{61}
+%\DeclareMathDelimiter{\Vert}{\mathord}{lettersA}{128}{largesymbols}{129}
+% \let\|=\Vert
+%\DeclareMathDelimiter{\updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{63}
+%\DeclareMathDelimiter{\Updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{119}
+ 
+%%% Define a macro for defining context-aware math operators, i.e. operators that
+%%% are set in a serif or sans font depending on the context where they are used
+%%\newcommand{\DeclareSmartOperator}[2]{\let#1\relax\DeclareMathOperator{#1}{\text{#2}}}
+%%
+%%% Redefine the builtin latex operators as smart operators 
+%%\DeclareSmartOperator{\exp}{exp}
+%%\DeclareSmartOperator{\log}{log}
+%%\DeclareSmartOperator{\sin}{sin}
+%%\DeclareSmartOperator{\cos}{cos}
+%%\DeclareSmartOperator{\tan}{tan}
+%%\DeclareSmartOperator{\sinh}{sinh}
+%%\DeclareSmartOperator{\cosh}{cosh}
+%%\DeclareSmartOperator{\tanh}{tanh}
+%%\DeclareSmartOperator{\asin}{asin}
+%%\DeclareSmartOperator{\acos}{acos}
+%%\DeclareSmartOperator{\atan}{atan}
+%%\DeclareSmartOperator{\asinh}{asinh}
+%%\DeclareSmartOperator{\acosh}{acosh}
+%%\DeclareSmartOperator{\atanh}{atanh}
 
-\DeclareMathDelimiter{(}{\mathopen}{lettersA}{155}{largesymbols}{130}
-\DeclareMathDelimiter{)}{\mathclose}{lettersA}{156}{largesymbols}{131}
-\DeclareMathDelimiter{[}{\mathopen}{lettersA}{157}{largesymbols}{132}
-\DeclareMathDelimiter{]}{\mathclose}{lettersA}{158}{largesymbols}{133}
-\DeclareMathDelimiter{\lfloor}{\mathopen}{lettersA}{159}{largesymbols}{134}
-\DeclareMathDelimiter{\rfloor}{\mathclose}{lettersA}{160}{largesymbols}{135}
-\DeclareMathDelimiter{\lceil}{\mathopen}{lettersA}{161}{largesymbols}{136}
-\DeclareMathDelimiter{\rceil}{\mathclose}{lettersA}{162}{largesymbols}{137}
-\DeclareMathDelimiter{\lbrace}{\mathopen}{lettersA}{163}{largesymbols}{138}
-\DeclareMathDelimiter{\rbrace}{\mathclose}{lettersA}{164}{largesymbols}{139}
-\DeclareMathDelimiter{\langle}{\mathopen}{lettersA}{165}{largesymbols}{140}
-\DeclareMathDelimiter{\rangle}{\mathclose}{lettersA}{166}{largesymbols}{141}
-\DeclareMathSymbol{\mid}{\mathrel}{lettersA}{96}
-\DeclareMathDelimiter{|}{\mathord}{lettersA}{96}{largesymbols}{128}
-\DeclareMathDelimiter{\arrowvert}{\mathord}{lettersA}{167}{largesymbols}{60}
-\DeclareMathDelimiter{\vert}{\mathord}{lettersA}{96}{largesymbols}{128}
-\DeclareMathDelimiter{\Arrowvert}{\mathord}{lettersA}{168}{largesymbols}{61}
-\DeclareMathDelimiter{\Vert}{\mathord}{lettersA}{128}{largesymbols}{129}
- \let\|=\Vert
-\DeclareMathDelimiter{\updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{63}
-\DeclareMathDelimiter{\Updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{119}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Table of contents
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Load a package for styling the table of contents
+\usepackage{tocstyle}
+
+% Place page numbers right after the section entries
 \usetocstyle{nopagecolumn}
 
+% Use tabular lining figures for the sections, but oldstyle figures for the pages
+\settocstylefeature{entryhook}{\tlfstyle}
+\settocstylefeature{pagenumberhook}{\osfstyle}
+\settocstylefeature[0]{entryhook}{\tlfstyle\bfseries}
+\settocstylefeature[0]{pagenumberhook}{\osfstyle\bfseries}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Footnotes
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Switch to a sans font for footnotes
+\addtokomafont{footnote}{\sffamily}
+
+% Change footnote style from numbers to letters, to avoid collision with citations
+%\renewcommand{\thefootnote}{\ensuremath{\alph{footnote}}}
+
+% Increase the footnote rule length to the text width
+\setfootnoterule{\textwidth}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Hyperlinks and crossreferences
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Enable clickable hyperlinks in the document
+\usepackage[bookmarks,bookmarksopen,bookmarksnumbered,hidelinks,linktoc=all,hyperfootnotes]{hyperref}
+
+% Enable cross-references through \cref
+\usepackage[noabbrev]{cleveref}
+\newcommand{\crefrangeconjunction}{--}
+
+% Switch to a sans font for hyperlinks
+\urlstyle{sf}
+
+% Fix kerning problems for backslashes and redefine underscores in hyperlinks
+\makeatletter
+\let\UrlSpecialsOld\UrlSpecials
+\def\UrlSpecials{\UrlSpecialsOld\do\/{\Url@slash}\do\_{\Url@underscore}}%
+\def\Url@slash{\@ifnextchar/{\kern+0.05em\mathchar47\kern-0.10em}%
+    {\kern0.08em\mathchar47\penalty\UrlBigBreakPenalty}}
+\def\Url@underscore{\nfss@text{\leavevmode \kern.06em\vbox{\hrule height 0.12ex width 0.4em}}}
+\makeatother
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Bibliography and citations
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use biblatex+biber to handle the bibliography, with a nature-like bibliography style
+\usepackage[backend=biber,autocite=superscript,style=nature,autopunct=true,maxcitenames=3,maxbibnames=100,sorting=none]{biblatex}
+
+% For simplicity, redefine the \cite command to use the biblatex \autocite
+\let\cite=\autocite
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Standardized notation
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Physical units
+\usepackage{siunitx}
+\sisetup{range-units=single}
+\sisetup{range-phrase=--}
+\sisetup{detect-all}
+
+% Chemicals and reactions
+\usepackage{mhchem}
+%\mhchemoptions{textfontcommand=\tlfstyle}
 
 
 
 
 
-\usepackage{lipsum}
+
 
 
 \title{Template}
@@ -60,7 +188,7 @@
 \section{Here be random text about \textsc{srt/lrt}}
 \subsection{Introduction to the Usadel difficult diffusion equation}
 This is a test. Let's see how this goes! Btw, $e^{i\pi} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
-Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.
+Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.\footnote{This is simply just a simple test, with an equation $\sin a = \cos(2b-1)/\cos(2b+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}.}
 Also we can point out $I = \{ 1 \pm [\sin(a)\tan(b)]^2\} $.
 Here is another equation:
 %\begin{equation}
@@ -71,37 +199,41 @@ Here is another equation:
 \end{equation}
 Here is some normal text. \textit{And here is some emphasized text 1234567890}. Normal 123456789. 
 Say something about the \textsc{bcs} theory and \textsc{bcs-bec} transition \emph{and \textsc{srt/lrt} in italics}.
-This is another test: $1 < 2 > 0 \leq 1 \geq 2$
+This is another test: $1 < 2 > 0 \leq 1 \geq 2$, and here is an url: \url{http://www.google.com/interesting_something/else/and/even/more/stuff}
+%\verb+for i=[0:0.1:1.0] do f(i,j) = 1/g(j,i)+
 \begin{equation}
   \textit{e}e\mathrm{e}\textsf{e}%\texttt{e}\;
   \textit{I}I\mathrm{I}\textsf{I}%\texttt{I}\;
   \textit{m}m\mathrm{m}\textsf{m}%\texttt{m}
 \end{equation}
-%\texttt{And here is some special code: f(a,b) = f(a)f(b).}
-\textsf{And here is some sans-serif text with math $e^{i\varphi}=\textsf{cos}\,\varphi+i\,\textsf{sin}\,\varphi$ and so on.} And here is some normal text again.
+\textsf{And here is some sans-serif text with math $e^{i\varphi}=\cos\varphi+i\sin\varphi$ and so on.} And here is some normal text again.
+Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{23e23}{m/s}$ also.
 
 \subsection{Miscellaneous symbols}
-\begin{equation}
-\boldsymbol{ABCDEFGHIJKLMOPQRSTUVWXYZ}
-\end{equation} \begin{equation}
-\boldsymbol{abcdefghijklmnopqrstuvwxyz}
-\end{equation} \begin{equation}
-ABCDEFGHIJKLMOPQRSTUVWXYZ
-\end{equation} \begin{equation}
-abcdefghijklmopqrstuvwxyz
-\end{equation} \begin{equation}
-\alpha\beta\gamma\delta\varepsilon\theta\vartheta\phi\varphi\psi\eta\kappa\lambda
-\end{equation} \begin{equation}
-\Gamma\Delta\Theta\Phi\Psi\Lambda
-\end{equation} \begin{equation}
-\boldsymbol{\alpha\beta\gamma\delta\epsilon\varepsilon\theta\vartheta\phi\varphi\psi\eta\kappa\lambda\sigma}
-\end{equation} \begin{equation}
-\boldsymbol{\Gamma\Delta\Theta\Phi\Psi\Lambda}
-\end{equation}
+%\begin{equation}
+%\boldsymbol{ABCDEFGHIJKLMOPQRSTUVWXYZ}
+%\end{equation} \begin{equation}
+%\boldsymbol{abcdefghijklmnopqrstuvwxyz}
+%\end{equation} \begin{equation}
+%ABCDEFGHIJKLMOPQRSTUVWXYZ
+%\end{equation} \begin{equation}
+%abcdefghijklmopqrstuvwxyz
+%\end{equation} 
+%\begin{equation}
+%\alpha\beta\gamma\delta\varepsilon\theta\vartheta\phi\varphi\psi\eta\kappa\lambda
+%\end{equation} 
+%\begin{equation}
+%\Gamma\Delta\Theta\Phi\Psi\Lambda
+%\end{equation} 
+%\begin{equation}
+%\boldsymbol{\alpha\beta\gamma\delta\epsilon\varepsilon\theta\vartheta\phi\varphi\psi\eta\kappa\lambda\sigma}
+%\end{equation} \begin{equation}
+%\boldsymbol{\Gamma\Delta\Theta\Phi\Psi\Lambda}
+%\end{equation}
 
 \section{Miscellaneous text (Classico)}
 This piece of text is typeset using the \textsc{newpxtext} font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \emph{This text is italic.}\\[1ex]
-\textsf{This piece of text is typeset using the CLASSICO (OPTIMA) font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}
+\textsf{This piece of text is typeset using the CLASSICO (OPTIMA) font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}
 
 %\subsection{Test}
 %\lettrine[lraise=0.15,nindent=0.1em]{\textin{T}}{he Usadel equation} is quite interesting.
@@ -143,7 +275,6 @@ This piece of text is typeset using the \textsc{newpxtext} font, with an inline 
 %Aenean tellus erat, eleifend id interdum a, volutpat et massa.
 %Quisque tristique accumsan efficitur.
 
-\clearpage
 \subsection{Lorem ipsum}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Donec malesuada magna sem.
@@ -207,7 +338,7 @@ Sed dictum erat quis diam faucibus bibendum.
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.\cite{Test1}\cite{Test2}
 Donec malesuada magna sem.
 Fusce vitae lectus id magna convallis euismod.
 Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
@@ -243,9 +374,10 @@ Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
 Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
 Nam sed ante vitae eros imperdiet bibendum.
 Fusce pretium semper leo eget lobortis.
-Sed dictum erat quis diam faucibus bibendum.
+Sed dictum erat quis diam faucibus bibendum.\footnote{Test}
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+
 \subsection{Test}
 \section{Test}
 \subsection{Test}
@@ -256,7 +388,6 @@ Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 \subsection{Test}
 
 \section{Lorem ipsum}
-\lipsum
 
 \subsection{Test}
 \subsection{Test}
@@ -264,4 +395,25 @@ Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 \subsection{Test}
 \subsection{Test}
 \subsection{Test}
+
+\chapter{The Most Important Chapter}
+\section{Here be random text about \textsc{srt/lrt}}
+
+
+
+
+
+
+
+
+\backmatter
+\begin{thebibliography}{999}
+  \bibitem{Test1}
+  A. Author, B. Author, \& C. Author.
+  \textit{Phys. Rev. B} \textbf{100}, 1234 (2000).
+
+  \bibitem{Test2}
+  A. Author, B. Author, \& C. Author.
+  \textit{New J. Phys.} \textbf{100}, 1234 (2000).
+\end{thebibliography}
 \end{document}
