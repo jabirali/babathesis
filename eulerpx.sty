@@ -15,10 +15,14 @@
 
 \def\fileversion{v0.1}
 \def\filedate{2016/08/01}
-
-\NeedsTeXFormat{LaTeX2e}[2016/08/01]
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eulerpx}[\filedate\space\fileversion]
 \typeout{Package: `eulerpx' \fileversion\space <\filedate> (FJ and FMi)}
+
+% We will inherit some fonts and symbols from newpxmath
+\RequirePackage[varbb]{newpxmath}
+
+% Declare the Euler symbols
 \DeclareSymbolFont{letters}{U}{eur}{m}{n}
 \SetSymbolFont{letters}{bold}{U}{eur}{b}{n}
 
@@ -245,16 +249,16 @@
 \def\@makefnmark{\hbox{$\operator@font^{\@thefnmark}\m@th$}}
 
 % Disable the default Euler numbers
-%\DeclareMathSymbol{0}\mathalpha{letters}{"30}
-%\DeclareMathSymbol{1}\mathalpha{letters}{"31}
-%\DeclareMathSymbol{2}\mathalpha{letters}{"32}
-%\DeclareMathSymbol{3}\mathalpha{letters}{"33}
-%\DeclareMathSymbol{4}\mathalpha{letters}{"34}
-%\DeclareMathSymbol{5}\mathalpha{letters}{"35}
-%\DeclareMathSymbol{6}\mathalpha{letters}{"36}
-%\DeclareMathSymbol{7}\mathalpha{letters}{"37}
-%\DeclareMathSymbol{8}\mathalpha{letters}{"38}
-%\DeclareMathSymbol{9}\mathalpha{letters}{"39}
+\DeclareMathSymbol{0}\mathalpha{letters}{"30}
+\DeclareMathSymbol{1}\mathalpha{letters}{"31}
+\DeclareMathSymbol{2}\mathalpha{letters}{"32}
+\DeclareMathSymbol{3}\mathalpha{letters}{"33}
+\DeclareMathSymbol{4}\mathalpha{letters}{"34}
+\DeclareMathSymbol{5}\mathalpha{letters}{"35}
+\DeclareMathSymbol{6}\mathalpha{letters}{"36}
+\DeclareMathSymbol{7}\mathalpha{letters}{"37}
+\DeclareMathSymbol{8}\mathalpha{letters}{"38}
+\DeclareMathSymbol{9}\mathalpha{letters}{"39}
 
 
 % Replace the Euler brackets with Palatino ones

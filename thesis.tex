@@ -20,7 +20,7 @@
 % Load the document fonts
 %\usepackage[osf,largesc]{newpxtext}  % Palatino serif font -- main text font
 \usepackage[largesc]{newpxtext}      % Palatino serif font -- main text font
-\usepackage[varbb]{newpxmath}        % Palatino math font  -- used for braces, brackets, and blackboard
+%\usepackage[varbb]{newpxmath}        % Palatino math font  -- used for braces, brackets, and blackboard
 \usepackage{classico}                % Optima sans font    -- used for titles, captions, and footnotes
 \usepackage{eulerpx}                 % Euler math font     -- used for almost all mathematical symbols
 
@@ -28,48 +28,25 @@
 \usepackage{microtype}
 \linespread{1.05}
 
-% Replace the Euler brackets with Palatino ones
-%\DeclareMathDelimiter{(}{\mathopen}{lettersA}{155}{largesymbols}{130}
-%\DeclareMathDelimiter{)}{\mathclose}{lettersA}{156}{largesymbols}{131}
-%\DeclareMathDelimiter{[}{\mathopen}{lettersA}{157}{largesymbols}{132}
-%\DeclareMathDelimiter{]}{\mathclose}{lettersA}{158}{largesymbols}{133}
-%\DeclareMathDelimiter{\lfloor}{\mathopen}{lettersA}{159}{largesymbols}{134}
-%\DeclareMathDelimiter{\rfloor}{\mathclose}{lettersA}{160}{largesymbols}{135}
-%\DeclareMathDelimiter{\lceil}{\mathopen}{lettersA}{161}{largesymbols}{136}
-%\DeclareMathDelimiter{\rceil}{\mathclose}{lettersA}{162}{largesymbols}{137}
-%\DeclareMathDelimiter{\lbrace}{\mathopen}{lettersA}{163}{largesymbols}{138}
-%\DeclareMathDelimiter{\rbrace}{\mathclose}{lettersA}{164}{largesymbols}{139}
-%\DeclareMathDelimiter{\langle}{\mathopen}{lettersA}{165}{largesymbols}{140}
-%\DeclareMathDelimiter{\rangle}{\mathclose}{lettersA}{166}{largesymbols}{141}
-%\DeclareMathSymbol{\mid}{\mathrel}{lettersA}{96}
-%\DeclareMathDelimiter{|}{\mathord}{lettersA}{96}{largesymbols}{128}
-%\DeclareMathDelimiter{\arrowvert}{\mathord}{lettersA}{167}{largesymbols}{60}
-%\DeclareMathDelimiter{\vert}{\mathord}{lettersA}{96}{largesymbols}{128}
-%\DeclareMathDelimiter{\Arrowvert}{\mathord}{lettersA}{168}{largesymbols}{61}
-%\DeclareMathDelimiter{\Vert}{\mathord}{lettersA}{128}{largesymbols}{129}
-% \let\|=\Vert
-%\DeclareMathDelimiter{\updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{63}
-%\DeclareMathDelimiter{\Updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{119}
- 
-%%% Define a macro for defining context-aware math operators, i.e. operators that
-%%% are set in a serif or sans font depending on the context where they are used
-%%\newcommand{\DeclareSmartOperator}[2]{\let#1\relax\DeclareMathOperator{#1}{\text{#2}}}
-%%
-%%% Redefine the builtin latex operators as smart operators 
-%%\DeclareSmartOperator{\exp}{exp}
-%%\DeclareSmartOperator{\log}{log}
-%%\DeclareSmartOperator{\sin}{sin}
-%%\DeclareSmartOperator{\cos}{cos}
-%%\DeclareSmartOperator{\tan}{tan}
-%%\DeclareSmartOperator{\sinh}{sinh}
-%%\DeclareSmartOperator{\cosh}{cosh}
-%%\DeclareSmartOperator{\tanh}{tanh}
-%%\DeclareSmartOperator{\asin}{asin}
-%%\DeclareSmartOperator{\acos}{acos}
-%%\DeclareSmartOperator{\atan}{atan}
-%%\DeclareSmartOperator{\asinh}{asinh}
-%%\DeclareSmartOperator{\acosh}{acosh}
-%%\DeclareSmartOperator{\atanh}{atanh}
+% Define a macro for defining context-aware math operators, i.e. operators that
+% are set in a serif or sans font depending on the context where they are used
+\newcommand{\DeclareSmartOperator}[2]{\let#1\relax\DeclareMathOperator{#1}{\text{#2}}}
+
+% Redefine the builtin latex operators as smart operators 
+\DeclareSmartOperator{\exp}{exp}
+\DeclareSmartOperator{\log}{log}
+\DeclareSmartOperator{\sin}{sin}
+\DeclareSmartOperator{\cos}{cos}
+\DeclareSmartOperator{\tan}{tan}
+\DeclareSmartOperator{\sinh}{sinh}
+\DeclareSmartOperator{\cosh}{cosh}
+\DeclareSmartOperator{\tanh}{tanh}
+\DeclareSmartOperator{\asin}{asin}
+\DeclareSmartOperator{\acos}{acos}
+\DeclareSmartOperator{\atan}{atan}
+\DeclareSmartOperator{\asinh}{asinh}
+\DeclareSmartOperator{\acosh}{acosh}
+\DeclareSmartOperator{\atanh}{atanh}
 
 
 
