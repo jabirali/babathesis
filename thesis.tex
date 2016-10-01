@@ -5,6 +5,7 @@
 \pagestyle{plain}
 
 
+\usepackage{bm}
 
 
 
@@ -19,58 +20,14 @@
 \usepackage[T1]{fontenc}
 
 % Load the document fonts
-%\usepackage[osf,largesc]{newpxtext}  % Palatino serif font -- main text font
 \usepackage[largesc]{newpxtext}      % Palatino serif font -- main text font
-\usepackage[varbb]{newpxmath}        % Palatino math font  -- used for braces, brackets, and blackboard
 \usepackage{classico}                % Optima sans font    -- used for titles, captions, and footnotes
-\usepackage{euler}                   % Euler math font     -- used for almost all mathematical symbols
+\usepackage{eubrid}                  % Euler math font     -- used for almost all mathematical symbols
 
 % Enable microtypography and increase the line spread
-\usepackage{microtype}
+\usepackage{microtype} 
 \linespread{1.05}
 
-% Define a macro for defining context-aware math operators, i.e. operators that
-% are set in a serif or sans font depending on the context where they are used
-\newcommand{\DeclareSmartOperator}[2]{\let#1\relax\DeclareMathOperator{#1}{\text{#2}}}
-
-% Redefine the builtin latex operators as smart operators 
-\DeclareSmartOperator{\exp}{exp}
-\DeclareSmartOperator{\log}{log}
-\DeclareSmartOperator{\sin}{sin}
-\DeclareSmartOperator{\cos}{cos}
-\DeclareSmartOperator{\tan}{tan}
-\DeclareSmartOperator{\sinh}{sinh}
-\DeclareSmartOperator{\cosh}{cosh}
-\DeclareSmartOperator{\tanh}{tanh}
-\DeclareSmartOperator{\asin}{asin}
-\DeclareSmartOperator{\acos}{acos}
-\DeclareSmartOperator{\atan}{atan}
-\DeclareSmartOperator{\asinh}{asinh}
-\DeclareSmartOperator{\acosh}{acosh}
-\DeclareSmartOperator{\atanh}{atanh}
-
-% Replace the Euler brackets with nicer Palatino ones
-\DeclareMathDelimiter{(}{\mathopen}{lettersA}{155}{largesymbols}{130}
-\DeclareMathDelimiter{)}{\mathclose}{lettersA}{156}{largesymbols}{131}
-\DeclareMathDelimiter{[}{\mathopen}{lettersA}{157}{largesymbols}{132}
-\DeclareMathDelimiter{]}{\mathclose}{lettersA}{158}{largesymbols}{133}
-\DeclareMathDelimiter{\lfloor}{\mathopen}{lettersA}{159}{largesymbols}{134}
-\DeclareMathDelimiter{\rfloor}{\mathclose}{lettersA}{160}{largesymbols}{135}
-\DeclareMathDelimiter{\lceil}{\mathopen}{lettersA}{161}{largesymbols}{136}
-\DeclareMathDelimiter{\rceil}{\mathclose}{lettersA}{162}{largesymbols}{137}
-\DeclareMathDelimiter{\lbrace}{\mathopen}{lettersA}{163}{largesymbols}{138}
-\DeclareMathDelimiter{\rbrace}{\mathclose}{lettersA}{164}{largesymbols}{139}
-\DeclareMathDelimiter{\langle}{\mathopen}{lettersA}{165}{largesymbols}{140}
-\DeclareMathDelimiter{\rangle}{\mathclose}{lettersA}{166}{largesymbols}{141}
-\DeclareMathSymbol{\mid}{\mathrel}{lettersA}{96}
-\DeclareMathDelimiter{|}{\mathord}{lettersA}{96}{largesymbols}{128}
-\DeclareMathDelimiter{\arrowvert}{\mathord}{lettersA}{167}{largesymbols}{60}
-\DeclareMathDelimiter{\vert}{\mathord}{lettersA}{96}{largesymbols}{128}
-\DeclareMathDelimiter{\Arrowvert}{\mathord}{lettersA}{168}{largesymbols}{61}
-\DeclareMathDelimiter{\Vert}{\mathord}{lettersA}{128}{largesymbols}{129}
- \let\|=\Vert
-\DeclareMathDelimiter{\updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{63}
-\DeclareMathDelimiter{\Updownarrow}{\mathrel}{lettersA}{167}{largesymbols}{119}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,16 +57,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Switch to a sans font for footnotes
-\addtokomafont{footnote}{\sffamily}
+\addtokomafont{footnote}{\sfmath\sffamily}
 
-% Change footnote style from numbers to letters, to avoid collision with citations
+% Change footnote style from numbers to letters, to avoid collision with superscript citations
 %\renewcommand{\thefootnote}{\ensuremath{\alph{footnote}}}
 
-% Make sure footnote marks are separated by commas
+% Make sure footnote marks are separated by commas and kerned properly
 \usepackage{fnpct}
 
 % Increase the footnote rule length to the text width
-\setfootnoterule{\textwidth}
+%\setfootnoterule{\textwidth}
+
+% Disable the footnote rule entirely
+\setfootnoterule{0pt}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,7 +138,6 @@
 
 
 
-
 \title{Template $\hbar$} 
 \author{Jabir Ali Ouassou}
 
@@ -190,12 +150,12 @@
 \chapter{The Most Important Chapter}
 \section{Here be random text about \textsc{srt/lrt}}
 This is a test. Let's see how this goes! Btw, $e^{i\pi} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
-Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.\footnote{This is simply just a simple test, with an equation $\sin a = \cos(2b-1)/\cos(2b+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}.}
+Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.\footnote{This is simply just a simple test, with an equation $\sin a = \cos(2b-1)/\cos(2b+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }
 Also we can point out $I = \{ 1 \pm [\sin(a)\tan(b)]^2\} $.
 Here is another equation:
-%\begin{equation}
-%  Δ(z) = \int_0^{ω_c} \mathrm{d}ε\;\mathrm{Re}\; f_s(ε) \tanh\!\left(\frac{π}{2e^γ} \frac{ε/Δ_0}{T/T_c}\right)
-%\end{equation}
+\begin{equation}
+  Δ(z) = \int_0^{ω_c} \mathrm{d}ε\;\mathrm{Re}\; f_s(ε) \tanh\!\left(\frac{π}{2e^γ} \frac{ε/Δ_0}{T/T_c}\right)
+\end{equation}
 \begin{equation}
   \Delta(z) = \int_0^{\omega_c} \mathrm{d}\epsilon\,\mathrm{Re}\, f_s(\epsilon) \tanh\!\left(\frac{\pi}{2e^\gamma} \frac{\epsilon/\Delta_0}{T/T_c}\right)
 \end{equation}
@@ -354,8 +314,8 @@ Morbi non tortor volutpat, mattis odio at, tincidunt libero.
 Donec pulvinar et mi at varius.
 Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
 Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
-Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
-Nam sed ante vitae eros imperdiet bibendum.
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(\textsf{2a+1})$. And $|$here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ \rmmath $\sin x$ \sfmath $\cos x$}
+Nam sed ante vitae eros imperdiet bibendum. 
 Fusce pretium semper leo eget lobortis.
 Sed dictum erat quis diam faucibus bibendum.
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
