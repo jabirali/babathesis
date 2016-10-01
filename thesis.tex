@@ -1,11 +1,11 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   DOCUMENT CLASS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use komascript book as the document class
 \documentclass[b5paper,twoside,openright]{scrbook} 
-
-% Select the appropriate document geometry
-\areaset[9mm]{125mm}{195mm}
-\pagestyle{plain}
-
-
-\usepackage{bm}
 
 
 
@@ -52,6 +52,23 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+%   Page design
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Select the appropriate document geometry
+\areaset[9mm]{125mm}{198mm}
+
+% Disable headers and footers
+\pagestyle{plain}
+
+% Use sans page numbers
+\addtokomafont{pagenumber}{\sffamily}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 %   Footnotes
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,6 +87,9 @@
 
 % Disable the footnote rule entirely
 \setfootnoterule{0pt}
+
+% Adjust the footnote size and spacing
+\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}\kern0.1em}
 
 
 
@@ -195,7 +215,7 @@ Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{2
 
 \section{Miscellaneous text (Classico)}
 This piece of text is typeset using the \textsc{newpxtext} font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \emph{This text is italic.}\\[1ex]
-\textsf{This piece of text is typeset using the CLASSICO (OPTIMA) font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}\footnote{This is another footnote test.}
+\textsf{This piece of text is typeset using the CLASSICO (OPTIMA) font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}\footnote{This is another footnote test. This is another test. This is another test. This is another test.}\footnote{This is another footnote test.}\footnote{This is another footnote test. This is another test. This is another test.}\footnote{This is another footnote test.}\footnote{This is another footnote test. This is another test. This is another test.}\footnote{This is another footnote test.}
 
 \subsection{Introduction to the Usadel difficult diffusion equation}
 %\subsection{Test}
