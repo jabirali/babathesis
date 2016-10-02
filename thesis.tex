@@ -22,7 +22,7 @@
 % Load the document fonts
 \usepackage[largesc]{newpxtext}      % Palatino serif font -- main text font
 \usepackage{classico}                % Optima sans font    -- used for titles, captions, and footnotes
-\usepackage{eubrid}                  % Euler math font     -- used for almost all mathematical symbols
+\usepackage[utf8]{eulerpx/eulerpx}   % Euler math font     -- used for almost all mathematical symbols 
 
 % Enable microtypography and increase the line spread
 \usepackage{microtype} 
@@ -35,7 +35,7 @@
 %   Table of contents
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+ 
 % Load a package for styling the table of contents
 \usepackage{tocstyle}
 
@@ -63,7 +63,7 @@
 \pagestyle{plain}
 
 % Use sans page numbers
-\addtokomafont{pagenumber}{\sffamily}
+\addtokomafont{pagenumber}{\footnotesize\sffamily\bfseries}
 
 
 

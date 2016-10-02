@@ -1,41 +1,26 @@
-%% This package provides the `eubrid' font, which is a hybridization of multiple other font packages. The purpose is to provide an 
-%% interface to the Euler fonts which works seamlessly with both sans and serif fonts in the same document. For examples of suitable
-%% fonts, try loading Palatino (newpxtext) and Optima (classico). To use the eubrid package, simply add this to your LaTeX preamble:
+%% eulerpx.sty
+%% Copyright 2016 J. A. Ouassou
 %%
-%%    \usepackage{eubrid}
+%% This work may be distributed and/or modified under the conditions of the LaTeX 
+%% Project Public License, either version 1.3 of this license or (at your option) 
+%% any later version. The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
 %%
-%% All your mathematical symbols should then be replaced by Euler symbols, while digits, operators, and punctuation should be in the
-%% default text font. You may then use \sfmath and \rmmath to switch between serif and sans fonts for the digits and operators. For
-%% instance, if you use a KOMA-Script class, you can put the following code in your preamble to switch all footnotes to a sans font:
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is J. A. Ouassou.
 %%
-%%   \addtokomafont{footnote}{\sffamily\sfmath}
-%%
-%% As in many other fonts -- but in contrast to `eulervm' -- bold math characters are obtained through the \mathbf macro. This 
-%% package also declares greek unicode characters, so you may choose to write e.g. $α=β$ instead of $\alpha+\beta$ in equations.
-%%
-%% This is the relationship between `eubrid' and other packages:
-%%  - The package `newpxmath' is loaded as a base font, to provide parentheses, brackets, relations, \mathbb, etc. This was done
-%%    because in the authors opinion, the brackets provided by the newpxmath package are much more aesthetic than the Euler ones.
-%%  - The Euler symbols for latin and greek letters are then loaded. This part is based on the `eulervm' package, but it has been 
-%%    modified to not use e.g. Euler digits and brackets. For maintainability, support for other encodings than T1 has been removed.
-%%  - The \sfmath implementation is based on the `sansmath' package. I have, however, modified this such that the macro does not
-%%    alter the font used for mathematical symbols, only the font for operators and numerals. This is useful for people that want 
-%%    to consistently use the Euler symbols in *all* environments, and only typeset operators and digits in either sans or serif.
-%%
-%%
-%% Created (2016-10-01): 
-%%   Jabir Ali Ouassou <jabirali at switzerlandmail dot ch>
+%% This work consists of the file eulerpx.sty.
 %%
 
 % Package metadata
 \def\fileversion{v0.1}
 \def\filedate{2016/10/01}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eubrid}[\filedate\space\fileversion]
-\typeout{Package: `eubrid' \fileversion\space<\filedate>}
-
-% Make sure we have support for UTF-8 input
-\RequirePackage[utf8]{inputenc}
+\ProvidesPackage{eulerpx}[\filedate\space\fileversion]
+\typeout{Package: `eulerpx' \fileversion\space<\filedate>}
 
 % Make sure we have support for T1 symbols
 \RequirePackage[T1]{fontenc}
@@ -152,38 +137,43 @@
 \DeclareMathSymbol{\infty}{\mathord}{largesymbols}{153}
 
 % Unicode input
-\DeclareUnicodeCharacter{0393}{\Gamma}
-\DeclareUnicodeCharacter{0394}{\Delta}
-\DeclareUnicodeCharacter{0398}{\Theta}     
-\DeclareUnicodeCharacter{039B}{\Lambda}
-\DeclareUnicodeCharacter{039E}{\Xi}
-\DeclareUnicodeCharacter{03A0}{\Pi}
-\DeclareUnicodeCharacter{03A3}{\Sigma}
-\DeclareUnicodeCharacter{03A5}{\Upsilon}
-\DeclareUnicodeCharacter{03A6}{\Phi}
-\DeclareUnicodeCharacter{03A8}{\Psi}
-\DeclareUnicodeCharacter{03A9}{\Omega}
-\DeclareUnicodeCharacter{03B1}{\alpha}
-\DeclareUnicodeCharacter{03B2}{\beta}
-\DeclareUnicodeCharacter{03B3}{\gamma}
-\DeclareUnicodeCharacter{03B4}{\delta}
-\DeclareUnicodeCharacter{03B5}{\epsilon}
-\DeclareUnicodeCharacter{03B6}{\zeta}
-\DeclareUnicodeCharacter{03B7}{\eta}
-\DeclareUnicodeCharacter{03B8}{\theta}
-\DeclareUnicodeCharacter{03B9}{\iota}
-\DeclareUnicodeCharacter{03BA}{\kappa}
-\DeclareUnicodeCharacter{03BB}{\lambda}
-\DeclareUnicodeCharacter{03BC}{\mu}
-\DeclareUnicodeCharacter{03BD}{\nu}
-\DeclareUnicodeCharacter{03BE}{\xi}
-\DeclareUnicodeCharacter{03C0}{\pi}
-\DeclareUnicodeCharacter{03C1}{\rho}
-\DeclareUnicodeCharacter{03C2}{\sigma}
-\DeclareUnicodeCharacter{03C3}{\sigma}
-\DeclareUnicodeCharacter{03C4}{\tau}
-\DeclareUnicodeCharacter{03C5}{\upsilon}
-\DeclareUnicodeCharacter{03C6}{\varphi}
-\DeclareUnicodeCharacter{03C7}{\chi}
-\DeclareUnicodeCharacter{03C8}{\psi}
-\DeclareUnicodeCharacter{03C9}{\omega}
+\DeclareOption{utf8}%
+{
+  \DeclareUnicodeCharacter{0393}{\Gamma}
+  \DeclareUnicodeCharacter{0394}{\Delta}
+  \DeclareUnicodeCharacter{0398}{\Theta}     
+  \DeclareUnicodeCharacter{039B}{\Lambda}
+  \DeclareUnicodeCharacter{039E}{\Xi}
+  \DeclareUnicodeCharacter{03A0}{\Pi}
+  \DeclareUnicodeCharacter{03A3}{\Sigma}
+  \DeclareUnicodeCharacter{03A5}{\Upsilon}
+  \DeclareUnicodeCharacter{03A6}{\Phi}
+  \DeclareUnicodeCharacter{03A8}{\Psi}
+  \DeclareUnicodeCharacter{03A9}{\Omega}
+  \DeclareUnicodeCharacter{03B1}{\alpha}
+  \DeclareUnicodeCharacter{03B2}{\beta}
+  \DeclareUnicodeCharacter{03B3}{\gamma}
+  \DeclareUnicodeCharacter{03B4}{\delta}
+  \DeclareUnicodeCharacter{03B5}{\epsilon}
+  \DeclareUnicodeCharacter{03B6}{\zeta}
+  \DeclareUnicodeCharacter{03B7}{\eta}
+  \DeclareUnicodeCharacter{03B8}{\theta}
+  \DeclareUnicodeCharacter{03B9}{\iota}
+  \DeclareUnicodeCharacter{03BA}{\kappa}
+  \DeclareUnicodeCharacter{03BB}{\lambda}
+  \DeclareUnicodeCharacter{03BC}{\mu}
+  \DeclareUnicodeCharacter{03BD}{\nu}
+  \DeclareUnicodeCharacter{03BE}{\xi}
+  \DeclareUnicodeCharacter{03C0}{\pi}
+  \DeclareUnicodeCharacter{03C1}{\rho}
+  \DeclareUnicodeCharacter{03C2}{\sigma}
+  \DeclareUnicodeCharacter{03C3}{\sigma}
+  \DeclareUnicodeCharacter{03C4}{\tau}
+  \DeclareUnicodeCharacter{03C5}{\upsilon}
+  \DeclareUnicodeCharacter{03C6}{\varphi}
+  \DeclareUnicodeCharacter{03C7}{\chi}
+  \DeclareUnicodeCharacter{03C8}{\psi}
+  \DeclareUnicodeCharacter{03C9}{\omega}
+}
+
+\ProcessOptions\relax
