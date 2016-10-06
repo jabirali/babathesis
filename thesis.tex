@@ -9,6 +9,27 @@
 
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Page design
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Select the appropriate document geometry
+\areaset[9mm]{125mm}{198mm}
+
+% Disable headers and footers
+\pagestyle{plain}
+
+% Use sans page numbers
+\addtokomafont{pagenumber}{\footnotesize\sffamily\bfseries}
+
+% Left-justify equations
+\usepackage[fleqn]{amsmath}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Document fonts
@@ -52,23 +73,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Page design
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Select the appropriate document geometry
-\areaset[9mm]{125mm}{198mm}
-
-% Disable headers and footers
-\pagestyle{plain}
-
-% Use sans page numbers
-\addtokomafont{pagenumber}{\footnotesize\sffamily\bfseries}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 %   Headings
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -101,7 +105,6 @@
 
 % Adjust the footnote size and spacing
 \deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}\kern0.1em}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -161,6 +164,8 @@
 % Chemicals and reactions
 \usepackage{mhchem}
 %\mhchemoptions{textfontcommand=\tlfstyle}
+
+
 
 
 
@@ -230,7 +235,7 @@ Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{2
 
 \section{Miscellaneous text (Classico)}
 This piece of text is typeset using the \textsc{newpxtext} font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \emph{This text is italic.}\\[1ex]
-\textsf{This piece of text is typeset using the CLASSICO (OPTIMA) font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}\footnote{This is another footnote test. This is another test. This is another test. This is another test.}\footnote{This is another footnote test.}\footnote{This is another footnote test. This is another test. This is another test.}\footnote{This is another footnote test.}\footnote{This is another footnote test. This is another test. This is another test.}\footnote{This is another footnote test.}
+\textsf{This piece of text is typeset using the CLASSICO (OPTIMA) font, with an inline equation $e^{i\varphi} = \cos\varphi + i\sin\varphi$ that uses the \textsc{euler} font. \textit{This text is italic.}}\footnote{This is another footnote test.}
 
 \subsection{Introduction to the Usadel difficult diffusion equation}
 %\subsection{Test}
@@ -349,7 +354,7 @@ Morbi non tortor volutpat, mattis odio at, tincidunt libero.
 Donec pulvinar et mi at varius.
 Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
 Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
-Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(\textsf{2a+1})$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}%\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ \rmmath $\sin x$ \sfmath $\cos x$}
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\footnote{This is another footnote test.}%\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(2a+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}%\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ \rmmath $\sin x$ \sfmath $\cos x$}
 Nam sed ante vitae eros imperdiet bibendum. 
 Fusce pretium semper leo eget lobortis.
 Sed dictum erat quis diam faucibus bibendum.
