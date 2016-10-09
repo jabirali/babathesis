@@ -113,19 +113,23 @@
 % Make sure all headings use sans text and math
 \addtokomafont{disposition}{\sffamily}
 
-% Reduce the default size of the headings
-%\KOMAoptions{headings=normal}
+% Change the sizes of chapters and sections
+\addtokomafont{chapter}{\LARGE}
+\addtokomafont{section}{\large}
 
-% TODO:
-%   * Place chapter numbers in the margin (hanging chapter numbers) to 
-%     make it more distinct from the section numbers
-%   * Or, if that is hard wrt. margins, place the chapnum to the right
+% Change spacing around chapters and sections
+\RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.7\baselineskip]{chapter}
+\RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
 
-%\makeatletter
-%\newsavebox{\feline@chapter}
-%\newcommand\feline@chapter@marker[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\colorbox{white}{\color{gray}\thechapter}}}\raisebox{-5mm}{\usebox{\feline@chapter}}}
-%\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
-%\makeatother
+% Underline the chapter name
+%\renewcommand\chapterlinesformat[3]{\par#3\par\bigskip\hrule}
+
+% Use Bringhurst-style chapter numbers
+\makeatletter
+\newsavebox{\feline@chapter}
+\newcommand\feline@chapter@marker[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\colorbox{white}{\color{gray}\thechapter}}}\usebox{\feline@chapter}}
+\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+\makeatother
 
 %\renewcommand*{\chapterformat}%
 %{                             %
@@ -180,10 +184,10 @@
 \renewcommand{\thefootnote}{\alph{footnote}}
 
 % Set the footnote rule length to the text width
-%\setfootnoterule{\textwidth}
+\setfootnoterule{\textwidth}
 
 % Disable the footnote rule entirely
-\setfootnoterule{0pt}
+%\setfootnoterule{0pt}
 
 % Adjust the footnote size and spacing
 \deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}\kern0.1em}
@@ -412,7 +416,7 @@ Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{2
 %Aenean tellus erat, eleifend id interdum a, volutpat et massa.
 %Quisque tristique accumsan efficitur.
 
-\subsection{Lorem ipsum}
+\section{Lorem ipsum}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 Donec malesuada magna sem.
 Fusce vitae lectus id magna convallis euismod.
@@ -489,7 +493,7 @@ Aenean tellus erat, eleifend id interdum a, volutpat et massa.
 Quisque tristique accumsan efficitur.
 
 
-\subsection{Continuation}
+\section{Continuation}
 Morbi non tortor volutpat, mattis odio at, tincidunt libero.
 Donec pulvinar et mi at varius.
 Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
@@ -540,24 +544,6 @@ Fusce pretium semper leo eget lobortis.
 Sed dictum erat quis diam faucibus bibendum.\footnote{Test}
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
-
-\subsection{Test}
-\section{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-
-\section{Lorem ipsum}
-
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
-\subsection{Test}
 
 
 \chapter{Lorem ipsum}
