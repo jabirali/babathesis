@@ -1,12 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Document class
+%   Basic configuration
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Use komascript book as the document class
-\documentclass[b5paper,twoside,openright]{scrbook} 
+% Use 'KOMA-Script Book' as the document class
+\documentclass[toc=bibliography,toc=indentunnumbered]{scrbook} 
 
+% All modern documents should start with this (unless you use XeTeX/LuaTeX)
+\usepackage[utf8]{inputenc}      % UTF-8 file encoding
+\usepackage[T1]{fontenc}         % 8-bit font encoding
 
 
 
@@ -16,17 +19,35 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Select the appropriate document geometry
-\areaset[9mm]{125mm}{198mm}
+% Font size
+\KOMAoptions{fontsize=11pt}
 
-% Disable headers and footers
+% Line spacing
+\linespread{1.05}
+
+% Paper format
+\KOMAoptions{paper=B5}
+
+% Duplex layout
+\KOMAoptions{twoside}
+
+% Binding correction
+\KOMAoptions{BCOR=12mm}
+
+% Page layout
+\KOMAoptions{DIV=11}
+
+% Disable headers
 \pagestyle{plain}
 
-% Use sans page numbers
+% Page numbers
 \addtokomafont{pagenumber}{\footnotesize\sffamily\bfseries}
 
 % Left-justify equations
-\usepackage[fleqn]{amsmath}
+\PassOptionsToPackage{fleqn}{amsmath}
+
+% Use spacing instead of indentation to separate paragraphs
+%\KOMAoptions{parskip=half+}
 
 
 
@@ -36,18 +57,24 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Select a sensible file and font enconding
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+% Palatino serif font (main text font)
+\usepackage[largesc]{newpxtext}
 
-% Load the document fonts
-\usepackage[largesc]{newpxtext}      % Palatino serif font -- main text font
-\usepackage{classico}                % Optima sans font    -- used for titles, captions, and footnotes
-\usepackage[utf8]{eulerpx/eulerpx}   % Euler math font     -- used for almost all mathematical symbols 
+% Optima sans font (titles, captions, footnotes, and links)
+\usepackage{classico}
 
-% Enable microtypography and increase the line spread
-\usepackage{microtype} 
-\linespread{1.05}
+% Euler mathematical font (math)
+\usepackage[utf8]{eulerpx/eulerpx}
+
+% Vera monospaced font (code)
+\usepackage[scaled=0.84]{beramono}
+
+% Enable microtypographic tweaks
+\usepackage{microtype}
+
+% Ensure that we always combine sans text and math
+\let\oldsffamily=\sffamily
+\renewcommand{\sffamily}{\oldsffamily\sfmath}
 
 
 
@@ -63,6 +90,9 @@
 % Place page numbers right after the section entries
 \usetocstyle{nopagecolumn}
 
+% Do not include subsections in the table of contents
+\setcounter{tocdepth}{1}
+
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
 \settocstylefeature{entryhook}{\tlfstyle}
 \settocstylefeature{pagenumberhook}{\osfstyle}
@@ -77,8 +107,57 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Make sure all headers use sans text and math
-\addtokomafont{disposition}{\sffamily\sfmath}
+% Make sure all headings use sans text and math
+\addtokomafont{disposition}{\sffamily}
+
+% Reduce the default size of the headings
+%\KOMAoptions{headings=normal}
+
+% TODO:
+%   * Place chapter numbers in the margin (hanging chapter numbers) to 
+%     make it more distinct from the section numbers
+%   * Or, if that is hard wrt. margins, place the chapnum to the right
+
+%\makeatletter
+%\newsavebox{\feline@chapter}
+%\newcommand\feline@chapter@marker[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\colorbox{white}{\color{gray}\thechapter}}}\raisebox{-5mm}{\usebox{\feline@chapter}}}
+%\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+%\makeatother
+
+%\renewcommand*{\chapterformat}%
+%{                             %
+%  \hspace{+\textwidth}        %
+%  \Huge                       %
+%  \thechapter                 %
+%  \hspace{-\textwidth}        %
+%}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Captions
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Switch to a sans font for captions
+\addtokomafont{caption}{\sffamily\small}
+
+% Use a bold font for caption labels
+\addtokomafont{captionlabel}{\sffamily\bfseries\small}
+
+% Redefine the caption label delimiter
+%\renewcommand*{\captionformat}{\hspace{0.3em}\rule[-0.30ex]{0.085em}{1.80ex}\hspace{0.3em}}
+
+% Add 2em margins on each side of the caption. (Since the default \parindent is 1em, this
+% implies that the left end of the caption will always look one \parindent indented if it
+% comes right before/after a new paragraph, and can therefore prevent weird indentation.)
+\setcapmargin{2em}
+
+% Disable extra indentation of the subsequent lines in a multiline caption
+\setcapindent{0em}
 
 
 
@@ -88,16 +167,16 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Switch to a sans font for footnotes
-\addtokomafont{footnote}{\sffamily\sfmath}
-
-% Change footnote style from numbers to letters, to avoid collision with superscript citations
-%\renewcommand{\thefootnote}{\ensuremath{\alph{footnote}}}
-
 % Make sure footnote marks are separated by commas and kerned properly
 \usepackage{fnpct}
 
-% Increase the footnote rule length to the text width
+% Switch to a sans font for footnotes
+\addtokomafont{footnote}{\sffamily}
+
+% Change footnote marks to letters (recommended if using superscript citations)
+\renewcommand{\thefootnote}{\alph{footnote}}
+
+% Set the footnote rule length to the text width
 %\setfootnoterule{\textwidth}
 
 % Disable the footnote rule entirely
@@ -107,18 +186,27 @@
 \deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}\kern0.1em}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Hyperlinks and crossreferences
+%   Hyperlinks
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Enable clickable hyperlinks in the document
-\usepackage[bookmarks,bookmarksopen,bookmarksnumbered,hidelinks,linktoc=all,hyperfootnotes]{hyperref}
+% Enable clickable hyperlinks (useful if the document is read on a computer)
+\usepackage{hyperref}
 
-% Enable cross-references through \cref
-\usepackage[noabbrev]{cleveref}
-\newcommand{\crefrangeconjunction}{--}
+% Do not color links (suitable for documents that will primarily be printed)
+\hypersetup{hidelinks}
+
+% Generate links in the table of contents
+\hypersetup{linktoc=all}
+
+% Generate links to footnotes
+\hypersetup{hyperfootnotes}
+
+% Generate PDF bookmarks (also useful if the document is read on a computer)
+\hypersetup{bookmarks,bookmarksopen,bookmarksnumbered}
 
 % Switch to a sans font for hyperlinks
 \urlstyle{sf}
@@ -137,16 +225,41 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Bibliography and citations
+%   Citations
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Use biblatex+biber to handle the bibliography, with a nature-like bibliography style
-\usepackage[backend=biber,autocite=superscript,style=nature,autopunct=true,maxcitenames=3,maxbibnames=100,sorting=none]{biblatex}
+% Bibliography backend (e.g. 'biber' or 'bibtex')
+\PassOptionsToPackage{backend=biber}{biblatex}
 
-% For simplicity, redefine the \cite command to use the biblatex \autocite
-\let\cite=\autocite
+% Bibliography style (e.g. 'nature' or 'numeric-comp')
+\PassOptionsToPackage{style=nature}{biblatex}
 
+% Citation style (e.g. 'plain' or 'superscript')
+\PassOptionsToPackage{autocite=superscript}{biblatex}
+
+% Replace \cite with the more flexible \autocite
+\def\cite{\autocite}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Load packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 'American Mathematical Society' math package (contains e.g. the 'align' environment)
+\usepackage{amsmath}
+
+% 'Lorem ipsum' package -- used for testing the document class
+\usepackage{lipsum}
+
+% Finally, load the biblatex package itself
+\usepackage{biblatex}
+
+
+\usepackage{graphicx}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,14 +272,15 @@
 \usepackage{siunitx}
 \sisetup{range-units=single}
 \sisetup{range-phrase=--}
-\sisetup{detect-all}
+\sisetup{detect-all} 
 
 % Chemicals and reactions
 \usepackage{mhchem}
 %\mhchemoptions{textfontcommand=\tlfstyle}
 
-
-
+% Enable cross-references through \cref
+\usepackage[noabbrev]{cleveref}
+\newcommand{\crefrangeconjunction}{--}
 
 
 
@@ -176,11 +290,20 @@
 
 \title{Template $\hbar$} 
 \author{Jabir Ali Ouassou}
+\addbibresource{library.bib}
 
 \begin{document}
 \maketitle % Remove this?
 \frontmatter
+
+\chapter*{Abstract}
+Blah.
+
 \tableofcontents
+
+\chapter*{Preface}
+Blah.
+
 \mainmatter 
 
 \chapter{The Most Important Chapter}
@@ -288,6 +411,14 @@ Donec placerat neque ac tortor dignissim pellentesque.
 Aenean tellus erat, eleifend id interdum a, volutpat et massa.
 Quisque tristique accumsan efficitur.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.2\textwidth]{test.jpg}
+  \caption{This is simply a test figure, and some equation $\sin(2x)=1$, and some SI unit \SI{1.0e3}{m/s}, and some chemical \ce{CrO2}. This text can even be made even longer, since we want to test this properly.}
+  \label{fig:test}
+\end{figure}
+
+
 Morbi non tortor volutpat, mattis odio at, tincidunt libero.
 Donec pulvinar et mi at varius.
 Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
@@ -341,7 +472,7 @@ Sed dictum erat quis diam faucibus bibendum.
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.\cite{Test1}\cite{Test2}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.\cite{feynman,statistics}\footnote{test}
 Donec malesuada magna sem.
 Fusce vitae lectus id magna convallis euismod.
 Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
@@ -354,7 +485,7 @@ Morbi non tortor volutpat, mattis odio at, tincidunt libero.
 Donec pulvinar et mi at varius.
 Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
 Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
-Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\footnote{This is another footnote test.}%\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(2a+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}%\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ \rmmath $\sin x$ \sfmath $\cos x$}
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\footnote{This is another footnote test.} %\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(2a+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}%\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ \rmmath $\sin x$  $\cos x$}
 Nam sed ante vitae eros imperdiet bibendum. 
 Fusce pretium semper leo eget lobortis.
 Sed dictum erat quis diam faucibus bibendum.
@@ -403,6 +534,13 @@ Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 \section{Here be random text about \textsc{srt/lrt}}
 
 
+\chapter{Lorem ipsum}
+\lipsum
+\lipsum
+\lipsum
+\lipsum
+\lipsum
+
 
 
 
@@ -410,13 +548,5 @@ Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 
 
 \backmatter
-\begin{thebibliography}{999}
-  \bibitem{Test1}
-  A. Author, B. Author, \& C. Author.
-  \textit{Phys. Rev. B} \textbf{100}, 1234 (2000).
-
-  \bibitem{Test2}
-  A. Author, B. Author, \& C. Author.
-  \textit{New J. Phys.} \textbf{100}, 1234 (2000).
-\end{thebibliography}
+\printbibliography
 \end{document}
