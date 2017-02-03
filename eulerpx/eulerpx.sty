@@ -15,8 +15,6 @@
 %% This work consists of the file eulerpx.sty.
 %%
 
-%% TODO: Redefine \sffamily and \rmfamily to toggle math fonts automatically.
-
 % Package metadata
 \def\fileversion{v0.2}
 \def\filedate{2017/02/03}
@@ -40,9 +38,11 @@
 \SetSymbolFont{operators}{sans}{T1}{\sfdefault}{m}{n} 
 \SetMathAlphabet{\mathrm}{sans}{T1}{\sfdefault}{m}{n}
 
-% Define a macro for toggling between serif and sans
-\newcommand{\sfmath}{\mathversion{sans}}
-\newcommand{\rmmath}{\mathversion{normal}}
+% Make the package toggle between sans/serif math automatically
+\let\oldrmfamily=\rmfamily
+\let\oldsffamily=\sffamily
+\renewcommand{\rmfamily}{\oldrmfamily\mathversion{normal}}
+\renewcommand{\sffamily}{\oldsffamily\mathversion{sans}}
 
 %% Get rid of the existing \mathbf font
 \let\mathbf=\relax

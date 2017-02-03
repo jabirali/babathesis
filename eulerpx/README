@@ -4,8 +4,8 @@
 =                                                                              =
 ================================================================================
 =                                                                              =
-=     Version 0.1                               Jabir Ali Ouassou              =
-=     2016-10-01                      <jabirali at switzerlandmail dot ch>     =
+=     Version 0.2                               Jabir Ali Ouassou              =
+=     2017-02-03                      <jabirali at switzerlandmail dot ch>     =
 =                                                                              =
 ================================================================================
 
@@ -15,18 +15,14 @@ other font packages, notably eulervm and newpxmath. Its purpose is twofold:
      font for braces and brackets, and the text font for digits and operators;
  (2) To make it easy to change between a sans and serif font for the digits and
      operators, so that the font can be used seamlessly in documents using both.
+     As of v0.2, this is done automatically when you use \sffamily and \rmfamily.
 This package was put together with the intent to use it with the Palatino and
-Optima fonts (newpxtext and classico), but may work with other combinations too.
+Optima fonts (newpxtext and classico), but may work with other combinations too;
+for instance, using it with the Kepler and Biolinum fonts (kpfonts and biolinum).
 
 To use the package, add this to your preamble:
 
    \usepackage{eulerpx}
-
-You may use the \sfmath and \rmmath macros to switch between serif and sans fonts
-for the digits and operators. For instance, if you use a KOMA-Script class, you
-can put the following in your preamble to switch all footnotes to a sans font:
-
-  \addtokomafont{footnote}{\sffamily\sfmath}
 
 Note that in contrast to the eulervm package, bold math characters are accessed
 through the \mathbf macro. If the option `utf8' is provided, the package will 
@@ -61,7 +57,11 @@ This work consists of the file eulerpx.sty.
 History
 -------
 2016-10-01:
-  v0.1: Initial eulerpx package created
+  v0.1: Initial eulerpx package created.
+2017-02-03:
+  v0.2: Fixed a bug that messed up symbols like braces and brackets. Redefined
+        the macros \sffamily and \rmfamily so that they automatically change 
+        the alphabet used for operators and numbers to match the environment.
 
 
 
@@ -75,8 +75,8 @@ This package is based on the following existing packages:
    is based directly on the `eulervm' package, but it has been modified to 
    not use e.g. Euler digits and brackets. For maintainability, the support
    for other encodings than T1 has been removed.
- - The \sfmath implementation is inspired by the `sansmath' package. I have,
-   however, modified this such that the macro does not alter the font used 
-   for mathematical symbols, only the font for operators and numerals. This
+ - The \mathversion implementation is inspired by the `sansmath' package. I
+   have modified this such that the macro does not alter the font used for
+   mathematical symbols, only the fonts used for operators and numerals. This
    is useful for people that want to consistently use the Euler symbols in
    *all* environments, and only typeset operators and digits in sans/serif.
