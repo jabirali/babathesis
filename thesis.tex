@@ -37,20 +37,23 @@
 % Binding correction
 \KOMAoptions{BCOR=0mm}
 
-% Page layout
-\KOMAoptions{DIV=11}
+% Page layout (ISO B5 aspect ratio)
+%\KOMAoptions{DIV=11}
+
+% Page layout (Golden aspect ratio)
+\areaset{358.40pt}{579.89pt} 
 
 % Disable headers
 \pagestyle{plain}
 
 % Page numbers
-\addtokomafont{pagenumber}{\footnotesize\sffamily\bfseries}
+\addtokomafont{pagenumber}{\vspace{3.5ex}\footnotesize\sffamily\bfseries}
 
 % Left-justify equations
 \PassOptionsToPackage{fleqn}{amsmath}
 
 % Use spacing instead of indentation to separate paragraphs
-%\KOMAoptions{parskip=half+}
+%\KOMAoptions{parskip=half+} 
 
 
 
@@ -116,15 +119,12 @@
 \addtokomafont{disposition}{\sffamily}
 
 % Change the sizes of chapters and sections
-\addtokomafont{chapter}{\LARGE}
+\addtokomafont{chapter}{\huge}
 \addtokomafont{section}{\large}
 
 % Change spacing around chapters and sections
 \RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.7\baselineskip]{chapter}
 \RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
-
-% Underline the chapter name
-%\renewcommand\chapterlinesformat[3]{\par#3\par\bigskip\hrule}
 
 % Use Bringhurst-style chapter numbers
 \makeatletter
@@ -257,6 +257,7 @@
 \usepackage{booktabs}   % Proper formatting of tables
 \usepackage{siunitx}    % Proper formatting of units
 \usepackage{mhchem}     % Proper formatting of chemicals
+\usepackage{lipsum}     % Filler text
 
 
 
