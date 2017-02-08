@@ -34,14 +34,12 @@
 % Duplex layout
 \KOMAoptions{twoside}
 
-% Binding correction
-\KOMAoptions{BCOR=0mm}
-
 % Page layout (ISO B5 aspect ratio)
+%\KOMAoptions{BCOR=6mm}
 %\KOMAoptions{DIV=11}
 
 % Page layout (Golden aspect ratio)
-\areaset{358.40pt}{579.89pt} 
+\areaset[6mm]{358.40pt}{579.89pt} 
 
 % Disable headers
 \pagestyle{plain}
@@ -126,12 +124,15 @@
 \RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.7\baselineskip]{chapter}
 \RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
 
-% Use Bringhurst-style chapter numbers
+% Bringhurst-style chapter numbers
 \makeatletter
 \newsavebox{\feline@chapter}
 \newcommand\feline@chapter@marker[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\colorbox{white}{\color{gray}\thechapter}}}\usebox{\feline@chapter}}
 \renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
 \makeatother
+
+% Hanging chapter titles
+\renewcommand*{\chapterheadstartvskip}{\hspace*{-1.5\parindent}}
 
 
 
