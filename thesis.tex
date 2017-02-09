@@ -232,11 +232,22 @@
 % Bibliography backend (e.g. 'biber' or 'bibtex')
 \PassOptionsToPackage{backend=biber}{biblatex}
 
-% Bibliography style (e.g. 'nature' or 'numeric-comp')
-\PassOptionsToPackage{style=numeric-comp}{biblatex}
+% Bibliography style (e.g. 'phys' or 'nature')
+\PassOptionsToPackage{style=phys}{biblatex}
 
 % Citation style (e.g. 'plain' or 'superscript')
 \PassOptionsToPackage{autocite=plain}{biblatex}
+
+% Bibentry style (e.g. 'brackets' or 'superscript')
+\PassOptionsToPackage{biblabel=brackets}{biblatex}
+
+% Customize which fields to show in the bibliography
+\PassOptionsToPackage{articletitle=true}{biblatex}
+\PassOptionsToPackage{chaptertitle=true}{biblatex}
+\PassOptionsToPackage{pageranges=false}{biblatex}
+
+% Use ampersand as the author delimiter
+\renewcommand*{\finalnamedelim}{\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}\addspace\&\space}
 
 % Format for cross-references with \cref
 \PassOptionsToPackage{noabbrev}{cleveref}
