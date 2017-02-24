@@ -247,7 +247,7 @@
 \PassOptionsToPackage{pageranges=false}{biblatex}
 
 % Use ampersand as the author delimiter
-\renewcommand*{\finalnamedelim}{\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}\addspace\&\space}
+%\renewcommand*{\finalnamedelim}{\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}\addspace\&\space}
 
 % Format for cross-references with \cref
 \PassOptionsToPackage{noabbrev}{cleveref}
@@ -269,6 +269,7 @@
 \usepackage{booktabs}   % Proper formatting of tables
 \usepackage{siunitx}    % Proper formatting of units
 \usepackage{mhchem}     % Proper formatting of chemicals
+\usepackage{bm}         % Vector notation
 \usepackage{lipsum}     % Filler text
 
 
@@ -296,6 +297,16 @@
 % Replace \cite with the more flexible \autocite
 \let\cite=\autocite
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Custom macros
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Mathematical objects
+\newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

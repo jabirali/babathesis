@@ -1,11 +1,75 @@
 \chapter{Quasiclassical theory}
 \section{Propagators}
 \section{Matrix current}
-Usadel diffusion equation:
+%Usadel diffusion equation:
+%\begin{equation}
+%  iD \nabla\cdot\mathbf{I} = U 
+%\end{equation}
+%Boundary conditions:
+%\begin{equation}
+%  \mathbf{I}_a = \mathbf{I}_b = [g_a, g_b]
+%\end{equation}
+
+\section{Novel notation}
+Regarding the notation... How about simply saying fuck special notation for spin and nambu space? I mean, the reason we're having problems with overnotation is:
+\begin{itemize}
+  \item 2×2 matrices in spin space has underline-notation;
+  \item 2×2 matrices in nambu space has hat-notation;
+  \item 4×4 matrices in spin-nambu space has underline+hat notation;
+  \item 8-element vectors in our rho-space has vec notation;
+  \item The resulting 8×4×4 basis vector $\rho$ should get vec+underline+hat notation;
+  \item We haven't chosen a notation for 8×8 matrices in rho-space yet...
+\end{itemize}
+And so on. It becomes chaos, and at this point, all the extra notation will rather serve to confuse the reader than help the reader grok what we're doing. Also,
+the more special notation of this kind, the larger the risk of mistakes -- and a single mistake in all of these hats and underlines will cause a lot of confusion for the reader.
+
+So how about this: we drop as much annotation as possible, and just use explicit definitions instead, like explicitly saying "we define the 8-element vector..." or "define the 8×8 matrix" etc instead of implying this from notation.
+
+First of all, fuck non-quasiclassical quantities. All our equations are quasiclassical anyway, so we might as well not reserve e.g. $\check{G}$ for the non-quasiclassical propagator. 
+So we define the Green's function etc as:
+\begin{align}
+\bm{G} &= \begin{bmatrix}\bm{G}^R & \bm{G}^K \\ 0 & \bm{G}^A \end{bmatrix}, &
+\bm{J} &= \begin{bmatrix}\bm{J}^R & \bm{J}^K \\ 0 & \bm{J}^A \end{bmatrix}, &
+\bm{U} &= \begin{bmatrix}\bm{U}^R & \bm{U}^K \\ 0 & \bm{U}^A \end{bmatrix}.
+\end{align}
+No underline, no check, no hat. Just bold letters, with a superscript that mentions R/K/A as usual.
+Then we use lower-case letters for the spin-space decomposition:
+\begin{align}
+\bm{G}^R &= \begin{bmatrix}+\bm{g}^R & +\bm{f}^R \\ -\tilde{\bm{f}}^R & -\tilde{\bm{f}}^R \end{bmatrix}, &
+\bm{J}^R &= \begin{bmatrix}+\bm{j}^R & +\bm{i}^R \\ -\tilde{\bm{i}}^R & -\tilde{\bm{j}}^R \end{bmatrix}, &
+\bm{U}^R &= \begin{bmatrix}+\bm{u}^R & +\bm{v}^R \\ -\tilde{\bm{v}}^R & -\tilde{\bm{u}}^R \end{bmatrix}. &
+\end{align}
+When we define these, we explicitly say that all the lower-case quantities are 2×2 matrices in spin-space.
+Then we explicitly define the rhos as:
+\begin{align*}
+  \bm\rho_0 &= \text{diag}(+\bm\sigma_0, +\bm\sigma_0^*), &
+  \bm\rho_4 &= \text{diag}(+\bm\sigma_0, -\bm\sigma_0^*), \\
+         &\;\;\vdots                             &
+         &\;\;\vdots                             \\
+  \bm\rho_3 &= \text{diag}(+\bm\sigma_3, +\bm\sigma_3^*), &
+  \bm\rho_7 &= \text{diag}(+\bm\sigma_3, -\bm\sigma_3^*), \\
+\end{align*}
+where we mention that $\sigma_0$ is the identity and $\sigma_n$ the 2×2 Pauli matrices.
+Then we say that we group these into an 8-element vector:
 \begin{equation}
-  iD \nabla\cdot\mathbf{I} = U
+  \vec{\bm\rho} = [\bm\rho_0, \ldots, \bm\rho_7]
 \end{equation}
-Boundary conditions:
-\begin{equation}
-  \mathbf{I}_a = \mathbf{I}_b = [g_a, g_b]
-\end{equation}
+At this point, we introduce a single new notation: things with a vector arrow have a structure in the 8-dimension spin-nambu vector space defined here.
+We then define the new notation for the distribution function and currents in this new space:
+\begin{align}
+  \bm{H} &= \vec{H} \cdot \vec{\bm{\rho}}, &
+  \bm{J} &= \vec{J} \cdot \vec{\bm{\rho}}.
+\end{align}
+So we dot two vector quantities, namely the 8-element vector and the 8×4×4-element basis vector, and get a 4×4-element matrix out.
+No bold for the 8-element vectors, as they're in a different space.
+I'm using a capital letter for the distribution function to follow the implicit ``lower-case letters are spin-space'' logic.
+The inverse transformation is:
+\begin{align}
+  \vec{H} &= \text{Tr}[ \bm{H} \vec{\bm{\rho}} ] / 4, &
+  \vec{J} &= \text{Tr}[ \bm{J} \vec{\bm{\rho}} ] / 4
+\end{align}
+So we "trace away" the matrix structure to map the distribution function onto our 8-element vector space.
+Once we have two 8-element vector quantities, we define an 8×8 relationship between them using tensor notation:
+\begin{align}
+  \vec{J} = \tensor{M} \vec{H}
+\end{align}
