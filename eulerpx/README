@@ -4,8 +4,8 @@
 =                                                                              =
 ================================================================================
 =                                                                              =
-=     Version 0.2                               Jabir Ali Ouassou              =
-=     2017-02-03                      <jabirali at switzerlandmail dot ch>     =
+=     Version 0.2.1                             Jabir Ali Ouassou              =
+=     2017-04-10                      <jabirali at switzerlandmail dot ch>     =
 =                                                                              =
 ================================================================================
 
@@ -57,11 +57,14 @@ This work consists of the file eulerpx.sty.
 History
 -------
 2016-10-01:
-  v0.1: Initial eulerpx package created.
+  v0.1:   Initial eulerpx package created.
 2017-02-03:
-  v0.2: Fixed a bug that messed up symbols like braces and brackets. Redefined
-        the macros \sffamily and \rmfamily so that they automatically change 
-        the alphabet used for operators and numbers to match the environment.
+  v0.2:   Fixed a bug that messed up symbols like braces and brackets. Redefined
+          the macros \sffamily and \rmfamily so that they automatically change 
+          the alphabet used for operators and numbers to match the environment.
+2017-04-10:
+  v0.2.1: Fixed a bug that prevented \infty from displaying correctly.
+          [Thanks to Georg Bube for reporting the problem and solution.]
 
 
 

@@ -16,8 +16,8 @@
 %%
 
 % Package metadata
-\def\fileversion{v0.2}
-\def\filedate{2017/02/03}
+\def\fileversion{v0.2.1}
+\def\filedate{2017/04/10}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eulerpx}[\filedate\space\fileversion]
 \typeout{Package: `eulerpx' \fileversion\space<\filedate>}
@@ -26,7 +26,7 @@
 \RequirePackage[T1]{fontenc}
 
 % Inherit math symbols from the `newpxmath' package
-%\RequirePackage[varbb,upint]{newpxmath}
+\RequirePackage[varbb,upint]{newpxmath}
 
 % Declare the math serif font
 \DeclareMathVersion{normal}
@@ -133,7 +133,7 @@
 
 % Miscellaneous
 \DeclareMathSymbol{\hbar}{\mathord}{letters}{128}
-\DeclareMathSymbol{\infty}{\mathord}{largesymbols}{153}
+\DeclareMathSymbol{\infty}{\mathord}{symbols}{49}
 
 % Unicode input
 \DeclareOption{utf8}%
