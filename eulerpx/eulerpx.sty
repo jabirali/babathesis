@@ -16,8 +16,8 @@
 %%
 
 % Package metadata
-\def\fileversion{v0.2.1}
-\def\filedate{2017/04/10}
+\def\fileversion{v0.2.2}
+\def\filedate{2017/04/13}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{eulerpx}[\filedate\space\fileversion]
 \typeout{Package: `eulerpx' \fileversion\space<\filedate>}
@@ -26,7 +26,13 @@
 \RequirePackage[T1]{fontenc}
 
 % Inherit math symbols from the `newpxmath' package
-\RequirePackage[varbb,upint]{newpxmath}
+\RequirePackage[upint]{newpxmath}
+
+% Use the Euler calligraphic alphabet
+\RequirePackage{eucal}
+
+% Use the Pazo blackboard alphabet
+\DeclareSymbolFont{AMSm}{U}{fplmbb}{m}{n}
 
 % Declare the math serif font
 \DeclareMathVersion{normal}
