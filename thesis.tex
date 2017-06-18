@@ -266,6 +266,8 @@
 \usepackage{biblatex}   % Produces the bibliography
 \usepackage{cleveref}   % Easy and consistent cross-references
 \usepackage{graphicx}   % Loads and displays figures
+\usepackage{pdfpages}   % Enables embedding of documents
+\usepackage{xcolor}     % Enables coloring of text and pages
 \usepackage{booktabs}   % Proper formatting of tables
 \usepackage{siunitx}    % Proper formatting of units
 \usepackage{mhchem}     % Proper formatting of chemicals
@@ -297,6 +299,9 @@
 % Replace \cite with the more flexible \autocite
 \let\cite=\autocite
 
+% Define custom colors
+\definecolor{ghostwhite}{rgb}{0.97, 0.97, 1.00}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -307,6 +312,24 @@
 
 % Mathematical objects
 \newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
+
+% Macro for including papers
+\newcounter{papercount}
+\newenvironment{paper}[1]
+{
+  \large
+  \def\paperpath{#1}
+  \stepcounter{papercount}
+  \chapter*{Paper \#\arabic{papercount}}
+  \pagecolor{ghostwhite}
+  \noindent\\[-2ex]
+}
+{
+  \cleardoublepage
+  \nopagecolor
+  \includepdf[pages={-}]{\paperpath}
+  \cleardoublepage
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -320,17 +343,16 @@
 \begin{document}
 
 \frontmatter
-\tableofcontents
-\include{chapters/abstract}
-\include{chapters/preface}
-
+  \include{chapters/abstract}
+  \include{chapters/preface}
+  \tableofcontents
 \mainmatter 
-\include{chapters/introduction} 
-\include{chapters/theory} 
-\include{chapters/algorithms} 
-\include{chapters/test}
-
+  \include{chapters/introduction} 
+  \include{chapters/theory} 
+  \include{chapters/algorithms} 
+  \include{chapters/test}
 \backmatter
-\printbibliography
+  \printbibliography
+  \include{papers/include}
 
 \end{document}

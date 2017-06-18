@@ -225,3 +225,127 @@ Fusce pretium semper leo eget lobortis.
 Sed dictum erat quis diam faucibus bibendum.\footnote{Test}\cite{particle}
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
+
+
+
+\clearpage
+\chapter*{Bestemte integral}\noindent
+Under skal jeg prøve å gi en rask intro til bestemt integrasjon.
+Måten jeg gjør det på, er som følger: jeg kommer bare til å hoppe rett inn i det ved å demonstrere hvordan man løser to eksempeloppgaver.
+Etter det, skal jeg prøve å gi en kort oppsummering av hvordan man logisk kan tenke på bestemte integraler etterpå.
+Dette blir ikke en veldig dyp intro, men håper at det gir deg det du trenger for å løse eksamensoppgavene iallefall :).
+
+\section*{Eksempel I: introduksjon}\noindent
+La oss starte med et relativt enkelt eksempel på et bestemt integral:
+\begin{equation*}
+  \int_{x=0}^{x=1} x^2\,\text{d}x
+\end{equation*}
+Dette skrives ofte uten $x=\cdots$, altså på kortformen:
+\begin{equation*}
+  \int_{0}^{1} x^2\,\text{d}x
+\end{equation*}
+Når man skal løse et bestemt integral, må man alltid starte med å løse det ubestemte integralet.
+Hvis du slår opp i formelsamlingen bakerst i et av eksamenssettene, finner du en formel for ubestemte integral av polynomer:
+\begin{align*}
+  \int x^r\;\text{d}x &= \frac{1}{r+1} x^{r+1} & &\text{(for $r\neq-1$)}
+\end{align*}
+Setter du inn $r=2$ finner du da:
+\begin{align*}
+  \int x^2\;\text{d}x = \frac{1}{3} x^3
+\end{align*}
+Okay, la oss nå gå tilbake til det \emph{bestemte} integralet.
+Den vanlige måten å skrive ned at man har løst det \emph{ubestemte} integralet på, er å sette firkantklammer rundt svaret, med de såkallte \emph{integrasjonsgrensene} 0 og 1 utenfor klammene:
+\begin{equation*}
+  \int_{x=0}^{x=1} x^2\,\text{d}x = \left[ \frac{1}{3} x^3 \right]_{x=0}^{x=1}
+\end{equation*}
+Det å faktisk regne ut det bestemte integralet fra det ubestemte er nå veldig enkelt: vi trenger faktisk bare å sette inn $x=1$ og $x=0$ i det uttrykket som står i klammer, og så trekke svarene fra hverandre:
+\begin{align*}
+  \left[ \frac{1}{3} x^3 \right]_{x=0}^{x=1} 
+  &= \left[ \frac{1}{3} x^3 \right]_{x=1} - \;\;\;\;\left[ \frac{1}{3} x^3 \right]_{x=0} \\
+  &= \left[ \frac{1}{3} \cdot 1^3 \right]\;\;\; - \;\;\;\left[ \frac{1}{3} \cdot 0^3 \right] \\
+  &= \frac{1}{3} - 0 \\
+  &= \frac{1}{3}
+\end{align*}
+Svaret fra den bestemte integrasjonen blir altså:
+\begin{equation*}
+  \int_0^1 x^2\,\text{d}x = \frac{1}{3}
+\end{equation*}
+
+\section*{Eksempel II: avansert}
+Okay, la oss se på en litt mer avansert oppgave:
+\begin{equation*}
+  \int_1^\infty e^{-2x}
+\end{equation*}
+Første steg er som sagt alltid å løse det ubestemte integralet. 
+Sjekker du formelsamlingen bakerst i et eksamenssett dine, finner du denne likningen:
+\begin{align*}
+  \int e^{kx}\;\text{d}x &= \frac{1}{k} e^{kx} + C & &\text{($C$ er en vilkårlig konstant)}
+\end{align*}
+Sett inn at $k=-2$:
+\begin{align*}
+  \int e^{-2x}\;\text{d}x &= -\frac{1}{2} e^{-2x} + C
+\end{align*}
+Så løsningen på det ubestemte integralet er også:
+\begin{align*}
+  \int_{1}^{\infty} e^{-2x}\;\text{d}x &= \left[ -\frac{1}{2} e^{-2x} + C \right]_1^\infty
+\end{align*}
+Vi finner da løsningen på det bestemte integralet ved å sette inn $x=\infty$ og $x=1$, og trekke resultatene fra hverandre.
+En detalj som trengs her, er da at $e^{-\infty} = 1/e^{\infty} = 1/\infty = 0$; har du ikke lært om grenseverdier i faget, så trenger du ikke å tenke så mye på dette, det er isåfall muligens utenfor pensum :).
+Men beregningen blir altså:
+\begin{align*}
+  \int_{1}^{\infty} e^{-2x}\;\text{d}x 
+  &= \left[ -\frac{1}{2} e^{-2x}     + C \right]_1^\infty \\
+  &= \left[ -\frac{1}{2} e^{-2x}     + C \right]_{x=\infty} - \;\;\;\;\left[ -\frac{1}{2} e^{-2x} + C \right]_{x=1} \\
+  &= \left[ -\frac{1}{2} e^{-\infty} + C \right] \;\;\;\;\;\; - \;\;\;\; \left[ -\frac{1}{2} e^{-2} + C \right] \\
+  &= \left[ -\frac{1}{2} \cdot 0 \; +  C \right] \;\;\;\;\;\; - \;\;\;\; \left[ -\frac{1}{2} e^{-2} + C \right] \\
+  &= 0 + C + \frac{1}{2} e^{-2} - C \\
+  &= \frac{1}{2} e^{-2} \\
+  &= \frac{1}{2e^2}
+\end{align*}
+Så svaret er:
+\begin{align*}
+  \int_{1}^{\infty} e^{-2x}\;\text{d}x &= \frac{1}{2e^2}
+\end{align*}
+Merk at det ikke hadde noe å si at vi ikke visste hva den ukjente konstanten $C$ var for noe, den forsvant uansett når vi beregnet et bestemt integral :).
+
+\section*{Tolkning I: antiderivasjon}
+En måte å tolke hva integrasjon betyr for noe, er at det er \emph{det omvendte av derivasjon}. 
+For eksempel, hvis vi tar det ubestemte integralet vi så på over:
+\begin{align*}
+  \int x^2\;\text{d}x &= \frac{1}{3} x^{3}
+\end{align*}
+Hva skjer hvis vi deriverer svaret? 
+Jo, den deriverte av $x^{3}$ er $3x^2$, så vi får:
+\begin{align*}
+  \left( \int x^2\;\text{d}x \right)' &= x^{2}
+\end{align*}
+Så hvis vi først integrerer $x^2$ og så deriverer svaret, så får vi tilbake det vi startet med.
+Derivasjonen gjorde det motsatte av det integrasjonen gjorde.
+
+Hva betyr dette for hvordan vi skal tolke integrasjon?
+Jo, det derivasjon måler er jo \emph{stigningstallet} eller \emph{endringsraten} til noe.
+For eksempel, hvis du vet posisjonen $s$ til en bil som funksjon av tiden $t$, så vil den deriverte $v(t) = s'(t)$ være \emph{hastigheten} til bilen.
+Siden integrasjon gjør det motsatte, betyr det at du kan integrere hastigheten for å finne ut hvor langt bilen faktisk har kjørt.
+
+
+\section*{Tolkning II: areal under en kurve}
+En geometrisk tolkning av integrasjon, er at det er en måte å regne ut arealet under en kurve.
+La oss f.eks. si at vi har en graf av funksjonen $f(x) = 1-x^2$:\\
+{\quad \includegraphics[width=0.6\textwidth]{/home/jabirali/figure.png}} \\
+Hvis vi tar et bestemt integral av denne funksjonen fra $x=0$ til $x=1$:
+\begin{equation*}
+  \int_0^1 (1-x^2)\;\text{d}x = \left[ x - \frac{1}{3}x^3 \right]_0^1 = [1 - 1/3] - [0 - 0] = 2/3
+\end{equation}
+Egentlig bare arealet under kurven mellom $x=0$ og $x=1$:\\
+{\quad \includegraphics[width=0.6\textwidth]{/home/jabirali/areal.png}}\\
+Det å \emph{bevise} at integraler gir deg areal er litt mer jobb, og sannsynligvis ikke verdt å fokusere på fram mot eksamen.
+Men det er greit å ha i bakhodet at hvis det kommer en eksamensoppgave hvor de vil at du skal ``finne arealet under kurven'', så betyr det bare at du skal løse et bestemt integral ;).
+
+Det at ``integral'' betyr ``areal under kurve'' gir jo en innsikt til.
+Et ``bestemt integral fra $x=0$ til $x=1$'' er altså arealet under kurven mellom punktene $x=0$ og $x=1$.
+Et ``ubestemt integral'' derimot, hvor vi ikke har satt inn noen verdier for $x$ enda, er en generell formel for å regne ut arealet under kurven for vilkårlige startpunkt og sluttpunkt.
+Dette minner jo litt om den samme situasjonen for derivasjon: $f'(x)$ er en ``ubestemt derivert'', altså en generell formel for å regne ut stigningstall. Hvis du setter inn $x=2$ i dette uttrykket, altså beregner $f'(2)$, så har du derimot spesifikt stigningstallet til kurven i punktet $x=2$, som vi godt kunne kallt en ``bestemt derivert''.
+
+
+
+
