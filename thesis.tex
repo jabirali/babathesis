@@ -246,6 +246,9 @@
 \PassOptionsToPackage{chaptertitle=true}{biblatex}
 \PassOptionsToPackage{pageranges=false}{biblatex}
 
+% Enable multiple bibliographies with separate numbering
+\PassOptionsToPackage{defernumbers=true}{biblatex}
+
 % Use ampersand as the author delimiter
 %\renewcommand*{\finalnamedelim}{\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}\addspace\&\space}
 
@@ -300,8 +303,11 @@
 \let\cite=\autocite
 
 % Define custom colors
-\definecolor{ghostwhite}{rgb}{0.97, 0.97, 1.00}
+\definecolor{ghostwhite}{rgb}{0.88, 0.88, 1.00}
 
+% Declare a custom article format for my papers
+\DeclareBibliographyAlias{customa}{article}
+\DeclareFieldFormat[customa]{labelnumber}{\textsc{\Rn{#1}}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -314,15 +320,15 @@
 \newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
 
 % Macro for including papers
-\newcounter{papercount}
-\newenvironment{paper}[1]
+\newenvironment{paper}[2]
 {
   \large
   \def\paperpath{#1}
-  \stepcounter{papercount}
-  \chapter*{Paper \#\arabic{papercount}}
+  \chapter*{Paper \cite{#2}}
   \pagecolor{ghostwhite}
   \noindent\\[-2ex]
+  \fullcite{#2}\\[2ex]
+  \noindent
 }
 {
   \cleardoublepage
@@ -330,6 +336,11 @@
   \includepdf[pages={-}]{\paperpath}
   \cleardoublepage
 }
+
+% Macros for printing bibliographies
+\defbibheading{papers}[Papers]{\chapter*{#1}}
+\newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
+\newcommand{\printpapers}{\printbibliography[type=customa,heading=papers,resetnumbers=true]}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -339,12 +350,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addbibresource{library.bib}
+\addbibresource{papers.bib}
 
 \begin{document}
 
 \frontmatter
   \include{chapters/abstract}
   \include{chapters/preface}
+  \printpapers
   \tableofcontents
 \mainmatter 
   \include{chapters/introduction} 
@@ -352,7 +365,7 @@
   \include{chapters/algorithms} 
   \include{chapters/test}
 \backmatter
-  \printbibliography
+  \printcites
   \include{papers/include}
 
 \end{document}
