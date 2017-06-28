@@ -233,7 +233,7 @@
 \PassOptionsToPackage{backend=biber}{biblatex}
 
 % Bibliography style (e.g. 'phys' or 'nature')
-\PassOptionsToPackage{style=science}{biblatex}
+\PassOptionsToPackage{style=nature}{biblatex}
 
 % Citation style (e.g. 'plain' or 'superscript')
 \PassOptionsToPackage{autocite=plain}{biblatex}
@@ -310,7 +310,7 @@
 \let\cite=\autocite
 
 % Define custom colors
-\definecolor{ghostwhite}{rgb}{0.88, 0.88, 1.00}
+\definecolor{whiteish}{rgb}{0.972, 0.925, 0.761}
 
 % Don't use square brackets in bibliography
 %\DeclareFieldFormat{labelnumberwidth}{#1}
@@ -345,8 +345,8 @@
 {
   \large
   \def\paperpath{#1}
-  \chapter*{\citepaper{#2}}
-  \pagecolor{ghostwhite}
+  \chapter{\citepaper{#2}}
+  \pagecolor{whiteish}
   \noindent\\[-2ex]
   \fullcite{#2}\\[2ex]
   \noindent
