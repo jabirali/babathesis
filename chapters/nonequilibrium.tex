@@ -1,0 +1,311 @@
+\chapter{Kinetic equation}
+\section{Introduction}
+After we perform a Pauli-decomposition, the part of the Usadel equation describing the nonequilibrium distribution function~$\C{H}$ -- also known as the \emph{kinetic equation} -- can be written [Eq.~(12) in our arXiv manuscript]:
+\begin{equation}
+  \C{U} = -\partial_z \C{J}
+\end{equation}
+Meanwhile, the nonequilibrium matrix current becomes [Eq.~(21)]:
+\begin{equation}
+  \C{J} = \C{M}\partial_z\C{H} + \C{Q}\C{H}
+\end{equation}
+Substituting the latter into the former we get [Eq.~(39)]:
+\begin{equation}
+  \C{M} \partial_z^2 \C{H} = -\big[ (\partial_z\C{M}) + \C{Q} \big] \partial_z \C{H} - (\partial_z \C{Q}) \C{H} - \C{U}
+\end{equation}
+What I will show here, is that we can in general write $\C{U} = \C{K} \C{H}$, so that:
+\begin{equation}
+  \C{M} \partial_z^2 \C{H} = -\big[ (\partial_z\C{M}) + \C{Q} \big] \partial_z \C{H} - \big[ (\partial_z \C{Q}) + \C{K} \big] \C{H}
+\end{equation}
+If we then define the quantities:
+\begin{align}
+  \C{C}_1 &= -\C{M}^{-1} \big[ (\partial_z\C{M}) + \C{Q} \big] \\
+  \C{C}_2 &= -\C{M}^{-1} \big[ \, (\partial_z\C{Q}) \,+ \C{K} \big]
+\end{align}
+Then the kinetic equation can be written simply as:
+\begin{equation}
+  \partial_z^2 \C{H} = \C{C}_1 \partial_z \C{H} + \C{C}_2 \C{H}
+\end{equation}
+Here, the matrices $\C{C}_1$ and $\C{C}_2$ are determined solely by equilibrium properties, and thus can be considered constants when solving the nonequilibrium equation above.
+This should make this form of the equation very efficient to solve, since it is an \emph{explicit and linear differential equation}.
+
+\clearpage
+\section{First-order terms}
+First, I will look at terms which are first-order in the $8\times8$ propagator~$\UV{G}$.
+Before Pauli decomposition, the Usadel equation for such terms look like
+\begin{equation}
+  iD \partial_z(\UV{G} \partial_z \UV{G}) = \big[ \UV{\Sigma}, \UV{G} \big],
+\end{equation}
+where I first assume that $\UV{\Sigma}$ is independent of $\UV{G}$, making the right-hand side above first-order in $\UV{G}$.
+Upon introducing $\UV{I} \sim \UV{G} \partial_z \UV{G}$ and $\UV{U} \sim \big[ \UV{\Sigma}, \UV{G} \big]$, we get
+\begin{equation}
+  \partial_z \UV{I} = \UV{U}.
+\end{equation}
+Writing out the Keldysh-space structure, the potential $\UV{U}$ becomes
+\begin{align}
+  \UV{U} &=
+    \begin{pmatrix}
+      \U\Sigma & 0 \\[0.5ex]
+      0 & \U\Sigma
+    \end{pmatrix}
+    \begin{pmatrix}
+      {\U G}^R & {\U G}^K \\[0.5ex]
+      0        & {\U G}^A
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+      {\U G}^R & {\U G}^K \\[0.5ex]
+      0        & {\U G}^A
+    \end{pmatrix}
+    \begin{pmatrix}
+      \U\Sigma & 0 \\[0.5ex]
+      0 & \U\Sigma
+    \end{pmatrix}
+  \\ &=
+    \begin{pmatrix}
+      \big[{\U\Sigma}\big, {\U G}^R] & \big[{\U\Sigma}, {\U G}^K\big] \\[1ex]
+      0        & \big[{\U\Sigma}, {\U G}^A\big]
+    \end{pmatrix}
+\end{align}
+In other words, as long as the self-energy is diagonal in Keldysh space, the Keldysh component of the matrix potential is simply
+\begin{equation}
+  {\U U}^K = \big[ {\U\Sigma}, {\U G}^K \big] .
+\end{equation}
+Now, the Pauli decompositions of the Kelydysh components were:
+\begin{align}
+  \C{J}_i & \equiv \frac{1}{4} \tr\left\{ {\U \rho_i} {\U I}^K \right\}, &
+  \C{U}_i & \equiv \frac{1}{4} \tr\left\{ {\U \rho_i} {\U U}^K \right\}.
+\end{align}
+Using the above equation for ${\U U}^K$ and the cyclic rule for traces:
+\begin{align}
+  \C{U}_i 
+  &= \frac{1}{4} \tr\left\{ {\U \rho_i} \big[ {\U\Sigma}, {\U G}^K\big] \right\} \\
+  &= \frac{1}{4} \tr\left\{ {\U \rho_i} \big[ {\U\Sigma} {\U G}^K - {\U G}^K {\U\Sigma} \big] \right\} \\
+  &= \frac{1}{4} \tr\left\{ {\U \rho_i} {\U\Sigma} {\U G}^K - {\U\Sigma} {\U \rho_i} {\U G}^K \right\} \\
+  &= \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}\big] {\U G}^K \right\}.
+\end{align}
+Inserting ${\U G}^K = {\U G}^R {\U H} - {\U H} {\U G}^A$:
+\begin{align}
+  \C{U}_i 
+  &= \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}\big] {\U G}^R {\U H} - \big[{\U \rho_i}, {\U\Sigma}\big] {\U H} {\U G}^A \right\} \\
+  &= \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}\big] {\U G}^R {\U H} - {\U G}^A \big[{\U \rho_i}, {\U\Sigma}\big] {\U H} \right\}.
+\end{align}
+As we did for the Pauli decomposition of the current and potential, we can insert $\U H = \sum_j H_j {\U \rho}_j$, and move the scalar coefficients $H_j$ and summation out of the trace.
+What we find then, is that the equation above can be written
+\begin{align}
+  \C{U}_i = \sum_j \C{K}_{ij} \C{H}_j,
+\end{align}
+where we define the new matrix coefficient
+\begin{align}
+  \C{K}_{ij}
+  &= \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}\big] {\U G}^R {\U \rho}_j - {\U G}^A \big[{\U \rho_i}, {\U\Sigma}\big] {\U \rho}_j \right\}.
+\end{align}
+There are two things to note about this result.
+First, this equation makes it almost trivial to specify the Usadel equation for new materials, since it is a direct function of the self-energy $\U \Sigma$ that we would put into the Usadel equation itself.
+Second, the matrix $\U \Sigma$ is just filled with system parameters that we set (energy, exchange field, etc.), while the matrices ${\U G}^R$ and ${\U G}^A$ only depend on the equilibrium solution.
+Since this matrix is completely independent of the nonequilibrium distribution $\C H$, we can precalculate it before solving the differential equation, and do not have to evaluate it more than once per energy and position.
+
+
+
+\section{Second-order terms}
+Above, we considered a matrix potential $\V{U} = \big[\V{\Sigma}, \V{G}\big]$ where $\V{\Sigma}$ assumed to be independent of $\V{G}$.
+This is sufficient for a lot of systems (e.g. normal metals, ferromagnets, even half-metals), but not completely general.
+There are at least three exceptions I know of based on the projects I've worked on so far:\\[1ex]
+\begin{tabular}{ll}
+  Spin-flip scattering: &
+  $\V{U} \sim \big[ \tau_3 \BU{\sigma} \V{G} \BU{\sigma} \tau_3, \V{G} \big];$ \\[0.5ex]
+  Spin-orbit scattering: &
+  $\V{U} \sim \big[ \phantom{\tau_3}\BU{\sigma} \V{G} \BU{\sigma} \phantom{\tau_3}, \V{G} \big];$ \\[0.5ex]
+  Orbital depairing: & 
+  $\V{U} \sim \big[  \tau_3 \phantom{\BU{\sigma}}\V{G} \phantom{\BU{\sigma}} \tau_3 , \V{G} \big]$.\\[1ex]
+\end{tabular}
+
+\noindent
+Note that all of the above are second-order in the propagator~$\V{G}$, and has the same basic structure $\V{U} = \big[ \V{\Sigma} \V{G} \V{\Sigma}, \V{G} \big]$.
+The matrix $\V{\Sigma}$ in this expression is again diagonal in Keldysh space and independent of the propagator $\V{G}$.
+Let us now check what happens if we assume such a form for the potential~$\V{U}$:
+\begin{align*}
+  \UV{U}
+  &=
+    \big[ \V{\Sigma} \V{G} \V{\Sigma}, \V{G} \big] 
+  \\ &=
+    \begin{pmatrix}
+      {\U\Sigma} {\U G}^R {\U\Sigma} &
+      {\U\Sigma} {\U G}^K {\U\Sigma} \\
+      0                              &
+      {\U\Sigma} {\U G}^A {\U\Sigma} 
+    \end{pmatrix}
+    \begin{pmatrix}
+      {\U G}^R & {\U G}^K \\[0.5ex]
+      0        & {\U G}^A
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+      {\U G}^R & {\U G}^K \\[0.5ex]
+      0        & {\U G}^A
+    \end{pmatrix}
+    \begin{pmatrix}
+      {\U\Sigma} {\U G}^R {\U\Sigma} &
+      {\U\Sigma} {\U G}^K {\U\Sigma} \\
+      0                              &
+      {\U\Sigma} {\U G}^A {\U\Sigma} 
+    \end{pmatrix}
+  \\ &=
+    \begin{pmatrix}
+      \big[{\U\Sigma} {\U G}^R {\U\Sigma}\big, {\U G}^R] & 
+      {\U\Sigma} {\U G}^R {\U\Sigma} {\U G}^K            +
+      {\U\Sigma} {\U G}^K {\U\Sigma} {\U G}^A            - 
+      {\U G}^R {\U\Sigma} {\U G}^K {\U\Sigma}            -
+      {\U G}^K {\U\Sigma} {\U G}^A {\U\Sigma}            \\[1ex]
+      0                                                  &
+      \big[{\U\Sigma} {\U G}^A {\U\Sigma}, {\U G}^A\big]
+    \end{pmatrix}
+\end{align*} 
+In other words, the Keldysh component takes the more complicated form:
+\begin{equation}
+  \U{U}^K = 
+      {\U\Sigma} {\U G}^R {\U\Sigma} {\U G}^K +
+      {\U\Sigma} {\U G}^K {\U\Sigma} {\U G}^A - 
+      {\U G}^R {\U\Sigma} {\U G}^K {\U\Sigma} -
+      {\U G}^K {\U\Sigma} {\U G}^A {\U\Sigma} .
+\end{equation}
+Like before, we can multiply by ${\U\rho}_i$ and trace to obtain the Pauli-decomposition, and use the cyclic trace rule, and reorder the terms:
+\begin{align*}
+  \C{U}_i
+  &= 
+    \frac{1}{4}
+    \tr 
+    \left\{
+      {\U\rho}_i {\U\Sigma} {\U G}^R {\U\Sigma} {\U G}^K +
+      {\U\rho}_i {\U\Sigma} {\U G}^K {\U\Sigma} {\U G}^A - 
+      {\U\rho}_i {\U G}^R {\U\Sigma} {\U G}^K {\U\Sigma} -
+      {\U\rho}_i {\U G}^K {\U\Sigma} {\U G}^A {\U\Sigma} 
+    \right\}
+  \\ 
+  &= 
+    \frac{1}{4}
+    \tr 
+    \left\{
+      {\U\rho}_i {\U\Sigma} {\U G}^R {\U\Sigma} {\U G}^K +
+      {\U\Sigma} {\U G}^A {\U\rho}_i {\U\Sigma} {\U G}^K - 
+      {\U\Sigma} {\U\rho}_i {\U G}^R {\U\Sigma} {\U G}^K -
+      {\U\Sigma} {\U G}^A {\U\Sigma} {\U\rho}_i {\U G}^K 
+    \right\}
+  \\ 
+  &= 
+    \frac{1}{4}
+    \tr 
+    \left\{
+      \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\Sigma} {\U G}^K +
+      {\U\Sigma} {\U G}^A \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^K 
+    \right\}
+\end{align*}
+For simplicity, let's write this in the following form for now:
+\begin{align}
+  \C{U}_i
+  &= 
+    \frac{1}{4} \tr \left\{ \U F_i {\U G}^K \right\}
+  ,
+  &
+  \U F_i
+  = \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\Sigma} 
+  + {\U\Sigma} {\U G}^A \big[ {\U\rho}_i, {\U\Sigma} \big]
+  .
+\end{align}
+We then substitute in ${\U G}^K = {\U G}^R {\U H} - {\U H} {\U G}^A$:
+\begin{align}
+  \C{U}_i
+  = 
+    \frac{1}{4}
+    \tr 
+    \left\{
+      {\U F}_i {\U G}^R {\U H} -
+      {\U F}_i {\U H} {\U G}^A 
+    \right\}
+  = 
+    \frac{1}{4}
+    \tr 
+    \left\{
+      {\U F}_i {\U G}^R {\U H} -
+      {\U G}^A {\U F}_i {\U H}
+    \right\}
+\end{align}
+We then use $\U H = \sum_j H_j {\U\rho}_j$ to write the above equation as:
+\begin{align}
+  \C{U}_i    &= \sum_j \C{K}_{ij} \C{H}_j, &
+  \C{K}_{ij} &= \frac{1}{4} \tr \left\{ {\U F}_i {\U G}^R {\U\rho}_j - {\U G}^A {\U F}_i {\U \rho}_j \right\}.
+\end{align}
+We could substitute back the definition of ${\U F}_i$ to see the explicit form of $\C{K}_{ij}$:
+\begin{align*}
+  \C{K}_{ij} = 
+  \frac{1}{4} \tr 
+  \Big\{
+  &   \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\Sigma} {\U G}^R {\U\rho}_j
+    + {\U\Sigma} {\U G}^A \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\rho}_j \\
+  & - {\U G}^A \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\Sigma} {\U \rho}_j
+    - {\U G}^A {\U\Sigma} {\U G}^A \big[ {\U\rho}_i, {\U\Sigma} \big] {\U \rho}_j
+  \Big\}
+\end{align*}
+This expression has some symmetries.
+Let us use the cyclic trace rule to rewrite it such that the commutator $\big[ {\U\rho}_i, {\U\Sigma} \big]$ comes first in each term:
+\begin{align*}
+  \C{K}_{ij} = 
+  \frac{1}{4} \tr 
+  \Big\{
+  &   \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\Sigma} {\U G}^R {\U\rho}_j
+    + \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\rho}_j {\U\Sigma} {\U G}^A \\
+  & - \big[ {\U\rho}_i, {\U\Sigma} \big] {\U G}^R {\U\Sigma} {\U \rho}_j {\U G}^A
+    - \big[ {\U\rho}_i, {\U\Sigma} \big] {\U \rho}_j {\U G}^A {\U\Sigma} {\U G}^A
+  \Big\}
+\end{align*}
+It then becomes clear that this commutator can be factored out of all terms.
+Furthermore, we see that the terms proportional to ${\U G}^R \cdots {\U G}^A$ have a commutator structure.
+Thus, the above may be simplified to:
+\begin{align*}
+  \C{K}_{ij} = 
+  \frac{1}{4} \tr 
+  \Big\{
+      \big[ {\U\rho}_i, {\U\Sigma} \big]
+      \left( 
+        {\U G}^R {\U\Sigma} {\U G}^R {\U\rho}_j
+      - {\U \rho}_j {\U G}^A {\U\Sigma} {\U G}^A
+      + {\U G}^R \big[{\U \rho}_j, {\U\Sigma} \big] {\U G}^A
+      \right)
+  \Big\}
+\end{align*}
+This solves the problem of second-order terms $\UV{U} \sim \big[\UV{\Sigma}\UV{G}\UV{\Sigma}, \UV{G}\big]$.
+
+\section{Summary}
+If we have a very general Usadel equation of the form:
+\begin{align}
+  iD \partial_z(\UV{G} \partial_z \UV{G}) = \big[ \UV{\Sigma}^{(1)} + \UV{\Sigma}^{(2)}\UV{G}\UV{\Sigma}^{(2)}, \UV{G} \big],
+\end{align} 
+I have shown that the Pauli-decomposed Usadel equation may be written:
+\begin{equation}
+  \C{M} \partial_z^2 \C{H} = -\big[ (\partial_z\C{M}) + \C{Q} \big] \partial_z \C{H} - \big[ (\partial_z \C{Q}) + \C{K} \big] \C{H}
+\end{equation}
+Where the contributions to $\C{K}$ from the $\UV{\Sigma}^{(1)}$ and $\UV{\Sigma}^{(2)}$ terms are given by:
+\begin{align*}
+  \C{K}_{ij}^{(1)}
+  &= 
+  \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}^{(1)}\big] {\U G}^R {\U \rho}_j - {\U G}^A \big[{\U \rho_i}, {\U\Sigma}^{(1)}\big] {\U \rho}_j \right\},
+  \\
+  \C{K}_{ij}^{(2)}
+  &= 
+  \frac{1}{4} \tr 
+  \Big\{
+      \big[ {\U\rho}_i, {\U\Sigma}^{(2)} \big]
+      \left( 
+        {\U G}^R {\U\Sigma}^{(2)} {\U G}^R {\U\rho}_j
+      - {\U \rho}_j {\U G}^A {\U\Sigma}^{(2)} {\U G}^A
+      + {\U G}^R \big[{\U \rho}_j, {\U\Sigma}^{(2)} \big] {\U G}^A
+      \right)
+  \Big\}.
+\end{align*}
+Note that since these matrices $\C{Q}$, $\C{M}$, and $\C{K}$ are all completely independent of the nonequilibrium distribution function $\C{H}$ and its derivatives, these can be precomputed from the equilibrium solution.
+In other words, the final version of the kinetic equation can be written:
+\begin{equation}
+  \partial_z^2\C{H} = \C{C}_1 \partial_z \C{H} + \C{C}_2 \C{H},
+\end{equation}
+where $\C{C}_1$ and $\C{C}_2$ are straight-forward to compute from the self-energies ${\UV\Sigma}^{(1)}$ and ${\UV\Sigma}^{(2)}$ and equilibrium propagators ${\UV G}^R$ and ${\UV G}^A$, and these coefficients only need to be computed once.
+This yields an explicit linear differential equation for $\C{H}$, which can be solved very efficiently numerically.
+In its current form, the equation above will likely be even faster to solve than the Riccati-parametrized Usadel equation for the retarded propagator.

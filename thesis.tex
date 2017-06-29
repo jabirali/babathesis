@@ -239,12 +239,12 @@
 \PassOptionsToPackage{autocite=plain}{biblatex}
 
 % Bibentry style (e.g. 'brackets' or 'superscript')
-\PassOptionsToPackage{biblabel=brackets}{biblatex}
+%\PassOptionsToPackage{biblabel=brackets}{biblatex}
 
 % Customize which fields to show in the bibliography
 \PassOptionsToPackage{articletitle=true}{biblatex}
 \PassOptionsToPackage{chaptertitle=true}{biblatex}
-\PassOptionsToPackage{pageranges=false}{biblatex}
+%\PassOptionsToPackage{pageranges=false}{biblatex}
 \PassOptionsToPackage{isbn=false}{biblatex}
 \PassOptionsToPackage{url=false}{biblatex}
 \PassOptionsToPackage{eprint=true}{biblatex}
@@ -337,8 +337,22 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Mathematical objects
+% Notation
+\newcommand{\B}[1]{\bm{#1}}
+\newcommand{\C}[1]{\mathcal{#1}}
+\newcommand{\U}[1]{\underline{#1}}
+\newcommand{\V}[1]{\check{#1}}
+\newcommand{\BC}[1]{\bm{\mathcal{#1}}}
+\newcommand{\BU}[1]{\U{\B{#1}}}
+\newcommand{\BCU}[1]{\U{\B{\C{#1}}}} 
+\newcommand{\UV}[1]{\V{\U{#1}}}
+\newcommand{\BV}[1]{\V{\B{#1}}}
+
+% Mathematical structure
 \newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
+
+% Mathematical operations
+\DeclareMathOperator{\tr}{Tr}
 
 % Macro for including papers
 \newenvironment{paper}[2]
@@ -364,6 +378,7 @@
 \newcommand{\printpapers}{\printbibliography[type=customa,heading=papers,resetnumbers=true]}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Document itself
@@ -383,6 +398,7 @@
 \mainmatter 
   \include{chapters/introduction} 
   \include{chapters/theory} 
+  \include{chapters/nonequilibrium} 
   \include{chapters/algorithms} 
   \include{chapters/test}
 \backmatter
