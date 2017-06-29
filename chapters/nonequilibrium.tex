@@ -168,7 +168,7 @@ In other words, the Keldysh component takes the more complicated form:
       {\U G}^R {\U\Sigma} {\U G}^K {\U\Sigma} -
       {\U G}^K {\U\Sigma} {\U G}^A {\U\Sigma} .
 \end{equation}
-Like before, we can multiply by ${\U\rho}_i$ and trace to obtain the Pauli-decomposition, and use the cyclic trace rule, and reorder the terms:
+Like before, we can multiply by ${\U\rho}_i$ and trace to obtain the Pauli-decomposition, then use the cyclic trace rule and reorder the terms a bit:
 \begin{align*}
   \C{U}_i
   &= 
@@ -287,7 +287,7 @@ Where the contributions to $\C{K}$ from the $\UV{\Sigma}^{(1)}$ and $\UV{\Sigma}
 \begin{align*}
   \C{K}_{ij}^{(1)}
   &= 
-  \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}^{(1)}\big] {\U G}^R {\U \rho}_j - {\U G}^A \big[{\U \rho_i}, {\U\Sigma}^{(1)}\big] {\U \rho}_j \right\},
+  \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}^{(1)}\big] \left({\U G}^R {\U \rho}_j - {\U \rho}_j {\U G}^A\right) \right\},
   \\
   \C{K}_{ij}^{(2)}
   &= 
@@ -307,5 +307,5 @@ In other words, the final version of the kinetic equation can be written:
   \partial_z^2\C{H} = \C{C}_1 \partial_z \C{H} + \C{C}_2 \C{H},
 \end{equation}
 where $\C{C}_1$ and $\C{C}_2$ are straight-forward to compute from the self-energies ${\UV\Sigma}^{(1)}$ and ${\UV\Sigma}^{(2)}$ and equilibrium propagators ${\UV G}^R$ and ${\UV G}^A$, and these coefficients only need to be computed once.
-This yields an explicit linear differential equation for $\C{H}$, which can be solved very efficiently numerically.
+This yields an explicit linear differential equation for $\C{H}$, which can be solved very efficiently numerically, and which should also be relatively simple to implement.
 In its current form, the equation above will likely be even faster to solve than the Riccati-parametrized Usadel equation for the retarded propagator.
