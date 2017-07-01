@@ -1,5 +1,5 @@
 %% ---------------------------------------------------------------
-%% bababib --- Modification of the ``nature'' biblatex style.
+%% bababib --- Modern biblatex style based on the ``nature'' style.
 %% Maintained by Jabir Ali Ouassou
 %% E-mail: jabirali@switzerlandmail.ch
 %% Released under the LaTeX Project Public License v1.3c or later
@@ -9,17 +9,20 @@
 
 \ProvidesFile{bababib.bbx}[2017/07/01 v1.3a biblatex bibliography style]
 
-% Load the standard style to avoid copy-pasting unnecessary material
+% Load the parent style
 \RequireBibliographyStyle{nature}
 
-% Make sure bibliography entries are on different lines
-\ExecuteBibliographyOptions%
-{
-  block = nbpar,
-  url   = false
-}
+% Select the bibliography font
+\renewcommand*{\bibfont}{\sffamily\raggedright}
+
+% Sacrifice a tree to obtain better readability
+\ExecuteBibliographyOptions{block=nbpar}
+
+% Only list the doi/isbn/arxiv links
+\ExecuteBibliographyOptions{url=false,doi=true,isbn=true,eprint=true}
 
 % Modify the name format
+\renewrobustcmd*{\bibinitdelim}{}
 \DeclareNameFormat{default}{%
   \nameparts{#1}%
     \usebibmacro{name:given-family}
@@ -31,7 +34,7 @@
 }
 
 % Field formats for the bibliography environment
-\DeclareFieldFormat{labelnumberwidth}{#1\adddot}
+\DeclareFieldFormat{labelnumberwidth}{\quad\mkbibbold{#1\adddot}}
 
 % Custom field formats 
 \DeclareFieldFormat*{booktitle}{\mkbibemph{#1}\nopunct}
@@ -42,16 +45,19 @@
 \DeclareFieldFormat[book]{volume}{#1}
 \DeclareFieldFormat[book,collection]{number}{\mkbibbold{#1}}
 \DeclareFieldFormat*{pages}{#1}
-\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\nolinkurl{doi:#1}}}
+\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\textsf{\nolinkurl{doi:#1}}}}
 \DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\nolinkurl{isbn:#1}}}
 
 % Simple modifications to punctuation, etc.
 \renewcommand*{\finalnamedelim}{,\addspace}
 \renewcommand*{\intitlepunct}{\addspace}
-\newbibmacro*{bookdate}{\printtext[parens]{\usebibmacro{date}}}
+\newbibmacro*{bookdate}{\printtext[parens]{\usebibmacro{date}}} 
 
-% New bibliography drivers, using the required order of fields. These
-% are mainly copied from standard.bbx then modified.
+% Bibliography drivers for custom classes
+\DeclareBibliographyAlias{customa}{article}
+\DeclareBibliographyAlias{customb}{inbook}
+
+% Bibliography drivers for standard classes
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%

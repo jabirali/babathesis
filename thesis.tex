@@ -56,6 +56,9 @@
 % Allow variable page heights
 \raggedbottom
 
+% Override \raggedright and \raggedleft with hyphenated variants
+\PassOptionsToPackage{newcommands}{ragged2e}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,6 +283,7 @@
 % Load the required packages
 \usepackage{amsmath}    % Common mathematical environments
 \usepackage{biblatex}   % Produces the bibliography
+\usepackage{ragged2e}   % Permits ragged-right with hyphenation
 \usepackage{cleveref}   % Easy and consistent cross-references
 \usepackage{graphicx}   % Loads and displays figures
 \usepackage{pdfpages}   % Enables embedding of documents
