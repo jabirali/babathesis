@@ -321,6 +321,7 @@
 
 % Define custom colors
 \definecolor{whiteish}{rgb}{0.972, 0.925, 0.761}
+\definecolor{rosewood}{rgb}{0.396, 0.000, 0.043}
 
 % Don't use square brackets in bibliography
 %\DeclareFieldFormat{labelnumberwidth}{#1}
@@ -344,48 +345,41 @@
 \DeclareCiteCommand{\fullpapercite}%
 {\usebibmacro{prenote}}%
 {\defcounter{maxnames}{\blx@maxbibnames}%
-  \begin{flushleft}
-    \usebibmacro{author/translator+others}
-    \setunit{\labelnamepunct}\newblock
-    \usebibmacro{title}%
-    \newunit\newblock
-    \printlist{language}%
-    \newunit\newblock
-    \usebibmacro{byauthor}%
-    \newunit\newblock
-    \usebibmacro{bytranslator+others}%
-    \newunit\newblock
-    \printfield{version}%
-    \newunit\newblock
-    \printtext[doi/url-link]{%
-      \usebibmacro{journal+issuetitle}%
-      \newunit
-      \usebibmacro{byeditor+others}%
-      \newunit
-      \usebibmacro{note+pages}%
-      \newunit%\newblock
-      \iftoggle{bbx:isbn}
-      {\printfield{issn}}
-      {}%
-      \setunit{\addspace}%
-      \printfield{year}%
-    }%
-    \setunit{\addspace}%
-    \iffieldundef{pages}
-    {%
-      \printfield{doi}%
-      \clearfield{doi}%
-    }%
-    {}%
-    \newunit\newblock
-    \usebibmacro{doi+eprint+url}%
-    \newunit\newblock
-    \usebibmacro{addendum+pubstate}%
-    \setunit{\bibpagerefpunct}\newblock
-    \usebibmacro{pageref}%
-    \newunit\newblock
-    \usebibmacro{related}%
-\end{flushleft}}
+  \sffamily
+  \raggedright
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newblock
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit
+  \setunit{\addspace}
+  \usebibmacro{issue+date}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \usebibmacro{finentry}%
+	\nopunct
+}
 {\multicitedelim}
 {\usebibmacro{postnote}}
 \makeatother
@@ -461,7 +455,7 @@
   \include{chapters/equilibrium}
   \include{chapters/nonequilibrium} 
   \include{chapters/algorithms} 
-  \include{chapters/test}
+  %\include{chapters/test}
 \backmatter
   \printcites
   \include{papers/include}

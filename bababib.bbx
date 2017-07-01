@@ -21,16 +21,19 @@
 % Only list the doi/isbn/arxiv links
 \ExecuteBibliographyOptions{url=false,doi=true,isbn=true,eprint=true}
 
+% Do not sort the bibliography
+\ExecuteBibliographyOptions{sorting=none}
+
 % Modify the name format
 \renewrobustcmd*{\bibinitdelim}{}
-\DeclareNameFormat{default}{%
+\DeclareNameFormat{default}{\mkbibbold{%
   \nameparts{#1}%
     \usebibmacro{name:given-family}
       {\namepartfamily}
       {\namepartgiveni}
       {\namepartprefix}
       {\namepartsuffix}%
-   \usebibmacro{name:andothers}%
+   \usebibmacro{name:andothers}}%
 }
 
 % Field formats for the bibliography environment
@@ -55,7 +58,6 @@
 
 % Bibliography drivers for custom classes
 \DeclareBibliographyAlias{customa}{article}
-\DeclareBibliographyAlias{customb}{inbook}
 
 % Bibliography drivers for standard classes
 \DeclareBibliographyDriver{article}{%
