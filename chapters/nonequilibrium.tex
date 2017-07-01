@@ -1,37 +1,37 @@
 \chapter{Kinetic equation}
 \section{Introduction}
-After we perform a Pauli-decomposition, the part of the Usadel equation describing the nonequilibrium distribution function~$\C{H}$ -- also known as the \emph{kinetic equation} -- can be written [Eq.~(12) in our arXiv manuscript]:
+After we perform a Pauli-decomposition, the part of the Usadel equation describing the nonequilibrium distribution function~$\BC{H}$ -- also known as the \emph{kinetic equation} -- can be written [Eq.~(12) in our arXiv manuscript]:
 \begin{equation}
-  \C{U} = -\partial_z \C{J}
+  \BC{U} = -\partial_z \BC{J}
 \end{equation}
 Meanwhile, the nonequilibrium matrix current becomes [Eq.~(21)]:
 \begin{equation}
-  \C{J} = \C{M}\partial_z\C{H} + \C{Q}\C{H}
+  \BC{J} = \BC{M}\partial_z\BC{H} + \BC{Q}\BC{H}
 \end{equation}
 Substituting the latter into the former we get [Eq.~(39)]:
 \begin{equation}
-  \C{M} \partial_z^2 \C{H} = -\big[ (\partial_z\C{M}) + \C{Q} \big] \partial_z \C{H} - (\partial_z \C{Q}) \C{H} - \C{U}
+  \BC{M} \partial_z^2 \BC{H} = -\big[ (\partial_z\BC{M}) + \BC{Q} \big] \partial_z \BC{H} - (\partial_z \BC{Q}) \BC{H} - \BC{U}
 \end{equation}
-What I will show here, is that we can in general write $\C{U} = \C{K} \C{H}$, so that:
+What I will show here, is that we can in general write $\BC{U} = \BC{K} \BC{H}$, so that:
 \begin{equation}
-  \C{M} \partial_z^2 \C{H} = -\big[ (\partial_z\C{M}) + \C{Q} \big] \partial_z \C{H} - \big[ (\partial_z \C{Q}) + \C{K} \big] \C{H}
+  \BC{M} \partial_z^2 \BC{H} = -\big[ (\partial_z\BC{M}) + \BC{Q} \big] \partial_z \BC{H} - \big[ (\partial_z \BC{Q}) + \BC{K} \big] \BC{H}
 \end{equation}
 If we then define the quantities:
 \begin{align}
-  \C{C}_1 &= -\C{M}^{-1} \big[ (\partial_z\C{M}) + \C{Q} \big] \\
-  \C{C}_2 &= -\C{M}^{-1} \big[ \, (\partial_z\C{Q}) \,+ \C{K} \big]
+  \BC{C}_1 &= -\BC{M}^{-1} \big[ (\partial_z\BC{M}) + \BC{Q} \big] \\
+  \BC{C}_2 &= -\BC{M}^{-1} \big[ \, (\partial_z\BC{Q}) \,+ \BC{K} \big]
 \end{align}
 Then the kinetic equation can be written simply as:
 \begin{equation}
-  \partial_z^2 \C{H} = \C{C}_1 \partial_z \C{H} + \C{C}_2 \C{H}
+  \partial_z^2 \BC{H} = \BC{C}_1 \partial_z \BC{H} + \BC{C}_2 \BC{H}
 \end{equation}
-Here, the matrices $\C{C}_1$ and $\C{C}_2$ are determined solely by equilibrium properties, and thus can be considered constants when solving the nonequilibrium equation above.
+Here, the matrices $\BC{C}_1$ and $\BC{C}_2$ are determined solely by equilibrium properties, and thus can be considered constants when solving the nonequilibrium equation above.
 This should make this form of the equation very efficient to solve, since it is an \emph{explicit and linear differential equation}.
 
 \clearpage
 \section{First-order terms}
 First, I will look at terms which are first-order in the $8\times8$ propagator~$\UV{G}$.
-Before Pauli decomposition, the Usadel equation for such terms look like
+Before Pauli-decomposition, the Usadel equation for such terms look like
 \begin{equation}
   iD \partial_z(\UV{G} \partial_z \UV{G}) = \big[ \UV{\Sigma}, \UV{G} \big],
 \end{equation}
@@ -70,7 +70,7 @@ In other words, as long as the self-energy is diagonal in Keldysh space, the Kel
 \begin{equation}
   {\U U}^K = \big[ {\U\Sigma}, {\U G}^K \big] .
 \end{equation}
-Now, the Pauli decompositions of the Kelydysh components were:
+Now, the Pauli-decompositions of the Kelydysh components were:
 \begin{align}
   \C{J}_i & \equiv \frac{1}{4} \tr\left\{ {\U \rho_i} {\U I}^K \right\}, &
   \C{U}_i & \equiv \frac{1}{4} \tr\left\{ {\U \rho_i} {\U U}^K \right\}.
@@ -89,7 +89,7 @@ Inserting ${\U G}^K = {\U G}^R {\U H} - {\U H} {\U G}^A$:
   &= \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}\big] {\U G}^R {\U H} - \big[{\U \rho_i}, {\U\Sigma}\big] {\U H} {\U G}^A \right\} \\
   &= \frac{1}{4} \tr\left\{ \big[{\U \rho_i}, {\U\Sigma}\big] {\U G}^R {\U H} - {\U G}^A \big[{\U \rho_i}, {\U\Sigma}\big] {\U H} \right\}.
 \end{align}
-As we did for the Pauli decomposition of the current and potential, we can insert $\U H = \sum_j H_j {\U \rho}_j$, and move the scalar coefficients $H_j$ and summation out of the trace.
+As we did for the Pauli-decomposition of the current and potential, we can insert $\U H = \sum_j \C{H}_j {\U \rho}_j$, and move the scalar coefficients $\C{H}_j$ and summation out of the trace.
 What we find then, is that the equation above can be written
 \begin{align}
   \C{U}_i = \sum_j \C{K}_{ij} \C{H}_j,
@@ -102,7 +102,7 @@ where we define the new matrix coefficient
 There are two things to note about this result.
 First, this equation makes it almost trivial to specify the Usadel equation for new materials, since it is a direct function of the self-energy $\U \Sigma$ that we would put into the Usadel equation itself.
 Second, the matrix $\U \Sigma$ is just filled with system parameters that we set (energy, exchange field, etc.), while the matrices ${\U G}^R$ and ${\U G}^A$ only depend on the equilibrium solution.
-Since this matrix is completely independent of the nonequilibrium distribution $\C H$, we can precalculate it before solving the differential equation, and do not have to evaluate it more than once per energy and position.
+Since this matrix is completely independent of the nonequilibrium distribution $\BC H$, we can precalculate it before solving the differential equation, and do not have to evaluate it more than once per energy and position.
 
 
 
@@ -281,9 +281,9 @@ If we have a very general Usadel equation of the form:
 \end{align} 
 I have shown that the Pauli-decomposed Usadel equation may be written:
 \begin{equation}
-  \C{M} \partial_z^2 \C{H} = -\big[ (\partial_z\C{M}) + \C{Q} \big] \partial_z \C{H} - \big[ (\partial_z \C{Q}) + \C{K} \big] \C{H}
+  \BC{M} \partial_z^2 \BC{H} = -\big[ (\partial_z\BC{M}) + \BC{Q} \big] \partial_z \BC{H} - \big[ (\partial_z \BC{Q}) + \BC{K} \big] \BC{H}
 \end{equation}
-Where the contributions to $\C{K}$ from the $\UV{\Sigma}^{(1)}$ and $\UV{\Sigma}^{(2)}$ terms are given by:
+Where the contributions to $\BC{K}$ from the $\UV{\Sigma}^{(1)}$ and $\UV{\Sigma}^{(2)}$ terms are given by:
 \begin{align*}
   \C{K}_{ij}^{(1)}
   &= 
@@ -301,11 +301,36 @@ Where the contributions to $\C{K}$ from the $\UV{\Sigma}^{(1)}$ and $\UV{\Sigma}
       \right)
   \Big\}.
 \end{align*}
-Note that since these matrices $\C{Q}$, $\C{M}$, and $\C{K}$ are all completely independent of the nonequilibrium distribution function $\C{H}$ and its derivatives, these can be precomputed from the equilibrium solution.
+Note that since these matrices $\BC{Q}$, $\BC{M}$, and $\BC{K}$ are all completely independent of the nonequilibrium distribution function $\BC{H}$ and its derivatives, these can be precomputed from the equilibrium solution.
 In other words, the final version of the kinetic equation can be written:
 \begin{equation}
-  \partial_z^2\C{H} = \C{C}_1 \partial_z \C{H} + \C{C}_2 \C{H},
+  \partial_z^2\BC{H} = \BC{C}_1 \partial_z \BC{H} + \BC{C}_2 \BC{H},
 \end{equation}
-where $\C{C}_1$ and $\C{C}_2$ are straight-forward to compute from the self-energies ${\UV\Sigma}^{(1)}$ and ${\UV\Sigma}^{(2)}$ and equilibrium propagators ${\UV G}^R$ and ${\UV G}^A$, and these coefficients only need to be computed once.
-This yields an explicit linear differential equation for $\C{H}$, which can be solved very efficiently numerically, and which should also be relatively simple to implement.
+where $\BC{C}_1$ and $\BC{C}_2$ are straight-forward to compute from the self-energies ${\UV\Sigma}^{(1)}$ and ${\UV\Sigma}^{(2)}$ and equilibrium propagators ${\UV G}^R$ and ${\UV G}^A$, and these coefficients only need to be computed once.
+This yields an explicit linear differential equation for $\BC{H}$, which can be solved very efficiently numerically, and which should also be relatively simple to implement.
 In its current form, the equation above will likely be even faster to solve than the Riccati-parametrized Usadel equation for the retarded propagator.
+
+\clearpage
+\section{Numerics}
+We had reformulated the differential equation as:
+\begin{equation}
+  \partial_z^2\BC{H} = \BC{C}_1 \partial_z \BC{H} + \BC{C}_2 \BC{H}.
+\end{equation}
+This can be written as a first-order ordinary differential equation:
+\begin{equation}
+  \frac{d}{dz}
+  \begin{pmatrix}
+    \!\phantom{'}\BC{H}'\, \\
+    \!\BC{H}\,
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    \BC{C}_1 & \BC{C}_2 \\
+    1        & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    \!\phantom{'}\BC{H}' \\
+    \!\BC{H}
+  \end{pmatrix}
+\end{equation}
+Note that this gives us an explicit form for the Jacobian, which can be provided directly to the boundary value problem solver.

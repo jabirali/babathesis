@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Use 'KOMA-Script Book' as the document class
-\documentclass[toc=bibliography,toc=indentunnumbered]{scrbook} 
+\documentclass[toc=bibliography,toc=indentunnumbered,listof=totoc]{scrbook} 
 
 % All modern documents should start with this (unless you use XeTeX/LuaTeX)
 \usepackage[utf8]{inputenc}      % UTF-8 file encoding
@@ -52,6 +52,9 @@
 
 % Use spacing instead of indentation to separate paragraphs
 %\KOMAoptions{parskip=half+} 
+
+% Allow variable page heights
+\raggedbottom
 
 
 
@@ -179,11 +182,11 @@
 % Set the footnote rule length to the text width
 \setfootnoterule{\textwidth}
 
-% Disable the footnote rule entirely
+% Remove the footnote rule entirely
 %\setfootnoterule{0pt}
 
 % Adjust the footnote size and spacing
-\deffootnote{1em}{1em}{\textsuperscript{\thefootnotemark}\kern0.1em}
+\deffootnote{2.15em}{2.15em}{\textbf{\thefootnotemark.}\kern0.75em}
 
 
 
@@ -205,7 +208,7 @@
 % Generate links to footnotes
 \hypersetup{hyperfootnotes}
 
-% Generate PDF bookmarks (also useful if the document is read on a computer)
+% Generate bookmarks (also useful if the document is read on a computer)
 \hypersetup{bookmarks,bookmarksopen,bookmarksnumbered}
 
 % Switch to a sans font for hyperlinks
@@ -241,9 +244,12 @@
 % Bibentry style (e.g. 'brackets' or 'superscript')
 %\PassOptionsToPackage{biblabel=brackets}{biblatex}
 
+% Block style (whether to put entries on new lines)
+%\PassOptionsToPackage[block=nbpar]{biblatex}
+
 % Customize which fields to show in the bibliography
 \PassOptionsToPackage{articletitle=true}{biblatex}
-\PassOptionsToPackage{chaptertitle=true}{biblatex}
+%\PassOptionsToPackage{chaptertitle=true}{biblatex}
 %\PassOptionsToPackage{pageranges=false}{biblatex}
 \PassOptionsToPackage{isbn=false}{biblatex}
 \PassOptionsToPackage{url=false}{biblatex}
@@ -282,6 +288,7 @@
 \usepackage{siunitx}    % Proper formatting of units
 \usepackage{mhchem}     % Proper formatting of chemicals
 \usepackage{bm}         % Vector notation
+\usepackage{lipsum}     % Random content
 
 
 
@@ -329,6 +336,56 @@
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}}
 
+\makeatletter
+\DeclareCiteCommand{\fullpapercite}%
+{\usebibmacro{prenote}}%
+{\defcounter{maxnames}{\blx@maxbibnames}%
+  \begin{flushleft}
+    \usebibmacro{author/translator+others}
+    \setunit{\labelnamepunct}\newblock
+    \usebibmacro{title}%
+    \newunit\newblock
+    \printlist{language}%
+    \newunit\newblock
+    \usebibmacro{byauthor}%
+    \newunit\newblock
+    \usebibmacro{bytranslator+others}%
+    \newunit\newblock
+    \printfield{version}%
+    \newunit\newblock
+    \printtext[doi/url-link]{%
+      \usebibmacro{journal+issuetitle}%
+      \newunit
+      \usebibmacro{byeditor+others}%
+      \newunit
+      \usebibmacro{note+pages}%
+      \newunit%\newblock
+      \iftoggle{bbx:isbn}
+      {\printfield{issn}}
+      {}%
+      \setunit{\addspace}%
+      \printfield{year}%
+    }%
+    \setunit{\addspace}%
+    \iffieldundef{pages}
+    {%
+      \printfield{doi}%
+      \clearfield{doi}%
+    }%
+    {}%
+    \newunit\newblock
+    \usebibmacro{doi+eprint+url}%
+    \newunit\newblock
+    \usebibmacro{addendum+pubstate}%
+    \setunit{\bibpagerefpunct}\newblock
+    \usebibmacro{pageref}%
+    \newunit\newblock
+    \usebibmacro{related}%
+\end{flushleft}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+\makeatother
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -361,7 +418,7 @@
   \chapter{\citepaper{#2}}
   \pagecolor{whiteish}
   \noindent\\[-2ex]
-  \fullcite{#2}\\[2ex]
+  \fullpapercite{#2}\\[2ex]
   \noindent
 }
 {
