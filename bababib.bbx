@@ -1,0 +1,195 @@
+%% ---------------------------------------------------------------
+%% bababib --- Modification of the ``nature'' biblatex style.
+%% Maintained by Jabir Ali Ouassou
+%% E-mail: jabirali@switzerlandmail.ch
+%% Released under the LaTeX Project Public License v1.3c or later
+%% See http://www.latex-project.org/lppl.txt
+%% ---------------------------------------------------------------
+%% 
+
+\ProvidesFile{bababib.bbx}[2017/07/01 v1.3a biblatex bibliography style]
+
+% Load the standard style to avoid copy-pasting unnecessary material
+\RequireBibliographyStyle{nature}
+
+% Make sure bibliography entries are on different lines
+\ExecuteBibliographyOptions%
+{
+  block = nbpar,
+  url   = false
+}
+
+% Modify the name format
+\DeclareNameFormat{default}{%
+  \nameparts{#1}%
+    \usebibmacro{name:given-family}
+      {\namepartfamily}
+      {\namepartgiveni}
+      {\namepartprefix}
+      {\namepartsuffix}%
+   \usebibmacro{name:andothers}%
+}
+
+% Field formats for the bibliography environment
+\DeclareFieldFormat{labelnumberwidth}{#1\adddot}
+
+% Custom field formats 
+\DeclareFieldFormat*{booktitle}{\mkbibemph{#1}\nopunct}
+\DeclareFieldFormat*{series}{\mkbibemph{#1}\nopunct}
+\DeclareFieldFormat*{title}{\mkbibemph{#1}}
+\DeclareFieldFormat*{journaltitle}{#1}
+\DeclareFieldFormat*{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[book]{volume}{#1}
+\DeclareFieldFormat[book,collection]{number}{\mkbibbold{#1}}
+\DeclareFieldFormat*{pages}{#1}
+\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\nolinkurl{doi:#1}}}
+\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\nolinkurl{isbn:#1}}}
+
+% Simple modifications to punctuation, etc.
+\renewcommand*{\finalnamedelim}{,\addspace}
+\renewcommand*{\intitlepunct}{\addspace}
+\newbibmacro*{bookdate}{\printtext[parens]{\usebibmacro{date}}}
+
+% New bibliography drivers, using the required order of fields. These
+% are mainly copied from standard.bbx then modified.
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newblock
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit
+  \setunit{\addspace}
+  \usebibmacro{issue+date}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \usebibmacro{finentry}%
+	\nopunct
+}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{maintitle+title}%
+  \setunit{\addspace}%
+  \printfield{edition}%
+  \newunit
+  \usebibmacro{byauthor}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \printfield{volumes}%
+  \newunit
+  \usebibmacro{series+number}%
+  \newunit
+  \usebibmacro{chapter+pages}%
+	\nopunct
+  \usebibmacro{bookdate}%
+  \newunit\newblock
+  \printfield{isbn}
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \usebibmacro{finentry}%
+	\nopunct
+}
+
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \iftoggle{bbx:intitle}
+    {%
+      \usebibmacro{title}%
+      \newblock
+    }
+    {}%
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit*{\newunitpunct}\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \printfield{isbn}
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}%
+}
+
+\DeclareBibliographyDriver{online}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit\newblock
+  \iftoggle{bbx:eprint}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit
+  \usebibmacro{url+urldate}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}%
+}
