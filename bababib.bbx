@@ -38,7 +38,7 @@
 }
 
 % Field formats for the bibliography environment
-\DeclareFieldFormat{labelnumberwidth}{\quad\mkbibbold{#1\adddot}}
+\DeclareFieldFormat{labelnumberwidth}{\;\,\mkbibbold{#1\adddot}}
 
 % Custom field formats 
 \DeclareFieldFormat*{booktitle}{\mkbibemph{#1}\nopunct}
@@ -50,7 +50,7 @@
 \DeclareFieldFormat[book,collection]{number}{\mkbibbold{#1}}
 \DeclareFieldFormat*{pages}{#1}
 \DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\textsf{\nolinkurl{doi:#1}}}\nopunct}
-\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\nolinkurl{isbn:#1}}\nopunct}
+\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{isbn:#1}\nopunct}
 
 % Simple modifications to punctuation, etc.
 \renewcommand*{\finalnamedelim}{,\addspace}

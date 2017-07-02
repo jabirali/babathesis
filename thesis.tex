@@ -109,10 +109,10 @@
 \setcounter{tocdepth}{1}
 
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
-\settocstylefeature{entryhook}{\tlfstyle}
-\settocstylefeature{pagenumberhook}{\osfstyle}
-\settocstylefeature[0]{entryhook}{\tlfstyle\bfseries}
-\settocstylefeature[0]{pagenumberhook}{\osfstyle\bfseries}
+\settocstylefeature{entryhook}{\sffamily\biolinumLF}
+\settocstylefeature{pagenumberhook}{\sffamily\biolinumOsF}
+\settocstylefeature[0]{entryhook}{\sffamily\bfseries\biolinumLF}
+\settocstylefeature[0]{pagenumberhook}{\sffamily\bfseries\biolinumOsF}
 
 
 
@@ -399,7 +399,7 @@
 {
   \large
   \def\paperpath{#1}
-  \chapter{\citepaper{#2}}
+  \chapter*{\citepaper{#2}}
   \pagecolor{whiteish}
   \noindent\\[-2ex]
   \fullpapercite{#2}\\[2ex]
@@ -442,7 +442,7 @@
   \include{chapters/equilibrium}
   \include{chapters/nonequilibrium} 
   \include{chapters/algorithms} 
-  %\include{chapters/test}
+  \include{chapters/test}
 \backmatter
   \printcites
   \include{papers/include}
