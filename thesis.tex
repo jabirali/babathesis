@@ -416,7 +416,7 @@
 
 % Macros for printing bibliographies
 \newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
-\newcommand{\printpapers}{\printbibliography[type=customa,heading=none,resetnumbers=true]}
+\newcommand{\printpapers}{\printbibliography[type=customa,title=Publications,resetnumbers=true]}
 
 
 
@@ -434,7 +434,7 @@
 \frontmatter
   \include{chapters/abstract}
   \include{chapters/preface}
-  \include{papers/listing}
+  \printpapers
   \tableofcontents
 \mainmatter 
   \include{chapters/introduction} 
