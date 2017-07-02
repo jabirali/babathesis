@@ -35,7 +35,7 @@
 \KOMAoptions{twoside}
 
 % Page layout (Golden aspect ratio)
-\areaset[6mm]{358.40pt}{579.89pt} 
+\areaset[5mm]{358.40pt}{579.89pt} 
 
 % Page layout (ISO B5 aspect ratio)
 %\KOMAoptions{BCOR=6mm}
@@ -92,7 +92,7 @@
 \usepackage{microtype}
 
 
- 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Table of contents
@@ -136,12 +136,11 @@
 % Bringhurst-style chapter numbers
 \makeatletter
 \newsavebox{\feline@chapter}
-\newcommand\feline@chapter@marker[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\colorbox{white}{\color{gray}\thechapter}}}\usebox{\feline@chapter}}
-\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.8cm}}}
+\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.5cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+\preto\chapterheadendvskip{\vspace*{-\parskip}{\noindent\setlength\parfillskip{0pt plus 1fil}}}
 \makeatother
 
-% Hanging chapter titles
-\renewcommand*{\chapterheadstartvskip}{\hspace*{-1.1\parindent}}
 
 
 
@@ -249,9 +248,6 @@
 
 % Enable multiple bibliographies with separate numbering
 \PassOptionsToPackage{defernumbers=true}{biblatex}
-
-%  
-%\AtBeginEnvironment{tabular}{\nowidow}
 
 % Format for cross-references with \cref
 \PassOptionsToPackage{noabbrev}{cleveref}
