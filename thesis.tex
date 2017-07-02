@@ -34,12 +34,12 @@
 % Duplex layout
 \KOMAoptions{twoside}
 
+% Page layout (Golden aspect ratio)
+\areaset[6mm]{358.40pt}{579.89pt} 
+
 % Page layout (ISO B5 aspect ratio)
 %\KOMAoptions{BCOR=6mm}
 %\KOMAoptions{DIV=11}
-
-% Page layout (Golden aspect ratio)
-\areaset[6mm]{358.40pt}{579.89pt} 
 
 % Disable headers
 \pagestyle{plain}
@@ -53,10 +53,13 @@
 % Use spacing instead of indentation to separate paragraphs
 %\KOMAoptions{parskip=half+} 
 
-% Allow variable page heights
+% Don't stretch the content to fill entire pages
 \raggedbottom
 
-% Override \raggedright and \raggedleft with hyphenated variants
+% Don't break paragraphs because of a single line
+\PassOptionsToPackage{defaultlines=2,all}{nowidow}
+
+% Permit some hyphenation in ragged-right blocks
 \PassOptionsToPackage{newcommands}{ragged2e}
 
 
@@ -244,29 +247,11 @@
 % Citation style (e.g. 'plain' or 'superscript')
 \PassOptionsToPackage{autocite=plain}{biblatex} 
 
-% Bibentry style (e.g. 'brackets' or 'superscript')
-%\PassOptionsToPackage{biblabel=brackets}{biblatex}
-
-% Block style (whether to put entries on new lines)
-%\PassOptionsToPackage[block=nbpar]{biblatex}
-
-% Customize which fields to show in the bibliography
-%\PassOptionsToPackage{articletitle=true}{biblatex}
-%\PassOptionsToPackage{chaptertitle=true}{biblatex}
-%\PassOptionsToPackage{pageranges=false}{biblatex}
-%\PassOptionsToPackage{isbn=false}{biblatex}
-%\PassOptionsToPackage{url=false}{biblatex}
-%\PassOptionsToPackage{eprint=true}{biblatex}
-%\PassOptionsToPackage{doi=true}{biblatex}
-
 % Enable multiple bibliographies with separate numbering
 \PassOptionsToPackage{defernumbers=true}{biblatex}
 
-% Use ampersand as the author delimiter
-%\renewcommand*{\finalnamedelim}{\ifnumgreater{\value{liststop}}{2}{\finalandcomma}{}\addspace\&\space}
-
-% Use oldstyle figures in the bibliography
-%\renewcommand*{\bibfont}{\osfstyle}
+%  
+%\AtBeginEnvironment{tabular}{\nowidow}
 
 % Format for cross-references with \cref
 \PassOptionsToPackage{noabbrev}{cleveref}
@@ -284,6 +269,7 @@
 \usepackage{amsmath}    % Common mathematical environments
 \usepackage{biblatex}   % Produces the bibliography
 \usepackage{ragged2e}   % Permits ragged-right with hyphenation
+\usepackage{nowidow}    % Prevents widows and orphans in text
 \usepackage{cleveref}   % Easy and consistent cross-references
 \usepackage{graphicx}   % Loads and displays figures
 \usepackage{pdfpages}   % Enables embedding of documents
@@ -320,7 +306,7 @@
 \let\cite=\autocite
 
 % Define custom colors
-\definecolor{whiteish}{rgb}{0.972, 0.925, 0.761}
+\definecolor{whiteish}{rgb}{1.000, 0.964, 0.859}
 \definecolor{rosewood}{rgb}{0.396, 0.000, 0.043}
 
 % Don't use square brackets in bibliography
@@ -344,7 +330,7 @@
 \makeatletter
 \DeclareCiteCommand{\fullpapercite}%
 {\usebibmacro{prenote}}%
-{\defcounter{maxnames}{\blx@maxbibnames}%
+{{\defcounter{maxnames}{\blx@maxbibnames}%
   \sffamily
   \raggedright
   \usebibmacro{bibindex}%
@@ -379,7 +365,7 @@
   \usebibmacro{doi+eprint+url}%
   \usebibmacro{finentry}%
 	\nopunct
-}
+}} 
 {\multicitedelim}
 {\usebibmacro{postnote}}
 \makeatother
@@ -418,18 +404,19 @@
   \noindent\\[-2ex]
   \fullpapercite{#2}\\[2ex]
   \noindent
+  \textbf{Contribution}\\
 }
 {
   \cleardoublepage
   \nopagecolor
+  \color{black}
   \includepdf[pages={-}]{\paperpath}
   \cleardoublepage
 }
 
 % Macros for printing bibliographies
-\defbibheading{papers}[Papers]{\chapter*{#1}}
 \newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
-\newcommand{\printpapers}{\printbibliography[type=customa,heading=papers,resetnumbers=true]}
+\newcommand{\printpapers}{\printbibliography[type=customa,heading=none,resetnumbers=true]}
 
 
 
@@ -440,18 +427,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addbibresource{library.bib}
-\addbibresource{papers.bib}
+\addbibresource{papers/listing.bib}
 
 \begin{document}
 
 \frontmatter
   \include{chapters/abstract}
   \include{chapters/preface}
-  \printpapers
+  \include{papers/listing}
   \tableofcontents
 \mainmatter 
   \include{chapters/introduction} 
-  \include{chapters/theory} 
+  \include{chapters/theory}
   \include{chapters/equilibrium}
   \include{chapters/nonequilibrium} 
   \include{chapters/algorithms} 

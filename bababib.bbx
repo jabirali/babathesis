@@ -8,6 +8,7 @@
 %% 
 
 \ProvidesFile{bababib.bbx}[2017/07/01 v1.3a biblatex bibliography style]
+\RequirePackage{nowidow}
 
 % Load the parent style
 \RequireBibliographyStyle{nature}
@@ -48,8 +49,8 @@
 \DeclareFieldFormat[book]{volume}{#1}
 \DeclareFieldFormat[book,collection]{number}{\mkbibbold{#1}}
 \DeclareFieldFormat*{pages}{#1}
-\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\textsf{\nolinkurl{doi:#1}}}}
-\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\nolinkurl{isbn:#1}}}
+\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\textsf{\nolinkurl{doi:#1}}}\nopunct}
+\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\nolinkurl{isbn:#1}}\nopunct}
 
 % Simple modifications to punctuation, etc.
 \renewcommand*{\finalnamedelim}{,\addspace}
@@ -92,7 +93,6 @@
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \usebibmacro{finentry}%
-	\nopunct
 }
 
 \DeclareBibliographyDriver{book}{%
@@ -119,85 +119,5 @@
   \printfield{isbn}
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
-  \usebibmacro{finentry}%
-	\nopunct
-}
-
-\DeclareBibliographyDriver{inbook}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \iftoggle{bbx:intitle}
-    {%
-      \usebibmacro{title}%
-      \newblock
-    }
-    {}%
-  \usebibmacro{in:}%
-  \usebibmacro{bybookauthor}%
-  \setunit*{\newunitpunct}\newblock
-  \usebibmacro{maintitle+booktitle}%
-  \newunit\newblock
-  \usebibmacro{byeditor+others}%
-  \newunit\newblock
-  \printfield{edition}%
-  \newunit
-  \printfield{volumes}%
-  \newunit\newblock
-  \usebibmacro{series+number}%
-  \newunit\newblock
-  \printfield{note}%
-  \newunit\newblock
-  \usebibmacro{chapter+pages}%
-  \newunit
-  \usebibmacro{publisher+location+date}%
-  \newunit\newblock
-  \printfield{isbn}
-  \newunit\newblock
-  \usebibmacro{doi+eprint+url}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \newunit\newblock
-  \usebibmacro{related}%
-  \usebibmacro{finentry}%
-}
-
-\DeclareBibliographyDriver{online}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/editor+others/translator+others}%
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{title}%
-  \newunit
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{byeditor+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit
-  \printfield{note}%
-  \newunit\newblock
-  \printlist{organization}%
-  \newunit\newblock
-  \iftoggle{bbx:eprint}
-    {\usebibmacro{eprint}}
-    {}%
-  \newunit
-  \usebibmacro{url+urldate}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \newunit\newblock
-  \usebibmacro{related}%
   \usebibmacro{finentry}%
 }
