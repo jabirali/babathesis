@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Use 'KOMA-Script Book' as the document class
-\documentclass[toc=bibliography,toc=indentunnumbered,listof=totoc]{scrbook} 
+\documentclass[toc=bibliography,toc=indentunnumbered,listof=totoc]{scrbook}
 
 % All modern documents should start with this (unless you use XeTeX/LuaTeX)
 \usepackage[utf8]{inputenc}      % UTF-8 file encoding
@@ -143,7 +143,6 @@
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Captions
@@ -190,7 +189,7 @@
 % Remove the footnote rule entirely
 %\setfootnoterule{0pt}
 
-% Adjust the footnote size and spacing
+% Adjust the footnote formatting and spacing
 \deffootnote{2.15em}{2.15em}{\textbf{\thefootnotemark.}\kern0.75em}
 
 
@@ -273,56 +272,29 @@
 \usepackage{booktabs}   % Proper formatting of tables
 \usepackage{siunitx}    % Proper formatting of units
 \usepackage{mhchem}     % Proper formatting of chemicals
-\usepackage{bm}         % Vector notation
+\usepackage{bm}         % Flexible boldface notation
 \usepackage{lipsum}     % Random content
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Miscellaneous
+%   List of publications
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Set tables in a sans font
-\AtBeginEnvironment{tabular}{\sffamily}
-\AtBeginEnvironment{tabular*}{\sffamily}
+% Macros for printing bibliographies
+\defbibheading{pubs}[Publications]{\chapter*{#1}}
+\newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
+\newcommand{\printpapers}{\printbibliography[type=customa,heading=pubs,resetnumbers=true]}
 
-% Format for typesetting physical units
-\sisetup{range-units=single}
-\sisetup{range-phrase=--}
-\sisetup{detect-all} 
+% Declare how to compactly cite my own papers (format: "Paper I")
+\DeclareCiteCommand{\papercite}
+  {Paper~\usebibmacro{cite:init}\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}\usebibmacro{cite:comp}}{}
+  {\usebibmacro{cite:dump}\usebibmacro{postnote}}
 
-% Use 2em equation indentation
-\makeatletter
-\setlength\@mathmargin{2em}
-\makeatother
-
-% Replace \cite with the more flexible \autocite
-\let\cite=\autocite
-
-% Define custom colors
-\definecolor{whiteish}{rgb}{1.000, 0.964, 0.859}
-\definecolor{rosewood}{rgb}{0.396, 0.000, 0.043}
-
-% Don't use square brackets in bibliography
-%\DeclareFieldFormat{labelnumberwidth}{#1}
-%\DeclareFieldFormat{shorthandwidth}{#1}
-
-% Declare a custom article format for my papers
-\DeclareBibliographyAlias{customa}{article}
-\DeclareFieldFormat[customa]{labelnumber}{\textsc{\Rn{#1}}}
-
-% Declare a custom way to cite my papers
-\DeclareCiteCommand{\citepaper}
-  {Paper~\usebibmacro{cite:init}%
-   \usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite:comp}}
-  {}
-  {\usebibmacro{cite:dump}%
-   \usebibmacro{postnote}}
-
+% Declare how to verbosely cite my own papers (format: full citation)
 \makeatletter
 \DeclareCiteCommand{\fullpapercite}%
 {\usebibmacro{prenote}}%
@@ -366,6 +338,60 @@
 {\usebibmacro{postnote}}
 \makeatother
 
+% Macro for embedding papers
+\newenvironment{paper}[2]
+{
+  \large
+  \def\paperpath{#1}
+  \chapter*{\papercite{#2}}
+  \pagecolor{whiteish}
+  \noindent\\[-2ex]
+  \fullpapercite{#2}\\[2ex]
+  \noindent
+  \textbf{Contribution}\\
+}
+{
+  \cleardoublepage
+  \nopagecolor
+  \color{black}
+  \includepdf[pages={-}]{\paperpath}
+  \cleardoublepage
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Miscellaneous
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set tables in a sans font
+\AtBeginEnvironment{tabular}{\sffamily}
+\AtBeginEnvironment{tabular*}{\sffamily}
+
+% Format for typesetting physical units
+\sisetup{range-units=single}
+\sisetup{range-phrase=--}
+\sisetup{detect-all} 
+
+% Use 2em equation indentation
+\makeatletter
+\setlength\@mathmargin{2em}
+\makeatother
+
+% Replace \cite with the more flexible \autocite
+\let\cite=\autocite
+
+% Define a custom color palette
+\definecolor{whiteish}{rgb}{1.000, 0.964, 0.859}
+\definecolor{rosewood}{rgb}{0.396, 0.000, 0.043}
+
+% Declare a custom article format for my papers
+\DeclareBibliographyAlias{customa}{article}
+\DeclareFieldFormat[customa]{labelnumber}{\textsc{\Rn{#1}}}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -373,7 +399,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Notation
+% Mathematical markup
 \newcommand{\B}[1]{\bm{#1}}
 \newcommand{\C}[1]{\mathcal{#1}}
 \newcommand{\U}[1]{\underline{#1}}
@@ -390,31 +416,6 @@
 % Mathematical operations
 \DeclareMathOperator{\tr}{Tr}
 
-% Macro for including papers
-\newenvironment{paper}[2]
-{
-  \large
-  \def\paperpath{#1}
-  \chapter*{\citepaper{#2}}
-  \pagecolor{whiteish}
-  \noindent\\[-2ex]
-  \fullpapercite{#2}\\[2ex]
-  \noindent
-  \textbf{Contribution}\\
-}
-{
-  \cleardoublepage
-  \nopagecolor
-  \color{black}
-  \includepdf[pages={-}]{\paperpath}
-  \cleardoublepage
-}
-
-% Macros for printing bibliographies
-\defbibheading{pubs}[Publications]{\chapter*{#1}}
-\newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
-\newcommand{\printpapers}{\printbibliography[type=customa,heading=pubs,resetnumbers=true]}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -423,25 +424,23 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\addbibresource{library.bib}
-\addbibresource{papers/listing.bib}
+\addbibresource{chapters/references.bib}
+\addbibresource{papers/references.bib}
 
 \begin{document}
-
-\frontmatter
-  \include{chapters/abstract}
-  \include{chapters/preface}
-  \printpapers
-  \tableofcontents
-\mainmatter 
-  \include{chapters/introduction} 
-  \include{chapters/theory}
-  \include{chapters/equilibrium}
-  \include{chapters/nonequilibrium} 
-  \include{chapters/algorithms} 
-  \include{chapters/test}
-\backmatter
-  \printcites
-  \include{papers/include}
-
+  \frontmatter
+    \include{chapters/abstract}
+    \include{chapters/preface}
+    \printpapers
+    \tableofcontents
+  \mainmatter 
+    \include{chapters/introduction} 
+    \include{chapters/theory}
+    \include{chapters/equilibrium}
+    \include{chapters/nonequilibrium} 
+    \include{chapters/algorithms} 
+    \include{chapters/test}
+  \backmatter
+    \printcites
+    \include{papers/include}
 \end{document}
