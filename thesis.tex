@@ -144,6 +144,15 @@
 \preto\chapterheadendvskip{\vspace*{-\parskip}{\noindent\setlength\parfillskip{0pt plus 1fil}}}
 \makeatother
 
+% Use all lowercase for chapter headings, except in the table of contents
+\makeatletter
+  \newcommand*{\Chapter}{}
+  \let\Chapter=\chapter
+  \renewcommand*{\chapter}{\@ifstar{\star@chapter}{\@dblarg\nonstar@chapter}}
+  \newcommand*{\star@chapter}[1]{\Chapter*{\MakeLowercase{#1}}}
+  \newcommand*{\nonstar@chapter}[2][]{\Chapter[{#1}]{\MakeLowercase{#1}}}
+\makeatother
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
