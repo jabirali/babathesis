@@ -415,8 +415,9 @@
 }
 
 % Macros for printing bibliographies
+\defbibheading{pubs}[Publications]{\chapter*{#1}}
 \newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
-\newcommand{\printpapers}{\printbibliography[type=customa,title=Publications,resetnumbers=true]}
+\newcommand{\printpapers}{\printbibliography[type=customa,heading=pubs,resetnumbers=true]}
 
 
 
