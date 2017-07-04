@@ -140,7 +140,8 @@
 \makeatletter
 \newsavebox{\feline@chapter}
 \newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.8cm}}}
-\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+%\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+0.5cm\relax][r]{\usebox\feline@chapter}}}
 \preto\chapterheadendvskip{\vspace*{-\parskip}{\noindent\setlength\parfillskip{0pt plus 1fil}}}
 \makeatother
 
