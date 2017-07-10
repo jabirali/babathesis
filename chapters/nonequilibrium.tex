@@ -459,7 +459,6 @@ If we substitute this into the matrix currents from the previous section:
   \U{S}(-\epsilon)\, &= -\N{1} \U{S}^*(+\epsilon)\, \N{1}, \\
   \U{R}(-\epsilon)\, &= -\N{1} \U{R}^*(+\epsilon)\, \N{1}.
 \end{align}
-The identities above will later be used to convert integrals over both positive and negative energies into integrals over only positive energies.
 
 
 \clearpage
@@ -520,10 +519,11 @@ Recognizing this as the real part of the matrix current, we get:
 \end{equation}
 By replacing the total matrix current $\U{I}^K$ by the supercurrent $\U{S}$ and resistive current $\U{R}$, respectively, we then obtain the corresponding contributions to the charge and spin currents:
 \begin{align} 
-  S_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{S} \big]\\
-  R_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{R} \big]
+  I_{n,s} &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{S} \big]\\
+  I_{n,r} &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{R} \big]
 \end{align}
 
+\textcolor{red}{Alternatives: use $I$ for resistive currents and $J$ for supercurrents, or use $I$ for electric/spin currents and $J$ for thermal electric/spin currents.}
 
 
 \clearpage
@@ -540,9 +540,13 @@ We again recognize this as the real part of the current:
 \begin{equation}
   J_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \epsilon \S{n} \U{I}^K \big]
 \end{equation}
-To split the result into contributions due to supercurrents and resistive currents, we replace $\U{I}^K$ by either $\U{S}$ or $\U{R}$ in the equation above.
+To split the result into contributions due to supercurrents and resistive currents, we replace $\U{I}^K$ by either $\U{S}$ or $\U{R}$ in the equation above:
+\begin{align}
+  J_{n,r} &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \epsilon \S{n} \U{R} \big] \\
+  J_{n,s} &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \epsilon \S{n} \U{S} \big]
+\end{align}
 
-(Note: using different symbol $J$, because the integrand depends on energy.)
+
 
 \clearpage
 \section{Superconducting gap}
