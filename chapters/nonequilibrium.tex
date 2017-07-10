@@ -334,3 +334,251 @@ This can be written as a first-order ordinary differential equation:
   \end{pmatrix}
 \end{equation}
 Note that this gives us an explicit form for the Jacobian, which can be provided directly to the boundary value problem solver.
+
+
+
+
+\clearpage
+\chapter{Physical observables}
+\section{Introduction}
+My equilibrium simulation program supports the calculation of the following physical observables:
+  selfconsistent superconducting gap;
+  charge and spin supercurrents;
+  singlet/triplet decomposition of these currents;
+  induced magnetization;
+  and density of states.
+Now that we are moving to nonequilibrium simulations, these equations need to be generalized.
+
+First of all, the selfconsistency equation for the superconducting gap needs to be replaced with a version that depends on the nonequilibrium distribution.
+The supercurrent equations need to be replaced with nonequilbrium versions, and in addition, we wish to calculate resistive currents now.
+The induced magnetization needs to be supplemented with nonequilibrium charge and spin accumulation.
+Furthermore, in nonequilibrium systems we might want to calculate heat currents and heat accumulation too.
+Finally, since we're already rewriting a lot of the code for physical observables anyway, we might as well implement support for the spin-polarization of the density of states as well, which could be useful in the theoretical analysis.
+
+This leaves one unaddressed point in the list above: the singlet/triplet decomposition of the charge current.
+I believe that such a decomposition should still be possible in a general nonequilibrium setting, however Morten's current derivation assumes an equilibrium distribution function, and a nonequilibrium generalization would be more complex.
+I therefore won't generalize this equation to nonequilibrium for now, but we can get back to this in the future if it turns out that we'll need it.
+
+On the next pages, I'll write down the equations needed to consider all the points above theoretically, which I intend to implement numerically.
+For now, I ignore the presence of spin-orbit coupling, which means that the equations for the currents will not be completely general, but they should be general enough to describe the spin-current project that we will be working on.
+In the future, we can generalize these results if we need it for a spin-orbit coupled project, which should in practice only mean that we need to add a couple of new terms to the definition of the $\BC{M}$ and $\BC{Q}$ matrices in the code.
+
+
+
+\clearpage
+\section{Matrix current}
+The full $8\times8$ matrix current is given by the expression:
+\begin{align}
+  \UV{I} 
+  &= 
+  \UV{G} \nabla \UV{G}
+  \\ &= 
+  \begin{pmatrix} 
+    \U{G}^R  & \U{G}^K \\[1ex] 0 & \U{G}^A
+  \end{pmatrix}
+  \begin{pmatrix} 
+    \nabla\U{G}^R  & \nabla\U{G}^K \\[1ex] 0 & \nabla\U{G}^A
+  \end{pmatrix}
+  \\ &= 
+  \begin{pmatrix} 
+    \U{G}^R\nabla\U{G}^R  & \U{G}^R\nabla\U{G}^K + \U{G}^K\nabla\U{G}^A \\[1ex] 0 & \U{G}^A\nabla\U{G}^A
+  \end{pmatrix}
+\end{align}
+So the Keldysh component of the matrix current is:
+\begin{align}
+  \U{I}^K = \U{G}^R\nabla\U{G}^K + \U{G}^K\nabla\U{G}^A
+\end{align}
+Let us now substitute in $\U{G}^K = \U{G}^R \U{H} - \U{H} \U{G}^A$:
+\begin{align*}
+  \U{I}^K 
+  &= 
+  \U{G}^R\nabla(\U{G}^R \U{H} - \U{H} \U{G}^A)+ (\U{G}^R \U{H} - \U{H} \U{G}^A) \nabla\U{G}^A 
+  \\ &=
+  \U{G}^R(\nabla\U{G}^R) \U{H} + \U{G}^R\U{G}^R (\nabla\U{H}) - \U{G}^R (\nabla\U{H}) \U{G}^A 
+  \\ &
+  - \U{G}^R \U{H} (\nabla\U{G}^A) + \U{G}^R \U{H}(\nabla\U{G}^A) - \U{H} \U{G}^A (\nabla\U{G}^A)
+  \\ &=
+  \big[ (\U{G}^R \nabla \U{G}^R) \U{H} - \U{H} (\U{G}^A \nabla \U{G}^A) \big]
+  \\ &\,+
+  \big[ (\nabla\U{H}) - \U{G}^R (\nabla\U{H}) \U{G}^A \big]
+\end{align*}
+Let us give these two contributions to $\U{I}^K$ separate names:
+\begin{align}
+  \U{S}\, &\equiv (\U{G}^R \nabla \U{G}^R) \U{H} - \U{H} (\U{G}^A \nabla \U{G}^A),  \\
+  \U{R}\, &\equiv (\nabla\U{H}) - \U{G}^R (\nabla\U{H}) \U{G}^A.
+\end{align}
+The first contribution $\U{S}$ is the \emph{supercurrent contribution} to the matrix current, which is independent of any potential gradients $\nabla\U{H}$, and can be nonzero even in equilibrium.
+This is the matrix current equivalent to what Chandrasekhar and Tom called $\BC{Q}\BC{H}$.
+As for the second contribution $\U{R}$, this is the \emph{resistive contribution} to the matrix current, which is only present when we have a potential gradient $\nabla\U{H}$.
+This is what Chandrasekhar and Tom called $\BC{M}\nabla\BC{H}$.
+
+\clearpage
+\section{Energy symmetries}
+In this section, I point out some new symmetries I noticed in the propagators, which will be useful to simplify the results derived in the following sections.
+First, let us write out the structure of the propagators and distribution:
+\begin{align}
+  \U{G}^R &= 
+  \begin{pmatrix}
+    +\U{g}^R  & +\U{f}^R  \\[1ex]
+   -\TU{f}^R & -\TU{g}^R
+  \end{pmatrix} \\
+  \U{G}^A &= 
+  \begin{pmatrix}
+    +\U{g}^A  & +\U{f}^A  \\[1ex]
+   -\TU{f}^A & -\TU{g}^A
+  \end{pmatrix} \\
+  \U{G}^K &= 
+  \begin{pmatrix}
+    +\U{g}^K  & +\U{f}^K  \\[1ex]
+   +\TU{f}^K & +\TU{g}^K
+  \end{pmatrix} \\
+  \U{H} \;&= \;
+  \begin{pmatrix}
+    \PM\U{h}  & \PM0\PM  \\[1ex]
+    \PM0      & -\TU{h}\PM
+  \end{pmatrix}
+\end{align}
+By explicit calculations, one can show that multiplying by $\N{1}$ from the left is equivalent to permuting rows, while multiplying by $\N{1}$ from the right permutes columns.
+If we do both, we see from the structures above that:
+\begin{align}
+  \N{1} \U{G}^R \N{1}   &= -\TU{G}^R \\
+  \N{1} \U{G}^A \N{1}   &= -\TU{G}^A \\
+  \N{1} \U{G}^K \N{1}   &= +\TU{G}^K \\
+  \N{1} \,\U{H}\, \N{1} &= -\TU{H}
+\end{align}
+Since tilde-conjugating is per definition a combination of complex conjugation $i \rightarrow -i$ and energy reversal $\epsilon \rightarrow -\epsilon$, this means that we get some simple identities relating the positive- and negative-energy propagators:
+\begin{align}
+  \U{G}^R(-\epsilon) &= -\N{1}\U{G}^{R*}(+\epsilon)\,\N{1} \\
+  \U{G}^A(-\epsilon) &= -\N{1}\U{G}^{A*}(+\epsilon)\,\N{1} \\
+  \U{G}^K(-\epsilon) &= +\N{1}\U{G}^{K*}(+\epsilon)\,\N{1} \\
+  \U{H}(-\epsilon)   &= -\N{1}\U{H}^{*}(+\epsilon) \,\N{1}
+\end{align}
+If we substitute this into the matrix currents from the previous section:
+\begin{align}
+  \U{I}^K(-\epsilon) &= -\N{1} \U{I}^{K*}(+\epsilon)\N{1}, \\
+  \U{S}(-\epsilon)\, &= -\N{1} \U{S}^*(+\epsilon)\, \N{1}, \\
+  \U{R}(-\epsilon)\, &= -\N{1} \U{R}^*(+\epsilon)\, \N{1}.
+\end{align}
+The identities above will later be used to convert integrals over both positive and negative energies into integrals over only positive energies.
+
+
+\clearpage
+\section{Charge and spin accumulation}
+The charge density $\rho_e = e\rho_0$ and spin density $\B{\rho}_s = (\hbar/2)(\rho_1, \rho_2, \rho_3)$ can be found by performing the four integrals
+\begin{equation}
+  \rho_n = -\frac{1}{8}N_0 \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \S{n} \U{G}^K \big].
+\end{equation}
+We can then use the previously derived identity $\U{G}^K(-\epsilon) = \N{1} \U{G}^{K*}(+\epsilon) \,\N{1}$ to rewrite this as an integral over only positive energies:
+\begin{equation}
+  \rho_n = -\frac{1}{8}N_0 \int_{0}^{\infty} \d\epsilon \tr\big[ \S{n} (\U{G}^K + \N{1} \U{G}^{K*} \N{1})\big].
+\end{equation}
+We then use the cyclic trace rule to get rid of the superfluous Pauli matrices:
+\begin{equation}
+  \rho_n = -\frac{1}{8}N_0 \int_{0}^{\infty} \d\epsilon \tr\big[ \S{n} (\U{G}^K + \U{G}^{K*})\big].
+\end{equation}
+Recognizing this as simply the real part of the propagator, we get:
+\begin{equation}
+  \rho_n = -\frac{1}{4}N_0 \int_{0}^{\infty} \d\epsilon \re\tr\big[ \S{n} \U{G}^K \big].
+\end{equation}
+In order to separate the induced magnetization from the nonequilibrium spin accumulation, the propagator $\U{G}^K$ in the equations above may be replaced with difference from equilibrium $\U{G}^K-\U{G}^K_\text{\,eq}$ as in e.g. the Silaev paper.
+
+\clearpage
+\section{Heat and spin-heat accumulation}
+The heat density $\kappa_{e} = e\kappa_0$ and spin-heat density $\B{\kappa}_{s} = (\hbar/2)(\kappa_1, \kappa_2, \kappa_3)$ may be calculated from the four integrals:
+\begin{equation}
+  \kappa_n = -\frac{1}{8}N_0 \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \epsilon\N{3}\S{n} \U{G}^K \big].
+\end{equation}
+This may again be rewritten as an integral over positive energies using $\U{G}^K(-\epsilon) = \N{1} \U{G}^{K*}(+\epsilon) \N{1}$, but get a sign flip because the prefactor $\epsilon \rightarrow -\epsilon$:
+\begin{equation}
+  \kappa_n = -\frac{1}{8}N_0 \int_{0}^{\infty} \d\epsilon \tr\big[ \epsilon\N{3}\S{n} (\U{G}^K - \N{1} \U{G}^{K*} \N{1}) \big].
+\end{equation}
+We then use the cyclic rule and the fact that $\N{1}\N{3}\N{1} = -\N{3}$:
+\begin{equation}
+  \kappa_n = -\frac{1}{8}N_0 \int_{0}^{\infty} \d\epsilon \tr\big[ \epsilon\N{3}\S{n} (\U{G}^K + \U{G}^{K*}) \big].
+\end{equation}
+We again recognize the integrand as the real part of the propagator:
+\begin{equation}
+  \kappa_n = -\frac{1}{4}N_0 \int_{0}^{\infty} \d\epsilon \re\tr\big[ \epsilon\N{3}\S{n} \U{G}^K \big].
+\end{equation}
+As before, the equilibrium and nonequilibrium contributions may be separated by replacing $\U{G}^K \rightarrow \U{G}^K - \U{G}^K_\text{eq}$ in the equation above.
+
+
+
+\clearpage
+\section{Charge and spin currents}
+The total charge current $I_e = eI_0$ and spin current $\B{I}_s = (\hbar/2)(I_1,I_2,I_3)$ can be calculated from the four integrals:
+\begin{equation}
+  I_n &= \frac{1}{8}N_0D \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \N{3} \S{n} \U{I}^K \big]
+\end{equation}
+Using $\U{I}^K(-\epsilon) = -\N{1} \U{I}^{K*}(+\epsilon) \N{1}$, the cyclic rule, and $\N{1}\N{3}\N{1} = -\N{3}$ like before:
+\begin{equation} 
+  I_n &= \frac{1}{8}N_0D \int_{0}^{\infty} \d\epsilon \tr\big[ \N{3} \S{n} (\U{I}^K + \U{I}^{K*}) \big]
+\end{equation}
+Recognizing this as the real part of the matrix current, we get:
+\begin{equation} 
+  I_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{I}^K \big]
+\end{equation}
+By replacing the total matrix current $\U{I}^K$ by the supercurrent $\U{S}$ and resistive current $\U{R}$, respectively, we then obtain the corresponding contributions to the charge and spin currents:
+\begin{align} 
+  S_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{S} \big]\\
+  R_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \N{3} \S{n} \U{R} \big]
+\end{align}
+
+
+
+\clearpage
+\section{Heat and spin-heat currents}
+The total heat current $J_e = eJ_0$ and spin-heat current $\B{J}_s = (\hbar/2)(J_1, J_2, J_3)$ can be calculated from the four integrals:
+\begin{equation}
+  J_n &= \frac{1}{8}N_0D \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \epsilon \S{n} \U{I}^K \big]
+\end{equation}
+Using $\U{I}^K(-\epsilon) = -\N{1} \U{I}^{K*}(+\epsilon) \N{1}$, the cyclic rule, and $\epsilon \rightarrow -\epsilon$ like before:
+\begin{equation}
+  J_n &= \frac{1}{8}N_0D \int_{0}^{\infty} \d\epsilon \tr\big[ \epsilon \S{n} (\U{I}^K + \U{I}^{K*}) \big]
+\end{equation}
+We again recognize this as the real part of the current:
+\begin{equation}
+  J_n &= \frac{1}{4}N_0D \int_{0}^{\infty} \d\epsilon \re\tr\big[ \epsilon \S{n} \U{I}^K \big]
+\end{equation}
+To split the result into contributions due to supercurrents and resistive currents, we replace $\U{I}^K$ by either $\U{S}$ or $\U{R}$ in the equation above.
+
+(Note: using different symbol $J$, because the integrand depends on energy.)
+
+\clearpage
+\section{Superconducting gap}
+During my Master thesis, we rederived the selfconsistency equation for the superconducting gap from the definition of the Keldysh propagator.
+One of the intermediate results we obtained was the following [Eq.~(3.16)]:
+\begin{equation}
+  \Delta = \frac{1}{8} N_0\lambda \!\!\int_{\;-\omega_c}^{\;+\omega_c} \!\!\d\epsilon\, \big[ f^K_{\up\dn}(\epsilon) - f^K_{\dn\up}(\epsilon) \big]
+\end{equation}
+This was the last equation we obtained before assuming an equilibrium distribution function, and therefore a natural startpoint for finding an appropriate nonequilibrium selfconsistency equation.
+This equation may be rewritten in terms of the $2\times2$ propagator $\U{f}^K$:
+\begin{equation}
+  \Delta = \frac{1}{8} N_0\lambda \!\!\int_{\;-\omega_c}^{\;+\omega_c} \!\!\d\epsilon\, \tr\left[ (-i\S{2})\U{f}^K \right]
+\end{equation}
+This seems like a reasonable result, as we know from before that the parts of the anomalous propagator proportional to $i\S{2}$ is the singlet component.
+Furthermore, we by definition have the identity $\U{f}^K(-\epsilon) = \TU{f}^{K*}(+\epsilon)$, which we can use to rewrite this as an integral over only positive energies:
+\begin{equation}
+  \Delta = \frac{1}{8} N_0\lambda \!\!\int_{0}^{\;\;\omega_c} \!\!\d\epsilon\, \tr\left[ (-i\S{2})\big(\U{f}{}^K + \TU{f}{}^{K*}\big)\right]
+\end{equation}
+In other words, if we know the $4\times4$ Keldysh propagator~$\U{G}^K$, then the selfconsistent gap can be calculated directly from its off-diagonal blocks:
+\begin{equation}
+  \Delta = \frac{1}{8} N_0\lambda \!\!\int_{0}^{\;\;\omega_c} \!\!\d\epsilon\, \tr\left[ (-i\S{2})\big(\U{G}{}^K_{12} + \U{G}{}^{K*}_{21}\big)\right]
+\end{equation}
+We could rewrite this using explicit Nambu-space traces, where $(\N{1} \pm i\N{2})/2$ can be used to extract the off-diagonal blocks of $\U{G}{}^K$.
+However, in contrast to the other observables we looked at, the equation above only becomes more complicated if we try rewriting it in this way, since we then end up with separate equations for $\re(\Delta)$ and $\im(\Delta)$.
+I therefore intend to use this form.
+
+
+
+\clearpage
+\section{Density of states}
+Might be interesting to expand to spin-dependent DOS as well.
+
+\clearpage
+\section{Summary}
+On the previous pages, I have rewritten all the nonequilibrium observables in terms of only the positive-energy propagators.
+This has several benefits.
+First of all, every equation except the superconducting gap ended up with being explicitly real quantities, which is a nice quality for an equation that is supposed to represent real physical observables.
+Secondly, this means that we only need to solve the Usadel equation for positive energies as before, which saves computation time.
+Finally, while the trace-tricks we derived during the project with Tom are nice for recasting the Usadel equation in a more suitable form, evaluating e.g. charge and spin currents is actually a bit easier to implement the ``old-fashioned way''.
