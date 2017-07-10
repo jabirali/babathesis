@@ -488,8 +488,8 @@ Recognizing this as simply the real part of the propagator, we get:
 In order to separate the induced magnetization from the nonequilibrium spin accumulation, the propagator $\U{G}^K$ in the equations above may be replaced with difference from equilibrium $\U{G}^K-\U{G}^K_\text{\,eq}$ as in e.g. the Silaev paper.
 
 Note: one detail I glossed over in the derivation above, is that $\S{n}$ should really be a $4\times4$ matrix $\text{diag}(\S{n},\S{n}^*)$.
-In this case, $\S{2}$ is a bit special, as it gets a sign flip under complex conjugation, and another sign flip when sandwiched by $\N{1}$ matrices.
-The final result should however be correct.
+In this case, $\text{diag}(\S{2}, \S{2}^*) = \N{3}\S{2}$ is different from the other spin components, as it gets one sign flip under complex conjugation, and another sign flip when sandwiched by $\N{1}$ matrices because $\N{1}\N{3}\N{1}=-\N{3}$.
+The final result above should however still be correct.
 
 \clearpage
 \section{Heat and spin-heat accumulation}
@@ -607,4 +607,4 @@ First of all, every equation except the superconducting gap ended up with being 
 Secondly, this means that we only need to solve the Usadel equation for positive energies as before, which saves computation time.
 Finally, while the trace-tricks we derived during the project with Tom are nice for recasting the Usadel equation in a more suitable form, evaluating e.g. charge and spin currents is actually a bit easier to implement the ``old-fashioned way''.
 
-Interestingly, the cancellations that happened when we rewrote the observables in this way, all lead to the ``naive'' result: if we just integrate over positive energies and look at the real part, that's the correct result.
+Interestingly, the cancellations that happened when we rewrote the observables in this way, all lead to the same result: if we just integrate over positive energies, and take twice the real part of that result, we're done.
