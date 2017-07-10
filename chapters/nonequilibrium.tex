@@ -463,7 +463,7 @@ If we substitute this into the matrix currents from the previous section:
 
 \clearpage
 \section{Charge and spin accumulation}
-The charge density $\rho_e = e\rho_0$ and spin density $\B{\rho}_s = (\hbar/2)(\rho_1, \rho_2, \rho_3)$ can be found by performing the four integrals
+The charge density $\rho_e = e\rho_0$ and spin density $\B{\rho}_s = (\hbar/2)(\rho_1, \rho_2, \rho_3)$ can be found by performing the four integrals ($n=0,\ldots,3$):
 \begin{equation}
   \rho_n = -\frac{1}{8}N_0 \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \S{n} \U{G}^K \big].
 \end{equation}
@@ -483,7 +483,7 @@ In order to separate the induced magnetization from the nonequilibrium spin accu
 
 \clearpage
 \section{Heat and spin-heat accumulation}
-The heat density $\kappa_{e} = e\kappa_0$ and spin-heat density $\B{\kappa}_{s} = (\hbar/2)(\kappa_1, \kappa_2, \kappa_3)$ may be calculated from the four integrals:
+The heat density $\kappa_{e} = e\kappa_0$ and spin-heat density $\B{\kappa}_{s} = (\hbar/2)(\kappa_1, \kappa_2, \kappa_3)$ may be calculated from the four integrals ($n=0,\ldots,3$):
 \begin{equation}
   \kappa_n = -\frac{1}{8}N_0 \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \epsilon\N{3}\S{n} \U{G}^K \big].
 \end{equation}
@@ -505,7 +505,7 @@ As before, the equilibrium and nonequilibrium contributions may be separated by 
 
 \clearpage
 \section{Charge and spin currents}
-The total charge current $I_e = eI_0$ and spin current $\B{I}_s = (\hbar/2)(I_1,I_2,I_3)$ can be calculated from the four integrals:
+The total charge current $I_e = eI_0$ and spin current $\B{I}_s = (\hbar/2)(I_1,I_2,I_3)$ can be calculated from the four integrals ($n=0,\ldots,3$):
 \begin{equation}
   I_n &= \frac{1}{8}N_0D \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \N{3} \S{n} \U{I}^K \big]
 \end{equation}
@@ -528,7 +528,7 @@ By replacing the total matrix current $\U{I}^K$ by the supercurrent $\U{S}$ and 
 
 \clearpage
 \section{Heat and spin-heat currents}
-The total heat current $J_e = eJ_0$ and spin-heat current $\B{J}_s = (\hbar/2)(J_1, J_2, J_3)$ can be calculated from the four integrals:
+The total heat current $J_e = eJ_0$ and spin-heat current $\B{J}_s = (\hbar/2)(J_1, J_2, J_3)$ can be calculated from the four integrals ($n=0,\ldots,3$):
 \begin{equation}
   J_n &= \frac{1}{8}N_0D \int_{-\infty}^{+\infty} \d\epsilon \tr\big[ \epsilon \S{n} \U{I}^K \big]
 \end{equation}
@@ -586,3 +586,5 @@ This has several benefits.
 First of all, every equation except the superconducting gap ended up with being explicitly real quantities, which is a nice quality for an equation that is supposed to represent real physical observables.
 Secondly, this means that we only need to solve the Usadel equation for positive energies as before, which saves computation time.
 Finally, while the trace-tricks we derived during the project with Tom are nice for recasting the Usadel equation in a more suitable form, evaluating e.g. charge and spin currents is actually a bit easier to implement the ``old-fashioned way''.
+
+Interestingly, all the cancellations lead to the ``naive'' results: if we integrate over positive energies and look at the real part, that's a good description.
