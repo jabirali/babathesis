@@ -22,6 +22,7 @@ Using a Pauli-decomposition of the distribution function -- as in the paper with
 However, when it comes to calculating physical observables, most quantities turn out to be easier to express directly in terms of either the propagator~$\U{G}^K$ or matrix current~$\U{I}^K$, instead of performing an explicit Pauli-decomposition of the equations.
 I therefore focused on this strategy in the derivations that follow.
 
+TODO: Divide all currents and accumulations by 2.
 
 
 \clearpage
@@ -316,3 +317,143 @@ Secondly, this means that we only need to solve the Usadel equation for positive
 Finally, while the trace-tricks we derived during the project with Tom are nice for recasting the Usadel equation in a numerically suitable form, evaluating e.g. charge and spin currents is actually a bit easier to implement the ``old-fashioned way''.
 
 Interestingly, the cancellations that happened when we rewrote the observables in this way, all lead to the same result: if we just integrate over positive energies, and take twice the real part of that result, we're done.
+
+
+
+
+
+
+
+\clearpage
+\section{Accumulation}
+The presence of nonequilibrium potentials can lead to imbalances in the quasiparticle distributions, which manifest as observable charge, spin, and heat accumulations.
+In this section, I will first derive how these imbalances in the quasiparticle distributions can be related to the propagators, and then relate this to the accumulations discussed above.
+
+There are four relevant species of quasiparticles in the system, namely electrons and holes with two possible spin projections.
+Their densities can be written in terms of the spin-resolved creation and annihilation operators,
+\begin{align}
+  N_{e\up} &\equiv \big\langle \psi_{\up}^\dagger \psi_{\up}^{\phantom{\dagger}} \big\rangle, \\
+  N_{e\dn} &\equiv \big\langle \psi_{\dn}^\dagger \psi_{\dn}^{\phantom{\dagger}} \big\rangle, \\
+  N_{h\up} &\equiv \big\langle \psi_{\up}^{\phantom{\dagger}} \psi_{\up}^\dagger \big\rangle, \\
+  N_{h\dn} &\equiv \big\langle \psi_{\dn}^{\phantom{\dagger}} \psi_{\dn}^\dagger \big\rangle.
+\end{align}
+If we use the notation $\psi_e = \psi$ and $\psi_h = \psi^\dagger$ for the electron and hole creation operators, respectively, we can summarize the above as a single equation,
+\begin{align}
+  N_{\tau\sigma} &\equiv \big\langle \psi_{\tau\sigma}^\dagger \psi_{\tau\sigma}^{\phantom{\dagger}} \big\rangle.
+\end{align}
+The creation and annihilation operators should in practice be evaluated at the same position~$\bm{r}$ and time~$t$.
+However, to make sure the derivation is rigorous, I will keep two positions and times during the derivation:
+\begin{align}
+  N_{\tau\sigma}(\bm{r}',t'; \bm{r},t) &\equiv \big\langle \psi_{\tau\sigma}^\dagger(\bm{r}',t')\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\rangle.
+\end{align}
+
+Let us now express the above in terms of non-quasiclassical propagators.
+We can write $2AB = \{A, B\} + [A, B]$ for arbitrary operators $A$ and $B$:
+\begin{equation}
+\begin{aligned}
+  2N_{\tau\sigma}
+  &=   \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\} \big\rangle \\
+  &\,+ \big\langle \big[  \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big]  \big\rangle. 
+\end{aligned}
+\end{equation}
+We also know that the step function satisfies $\theta(t-t') + \theta(t'-t) = 1$:
+\begin{equation}
+\begin{aligned}
+  2N_{\tau\sigma}
+  &=   \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\} \big\rangle \,\theta(t-t') \\
+  &\,+ \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\} \big\rangle \,\theta(t'-t) \\
+  &\,+ \big\langle \big[  \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big]  \big\rangle. 
+\end{aligned}
+\end{equation}
+If we now consult the definitions of the non-quasiclassical propagators [Eq.~(2.12--2.14) in my Master thesis], we see that the above can be written:
+\begin{equation}
+\begin{aligned}
+  2N_{\tau\sigma}
+   =& \pm i G^R_{\tau\tau\sigma\sigma}(\bm{r}, t; \bm{r}', t') \\
+    & \mp i G^A_{\tau\tau\sigma\sigma}(\bm{r}, t; \bm{r}', t') \\
+    & \mp i G^K_{\tau\tau\sigma\sigma}(\bm{r}, t; \bm{r}', t') .
+\end{aligned}
+\end{equation}
+The top signs correspond to $\tau = e$ and the bottom ones to $\tau = h$, and this follows from our definitions of the propagator matrices.%
+\footnote{According to Eq.~(2.14) in my Master thesis, the Keldysh propagator for electrons is:
+  \begin{equation} \quad G^K_{ee} = +i\big\langle \big[\psi_e^{\dagger}(\bm{r}',t'),\,\psi_e^{\phantom\dagger}(\bm{r},t) \big] \big\rangle. \end{equation}
+  However, Eq.~(2.20) in my thesis shows that $G^K_{hh} \equiv -G^{K\ast}_{ee}$, which implies that:
+  \begin{equation} \quad G^K_{hh} = -i\big\langle \big[\psi_e^{\phantom\dagger}(\bm{r}',t'),\,\psi_e^{\dagger}(\bm{r},t) \big] \big\rangle = -i\big\langle \big[\psi_h^{\dagger}(\bm{r}',t'),\,\psi_h^{\phantom\dagger}(\bm{r},t) \big] \big\rangle. \end{equation}
+  This is why we get different signs for the $G^K$ contributions for electrons and holes. 
+  A similar analysis can be done for $G^R$ and $G^A$, although these are less relevant here.\\[1ex]}
+The retarded propagator~$G^R$ and advanced propagator~$G^A$ only depend on the equilibrium state of the system, and can be discarded since we are looking for the \emph{nonequilibrium quasiparticle accumulations}.\footnote{Rammer and Smith makes a similar argument below Eq.~(2.86) in [RMP 58, 323 (1986)].}
+Explicitly, we therefore conclude:\\[-3ex]
+\begin{equation}
+\begin{aligned}
+  N_{e\up} &= -\frac{i}{2} G^K_{11}(\bm{r}, t; \bm{r}', t'), \\
+  N_{e\dn} &= -\frac{i}{2} G^K_{22}(\bm{r}, t; \bm{r}', t'), \\
+  N_{h\up} &= +\frac{i}{2} G^K_{33}(\bm{r}, t; \bm{r}', t'), \\
+  N_{h\dn} &= +\frac{i}{2} G^K_{44}(\bm{r}, t; \bm{r}', t'). \\
+\end{aligned}
+\end{equation}
+These equations give us all nonequilibrium quasiparticle accumulations in terms of the non-quasiclassical propagators.
+
+Let us now consider the quasiclassical limit, and let $(\bm{r}',t') \rightarrow (\bm{r},t)$.
+In the same way as we obtained Eq.~(3.13) in my Master thesis, we can derive that:
+\begin{align}
+  \underline{G}^K(\bm{r},t; \bm{r},t) \approx -\frac{i}{2} N_0 \int \d\epsilon \, \underline{g}^K(\bm{r}, t, \epsilon).
+\end{align}
+Substituted into the equations above, we find that the quasiclassical expressions for the quasiparticle accumulations $N_{\tau\sigma}(\bm{r},t)$ can be written:
+\begin{equation}
+\begin{aligned}
+  N_{e\up}(\bm{r}, t) &= -\frac{1}{4} N_0 \int \d\epsilon \, g^K_{11}(\epsilon, \bm{r}, t), \\
+  N_{e\dn}(\bm{r}, t) &= -\frac{1}{4} N_0 \int \d\epsilon \, g^K_{22}(\epsilon, \bm{r}, t), \\
+  N_{h\up}(\bm{r}, t) &= +\frac{1}{4} N_0 \int \d\epsilon \, g^K_{33}(\epsilon, \bm{r}, t), \\
+  N_{h\dn}(\bm{r}, t) &= +\frac{1}{4} N_0 \int \d\epsilon \, g^K_{44}(\epsilon, \bm{r}, t). \\
+\end{aligned}
+\end{equation}
+
+Let us now consider the physical consequences of such quasiparticle accumulations.
+Each electron contributes a charge $+e$, and each hole a charge $-e$, where we use $e<0$ as usual.
+Thus, the charge imbalance~$\rho_e$ is:
+\begin{equation}
+  \rho_e \equiv e(N_{e\up} + N_{e\dn} - N_{h\up} - N_{h\dn}).
+\end{equation}
+Similarly, each spin-up particle contributes a spin $+\hbar/2$, and each spin-down particle a spin $-\hbar/2$.
+For their antiparticles, the spin signs are reversed.\footnote{The creation operator for a spin-up hole~$\psi_{h\up}^\dagger$ is the same as the annihilation operator for a spin-up electron~$\psi_{e\up}$. This means that annihilating a spin-up electron should be physically equivalent to creating a spin-up hole. We know that annihilating a spin-up electron gives a change $-\hbar/2$ to the system spin, which is the same as we get by creating a spin-down electron. Thus, spin-up holes and spin-down electrons have the same spin.}
+We can therefore define the spin accumulation as:
+\begin{equation}
+  \rho_\sigma \equiv \frac{\hbar}{2} (N_{e\up} - N_{e\dn} - N_{h\up} + N_{h\dn}).
+\end{equation}
+%Combining the results above with the equations we derived for $N_{\tau\sigma}$:
+%\begin{align}
+%  \rho_e        &= -\frac{1}{4} \,e\,           N_0 \int \d\epsilon \, (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
+%  \rho_\sigma   &= -\frac{1}{4} \frac{\hbar}{2} N_0 \int \d\epsilon \, (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}).
+%\end{align}
+%Rewriting the above in terms of traces:
+%\begin{align}
+%  \rho_e        &= -\frac{1}{16} \,e\,           N_0 \int \d\epsilon \, \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{G}}], \\
+%  \rho_\sigma   &= -\frac{1}{16} \frac{\hbar}{2} N_0 \int \d\epsilon \, \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{G}}].
+%\end{align}
+%This is a quasiclassical result for the charge and spin accumulation.
+Let us now consider the heat accumulation~$\kappa_e$.
+The relevant metric is the quasiparticle energy~$\epsilon = E - \mu$ relative to the Fermi level~$\mu$, where $\epsilon > 0$ for electrons and $\epsilon < 0$ for holes.
+Neither charge nor spin matters here. Thus:
+\begin{equation}
+  \kappa_e \equiv \epsilon(N_{e\up} + N_{e\dn} + N_{h\up} + N_{h\dn}).
+\end{equation}
+Finally, one can make another independent linear combination of the above quasiparticle densities, yielding the so-called spin-heat accumulation:
+\begin{equation}
+  \kappa_\sigma \equiv \epsilon(N_{e\up} - N_{e\dn} + N_{h\up} - N_{h\dn}).
+\end{equation}
+Formally, the prefactors~$\epsilon$ above should be added after switching to the mixed representation ($\bm{r}\pm\bm{r}'$ and $t \pm t'$) and Fourier transforming, but before performing the quasiclassical approximation itself.
+If we now combining all the results above with the equations we derived for $N_{\tau\sigma}$:
+\begin{align}
+  \rho_e        &= -\frac{1}{4} N_0 \int \d\epsilon \, \,e\,           (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
+  \rho_\sigma   &= -\frac{1}{4} N_0 \int \d\epsilon \, \frac{\hbar}{2} (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}), \\
+  \kappa_e      &= -\frac{1}{4} N_0 \int \d\epsilon \, \,\epsilon\,    (g^K_{11} + g^K_{22} - g^K_{33} - g^K_{44}), \\
+  \kappa_\sigma &= -\frac{1}{4} N_0 \int \d\epsilon \, \,\epsilon\,    (g^K_{11} - g^K_{22} - g^K_{33} + g^K_{44}).
+\end{align}
+Rewriting the above in terms of traces, we finally obtain:
+\begin{align}
+  \rho_e        &= -\frac{1}{16} N_0 \int \d\epsilon \,  \,e\,           \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
+  \rho_\sigma   &= -\frac{1}{16} N_0 \int \d\epsilon \,  \frac{\hbar}{2} \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{g}}^K], \\
+  \kappa_e      &= -\frac{1}{16} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
+  \kappa_\sigma &= -\frac{1}{16} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_3 \hat{\underline{g}}^K].
+\end{align}
+These are in fact the same expressions that we have been using previously, but we now have a derivation from the definitions of the propagators.

@@ -1,3 +1,103 @@
 \chapter{Algorithms}
 \section{Critical temperature calculations}
 \section{Steffensen's method}
+
+\clearpage
+\section{Interpolation}
+When solving the nonequilibrium problem, the problem was formulated as:
+\begin{align}
+  \begin{pmatrix}
+    \BC{H}\phantom{'} \\
+    \BC{H}' 
+  \end{pmatrix}'
+  =
+  -
+  \begin{pmatrix}
+    \B{0} & 
+    \B{1} \\
+    \BC{M}^{-1} \big[ (\partial_z\BC{M}) + \BC{Q} \big] &
+    \BC{M}^{-1} \big[ (\partial_z\BC{Q}) + \BC{K} \big]
+  \end{pmatrix}
+  \begin{pmatrix}
+    \BC{H}\phantom{'} \\
+    \BC{H}' 
+  \end{pmatrix}
+\end{align}
+One nice thing about this formulation, is that we have an explicit expression for the Jacobian $\B{J}$ of the problem, i.e. the $16\times16$ proportionality matrix in the equation above, which does not depend on the distribution function~$\BC{H}$.
+
+However, each of the matrices $\BC{M}$, $\BC{Q}$, $\BC{K}$ are functions of the equilibrium propagators $\U{G}^R$ and $\U{G}^A$, which again depend on position~$z$.
+This means that the Jacobian~$J(z)$ is position-dependent, and can only be explicitly calculated at the discretized positions where the equilibrium propagators are known.
+The problem is that the differential equation solver needs to be able to calculate the Jacobian at arbitrary positions, which means that some form of interpolation is needed here.
+My first approach was a simple linear interpolation.
+That was unstable and crashed, since the numerical solver is sensitive to the \emph{derivative} of the Jacobian, which in this case becomes discontinuous.
+My next approach was to try using the \texttt{pchip}-library (Piecewise Hermitian Cubic Interpolation) that I've used for cubic interpolations of e.g. the gap in the past.
+However, this library only operates on scalar functions, and calling it $16^2 = 256$ separate times to interpolate the Jacobian at each point turned out to be really inefficient.
+My solution was therefore to implement such a cubic matrix interpolator myself, in order to speed up the nonequilibrium solver.
+
+\clearpage
+\section{Kinetic equation}
+As we have shown before...
+
+
+
+\clearpage
+\section{Boundary condition}
+As we showed in the manuscript with Tom [Eq.~(31--32)], the boundary conditions at a spin-active interface can be written as follows:
+\begin{align}
+  \BC{J}_a &= \BC{C}_{aa} \BC{H}_a - \BC{C}_{ab} \BC{H}_b \\
+  \BC{J}_b &= \BC{C}_{bb} \BC{H}_b - \BC{C}_{ba} \BC{H}_a 
+\end{align}
+The minus-sign on the right-hand sides appears because this is derived from a commutator. 
+This sign is just a convenient convention -- in comparison to Tom's notation, this gets rid of the signs in Eq.~(36) of the arXiv manuscript.
+Note that both the boundary conditions above follow the same pattern:
+\begin{align}
+  \BC{J} &= \BC{C} \BC{H} - \BC{C}'\BC{H}'
+\end{align}
+Here, the unprimed quantities refer to ``this'' side of the interface -- i.e. where the current $\BC{J}$ is calculated -- while the primed ones refer to ``the other'' side.
+
+If we for now ignore spin-orbit coupling, we can substitute $\BC{J} = \BC{M}\partial\BC{H} + \BC{QH}$ into the equation above, and thus get the boundary condition:
+\begin{align}
+  \BC{M}\partial\BC{H} + \BC{QH} = \BC{C} \BC{H} - \BC{C}'\BC{H}'
+\end{align}
+This is equivalent to Eq.~(40) in the arXiv manuscript, but fixes a sign error in the $\BC{Q}$-term. 
+This boundary condition can also be written in matrix form:
+\begin{align}
+  \BC{M}\partial\BC{H} + [\BC{Q}-\BC{C}]\BC{H} + \BC{C}'\BC{H}' = 0
+\end{align}
+Finally, this can be rewritten in matrix form as:
+\begin{align}
+  \begin{pmatrix}
+    \BC{Q}-\BC{C} & \BC{M} \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    \BC{H} \\
+    \partial\BC{H}
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+    \BC{C}' & 0 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    \BC{H} \\
+    \partial\BC{H}
+  \end{pmatrix}
+  &= 0
+\end{align}
+In other words: if we define the 16-element state vectors $\B{u} = [\BC{H}; \partial\BC{H}]$ and $\B{u}\ = [\BC{H}'; \partial\BC{H}']$, and the $8\times16$ matrices $\B{A} = [\BC{Q}-\BC{C}, \BC{M} ]$ and $\B{B} = [-\BC{C}', 0]$ that operate on these, then the boundary condition can be written:
+\begin{align}
+  \B{A}\B{u} - \B{B}\B{u}' = 0 .
+\end{align}
+\clearpage
+These boundary conditions have a number of nice properties:
+\begin{itemize}
+  \item 
+    The coefficients $\B{A}$ and $\B{B}$ only depend on equilibrium properties.
+    This means that they only have to be calculated once, and evaluating the boundary condition is reduced to a simple matrix multiplication.
+  \item 
+    The equation has the form $\B{F}(\B{u},\B{u}') = 0$.
+    This is perfect since I use a numerical solver that works by minimizing a user-specified residual.
+  \item
+    The Jacobian $J_{ij} = \partial F_i/\partial u_j$ of the boundary condition is simply the matrix $\B{A}$.
+    Since I use a numerical solver that can use the Jacobian of the boundary condition to speed up convergence, this is quite useful.
+\end{itemize}
+In the case of transparent boundary conditions, the problem may again be formulated in the same way as above, but with Jacobians $\B{A} = \B{B} = [\B{1},\B{0}]$.
