@@ -417,6 +417,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Brackets
+\newcommand{\avg}[2][]{#1\langle #2 #1\rangle}
+
 % Mathematical markup
 \newcommand{\B}[1]{\bm{#1}}
 \newcommand{\C}[1]{\mathcal{#1}}
@@ -434,9 +437,12 @@
 \newcommand{\N}[1]{\tau_{#1}}
 
 % Short-hand notation
-\renewcommand{\d}[1]{d#1}
+\renewcommand{\d}[2][]{d^{#1}#2}
+\renewcommand{\p}[2][]{\partial^{#1}_{#2}}
 \newcommand{\up}{\uparrow}
 \newcommand{\dn}{\downarrow}
+\newcommand{\hc}[1]{#1^{\dagger}}
+\newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
 
 % Phantom notation
 \newcommand{\PM}{\phantom{-}}

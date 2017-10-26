@@ -325,9 +325,9 @@ Interestingly, the cancellations that happened when we rewrote the observables i
 
 
 \clearpage
-\section{Accumulation}
-The presence of nonequilibrium potentials can lead to imbalances in the quasiparticle distributions, which manifest as observable charge, spin, and heat accumulations.
-In this section, I will first derive how these imbalances in the quasiparticle distributions can be related to the propagators, and then relate this to the accumulations discussed above.
+\section{Accumulation (standard result)}
+The presence of nonequilibrium potentials can lead to imbalances in the quasiparticle distributions, which manifest as observable charge, spin, heat, and spin-heat accumulations.
+In this section, I will first derive how these imbalances in the quasiparticle distributions can be related to the propagators, and then relate this to the observables discussed above.
 
 There are four relevant species of quasiparticles in the system, namely electrons and holes with two possible spin projections.
 Their densities can be written in terms of the spin-resolved creation and annihilation operators,
@@ -337,7 +337,7 @@ Their densities can be written in terms of the spin-resolved creation and annihi
   N_{h\up} &\equiv \big\langle \psi_{\up}^{\phantom{\dagger}} \psi_{\up}^\dagger \big\rangle, \\
   N_{h\dn} &\equiv \big\langle \psi_{\dn}^{\phantom{\dagger}} \psi_{\dn}^\dagger \big\rangle.
 \end{align}
-If we use the notation $\psi_e = \psi$ and $\psi_h = \psi^\dagger$ for the electron and hole creation operators, respectively, we can summarize the above as a single equation,
+Using the notations $\psi_{e\sigma} = \psi_\sigma$ and $\psi_{h\sigma} = \psi^\dagger_\sigma$ for the electron and hole operators, respectively, we can summarize the above as a single equation,
 \begin{align}
   N_{\tau\sigma} &\equiv \big\langle \psi_{\tau\sigma}^\dagger \psi_{\tau\sigma}^{\phantom{\dagger}} \big\rangle.
 \end{align}
@@ -380,57 +380,65 @@ The top signs correspond to $\tau = e$ and the bottom ones to $\tau = h$, and th
   However, Eq.~(2.20) in my thesis shows that $G^K_{hh} \equiv -G^{K\ast}_{ee}$, which implies that:
   \begin{equation} \quad G^K_{hh} = -i\big\langle \big[\psi_e^{\phantom\dagger}(\bm{r}',t'),\,\psi_e^{\dagger}(\bm{r},t) \big] \big\rangle = -i\big\langle \big[\psi_h^{\dagger}(\bm{r}',t'),\,\psi_h^{\phantom\dagger}(\bm{r},t) \big] \big\rangle. \end{equation}
   This is why we get different signs for the $G^K$ contributions for electrons and holes. 
-  A similar analysis can be done for $G^R$ and $G^A$, although these are less relevant here.\\[1ex]}
-The retarded propagator~$G^R$ and advanced propagator~$G^A$ only depend on the equilibrium state of the system, and can be discarded since we are looking for the \emph{nonequilibrium quasiparticle accumulations}.\footnote{Rammer and Smith makes a similar argument below Eq.~(2.86) in [RMP 58, 323 (1986)].}
-Explicitly, we therefore conclude:\\[-3ex]
-\begin{equation}
-\begin{aligned}
-  N_{e\up} &= -\frac{i}{2} G^K_{11}(\bm{r}, t; \bm{r}', t'), \\
-  N_{e\dn} &= -\frac{i}{2} G^K_{22}(\bm{r}, t; \bm{r}', t'), \\
-  N_{h\up} &= +\frac{i}{2} G^K_{33}(\bm{r}, t; \bm{r}', t'), \\
-  N_{h\dn} &= +\frac{i}{2} G^K_{44}(\bm{r}, t; \bm{r}', t'). \\
-\end{aligned}
-\end{equation}
-These equations give us all nonequilibrium quasiparticle accumulations in terms of the non-quasiclassical propagators.
-
-Let us now consider the quasiclassical limit, and let $(\bm{r}',t') \rightarrow (\bm{r},t)$.
-In the same way as we obtained Eq.~(3.13) in my Master thesis, we can derive that:
+  A similar analysis can be done for $G^R$ and $G^A$, although these are less relevant here.}
+Explicitly:\\[-3ex]
 \begin{align}
-  \underline{G}^K(\bm{r},t; \bm{r},t) \approx -\frac{i}{2} N_0 \int \d\epsilon \, \underline{g}^K(\bm{r}, t, \epsilon).
+  N_{e\up} &= +\frac{i}{2} (G^R_{11} - G^A_{11} - G^K_{11}), \\
+  N_{e\dn} &= +\frac{i}{2} (G^R_{22} - G^A_{22} - G^K_{22}), \\
+  N_{h\up} &= -\frac{i}{2} (G^R_{33} - G^A_{33} - G^K_{33}), \\
+  N_{h\dn} &= -\frac{i}{2} (G^R_{44} - G^A_{44} - G^K_{44}). 
 \end{align}
-Substituted into the equations above, we find that the quasiclassical expressions for the quasiparticle accumulations $N_{\tau\sigma}(\bm{r},t)$ can be written:
+
+Let us now consider the quasiclassical and dirty limits.
+In the same way as we derived Eq.~(3.13) in my Master thesis, we find that:
 \begin{equation}
-\begin{aligned}
-  N_{e\up}(\bm{r}, t) &= -\frac{1}{4} N_0 \int \d\epsilon \, g^K_{11}(\epsilon, \bm{r}, t), \\
-  N_{e\dn}(\bm{r}, t) &= -\frac{1}{4} N_0 \int \d\epsilon \, g^K_{22}(\epsilon, \bm{r}, t), \\
-  N_{h\up}(\bm{r}, t) &= +\frac{1}{4} N_0 \int \d\epsilon \, g^K_{33}(\epsilon, \bm{r}, t), \\
-  N_{h\dn}(\bm{r}, t) &= +\frac{1}{4} N_0 \int \d\epsilon \, g^K_{44}(\epsilon, \bm{r}, t). \\
-\end{aligned}
+  \underline{\check{G}}(\bm{r},t;\bm{r},t) &= -\frac{i}{2} N_0 \int \d\epsilon\, \underline{\check{g}}(\bm{r},t,\epsilon).
 \end{equation}
+This means that the quasiparticle densities can be written:
+\begin{align}
+  N_{e\up} &= +\frac{1}{4} N_0 (g^R_{11} - g^A_{11} - g^K_{11}), \\
+  N_{e\dn} &= +\frac{1}{4} N_0 (g^R_{22} - g^A_{22} - g^K_{22}), \\
+  N_{h\up} &= -\frac{1}{4} N_0 (g^R_{33} - g^A_{33} - g^K_{33}), \\
+  N_{h\dn} &= -\frac{1}{4} N_0 (g^R_{44} - g^A_{44} - g^K_{44}). 
+\end{align}
+We also know that $\underline{\hat{g}}^A = -\hat{\tau}_3 \underline{\hat{g}}^{R\dagger} \hat{\tau}_3$:
+\begin{align}
+  N_{e\up} &= +\frac{1}{4} N_0 (g^R_{11} + g^{R\ast}_{11} - g^K_{11}), \\
+  N_{e\dn} &= +\frac{1}{4} N_0 (g^R_{22} + g^{R\ast}_{22} - g^K_{22}), \\
+  N_{h\up} &= -\frac{1}{4} N_0 (g^R_{33} + g^{R\ast}_{33} - g^K_{33}), \\
+  N_{h\dn} &= -\frac{1}{4} N_0 (g^R_{44} + g^{R\ast}_{44} - g^K_{44}). 
+\end{align}
+At this point, we can recognize the retarded components~$N_0\,\text{Re}[g^R_{\tau\tau\sigma\sigma}]$ as simply the particle- and spin-resolved density of states.
+This is purely an equilibrium property, while we are interested in the \emph{nonequilibrium quasiparticle accumulations}. 
+We therefore discard the retarded components:%
+\footnote{Rammer and Smith makes a similar argument below Eq.~(2.86) in [RMP 58, 323 (1986)]. 
+  Specifically, they conclude that ``\emph{The spectral weight $A$ in Eq.~(2.86) represents a contribution to Eqs. (2.84) and (2.85) that does not depend on the state of the system and shall henceforth be dropped when nonequilibrium contributions are considered.}''}%
+\footnote{I think we can explain the presence of the $g^R$ terms as follows.
+  In equilibrium, we can write $\underline{g}^K = (\underline{g}^R - \underline{g}^A) \tanh(\epsilon/2T)$, and we know that $\underline{g}^A = -\hat{\tau}_3 \underline{g}^{R\ast} \hat{\tau}_3$.
+  For the diagonal terms, this implies $g^K = 2\,\text{Re}[g^R]\,\tanh(\epsilon/2T)$. 
+  This means that the exact quasiparticle densities in equilibrium are $N = N_0\,\text{Re}[g^R]\,[1-\tanh(\epsilon/2T)]/2$, where $1$ comes from the $g^R$ and $g^A$ terms and $\tanh(\epsilon/2T)$ from the $g^K$ term.
+  Here, $[1-\tanh(\epsilon/2T)]/2$ is the Fermi distribution function $f(\epsilon)=1/[1+e^{\epsilon/T}]$, while $h(\epsilon)=\tanh(\epsilon/2T)/2$ is what we call the distribution function in quasiclassical theory.
+  Thus, the $g^R$ terms are necessary to calculate a physically correct number of quasiparticles in equilibrium, but as long as we are only interested in nonequilibrium imbalances, they should not affect our results.}%
+\begin{align}
+  N_{e\up} &= -\frac{1}{4}N_0 g^K_{11}, \\
+  N_{e\dn} &= -\frac{1}{4}N_0 g^K_{22}, \\
+  N_{h\up} &= +\frac{1}{4}N_0 g^K_{33}, \\
+  N_{h\dn} &= +\frac{1}{4}N_0 g^K_{44}.
+\end{align}
+These equations give us all nonequilibrium quasiparticle accumulations in terms of the propagators.
 
 Let us now consider the physical consequences of such quasiparticle accumulations.
 Each electron contributes a charge $+e$, and each hole a charge $-e$, where we use $e<0$ as usual.
-Thus, the charge imbalance~$\rho_e$ is:
+Thus, the charge imbalance~$\mu_e$ is:
 \begin{equation}
-  \rho_e \equiv e(N_{e\up} + N_{e\dn} - N_{h\up} - N_{h\dn}).
+  \mu_e \equiv e(N_{e\up} + N_{e\dn} - N_{h\up} - N_{h\dn}).
 \end{equation}
 Similarly, each spin-up particle contributes a spin $+\hbar/2$, and each spin-down particle a spin $-\hbar/2$.
 For their antiparticles, the spin signs are reversed.\footnote{The creation operator for a spin-up hole~$\psi_{h\up}^\dagger$ is the same as the annihilation operator for a spin-up electron~$\psi_{e\up}$. This means that annihilating a spin-up electron should be physically equivalent to creating a spin-up hole. We know that annihilating a spin-up electron gives a change $-\hbar/2$ to the system spin, which is the same as we get by creating a spin-down electron. Thus, spin-up holes and spin-down electrons have the same spin.}
 We can therefore define the spin accumulation as:
 \begin{equation}
-  \rho_\sigma \equiv \frac{\hbar}{2} (N_{e\up} - N_{e\dn} - N_{h\up} + N_{h\dn}).
+  \mu_\sigma \equiv \frac{\hbar}{2} (N_{e\up} - N_{e\dn} - N_{h\up} + N_{h\dn}).
 \end{equation}
-%Combining the results above with the equations we derived for $N_{\tau\sigma}$:
-%\begin{align}
-%  \rho_e        &= -\frac{1}{4} \,e\,           N_0 \int \d\epsilon \, (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
-%  \rho_\sigma   &= -\frac{1}{4} \frac{\hbar}{2} N_0 \int \d\epsilon \, (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}).
-%\end{align}
-%Rewriting the above in terms of traces:
-%\begin{align}
-%  \rho_e        &= -\frac{1}{16} \,e\,           N_0 \int \d\epsilon \, \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{G}}], \\
-%  \rho_\sigma   &= -\frac{1}{16} \frac{\hbar}{2} N_0 \int \d\epsilon \, \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{G}}].
-%\end{align}
-%This is a quasiclassical result for the charge and spin accumulation.
 Let us now consider the heat accumulation~$\kappa_e$.
 The relevant metric is the quasiparticle energy~$\epsilon = E - \mu$ relative to the Fermi level~$\mu$, where $\epsilon > 0$ for electrons and $\epsilon < 0$ for holes.
 Neither charge nor spin matters here. Thus:
@@ -442,18 +450,191 @@ Finally, one can make another independent linear combination of the above quasip
   \kappa_\sigma \equiv \epsilon(N_{e\up} - N_{e\dn} + N_{h\up} - N_{h\dn}).
 \end{equation}
 Formally, the prefactors~$\epsilon$ above should be added after switching to the mixed representation ($\bm{r}\pm\bm{r}'$ and $t \pm t'$) and Fourier transforming, but before performing the quasiclassical approximation itself.
-If we now combining all the results above with the equations we derived for $N_{\tau\sigma}$:
+
+If we now combine all the definitions above with the equations for $N_{\tau\sigma}$:
 \begin{align}
-  \rho_e        &= -\frac{1}{4} N_0 \int \d\epsilon \, \,e\,           (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
-  \rho_\sigma   &= -\frac{1}{4} N_0 \int \d\epsilon \, \frac{\hbar}{2} (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}), \\
+  \mu_e        &= -\frac{1}{4} N_0 \int \d\epsilon \, \,e\,           (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
+  \mu_\sigma   &= -\frac{1}{4} N_0 \int \d\epsilon \, \frac{\hbar}{2} (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}), \\
   \kappa_e      &= -\frac{1}{4} N_0 \int \d\epsilon \, \,\epsilon\,    (g^K_{11} + g^K_{22} - g^K_{33} - g^K_{44}), \\
   \kappa_\sigma &= -\frac{1}{4} N_0 \int \d\epsilon \, \,\epsilon\,    (g^K_{11} - g^K_{22} - g^K_{33} + g^K_{44}).
 \end{align}
 Rewriting the above in terms of traces, we finally obtain:
 \begin{align}
-  \rho_e        &= -\frac{1}{16} N_0 \int \d\epsilon \,  \,e\,           \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
-  \rho_\sigma   &= -\frac{1}{16} N_0 \int \d\epsilon \,  \frac{\hbar}{2} \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{g}}^K], \\
-  \kappa_e      &= -\frac{1}{16} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
-  \kappa_\sigma &= -\frac{1}{16} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_3 \hat{\underline{g}}^K].
+  \mu_e        &= -\frac{1}{4} N_0 \int \d\epsilon \,  \,e\,           \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
+  \mu_\sigma   &= -\frac{1}{4} N_0 \int \d\epsilon \,  \frac{\hbar}{2} \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{g}}^K], \\
+  \kappa_e      &= -\frac{1}{4} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
+  \kappa_\sigma &= -\frac{1}{4} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_3 \hat{\underline{g}}^K].
 \end{align}
-These are in fact the same expressions that we have been using previously, but we now have a derivation from the definitions of the propagators.
+These are in fact the same expressions that we have been using previously, but we now have a justification grounded in the definitions of the propagators.
+The only difference is a missing factor $1/2$, which can be attributed to me using $N_0$ as \emph{the density of states per spin} at the Fermi level here, while other authors probably used $N_0$ for the total density of states at the Fermi level.
+
+\clearpage
+\section{Accumulation (rigorous result)}
+During the derivation on the previous pages, I made the assumption that only terms containing Keldysh propagators are relevant for nonequilibrium quasiparticle accumulations.
+This means discarding terms in the quasiparticle densities that were proportional to only the density of states, but that were independent of the distribution function.
+This seems like a reasonable assumption, and seems to be quite widespread in the literature, since most authors end up with spectral quantities on the form $\text{Tr}\,[\hat{\tau}_n \underline{\sigma}_m \underline{\hat{g}}^K]$ for the accumulations.
+Rammer and Smith mentions this assumption explicitly.
+
+However, after giving it some thought, I am not fully convinced that this remains a reasonable assumption for selfconsistent calculations.
+In the non-selfconsistent case, we should be safe: the density of states is purely an equilibrium quantity, so the $\text{Re}[g^R]$ terms cancel when looking at the difference between nonequilibrium and equilibrium quantities.
+In the selfconsistent case, it gets more complicated.
+Let's say that we consider an S/F system, where we solve selfconsistently in S, and F is a strongly polarized ferromagnet.
+Let's also assume that the exchange field in F results in a spin-splitting of the density of states in S via the proximity coupling.
+In equilibrium, there is already a spin accumulation (``induced magnetization'') in S, which is caused by the spin-splitting of the density of states, even though the distribution function is spin-independent.
+There are now two different ways to produce what we can call a ``nonequilibrium spin accumulation''.
+One way would be to inject quasiparticles from F into S, which would change the chemical potentials of spin-up and spin-down quasiparticles differently since F is strongly polarized.
+This makes the distribution function~$\underline{\hat{h}}$ spin-dependent, which in turn changes the Keldysh propagator $\underline{\hat{g}}^K$, and is included in the expressions we derived for the accumulations.
+However, another way would be to suppress the superconducting gap in S using an arbitrary nonequilibrium potential.
+This alters the proximity-coupling between S and F, resulting in a different spin-splitting of the density of states in S.
+This should change the ``induced magnetization'' in S, even though the distribution function remains spin-independent.
+To accurately model the latter effect, I suspect that we need to include the density of states terms too.
+
+In this section, I will rederive the expressions for the quasiparticle accumulations in a more general form, without making the above assumption.
+We can again start with the following definition for the quasiparticle densities:
+\begin{align}
+  N_{\tau\sigma} &\equiv \big\langle \psi_{\tau\sigma}^\dagger \psi_{\tau\sigma}^{\phantom{\dagger}} \big\rangle.
+\end{align}
+For generality, we keep two sets of particle coordinates during the derivation:
+\begin{align}
+  N_{\tau'\tau\sigma'\sigma}(\bm{r}',t'; \bm{r},t) &\equiv \big\langle \psi_{\tau'\sigma'}^\dagger(\bm{r}',t')\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\rangle.
+\end{align}
+Like before, we can rewrite this in terms of propagators:
+\begin{equation}
+\begin{aligned}
+  2N_{\tau'\tau\sigma'\sigma}(\bm{r}, t; \bm{r}', t')
+   =& \pm i G^R_{\tau\tau'\sigma\sigma'}(\bm{r}, t; \bm{r}', t') \\
+    & \mp i G^A_{\tau\tau'\sigma\sigma'}(\bm{r}, t; \bm{r}', t') \\
+    & \mp i G^K_{\tau\tau'\sigma\sigma'}(\bm{r}, t; \bm{r}', t') .
+\end{aligned}
+\end{equation}
+Collecting the results in matrix form, we obtain:
+\begin{equation}
+  \underline{\hat{N}} = \frac{i}{2} \hat{\tau}_3 \big[\underline{\hat{G}}^R - \underline{\hat{G}}^A - \underline{\hat{G}}^K \big].
+\end{equation}
+The physical quasiparticle densities $N_{e\up}, N_{e\dn}, N_{h\up}, N_{h\dn}$ are then just the diagonal entries in this matrix.
+In the quasiclassical and dirty limit we get:
+\begin{equation}
+  \underline{\hat{N}} = \frac{1}{4} N_0 \int\d\epsilon \, \hat{\tau}_3 \big[\underline{\hat{g}}^R - \underline{\hat{g}}^A - \underline{\hat{g}}^K \big].
+\end{equation}
+We now introduce the distribution function via $\underline{\hat{g}}^K = \underline{\hat{g}}^R \underline{\hat{h}} - \underline{\hat{h}} \underline{\hat{g}}^A$:
+\begin{equation}
+  \underline{\hat{N}} = \frac{1}{4} N_0 \int\d\epsilon \, \hat{\tau}_3 \big[\underline{\hat{g}}^R (1-\underline{\hat{h}}) - (1-\underline{\hat{h}}) \underline{\hat{g}}^A \big].
+\end{equation}
+We also have the identity $\underline{\hat{g}}^A = -\hat{\tau}_3 \underline{\hat{g}}^{R\dagger} \hat{\tau}_3$, and know that $\hat{\tau}_3$ has to commute with $\underline{\hat{h}}$ when we use the block-diagonal gauge $\underline{\hat{h}} = \text{diag}(+\underline{h},-\underline{\tilde{h}})$:
+\begin{equation}
+  \underline{\hat{N}} = \frac{1}{4} N_0 \int\d\epsilon \, \big[ \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) + (1-\underline{\hat{h}}) \underline{\hat{g}}^{R\dagger} \hat{\tau}_3 \big].
+\end{equation}
+Now, the accumulation of charge, spin, heat, and spin-heat were determined by calculating $\text{Tr}[\hat{\tau}_n \underline{\sigma}_m \underline{\hat{N}}]$ for different $n$ and $m$.
+We then use the cyclic rule:
+\begin{equation}
+  \mu_{nm} = \frac{1}{4} N_0 \int\d\epsilon \, \text{Tr}\big[ \hat{\tau}_n \underline{\sigma}_m \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) + (1-\underline{\hat{h}}) \underline{\hat{g}}^{R\dagger} \hat{\tau}_3 \underline{\sigma}_m \hat{\tau}_n\big].
+\end{equation}
+Using that everything but $\underline{\hat{g}}^R$ is Hermitian, and the identity $\text{Tr}[A+A^\dagger] = \text{Tr}[A] + \text{Tr}[A]^* = 2\,\text{Re}\,\text{Tr}[A]$, we find the simplified expression:
+\begin{equation}
+  \mu_{nm} = \frac{1}{2} N_0 \int\d\epsilon \, \text{Re}\,\text{Tr}\big[ \hat{\tau}_n \underline{\sigma}_m \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) \big].
+\end{equation}
+We then set $n=3, m=0$ for charge accumulation, $n=3, m=3$ for spin accumulation, etc. just like before.
+\textbf{The remaining question now is: should we use this result in the implementation, or can we argue that there is no contribution from $\underline{\hat{g}}^R-\underline{\hat{g}}^A$ also in selfconsistent nonequilibrium systems? In the latter case, does the argument also hold for energy accumulations?}
+
+\section{Currents}
+
+
+
+
+\chapter{Physical observables}
+\section{Heisenberg equation}
+We can express a time-dependent field operator in the Heisenberg form:
+\begin{equation}
+  \psi(t) = e^{+iHt} \psi(0) e^{-iHt} .
+\end{equation}
+Differentiating this equation, we arrive at the Heisenberg equation of motion:
+\begin{align}
+  \p{t}\psi(t) 
+  &= (+iH)\, e^{+iHt}\, \psi(0) \, e^{-iHt} + e^{+iHt} \, \psi(0) \,(-iH)\, e^{-iHt} \\
+  &= (+iH)\, \psi(t) + \psi(t) \,(-iH) \\
+  &= i[H,\psi(t)] .
+\end{align}
+Note that the Hermitian conjugate of the field operator above is
+\begin{align}
+  \hc{\psi}(t) 
+  &= \hc{[e^{+iHt} \,\psi(0)\, e^{-iHt}]} \\
+  &= \hc{[e^{-iHt}]} \, \hc{[\psi(0)]} \, \hc{[e^{+iHt}]} \\
+  &= e^{+iHt} \, \hc{\psi}(0) \, e^{-iHt},
+\end{align}
+which implies that both operators follow the same Heisenberg equation,
+\begin{align}
+  \p{t}\pc{\psi} &= i[H,\pc{\psi}] , \\
+  \p{t}\hc{\psi} &= i[H,\hc{\psi}] .
+\end{align}
+
+\section{Quasiparticle currents}
+Let us start by considering the density of quasiparticles with spin~$\sigma$:
+\begin{equation}
+  n_{\sigma}(\bm{r},t) &= \avg[\big]{\hc{\psi_\sigma}(\bm{r},t) \, \pc{\psi_\sigma}(\bm{r},t)} .
+\end{equation}
+To make the derivation below clearer, we will distinguish between the two position coordinates.
+The definition above can then be rewritten as
+\begin{equation}
+  n_{\sigma}(\bm{r},t) &= \left. \avg[\big]{\hc{\psi_\sigma}(\bm{r}_1,t) \, \pc{\psi_\sigma}(\bm{r}_2,t)} \right|_{\bm{r}_1 = \bm{r}_2 = \bm{r}},
+\end{equation}
+or for brevity of notation,
+\begin{equation}
+  n_{\sigma} = \avg[\big]{\hc{\psi_{1\sigma}} \, \pc{\psi_{2\sigma}}} .
+\end{equation}
+Differentiating the quasiparticle density with respect to time,
+\begin{equation}
+  \p{t} n_{\sigma} 
+  &= \avg[\big]{(\p{t}\hc{\psi_{1\sigma}}) \pc{\psi_{2\sigma}} + \hc{\psi_{1\sigma}} (\p{t}\pc{\psi_{2\sigma}})}
+\end{equation}
+The creation and annihilation operators satisfy the Heisenberg equation,
+\begin{equation}
+  i \p{t} n_{\sigma} 
+  = \avg[\big]{\big[ \pc{H_1},\hc{\psi_{1\sigma}} \big] \pc{\psi_{1\sigma}}}  
+  + \avg[\big]{\hc{\psi_{1\sigma}} \big[\pc{H_2}, \pc{\psi_{2\sigma}}\big]} .
+\end{equation}
+For simplicity, we will restrict our attention to the Hamiltonian $H = \bm{p}^2/2m$ for now, where the canonical momentum operator $\bm{p} = -i\nabla$ in the absence of gauge fields. 
+Substituted into the above, 
+\begin{equation}
+  i \p{t} n_{\sigma} 
+  = -\frac{1}{2m} \Big\{ 
+     \avg[\big]{\big[ \nabla_1^2,\hc{\psi_{1\sigma}} \big] \pc{\psi_{2\sigma}}}  
+   + \avg[\big]{\hc{\psi_{1\sigma}} \big[\nabla_2^2, \pc{\psi_{2\sigma}}\big]} \Big\} .
+\end{equation}
+Since $\nabla_i$ only operate on $\psi_{i}$, and only operate towards the right, we only get nonzero contributions from the terms where $\nabla_i$ appears to the left of the corresponding operator $\psi_{i}$.
+We can therefore simplify the above to:
+\begin{equation}
+  \p{t} n_{\sigma} 
+  = \frac{i}{2m} \Big\{ 
+     \avg[\big]{\nabla_1^2\,\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}}}  
+   + \avg[\big]{\hc{\psi_{1\sigma}} \nabla_2^2\, \pc{\psi_{2\sigma}}} \Big\} .
+\end{equation}
+Relabelling the indices of the second term:
+\begin{equation}
+  \p{t} n_{\sigma} 
+  = \frac{i}{2m} \Big\{ 
+     \avg[\big]{\nabla_1^2\,\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}}}  
+   + \avg[\big]{\hc{\psi_{2\sigma}} \nabla_1^2\, \pc{\psi_{1\sigma}}} \Big\} .
+\end{equation}
+Taking $\nabla_1^2$ out of the brackets and reordering:
+\begin{equation}
+  \p{t} n_{\sigma} 
+  + \nabla_1\cdot\Big\{ -\frac{i}{2m} \nabla_1 
+     \Big\( 
+     \avg[\big]{\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}} + \hc{\psi_{2\sigma}} \pc{\psi_{1\sigma}}} 
+     \Big\) \Big\}
+     = 0. 
+\end{equation}
+This has the form of a continuity equation, motivating the definition:
+\begin{equation}
+  \bm{j}_\sigma \equiv -\frac{i}{2m} \nabla_1 
+     \Big\( 
+     \avg[\big]{\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}} + \hc{\psi_{2\sigma}} \pc{\psi_{1\sigma}}} 
+     \Big\).
+\end{equation}
+If we again relabel our terms, this becomes:
+\begin{equation}
+  \bm{j}_\sigma \equiv -\frac{i}{2m} (\nabla_1 + \nabla_2)
+     \Big\( 
+     \avg[\big]{\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}}} 
+     \Big\).
+\end{equation}
