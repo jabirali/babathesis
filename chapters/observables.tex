@@ -536,110 +536,6 @@ Using that everything but $\underline{\hat{g}}^R$ is Hermitian, and the identity
 We then set $n=3, m=0$ for charge accumulation, $n=3, m=3$ for spin accumulation, etc. just like before.
 \textbf{The remaining question now is: should we use this result in the implementation, or can we argue that there is no contribution from $\underline{\hat{g}}^R-\underline{\hat{g}}^A$ also in selfconsistent nonequilibrium systems? In the latter case, does the argument also hold for energy accumulations?}
 
-\section{Currents}
-
-
-
-
-\chapter{Physical observables}
-\section{Heisenberg equation}
-We can express a time-dependent field operator in the Heisenberg form:
-\begin{equation}
-  \psi(t) = e^{+iHt} \psi(0) e^{-iHt} .
-\end{equation}
-Differentiating this equation, we arrive at the Heisenberg equation of motion:
-\begin{align}
-  \p{t}\psi(t) 
-  &= (+iH)\, e^{+iHt}\, \psi(0) \, e^{-iHt} + e^{+iHt} \, \psi(0) \,(-iH)\, e^{-iHt} \\
-  &= (+iH)\, \psi(t) + \psi(t) \,(-iH) \\
-  &= i[H,\psi(t)] .
-\end{align}
-Note that the Hermitian conjugate of the field operator above is
-\begin{align}
-  \hc{\psi}(t) 
-  &= \hc{[e^{+iHt} \,\psi(0)\, e^{-iHt}]} \\
-  &= \hc{[e^{-iHt}]} \, \hc{[\psi(0)]} \, \hc{[e^{+iHt}]} \\
-  &= e^{+iHt} \, \hc{\psi}(0) \, e^{-iHt},
-\end{align}
-which implies that both operators follow the same Heisenberg equation,
-\begin{align}
-  \p{t}\pc{\psi} &= i[H,\pc{\psi}] , \\
-  \p{t}\hc{\psi} &= i[H,\hc{\psi}] .
-\end{align}
-
-\section{Quasiparticle currents}
-Let us start by considering the density of quasiparticles with spin~$\sigma$:
-\begin{equation}
-  n_{\sigma}(\bm{r},t) &= \avg[\big]{\hc{\psi_\sigma}(\bm{r},t) \, \pc{\psi_\sigma}(\bm{r},t)} .
-\end{equation}
-To make the derivation below clearer, we will distinguish between the two position coordinates.
-The definition above can then be rewritten as
-\begin{equation}
-  n_{\sigma}(\bm{r},t) &= \left. \avg[\big]{\hc{\psi_\sigma}(\bm{r}_1,t) \, \pc{\psi_\sigma}(\bm{r}_2,t)} \right|_{\bm{r}_1 = \bm{r}_2 = \bm{r}},
-\end{equation}
-or for brevity of notation,
-\begin{equation}
-  n_{\sigma} = \avg[\big]{\hc{\psi_{1\sigma}} \, \pc{\psi_{2\sigma}}} .
-\end{equation}
-Differentiating the quasiparticle density with respect to time,
-\begin{equation}
-  \p{t} n_{\sigma} 
-  &= \avg[\big]{(\p{t}\hc{\psi_{1\sigma}}) \pc{\psi_{2\sigma}} + \hc{\psi_{1\sigma}} (\p{t}\pc{\psi_{2\sigma}})}
-\end{equation}
-The creation and annihilation operators satisfy the Heisenberg equation,
-\begin{equation}
-  i \p{t} n_{\sigma} 
-  = \avg[\big]{\big[ \pc{H_1},\hc{\psi_{1\sigma}} \big] \pc{\psi_{1\sigma}}}  
-  + \avg[\big]{\hc{\psi_{1\sigma}} \big[\pc{H_2}, \pc{\psi_{2\sigma}}\big]} .
-\end{equation}
-For simplicity, we will restrict our attention to the Hamiltonian $H = \bm{p}^2/2m$ for now, where the canonical momentum operator $\bm{p} = -i\nabla$ in the absence of gauge fields. 
-Substituted into the above, 
-\begin{equation}
-  i \p{t} n_{\sigma} 
-  = -\frac{1}{2m} \Big\{ 
-     \avg[\big]{\big[ \nabla_1^2,\hc{\psi_{1\sigma}} \big] \pc{\psi_{2\sigma}}}  
-   + \avg[\big]{\hc{\psi_{1\sigma}} \big[\nabla_2^2, \pc{\psi_{2\sigma}}\big]} \Big\} .
-\end{equation}
-Since $\nabla_i$ only operate on $\psi_{i}$, and only operate towards the right, we only get nonzero contributions from the terms where $\nabla_i$ appears to the left of the corresponding operator $\psi_{i}$.
-We can therefore simplify the above to:
-\begin{equation}
-  \p{t} n_{\sigma} 
-  = \frac{i}{2m} \Big\{ 
-     \avg[\big]{\nabla_1^2\,\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}}}  
-   + \avg[\big]{\hc{\psi_{1\sigma}} \nabla_2^2\, \pc{\psi_{2\sigma}}} \Big\} .
-\end{equation}
-Relabelling the indices of the second term:
-\begin{equation}
-  \p{t} n_{\sigma} 
-  = \frac{i}{2m} \Big\{ 
-     \avg[\big]{\nabla_1^2\,\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}}}  
-   + \avg[\big]{\hc{\psi_{2\sigma}} \nabla_1^2\, \pc{\psi_{1\sigma}}} \Big\} .
-\end{equation}
-Taking $\nabla_1^2$ out of the brackets and reordering:
-\begin{equation}
-  \p{t} n_{\sigma} 
-  + \nabla_1\cdot\Big\{ -\frac{i}{2m} \nabla_1 
-     \Big\( 
-     \avg[\big]{\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}} + \hc{\psi_{2\sigma}} \pc{\psi_{1\sigma}}} 
-     \Big\) \Big\}
-     = 0. 
-\end{equation}
-This has the form of a continuity equation, motivating the definition:
-\begin{equation}
-  \bm{j}_\sigma \equiv -\frac{i}{2m} \nabla_1 
-     \Big\( 
-     \avg[\big]{\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}} + \hc{\psi_{2\sigma}} \pc{\psi_{1\sigma}}} 
-     \Big\).
-\end{equation}
-If we again relabel our terms, this becomes:
-\begin{equation}
-  \bm{j}_\sigma \equiv -\frac{i}{2m} (\nabla_1 + \nabla_2)
-     \Big\( 
-     \avg[\big]{\hc{\psi_{1\sigma}} \pc{\psi_{2\sigma}}} 
-     \Big\).
-\end{equation}
-
-
 
 \chapter{Physical observables}
 \section{Quasiparticle currents}
@@ -881,114 +777,16 @@ This gauge correction may therefore be included by simply revising our definitio
 \begin{equation}
   \BU{I}^K \equiv -\frac{i\bm{p}}{m} \U{G}^K + \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \}.
 \end{equation}
-Before moving on, let us now perform some quick sanity checks of the result above.
+Before moving on, let us now perform a quick sanity check of the result above.
 In the case of an electromagnetic gauge field, $\BU{A} \rightarrow e\bm{A}$ is spin-independent, and the anticommutator term reduces to $ie\B{A}\U{G}^K/m$.
-This same result could have been obtained by letting $\B{p} \rightarrow \B{p} - e\B{A}$ in the equation above, which is the gauge-invariant quantity that we intuitively expect.
+This same result could have been obtained by letting $\B{p} \rightarrow \B{p} - e\B{A}$ in the equation above, i.e. the canonical momentum that we intuitively would expect there.
 
 
 
-\clearpage
-
-
-
-
-Subtracting the currents carried by electrons and holes, we find that:
-\begin{equation}
-  \begin{aligned}
-  \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) = \\
-  -\frac{1}{m} \sum_{\sigma'}
-  \big[ 
-      & \avg[\big]{(\nabla \hc{\psi_{\sigma'}})\, \pc{\psi_{\sigma}} - \pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma'}})} \cdot \pc{\bm{A}_{\sigma'\sigma}}\\
-      &- \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ (\nabla \pc{\psi_{\sigma'}})\, \hc{\psi_{\sigma}} - \hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma'}}) }
-  \big].
-  \end{aligned}
-\end{equation}
-We again introduce two independent coordinate sets on the right-hand side:
-\begin{equation}
-  \begin{aligned}
-  \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) = \\
-  -\frac{1}{m} \sum_{\sigma'}
-  \big[ 
-  & (\nabla_2\cdot\avg[\big]{(\pc{\nabla_2} \hc{\psi_{2\sigma'}})\, \pc{\psi_{1\sigma}} - \pc{\psi_{1\sigma}}\, (\pc{\nabla_2} \hc{\psi_{2\sigma'}})} \cdot \pc{\bm{A}_{\sigma'\sigma}}\\
-    &- \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ (\pc{\nabla}_1 \pc{\psi_{1\sigma'}})\, \hc{\psi_{2\sigma}} - \hc{\psi_{2\sigma}}\, (\pc{\nabla_1} \pc{\psi_{1\sigma'}}) }
-  \big].
-  \end{aligned}
-\end{equation}
-This permits us to pull derivatives out:
-\begin{equation}
-  \begin{aligned}
-  \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) = \\
-  -\frac{1}{m} \sum_{\sigma'}
-  \big[ 
-    & \avg[\big]{(\pc{\nabla_2} \hc{\psi_{2\sigma'}})\, \pc{\psi_{1\sigma}} - \pc{\psi_{1\sigma}}\, (\pc{\nabla_2} \hc{\psi_{2\sigma'}})} \cdot \pc{\bm{A}_{\sigma'\sigma}}\\
-    &- \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ (\pc{\nabla}_1 \pc{\psi_{1\sigma'}})\, \hc{\psi_{2\sigma}} - \hc{\psi_{2\sigma}}\, (\pc{\nabla_1} \pc{\psi_{1\sigma'}}) }
-  \big].
-  \end{aligned}
-\end{equation}
-
-
-
+\section{Quasiclassical currents}
 \begin{align}
-  \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) =
-  -\frac{1}{m} \sum_{\sigma'}
-  \big[ 
-   \, & \cc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\nabla \hc{\psi_{\sigma'}})\, \pc{\psi_{\sigma}} - \pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma'}})} \\
-  +\, & \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma'}}) - (\nabla \pc{\psi_{\sigma'}})\, \hc{\psi_{\sigma}}}
-  \big].
+  \U{I}^K = -\frac{i}{2} N_0 \int\d\epsilon\, \avg[\Big]{ -\frac{i\bm{p}}{m} \U{G}^K + \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \} }_F.
 \end{align}
-We can again extract the derivative from the expectation values since the cross-terms cancel, and we therefore end up with the following gauge correction to the quasiparticle current:
 \begin{align}
-  \bm{j}_{e\sigma} - \bm{j}_{h\sigma} =
-  -\frac{1}{m} \sum_{\sigma'}
-  \big[ 
-   \, & \cc{\bm{A}_{\sigma\sigma'}} \avg[\big]{ \hc{\psi_{\sigma'}}\, \pc{\psi_{\sigma}} - \pc{\psi_{\sigma}}\, \hc{\psi_{\sigma'}}} \\
-  +\, & \pc{\bm{A}_{\sigma\sigma'}} \avg[\big]{ \hc{\psi_{\sigma}}\, \pc{\psi_{\sigma'}} - \pc{\psi_{\sigma'}}\, \hc{\psi_{\sigma}}}
-  \big].
+  \U{I}^K = -\frac{N_0}{4m} \int\d\epsilon\, \avg[\Big]{ 2\bm{p} \U{G}^K - \big\{ \U{G}^K ,\, \BU{A} \} }_F.
 \end{align}
-
-
-
-
-
-
-
-
-
-
-\clearpage
-\section{Gauge currents}
-To simplify the derivations below, we now employ a mathematical trick.
-For scalar-valued expectation values, we know that $\avg{AB} = \avg{B^\dagger A^\dagger}^*$:
-\begin{align}
-  \avg[\big]{(\p{t}  \hc{\psi_\sigma}) \pc{\psi_\sigma}} &= \cc{\avg[\big]{\hc{\psi_\sigma} (\p{t} \pc{\psi_\sigma}) }}, \\
-  \avg[\big]{(\p{t}  \pc{\psi_\sigma}) \hc{\psi_\sigma}} &= \cc{\avg[\big]{\pc{\psi_\sigma} (\p{t} \hc{\psi_\sigma}) }}.
-\end{align}
-Furthermore, we can of course write $\avg{A}+\cc{\avg{A}} = 2\re{\avg{A}}$:
-\begin{align}
-  \p t n_{e\sigma} &= 2 \re
-  \avg[\big]{\hc{\psi_{\sigma}}\, \p t \pc{\psi_{\sigma}}} , \\
-  \p t n_{h\sigma} &= 2 \re
-  \avg[\big]{\pc{\psi_{\sigma}}\, \p t \hc{\psi_{\sigma}}} .
-\end{align}
-This form halves the number of terms we need to consider below, as well as explicitly showing us that the quasiparticle density must be a real number.
-
-We can rewrite the above using the Heisenberg equation of motion for the field operators.
-Note that any contributions to the continuity equation arising from non-derivative terms in the Hamiltonian---such as a superconducting gap or an exchange field---cannot produce a contribution of the form~$\nabla\cdot\bm{j}$, and can only affect the source term~$q$.
-Thus, for the purposes of deriving an expression for the current, it is sufficient to consider only derivative terms.
-Including U(1) and SU(2) gauge fields, these can be written in the form:
-\begin{align}
-  \p t \pc{\psi_\sigma} &= +\frac{i}{2m} \Big[ \nabla^2\pc{\psi_\sigma} - 2i\sum_{\sigma'} \pc{\bm{A}_{\sigma\sigma'}} \cdot \nabla \pc{\psi_{\sigma'}} \Big]\,, \\
-  \p t \hc{\psi_\sigma} &= -\frac{i}{2m} \Big[ \nabla^2\hc{\psi_\sigma} + 2i\sum_{\sigma'} \cc{\bm{A}_{\sigma\sigma'}} \cdot \nabla \hc{\psi_{\sigma'}} \Big]\,.
-\end{align}
-Substituting these into the equations for $\partial_t n_{\tau\sigma}$:
-\begin{align}
-  \p t & n_{e\sigma} = \\
-       &- \frac{i}{2m} \avg[\big]{\big(\nabla^2\hc{\psi_\sigma}\big) \pc{\psi_\sigma}}
-        + \frac{1}{m}  \sum_{\sigma'} \bm{A}_{\sigma\sigma'} \cdot \avg[\big]{\big(\nabla\hc{\psi_{\sigma'}}\big) \pc{\psi_{\sigma}}} \\
-       &+ \frac{i}{2m} \avg[\big]{\big(\nabla^2\hc{\psi_\sigma}\big) \pc{\psi_\sigma}}
-        + \frac{1}{m}  \sum_{\sigma'} \bm{A}_{\sigma'\sigma} \cdot \avg[\big]{\hc{\psi_\sigma} \big(\nabla\pc{\psi_{\sigma'}}\big)} \\
-  %\p t n_{h\sigma} &=
-  %\avg[\big]{(\partial_t\pc{\psi_{\sigma}})\, \hc{\psi_{\sigma}}} +
-  %\avg[\big]{\pc{\psi_{\sigma}}\, (\partial_t\hc{\psi_{\sigma}})} .
-\end{align}
-           i
