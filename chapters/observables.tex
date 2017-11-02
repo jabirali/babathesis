@@ -302,10 +302,10 @@ Based on Eschrig's review from 2015 [Eqs.~(47) and (63)], it seems like a reason
 \end{align}
 In terms of these four coefficients, the density of stated for spins polarized along some direction $\B{\nu}$ would be:
 \begin{align}
-  N_{\B{\nu}}  = N_0 + \B{\nu} \cdot \B{N},
+  N_{\B{\nu}}  = N_F + \B{\nu} \cdot \B{N},
 \end{align}
 where $\B{N} = (N_1, N_2, N_3)$.
-If we average over all $\B\nu$, we get back the usual definition of the spin-independent density of states~$N_0$.
+If we average over all $\B\nu$, we get back the usual definition of the spin-independent density of states~$N_F$.
 On the other hand, if we let $\B\nu = \pm\B{e}_z$, this reproduces Eqs.~(2.39--40) in I.~Gomperud's thesis for $N_\up$ and $N_\dn$.
 Thus, this definition seems consistent with previous results.
 
@@ -341,10 +341,10 @@ Using the notations $\psi_{e\sigma} = \psi_\sigma$ and $\psi_{h\sigma} = \psi^\d
 \begin{align}
   N_{\tau\sigma} &\equiv \big\langle \psi_{\tau\sigma}^\dagger \psi_{\tau\sigma}^{\phantom{\dagger}} \big\rangle.
 \end{align}
-The creation and annihilation operators should in practice be evaluated at the same position~$\bm{r}$ and time~$t$.
+The creation and annihilation operators should in practice be evaluated at the same position~$\B{r}$ and time~$t$.
 However, to make sure the derivation is rigorous, I will keep two positions and times during the derivation:
 \begin{align}
-  N_{\tau\sigma}(\bm{r}',t'; \bm{r},t) &\equiv \big\langle \psi_{\tau\sigma}^\dagger(\bm{r}',t')\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\rangle.
+  N_{\tau\sigma}(\B{r}',t'; \B{r},t) &\equiv \big\langle \psi_{\tau\sigma}^\dagger(\B{r}',t')\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big\rangle.
 \end{align}
 
 Let us now express the above in terms of non-quasiclassical propagators.
@@ -352,33 +352,33 @@ We can write $2AB = \{A, B\} + [A, B]$ for arbitrary operators $A$ and $B$:
 \begin{equation}
 \begin{aligned}
   2N_{\tau\sigma}
-  &=   \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\} \big\rangle \\
-  &\,+ \big\langle \big[  \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big]  \big\rangle. 
+  &=   \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\B{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big\} \big\rangle \\
+  &\,+ \big\langle \big[  \psi_{\tau\sigma}^\dagger(\B{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big]  \big\rangle. 
 \end{aligned}
 \end{equation}
 We also know that the step function satisfies $\theta(t-t') + \theta(t'-t) = 1$:
 \begin{equation}
 \begin{aligned}
   2N_{\tau\sigma}
-  &=   \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\} \big\rangle \,\theta(t-t') \\
-  &\,+ \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\} \big\rangle \,\theta(t'-t) \\
-  &\,+ \big\langle \big[  \psi_{\tau\sigma}^\dagger(\bm{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big]  \big\rangle. 
+  &=   \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\B{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big\} \big\rangle \,\theta(t-t') \\
+  &\,+ \big\langle \big\{ \psi_{\tau\sigma}^\dagger(\B{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big\} \big\rangle \,\theta(t'-t) \\
+  &\,+ \big\langle \big[  \psi_{\tau\sigma}^\dagger(\B{r}',t'),\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big]  \big\rangle. 
 \end{aligned}
 \end{equation}
 If we now consult the definitions of the non-quasiclassical propagators [Eq.~(2.12--2.14) in my Master thesis], we see that the above can be written:
 \begin{equation}
 \begin{aligned}
   2N_{\tau\sigma}
-   =& \pm i G^R_{\tau\tau\sigma\sigma}(\bm{r}, t; \bm{r}', t') \\
-    & \mp i G^A_{\tau\tau\sigma\sigma}(\bm{r}, t; \bm{r}', t') \\
-    & \mp i G^K_{\tau\tau\sigma\sigma}(\bm{r}, t; \bm{r}', t') .
+   =& \pm i G^R_{\tau\tau\sigma\sigma}(\B{r}, t; \B{r}', t') \\
+    & \mp i G^A_{\tau\tau\sigma\sigma}(\B{r}, t; \B{r}', t') \\
+    & \mp i G^K_{\tau\tau\sigma\sigma}(\B{r}, t; \B{r}', t') .
 \end{aligned}
 \end{equation}
 The top signs correspond to $\tau = e$ and the bottom ones to $\tau = h$, and this follows from our definitions of the propagator matrices.%
 \footnote{According to Eq.~(2.14) in my Master thesis, the Keldysh propagator for electrons is:
-  \begin{equation} \quad G^K_{ee} = +i\big\langle \big[\psi_e^{\dagger}(\bm{r}',t'),\,\psi_e^{\phantom\dagger}(\bm{r},t) \big] \big\rangle. \end{equation}
+  \begin{equation} \quad G^K_{ee} = +i\big\langle \big[\psi_e^{\dagger}(\B{r}',t'),\,\psi_e^{\phantom\dagger}(\B{r},t) \big] \big\rangle. \end{equation}
   However, Eq.~(2.20) in my thesis shows that $G^K_{hh} \equiv -G^{K\ast}_{ee}$, which implies that:
-  \begin{equation} \quad G^K_{hh} = -i\big\langle \big[\psi_e^{\phantom\dagger}(\bm{r}',t'),\,\psi_e^{\dagger}(\bm{r},t) \big] \big\rangle = -i\big\langle \big[\psi_h^{\dagger}(\bm{r}',t'),\,\psi_h^{\phantom\dagger}(\bm{r},t) \big] \big\rangle. \end{equation}
+  \begin{equation} \quad G^K_{hh} = -i\big\langle \big[\psi_e^{\phantom\dagger}(\B{r}',t'),\,\psi_e^{\dagger}(\B{r},t) \big] \big\rangle = -i\big\langle \big[\psi_h^{\dagger}(\B{r}',t'),\,\psi_h^{\phantom\dagger}(\B{r},t) \big] \big\rangle. \end{equation}
   This is why we get different signs for the $G^K$ contributions for electrons and holes. 
   A similar analysis can be done for $G^R$ and $G^A$, although these are less relevant here.}
 Explicitly:\\[-3ex]
@@ -392,23 +392,23 @@ Explicitly:\\[-3ex]
 Let us now consider the quasiclassical and dirty limits.
 In the same way as we derived Eq.~(3.13) in my Master thesis, we find that:
 \begin{equation}
-  \underline{\check{G}}(\bm{r},t;\bm{r},t) &= -\frac{i}{2} N_0 \int \d\epsilon\, \underline{\check{g}}(\bm{r},t,\epsilon).
+  \underline{\check{G}}(\B{r},t;\B{r},t) &= -\frac{i}{2} N_F \int \d\epsilon\, \underline{\check{g}}(\B{r},t,\epsilon).
 \end{equation}
 This means that the quasiparticle densities can be written:
 \begin{align}
-  N_{e\up} &= +\frac{1}{4} N_0 (g^R_{11} - g^A_{11} - g^K_{11}), \\
-  N_{e\dn} &= +\frac{1}{4} N_0 (g^R_{22} - g^A_{22} - g^K_{22}), \\
-  N_{h\up} &= -\frac{1}{4} N_0 (g^R_{33} - g^A_{33} - g^K_{33}), \\
-  N_{h\dn} &= -\frac{1}{4} N_0 (g^R_{44} - g^A_{44} - g^K_{44}). 
+  N_{e\up} &= +\frac{1}{4} N_F (g^R_{11} - g^A_{11} - g^K_{11}), \\
+  N_{e\dn} &= +\frac{1}{4} N_F (g^R_{22} - g^A_{22} - g^K_{22}), \\
+  N_{h\up} &= -\frac{1}{4} N_F (g^R_{33} - g^A_{33} - g^K_{33}), \\
+  N_{h\dn} &= -\frac{1}{4} N_F (g^R_{44} - g^A_{44} - g^K_{44}). 
 \end{align}
 We also know that $\underline{\hat{g}}^A = -\hat{\tau}_3 \underline{\hat{g}}^{R\dagger} \hat{\tau}_3$:
 \begin{align}
-  N_{e\up} &= +\frac{1}{4} N_0 (g^R_{11} + g^{R\ast}_{11} - g^K_{11}), \\
-  N_{e\dn} &= +\frac{1}{4} N_0 (g^R_{22} + g^{R\ast}_{22} - g^K_{22}), \\
-  N_{h\up} &= -\frac{1}{4} N_0 (g^R_{33} + g^{R\ast}_{33} - g^K_{33}), \\
-  N_{h\dn} &= -\frac{1}{4} N_0 (g^R_{44} + g^{R\ast}_{44} - g^K_{44}). 
+  N_{e\up} &= +\frac{1}{4} N_F (g^R_{11} + g^{R\ast}_{11} - g^K_{11}), \\
+  N_{e\dn} &= +\frac{1}{4} N_F (g^R_{22} + g^{R\ast}_{22} - g^K_{22}), \\
+  N_{h\up} &= -\frac{1}{4} N_F (g^R_{33} + g^{R\ast}_{33} - g^K_{33}), \\
+  N_{h\dn} &= -\frac{1}{4} N_F (g^R_{44} + g^{R\ast}_{44} - g^K_{44}). 
 \end{align}
-At this point, we can recognize the retarded components~$N_0\,\text{Re}[g^R_{\tau\tau\sigma\sigma}]$ as simply the particle- and spin-resolved density of states.
+At this point, we can recognize the retarded components~$N_F\,\text{Re}[g^R_{\tau\tau\sigma\sigma}]$ as simply the particle- and spin-resolved density of states.
 This is purely an equilibrium property, while we are interested in the \emph{nonequilibrium quasiparticle accumulations}. 
 We therefore discard the retarded components:%
 \footnote{Rammer and Smith makes a similar argument below Eq.~(2.86) in [RMP 58, 323 (1986)]. 
@@ -416,14 +416,14 @@ We therefore discard the retarded components:%
 \footnote{I think we can explain the presence of the $g^R$ terms as follows.
   In equilibrium, we can write $\underline{g}^K = (\underline{g}^R - \underline{g}^A) \tanh(\epsilon/2T)$, and we know that $\underline{g}^A = -\hat{\tau}_3 \underline{g}^{R\ast} \hat{\tau}_3$.
   For the diagonal terms, this implies $g^K = 2\,\text{Re}[g^R]\,\tanh(\epsilon/2T)$. 
-  This means that the exact quasiparticle densities in equilibrium are $N = N_0\,\text{Re}[g^R]\,[1-\tanh(\epsilon/2T)]/2$, where $1$ comes from the $g^R$ and $g^A$ terms and $\tanh(\epsilon/2T)$ from the $g^K$ term.
+  This means that the exact quasiparticle densities in equilibrium are $N = N_F\,\text{Re}[g^R]\,[1-\tanh(\epsilon/2T)]/2$, where $1$ comes from the $g^R$ and $g^A$ terms and $\tanh(\epsilon/2T)$ from the $g^K$ term.
   Here, $[1-\tanh(\epsilon/2T)]/2$ is the Fermi distribution function $f(\epsilon)=1/[1+e^{\epsilon/T}]$, while $h(\epsilon)=\tanh(\epsilon/2T)/2$ is what we call the distribution function in quasiclassical theory.
   Thus, the $g^R$ terms are necessary to calculate a physically correct number of quasiparticles in equilibrium, but as long as we are only interested in nonequilibrium imbalances, they should not affect our results.}%
 \begin{align}
-  N_{e\up} &= -\frac{1}{4}N_0 g^K_{11}, \\
-  N_{e\dn} &= -\frac{1}{4}N_0 g^K_{22}, \\
-  N_{h\up} &= +\frac{1}{4}N_0 g^K_{33}, \\
-  N_{h\dn} &= +\frac{1}{4}N_0 g^K_{44}.
+  N_{e\up} &= -\frac{1}{4}N_F g^K_{11}, \\
+  N_{e\dn} &= -\frac{1}{4}N_F g^K_{22}, \\
+  N_{h\up} &= +\frac{1}{4}N_F g^K_{33}, \\
+  N_{h\dn} &= +\frac{1}{4}N_F g^K_{44}.
 \end{align}
 These equations give us all nonequilibrium quasiparticle accumulations in terms of the propagators.
 
@@ -449,24 +449,24 @@ Finally, one can make another independent linear combination of the above quasip
 \begin{equation}
   \kappa_\sigma \equiv \epsilon(N_{e\up} - N_{e\dn} + N_{h\up} - N_{h\dn}).
 \end{equation}
-Formally, the prefactors~$\epsilon$ above should be added after switching to the mixed representation ($\bm{r}\pm\bm{r}'$ and $t \pm t'$) and Fourier transforming, but before performing the quasiclassical approximation itself.
+Formally, the prefactors~$\epsilon$ above should be added after switching to the mixed representation ($\B{r}\pm\B{r}'$ and $t \pm t'$) and Fourier transforming, but before performing the quasiclassical approximation itself.
 
 If we now combine all the definitions above with the equations for $N_{\tau\sigma}$:
 \begin{align}
-  \mu_e        &= -\frac{1}{4} N_0 \int \d\epsilon \, \,e\,           (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
-  \mu_\sigma   &= -\frac{1}{4} N_0 \int \d\epsilon \, \frac{\hbar}{2} (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}), \\
-  \kappa_e      &= -\frac{1}{4} N_0 \int \d\epsilon \, \,\epsilon\,    (g^K_{11} + g^K_{22} - g^K_{33} - g^K_{44}), \\
-  \kappa_\sigma &= -\frac{1}{4} N_0 \int \d\epsilon \, \,\epsilon\,    (g^K_{11} - g^K_{22} - g^K_{33} + g^K_{44}).
+  \mu_e        &= -\frac{1}{4} N_F \int \d\epsilon \, \,e\,           (g^K_{11} + g^K_{22} + g^K_{33} + g^K_{44}), \\
+  \mu_\sigma   &= -\frac{1}{4} N_F \int \d\epsilon \, \frac{\hbar}{2} (g^K_{11} - g^K_{22} + g^K_{33} - g^K_{44}), \\
+  \kappa_e      &= -\frac{1}{4} N_F \int \d\epsilon \, \,\epsilon\,    (g^K_{11} + g^K_{22} - g^K_{33} - g^K_{44}), \\
+  \kappa_\sigma &= -\frac{1}{4} N_F \int \d\epsilon \, \,\epsilon\,    (g^K_{11} - g^K_{22} - g^K_{33} + g^K_{44}).
 \end{align}
 Rewriting the above in terms of traces, we finally obtain:
 \begin{align}
-  \mu_e        &= -\frac{1}{4} N_0 \int \d\epsilon \,  \,e\,           \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
-  \mu_\sigma   &= -\frac{1}{4} N_0 \int \d\epsilon \,  \frac{\hbar}{2} \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{g}}^K], \\
-  \kappa_e      &= -\frac{1}{4} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
-  \kappa_\sigma &= -\frac{1}{4} N_0 \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_3 \hat{\underline{g}}^K].
+  \mu_e        &= -\frac{1}{4} N_F \int \d\epsilon \,  \,e\,           \text{Tr}[\hat{\tau}_0 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
+  \mu_\sigma   &= -\frac{1}{4} N_F \int \d\epsilon \,  \frac{\hbar}{2} \text{Tr}[\hat{\tau}_0 \underline{\sigma}_3 \hat{\underline{g}}^K], \\
+  \kappa_e      &= -\frac{1}{4} N_F \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_0 \hat{\underline{g}}^K], \\
+  \kappa_\sigma &= -\frac{1}{4} N_F \int \d\epsilon \,  \,\epsilon\,    \text{Tr}[\hat{\tau}_3 \underline{\sigma}_3 \hat{\underline{g}}^K].
 \end{align}
 These are in fact the same expressions that we have been using previously, but we now have a justification grounded in the definitions of the propagators.
-The only difference is a missing factor $1/2$, which can be attributed to me using $N_0$ as \emph{the density of states per spin} at the Fermi level here, while other authors probably used $N_0$ for the total density of states at the Fermi level.
+The only difference is a missing factor $1/2$, which can be attributed to me using $N_F$ as \emph{the density of states per spin} at the Fermi level here, while other authors probably used $N_F$ for the total density of states at the Fermi level.
 
 \clearpage
 \section{Accumulation (rigorous result)}
@@ -496,15 +496,15 @@ We can again start with the following definition for the quasiparticle densities
 \end{align}
 For generality, we keep two sets of particle coordinates during the derivation:
 \begin{align}
-  N_{\tau'\tau\sigma'\sigma}(\bm{r}',t'; \bm{r},t) &\equiv \big\langle \psi_{\tau'\sigma'}^\dagger(\bm{r}',t')\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\bm{r},t) \big\rangle.
+  N_{\tau'\tau\sigma'\sigma}(\B{r}',t'; \B{r},t) &\equiv \big\langle \psi_{\tau'\sigma'}^\dagger(\B{r}',t')\, \psi_{\tau\sigma}^{\phantom{\dagger}}(\B{r},t) \big\rangle.
 \end{align}
 Like before, we can rewrite this in terms of propagators:
 \begin{equation}
 \begin{aligned}
-  2N_{\tau'\tau\sigma'\sigma}(\bm{r}, t; \bm{r}', t')
-   =& \pm i G^R_{\tau\tau'\sigma\sigma'}(\bm{r}, t; \bm{r}', t') \\
-    & \mp i G^A_{\tau\tau'\sigma\sigma'}(\bm{r}, t; \bm{r}', t') \\
-    & \mp i G^K_{\tau\tau'\sigma\sigma'}(\bm{r}, t; \bm{r}', t') .
+  2N_{\tau'\tau\sigma'\sigma}(\B{r}, t; \B{r}', t')
+   =& \pm i G^R_{\tau\tau'\sigma\sigma'}(\B{r}, t; \B{r}', t') \\
+    & \mp i G^A_{\tau\tau'\sigma\sigma'}(\B{r}, t; \B{r}', t') \\
+    & \mp i G^K_{\tau\tau'\sigma\sigma'}(\B{r}, t; \B{r}', t') .
 \end{aligned}
 \end{equation}
 Collecting the results in matrix form, we obtain:
@@ -514,24 +514,24 @@ Collecting the results in matrix form, we obtain:
 The physical quasiparticle densities $N_{e\up}, N_{e\dn}, N_{h\up}, N_{h\dn}$ are then just the diagonal entries in this matrix.
 In the quasiclassical and dirty limit we get:
 \begin{equation}
-  \underline{\hat{N}} = \frac{1}{4} N_0 \int\d\epsilon \, \hat{\tau}_3 \big[\underline{\hat{g}}^R - \underline{\hat{g}}^A - \underline{\hat{g}}^K \big].
+  \underline{\hat{N}} = \frac{1}{4} N_F \int\d\epsilon \, \hat{\tau}_3 \big[\underline{\hat{g}}^R - \underline{\hat{g}}^A - \underline{\hat{g}}^K \big].
 \end{equation}
 We now introduce the distribution function via $\underline{\hat{g}}^K = \underline{\hat{g}}^R \underline{\hat{h}} - \underline{\hat{h}} \underline{\hat{g}}^A$:
 \begin{equation}
-  \underline{\hat{N}} = \frac{1}{4} N_0 \int\d\epsilon \, \hat{\tau}_3 \big[\underline{\hat{g}}^R (1-\underline{\hat{h}}) - (1-\underline{\hat{h}}) \underline{\hat{g}}^A \big].
+  \underline{\hat{N}} = \frac{1}{4} N_F \int\d\epsilon \, \hat{\tau}_3 \big[\underline{\hat{g}}^R (1-\underline{\hat{h}}) - (1-\underline{\hat{h}}) \underline{\hat{g}}^A \big].
 \end{equation}
 We also have the identity $\underline{\hat{g}}^A = -\hat{\tau}_3 \underline{\hat{g}}^{R\dagger} \hat{\tau}_3$, and know that $\hat{\tau}_3$ has to commute with $\underline{\hat{h}}$ when we use the block-diagonal gauge $\underline{\hat{h}} = \text{diag}(+\underline{h},-\underline{\tilde{h}})$:
 \begin{equation}
-  \underline{\hat{N}} = \frac{1}{4} N_0 \int\d\epsilon \, \big[ \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) + (1-\underline{\hat{h}}) \underline{\hat{g}}^{R\dagger} \hat{\tau}_3 \big].
+  \underline{\hat{N}} = \frac{1}{4} N_F \int\d\epsilon \, \big[ \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) + (1-\underline{\hat{h}}) \underline{\hat{g}}^{R\dagger} \hat{\tau}_3 \big].
 \end{equation}
 Now, the accumulation of charge, spin, heat, and spin-heat were determined by calculating $\text{Tr}[\hat{\tau}_n \underline{\sigma}_m \underline{\hat{N}}]$ for different $n$ and $m$.
 We then use the cyclic rule:
 \begin{equation}
-  \mu_{nm} = \frac{1}{4} N_0 \int\d\epsilon \, \text{Tr}\big[ \hat{\tau}_n \underline{\sigma}_m \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) + (1-\underline{\hat{h}}) \underline{\hat{g}}^{R\dagger} \hat{\tau}_3 \underline{\sigma}_m \hat{\tau}_n\big].
+  \mu_{nm} = \frac{1}{4} N_F \int\d\epsilon \, \text{Tr}\big[ \hat{\tau}_n \underline{\sigma}_m \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) + (1-\underline{\hat{h}}) \underline{\hat{g}}^{R\dagger} \hat{\tau}_3 \underline{\sigma}_m \hat{\tau}_n\big].
 \end{equation}
 Using that everything but $\underline{\hat{g}}^R$ is Hermitian, and the identity $\text{Tr}[A+A^\dagger] = \text{Tr}[A] + \text{Tr}[A]^* = 2\,\text{Re}\,\text{Tr}[A]$, we find the simplified expression:
 \begin{equation}
-  \mu_{nm} = \frac{1}{2} N_0 \int\d\epsilon \, \text{Re}\,\text{Tr}\big[ \hat{\tau}_n \underline{\sigma}_m \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) \big].
+  \mu_{nm} = \frac{1}{2} N_F \int\d\epsilon \, \text{Re}\,\text{Tr}\big[ \hat{\tau}_n \underline{\sigma}_m \hat{\tau}_3 \underline{\hat{g}}^R (1-\underline{\hat{h}}) \big].
 \end{equation}
 We then set $n=3, m=0$ for charge accumulation, $n=3, m=3$ for spin accumulation, etc. just like before.
 \textbf{The remaining question now is: should we use this result in the implementation, or can we argue that there is no contribution from $\underline{\hat{g}}^R-\underline{\hat{g}}^A$ also in selfconsistent nonequilibrium systems? In the latter case, does the argument also hold for energy accumulations?}
@@ -542,16 +542,16 @@ We then set $n=3, m=0$ for charge accumulation, $n=3, m=3$ for spin accumulation
 Let us again start by considering the spin-resolved quasiparticle densities:\
 \begin{align}
   \label{eq:density-def-cur-1}
-  n_{e\sigma}(\bm r, t) &\equiv \avg[\big]{\hc{\psi_\sigma}(\bm r,t)\, \pc{\psi_\sigma}(\bm r,t)}, \\
+  n_{e\sigma}(\B r, t) &\equiv \avg[\big]{\hc{\psi_\sigma}(\B r,t)\, \pc{\psi_\sigma}(\B r,t)}, \\
   \label{eq:density-def-cur-2}
-  n_{h\sigma}(\bm r, t) &\equiv \avg[\big]{\pc{\psi_\sigma}(\bm r,t)\, \hc{\psi_\sigma}(\bm r,t)}.
+  n_{h\sigma}(\B r, t) &\equiv \avg[\big]{\pc{\psi_\sigma}(\B r,t)\, \hc{\psi_\sigma}(\B r,t)}.
 \end{align}
 We will use this to look for quasiparticle continuity equations of the form
 \begin{align}
   \label{eq:continuity-def}
-  \p t n_{\tau\sigma} +\, \nabla\cdot\bm{j}_{\tau\sigma} &= q_{\tau\sigma}, 
+  \p t n_{\tau\sigma} +\, \nabla\cdot\B{j}_{\tau\sigma} &= q_{\tau\sigma}, 
 \end{align}
-where $\bm{j}_{\tau\sigma}$ are the quasiparticle currents, and $q_{\tau\sigma}$ refers to possible source terms that generate quasiparticles.
+where $\B{j}_{\tau\sigma}$ are the quasiparticle currents, and $q_{\tau\sigma}$ refers to possible source terms that generate quasiparticles.
 Differentiating \cref{eq:density-def-cur-1,eq:density-def-cur-2}:
 \begin{align}
   \label{eq:density-der-cur-1}
@@ -564,7 +564,7 @@ Differentiating \cref{eq:density-def-cur-1,eq:density-def-cur-2}:
   \avg[\big]{\pc{\psi_{\sigma}}\, (\p t \hc{\psi_{\sigma}})} .
 \end{align}
 We can rewrite the above using the Heisenberg equation of motion for the field operators.
-Note that any contributions to the continuity equation arising from non-derivative terms in the Hamiltonian---such as a superconducting gap or an exchange field---cannot produce a contribution of the form~$\nabla\cdot\bm{j}$, and can only affect the source term~$q$.
+Note that any contributions to the continuity equation arising from non-derivative terms in the Hamiltonian---such as a superconducting gap or an exchange field---cannot produce a contribution of the form~$\nabla\cdot\B{j}$, and can only affect the source term~$q$.
 Thus, for the purposes of deriving an expression for the current, it is sufficient to consider only derivative terms.
 If we for simplicity disregard gauge fields for now, the equations reduce to:\footnote{These equations follow from writing eq.~(3.27) in J.P.~Morten's thesis in component form and discarding everything but the pure derivative terms. Alternatively, one might do the same procedure with eqs.~(4.12--4.16) in my project thesis, and get the same result.}
 \begin{align}
@@ -595,34 +595,34 @@ Note that due to a cancellation of cross-terms, this can also be factorized as:
 \end{align}
 Comparing this to \cref{eq:continuity-def}, we conclude that the quasiparticle currents:
 \begin{align}
-  \bm{j}_{e\sigma} &\equiv
+  \B{j}_{e\sigma} &\equiv
   +\frac{i}{2m} 
   \left[ \avg[\big]{(\nabla \hc{\psi_{\sigma}})\, \pc{\psi_{\sigma}}} -
          \avg[\big]{\hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma}})} \right], \\
-  \bm{j}_{h\sigma} &\equiv
+  \B{j}_{h\sigma} &\equiv
   -\frac{i}{2m}
   \left[ \avg[\big]{(\nabla \pc{\psi_{\sigma}})\, \hc{\psi_{\sigma}}} -
          \avg[\big]{\pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma}})} \right].
 \end{align}
 To further simplify our results, we employ a mathematical trick.
-Instead of evaluating both quasiparticle operators at the same position and time, we write $\psi_{1 \sigma} \equiv \psi_\sigma(\bm{r}_1,t_1)$ and $\psi_{2 \sigma} \equiv \psi_\sigma(\bm{r}_2,t_2)$, and will then let $\bm{r}_1,\bm{r}_2 \rightarrow \bm{r}$ and $t_1,t_2 \rightarrow t$ in the final results.
+Instead of evaluating both quasiparticle operators at the same position and time, we write $\psi_{1 \sigma} \equiv \psi_\sigma(\B{r}_1,t_1)$ and $\psi_{2 \sigma} \equiv \psi_\sigma(\B{r}_2,t_2)$, and will then let $\B{r}_1,\B{r}_2 \rightarrow \B{r}$ and $t_1,t_2 \rightarrow t$ in the final results.
 Thus, the above may be rewritten as:
 \begin{align}
-  \bm{j}_{e\sigma} &=
+  \B{j}_{e\sigma} &=
   +\frac{i}{2m} 
   \left[ \avg[\big]{\big(\pc{\nabla_2} \hc{\psi_{2 \sigma}}\big)\, \pc{\psi_{1 \sigma}}} -
   \avg[\big]{\hc{\psi_{2 \sigma}}\, \big(\pc{\nabla_1} \pc{\psi_{1 \sigma}}\big)} \right], \\
-  \bm{j}_{h\sigma} &=
+  \B{j}_{h\sigma} &=
   -\frac{i}{2m}
   \left[ \avg[\big]{\big(\pc{\nabla_1} \pc{\psi_{1 \sigma}}\big)\, \hc{\psi_{2 \sigma}}} -
   \avg[\big]{\pc{\psi_{1 \sigma}}\, \big(\pc{\nabla_2} \hc{\psi_{2 \sigma}}\big)} \right].
 \end{align}
 This notation lets us factor the derivatives out of the current density:
 \begin{align}
-  \bm{j}_{e\sigma} &\equiv
+  \B{j}_{e\sigma} &\equiv
   +\frac{i}{2m} \big(\pc{\nabla_2} - \pc{\nabla_1}\big) \,
   \avg[\big]{\hc{\psi_{2 \sigma}}\, \pc{\psi_{1 \sigma}}} ,\\
-  \bm{j}_{h\sigma} &\equiv
+  \B{j}_{h\sigma} &\equiv
   +\frac{i}{2m} \big(\pc{\nabla_2} - \pc{\nabla_1}\big) \,
   \avg[\big]{\pc{\psi_{1 \sigma}}\, \hc{\psi_{2 \sigma}}} .
 \end{align}
@@ -630,37 +630,37 @@ As we will see below, this notation makes it very easy to connect these quasipar
 
 \section{Charge and spin currents}
 Regardless of spin, we know that each electron transports a charge~$+e$, while each hole transports the opposite charge~$-e$.
-The charge current~$\bm{J}_e$ transported by quasiparticles can therefore be defined as:
+The charge current~$\B{J}_e$ transported by quasiparticles can therefore be defined as:
 \begin{equation}
-  \bm{J}_e \equiv e\big[ +\bm{j}_{e\up} + \bm{j}_{e\dn} - \bm{j}_{h\up} - \bm{j}_{h\dn} \big].
+  \B{J}_e \equiv e\big[ +\B{j}_{e\up} + \B{j}_{e\dn} - \B{j}_{h\up} - \B{j}_{h\dn} \big].
 \end{equation}
 We also know that each electron and hole transports a spin~$\pm\hbar/2$, where we must be careful to keep in mind that spin-up holes actually transport spin-down.
-We may therefore similarly define the spin-$z$ current~$\bm{J}_z$ as:
+We may therefore similarly define the spin-$z$ current~$\B{J}_z$ as:
 \begin{equation}
-  \bm{J}_z \equiv \frac{\hbar}{2}\big[ +\bm{j}_{e\up} - \bm{j}_{e\dn} - \bm{j}_{h\up} + \bm{j}_{h\dn} \big].
+  \B{J}_z \equiv \frac{\hbar}{2}\big[ +\B{j}_{e\up} - \B{j}_{e\dn} - \B{j}_{h\up} + \B{j}_{h\dn} \big].
 \end{equation}
-In both cases, the current densities include differences $j_{e\sigma} - j_{h\sigma}$ between electron and hole currents, so let us consider these differences a bit closer.
+In both cases, the current densities include differences $\B{j}_{e\sigma} - \B{j}_{h\sigma}$ between electron and hole currents, so let us consider these differences a bit closer.\footnote{Intuitively, this makes sense: a positive electron current $+\B{j}_{e\sigma}$ represents electrons flowing to the right, while a hole current $+\B{j}_{h\sigma}$ represents electrons flowing to the left. Thus, the difference $+\B{j}_{e\sigma} - \B{j}_{h\sigma}$ is just the total flow of spin-$\sigma$ electrons to the right, which is the quantity of interest both when considering charge and spin transport.}
 Using the results we derived above for the quasiparticle currents, we find:
 \begin{align}
-  \bm{j}_{e\sigma} - \bm{j}_{h\sigma} =
+  \B{j}_{e\sigma} - \B{j}_{h\sigma} =
   \frac{i}{2m} \big(\pc{\nabla_2} - \pc{\nabla_1}\big) \,
   \avg[\big]{\hc{\psi_{2 \sigma}}\, \pc{\psi_{1 \sigma}} -
              \pc{\psi_{1 \sigma}}\, \hc{\psi_{2 \sigma}}} .
 \end{align}
-But $-i\avg{ [ \pc{\psi_{1 \sigma}}, \hc{\psi_{2 \sigma}} ] }$ is just the definition of the Keldysh propagator:
+But $-i\avg{ [ \pc{\psi_{1 \sigma}}\,,\, \hc{\psi_{2 \sigma}} ] }$ is just the definition of the Keldysh propagator:
 \begin{align}
-  \bm{j}_{e\sigma} - \bm{j}_{h\sigma} =
+  \B{j}_{e\sigma} - \B{j}_{h\sigma} =
   \frac{1}{2m} \big(\pc{\nabla_2} - \pc{\nabla_1}\big) \, G^K_{12\sigma\sigma}.
 \end{align}
-Switching to mixed coordinates $\bm{r}_{1,2} \equiv \bm{r} \pm \delta\bm{r}/2$, and Fourier-transforming the relative coordinate~$\delta\bm{r}$, we then get $\nabla_{1,2} \rightarrow \nabla_{\bm{r}}/2 \pm i\bm{p}$ in the above:
+Switching to mixed coordinates $\B{r}_{1,2} \equiv \B{r} \pm \delta\B{r}/2$, and Fourier-transforming the relative coordinate~$\delta\B{r}$, we then get $\nabla_{1,2} \rightarrow \nabla_{\B{r}}/2 \pm i\B{p}$ in the above:
 \begin{align}
-  \bm{j}_{e\sigma} - \bm{j}_{h\sigma} =
-  -\frac{i\bm{p}}{m} \, G^K_{\sigma\sigma}.
+  \B{j}_{e\sigma} - \B{j}_{h\sigma} =
+  -\frac{i\B{p}}{m} \, G^K_{\sigma\sigma}.
 \end{align}
 We now go back to the definitions of the charge and spin currents:
 \begin{align}
-  \bm{J}_{e} &= -\,e\, \frac{i\bm{p}}{m} \big( G^K_{\up\up} + G^K_{\dn\dn} \big), \\
-  \bm{J}_{z} &= -\frac{\hbar}{2} \frac{i\bm{p}}{m} \big( G^K_{\up\up}  - G^K_{\dn\dn} \big).
+  \B{J}_{e} &= -\,e\, \frac{i\B{p}}{m} \big( G^K_{\up\up} + G^K_{\dn\dn} \big), \\
+  \B{J}_{z} &= -\frac{\hbar}{2} \frac{i\B{p}}{m} \big( G^K_{\up\up}  - G^K_{\dn\dn} \big).
 \end{align}
 Generalizing the above to all spin projections, and defining a matrix current
 \begin{equation}
@@ -668,125 +668,225 @@ Generalizing the above to all spin projections, and defining a matrix current
 \end{equation}
 then the charge and spin currents are all proportional to the current tensor
 \begin{align}
-  \bm{J}_{i} &\equiv \tr\!\big[\U{\sigma}_i \BU{I}^K \big].
+  \label{eq:current-tensor-def}
+  \B{J}_{i} &\equiv \tr\!\big[\U{\sigma}_i \BU{I}^K \big].
 \end{align}
+Note that the matrix current defined above is a $2\times2$ quantity in spin space; we did not need to introduce any corresponding structure in Nambu space.
+
+
+
+\section{Heat and spin-heat currents}
+At zero temperature, all electronic states below the Fermi level are occupied, and all above are unoccupied.
+However, at finite temperatures, there are also electron-like excitations above the Fermi level, and hole-like excitations below the Fermi level.
+We will denote the energies of the corresponding electronic states as $E = \mu + \epsilon$, where $\epsilon > 0$ for electrons and $\epsilon < 0$ for holes.
+
+Note that both kinds of excitations have a potential energy~$|\epsilon|$.
+In the electron case, it is because the excited electron at $E = \mu+|\epsilon|$ can fall down and fill a state at the Fermi level $E = \mu$, and thus liberate an energy~$|\epsilon|$.
+In the hole case, it is because an unexcited electron at the Fermi level $E = \mu$ can fall down and fill the hole at $E = \mu-|\epsilon|$, and again liberate an energy~$|\epsilon|$.
+When we consider the flow of thermal excitation energy, we therefore conclude that both electrons and holes will give the contribution~$|\epsilon|$.
+
+Let us now define the heat current~$\B{J}_{eh}$ as the flow of excitation energy~$|\epsilon|$.
+In terms of the quasiparticle currents $\B{j}_{\tau\sigma}$, this means that we can write:
+\begin{equation}
+  \B{J}_{eh} \equiv |\epsilon| \big[ +\B{j}_{e\up} + \B{j}_{e\dn} + \B{j}_{h\up} + \B{j}_{h\dn} \big].
+\end{equation}
+But since $\epsilon > 0$ for electrons and $\epsilon < 0$ for holes, this is equivalent to:
+\begin{equation}
+  \B{J}_{eh} = \epsilon \big[ +\B{j}_{e\up} + \B{j}_{e\dn} - \B{j}_{h\up} - \B{j}_{h\dn} \big].
+\end{equation}
+We can similarly define a spin-heat current, which measures the difference in excitation energy flow between the spin species:
+\begin{equation}
+  \B{J}_{zh} \equiv |\epsilon| \big[ +\B{j}_{e\up} - \B{j}_{e\dn} + \B{j}_{h\up} - \B{j}_{h\dn} \big].
+\end{equation}
+And we can again rewrite this as just:
+\begin{equation}
+  \B{J}_{zh} = \epsilon \big[ +\B{j}_{e\up} - \B{j}_{e\dn} - \B{j}_{h\up} + \B{j}_{h\dn} \big].
+\end{equation}
+Both results involve differences between electron and hole currents, which means that we can reuse the results we derived for the charge and spin currents.
+In total, we therefore just find that the spectral heat and spin-heat currents are given by $\epsilon\B{J}_i$, where $\B{J}_i$ is defined in \cref{eq:current-tensor-def}.
+
+\textbf{\textcolor{red}{Question to Jacob: Do you think my definition of heat current is reasonable? What about the above result for the heat current?}}
 
 
 
 \section{Gauge corrections}
 In systems with electromagnetic or spin-orbit gauge fields, the equations of motion for the field operators also include a first-order derivative term.
-Ignoring all other terms in the equation of motion, we get the equations:\footnote{This equation follows from the gauge-covariant Hamiltonian $H = (\nabla-i\bm{A})^2/2m$; see e.g. eqs.~(4.12--4.16) in my project thesis, and keep in mind that we always have $\bm{A} = \bm{A}^\dagger$.}
+Ignoring all other terms in the equation of motion, we get the equations:\footnote{This equation follows from the gauge-covariant Hamiltonian $H = (\nabla-i\B{A})^2/2m$; see e.g. eqs.~(4.12--4.16) in my project thesis, and keep in mind that we always have $\B{A} = \B{A}^\dagger$.}
 \begin{align}
-  \p t \pc{\psi_\sigma} &= \frac{1}{m} \sum_{\sigma'} \pc{\bm{A}_{\sigma\sigma'}} \cdot (\nabla \pc{\psi_{\sigma'}}) \,, \\
-  \p t \hc{\psi_\sigma} &= \frac{1}{m} \sum_{\sigma'} (\nabla \hc{\psi_{\sigma'}}) \cdot \pc{\bm{A}_{\sigma'\sigma}} \,.
+  \p t \pc{\psi_\sigma} &= \frac{1}{m} \sum_{\sigma'} \pc{\B{A}_{\sigma\sigma'}} \cdot (\nabla \pc{\psi_{\sigma'}}) \,, \\
+  \p t \hc{\psi_\sigma} &= \frac{1}{m} \sum_{\sigma'} (\nabla \hc{\psi_{\sigma'}}) \cdot \pc{\B{A}_{\sigma'\sigma}} \,.
 \end{align}
 Substituting this into \cref{eq:density-der-cur-1,eq:density-der-cur-2}:
 \begin{align}
   \p t n_{e\sigma} &=
   \frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \avg[\big]{(\nabla \hc{\psi_{\sigma'}})\, \pc{\psi_{\sigma}}} \cdot \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma'}})}
+    \avg[\big]{(\nabla \hc{\psi_{\sigma'}})\, \pc{\psi_{\sigma}}} \cdot \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\B{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma'}})}
   \right], \\
   \p t n_{h\sigma} &=
   \frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \avg[\big]{\pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma'}})} \cdot \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\nabla \pc{\psi_{\sigma'}})\, \hc{\psi_{\sigma}}}
+    \avg[\big]{\pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma'}})} \cdot \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\B{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\nabla \pc{\psi_{\sigma'}})\, \hc{\psi_{\sigma}}}
   \right]. 
 \end{align}
 Going back to the quasiparticle continuity, we find the new contributions:
 \begin{align}
-  \nabla \cdot \bm{j}_{e\sigma} &=
+  \nabla \cdot \B{j}_{e\sigma} &=
   -\frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \avg[\big]{(\nabla \hc{\psi_{\sigma'}})\, \pc{\psi_{\sigma}}} \cdot \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma'}})}
+    \avg[\big]{(\nabla \hc{\psi_{\sigma'}})\, \pc{\psi_{\sigma}}} \cdot \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\B{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{\sigma}}\, (\nabla \pc{\psi_{\sigma'}})}
   \right], \\
-  \nabla \cdot \bm{j}_{h\sigma} &=
+  \nabla \cdot \B{j}_{h\sigma} &=
   -\frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \avg[\big]{\pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma'}})} \cdot \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\nabla \pc{\psi_{\sigma'}})\, \hc{\psi_{\sigma}}}
+    \avg[\big]{\pc{\psi_{\sigma}}\, (\nabla \hc{\psi_{\sigma'}})} \cdot \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\B{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\nabla \pc{\psi_{\sigma'}})\, \hc{\psi_{\sigma}}}
   \right]. 
 \end{align}
 We can again introduce two sets of coordinates:
 \begin{align}
-  \nabla \cdot \bm{j}_{e\sigma} &=
+  \nabla \cdot \B{j}_{e\sigma} &=
   -\frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \avg[\big]{ \big( \pc{\nabla_2} \hc{\psi_{2\sigma'}} \big)\, \pc{\psi_{1\sigma}}} \cdot \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{2\sigma}}\, \big( \pc{\nabla_1} \pc{\psi_{1\sigma'}} \big)}
+    \avg[\big]{ \big( \pc{\nabla_2} \hc{\psi_{2\sigma'}} \big)\, \pc{\psi_{1\sigma}}} \cdot \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\B{A}_{\sigma\sigma'}} \cdot \avg[\big]{ \hc{\psi_{2\sigma}}\, \big( \pc{\nabla_1} \pc{\psi_{1\sigma'}} \big)}
   \right], \\
-  \nabla \cdot \bm{j}_{h\sigma} &=
+  \nabla \cdot \B{j}_{h\sigma} &=
   -\frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \avg[\big]{\pc{\psi_{1\sigma}}\, (\pc{\nabla_2} \hc{\psi_{2\sigma'}})} \cdot \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\bm{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\pc{\nabla_1} \pc{\psi_{1\sigma'}})\, \hc{\psi_{2\sigma}}}
+    \avg[\big]{\pc{\psi_{1\sigma}}\, (\pc{\nabla_2} \hc{\psi_{2\sigma'}})} \cdot \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\B{A}_{\sigma\sigma'}} \cdot \avg[\big]{(\pc{\nabla_1} \pc{\psi_{1\sigma'}})\, \hc{\psi_{2\sigma}}}
   \right]. 
 \end{align}
 Pulling the derivatives out of the expectation values:
 \begin{align}
-  \nabla \cdot \bm{j}_{e\sigma} &=
+  \nabla \cdot \B{j}_{e\sigma} &=
   -\frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \pc{\nabla_2} \cdot \avg[\big]{ \hc{\psi_{2\sigma'}} \pc{\psi_{1\sigma}} } \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\nabla_1} \cdot \pc{\bm{A}_{\sigma\sigma'}} \avg[\big]{ \hc{\psi_{2\sigma}}\, \pc{\psi_{1\sigma'}} }
+    \pc{\nabla_2} \cdot \avg[\big]{ \hc{\psi_{2\sigma'}} \pc{\psi_{1\sigma}} } \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\nabla_1} \cdot \pc{\B{A}_{\sigma\sigma'}} \avg[\big]{ \hc{\psi_{2\sigma}}\, \pc{\psi_{1\sigma'}} }
   \right], \\
-  \nabla \cdot \bm{j}_{h\sigma} &=
+  \nabla \cdot \B{j}_{h\sigma} &=
   -\frac{1}{m} \sum_{\sigma'}
   \left[ 
-    \pc{\nabla_2} \cdot \avg[\big]{\pc{\psi_{1\sigma}}\, \hc{\psi_{2\sigma'}}} \pc{\bm{A}_{\sigma'\sigma}} +
-    \pc{\nabla_1} \cdot \pc{\bm{A}_{\sigma\sigma'}} \avg[\big]{\pc{\psi_{1\sigma'}}\, \hc{\psi_{2\sigma}}}
+    \pc{\nabla_2} \cdot \avg[\big]{\pc{\psi_{1\sigma}}\, \hc{\psi_{2\sigma'}}} \pc{\B{A}_{\sigma'\sigma}} +
+    \pc{\nabla_1} \cdot \pc{\B{A}_{\sigma\sigma'}} \avg[\big]{\pc{\psi_{1\sigma'}}\, \hc{\psi_{2\sigma}}}
   \right]. 
 \end{align}
 Subtracting these two currents:
 \begin{equation}
   \begin{aligned}
-    \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) = \\
+    \nabla \cdot (\B{j}_{e\sigma} - \B{j}_{h\sigma}) = \\
     -\frac{1}{m} \sum_{\sigma'}
     \Big[ 
-       \,& \pc{\nabla_2} \cdot \avg[\big]{ \hc{\psi_{2\sigma'}} \pc{\psi_{1\sigma}} - \pc{\psi_{1\sigma}}\, \hc{\psi_{2\sigma'}}} \pc{\bm{A}_{\sigma'\sigma}} \\
-      +\,& \pc{\nabla_1} \cdot \pc{\bm{A}_{\sigma\sigma'}} \avg[\big]{ \hc{\psi_{2\sigma}}\, \pc{\psi_{1\sigma'}} - \pc{\psi_{1\sigma'}}\, \hc{\psi_{2\sigma}}}
+       \,& \pc{\nabla_2} \cdot \avg[\big]{ \hc{\psi_{2\sigma'}} \pc{\psi_{1\sigma}} - \pc{\psi_{1\sigma}}\, \hc{\psi_{2\sigma'}}} \pc{\B{A}_{\sigma'\sigma}} \\
+      +\,& \pc{\nabla_1} \cdot \pc{\B{A}_{\sigma\sigma'}} \avg[\big]{ \hc{\psi_{2\sigma}}\, \pc{\psi_{1\sigma'}} - \pc{\psi_{1\sigma'}}\, \hc{\psi_{2\sigma}}}
     \Big].
   \end{aligned}
 \end{equation}
 Comparing this to the definition of the Keldysh propagator:
 \begin{equation}
-    \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) = 
+    \nabla \cdot (\B{j}_{e\sigma} - \B{j}_{h\sigma}) = 
     +\frac{i}{m} \sum_{\sigma'}
     \big[ 
-      \,& \pc{\nabla_2} \cdot G^K_{12\sigma\sigma'} \pc{\bm{A}_{\sigma'\sigma}} +\,& \pc{\nabla_1} \cdot \pc{\bm{A}_{\sigma\sigma'}} G^K_{12\sigma'\sigma}
+      \,& \pc{\nabla_2} \cdot G^K_{12\sigma\sigma'} \pc{\B{A}_{\sigma'\sigma}} +\,& \pc{\nabla_1} \cdot \pc{\B{A}_{\sigma\sigma'}} G^K_{12\sigma'\sigma}
     \big].
 \end{equation}
-We can now switch to mixed coordinates, and perform a Fourier transformation of the relative variable.
-Letting $\nabla_{1,2} \rightarrow \nabla/2 \pm i\bm{p}$, and keeping only the terms proportional to $\nabla$ since we are looking for a current and not a source term, we now find that:
+We now switch to mixed coordinates, and perform a Fourier transformation of the relative variable, resulting in the net change $\nabla_{1,2} \rightarrow \nabla/2 \pm i\B{p}$.
+Since we are looking for current terms $\nabla\cdot\B{j}$ and not source terms $q$, we only keep the terms proportional to $\nabla$, and discard any terms proportional to $\B{p}$.
+Thus:
 \begin{equation}
-    \nabla \cdot (\bm{j}_{e\sigma} - \bm{j}_{h\sigma}) = 
+    \nabla \cdot (\B{j}_{e\sigma} - \B{j}_{h\sigma}) = 
     +\frac{i}{2m} \nabla \cdot \sum_{\sigma'}
     \big[ 
-      \,& G^K_{\sigma\sigma'} \pc{\bm{A}_{\sigma'\sigma}} +\,& \pc{\bm{A}_{\sigma\sigma'}} G^K_{\sigma'\sigma}
+      \,& G^K_{\sigma\sigma'} \pc{\B{A}_{\sigma'\sigma}} +\,& \pc{\B{A}_{\sigma\sigma'}} G^K_{\sigma'\sigma}
     \big].
 \end{equation}
-Thus, rewritten in matrix notation, the gauge correction to the current is:
+Rewritten in matrix notation, the gauge correction to the current is therefore:
 \begin{equation}
-  \bm{j}_{e\sigma} - \bm{j}_{h\sigma} = \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \big\}_{\sigma\sigma}.
+  \B{j}_{e\sigma} - \B{j}_{h\sigma} = \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \big\}_{\sigma\sigma}.
 \end{equation}
-Our previous definitions of charge and spin currents in terms of the electron and hole currents still stand. 
-This gauge correction may therefore be included by simply revising our definition of the matrix current:
+Our previous definitions of charge, spin, heat, and spin-heat currents in terms of the electron and hole currents still stand. 
+This gauge correction may therefore be included by simply revising the matrix current:
 \begin{equation}
-  \BU{I}^K \equiv -\frac{i\bm{p}}{m} \U{G}^K + \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \}.
+  \BU{I}^K \equiv -\frac{i\B{p}}{m} \U{G}^K + \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \big\} = -\frac{i}{2m} \big\{ \U{G}^K ,\, \B{p} - \BU{A} \big\}.
 \end{equation}
-Before moving on, let us now perform a quick sanity check of the result above.
-In the case of an electromagnetic gauge field, $\BU{A} \rightarrow e\bm{A}$ is spin-independent, and the anticommutator term reduces to $ie\B{A}\U{G}^K/m$.
-This same result could have been obtained by letting $\B{p} \rightarrow \B{p} - e\B{A}$ in the equation above, i.e. the canonical momentum that we intuitively would expect there.
+This result is only a function of the canonical momentum $\B{p} - \BU{A}$ and therefore manifestly gauge covariant.
+In the spin-orbit case, the result above seems to indicate that a spin-orbit field can directly produce a spontaneous spin current in the system.
+For instance, if $\BU{A} = -\alpha \B{e}_z \U{\sigma}_z$, then the canonical momentum in the $z$-direction is $p_z\pm\alpha$ depending on spin, which should lead to a spontaneous spin-$z$ current in the $z$-direction.
+\textcolor{red}{\textbf{Question to Jacob: based on the physical consequences of this term, is this just a manifestation of ``spin-momentum locking'' in strongly spin-orbit coupled systems? Or do you think that this might be an artifact of the gauge formalism, which is somehow cancelled by the gauge-dependence in the solution $\U{G}^K$?}}
+
+We are interested in the quasiclassical limit, where one might argue that the second term is a higher-order contribution that can be neglected.
+Letting $\B{p} \rightarrow \B{p}_F$, we can write the Hamiltonian for a spin-orbit coupled system as
+\begin{equation}
+  H = \frac{(\B{p}_F - \B{A})^2}{2m} = \frac{\B{p}_F^2}{2m} - \frac{\B{p}_F\cdot\B{A}}{m} + \frac{\B{A}^2}{2m} .
+\end{equation}
+The first term is just the Fermi energy, the second term is the spin-orbit energy, and the final term is just a constant.\footnote{From the most general spin-orbit field $\B{A} = \sum_{ij} A_{ij} \B{e}_i \U{\sigma}_j$, one can show that ${\B{A}^2 \sim \sigma_0}$, making it independent of spin and direction. If the background field is position-independent as well, as we usually assume for spin-orbit fields, this term has no effects.}
+In the quasiclassical limit, the spin-orbit energy must be much smaller than the Fermi energy, from which we conclude that $\|\B{A}\| \ll \|\B{p}_F\|$.
+Going back to the matrix current, this means that in the quasiclassical limit $\|\{\U{G}^K,\, \BU{A}\}\| \ll \|\B{p}_F\U{G}^K\|$, and it should be sufficient to include only the leading-order term in the matrix current:
+\begin{equation}
+  \BU{I}^K \approx -\frac{i\B{p}_F}{m} \U{G}^K .
+\end{equation}
+\textcolor{red}{\textbf{Question to Jacob: do you agree with this conclusion, i.e. that the anticommutator contribution can be discarded in the quasiclassical limit?}}
+
+%For later convenience, we can also rewrite the above in terms of a velocity~$v \equiv p/m$:
+%\begin{equation}
+%  \BU{I}^K = -\frac{1}{2}iv \big[ 2\hat{\B{p}} \U{G}^K - v^{-1} \big\{ \U{G}^K ,\, \BU{A} \big\} \big].
+%\end{equation}
 
 
 
-\section{Quasiclassical currents}
+\section{Quasiclassical and diffusive limits}
+When we have a linear function of the propagator~$F(\UV{G})$, and go to the quasiclassical and diffusive limits, the transition can be summarized as:\footnote{There is a factor $1/2$ more in this equation than in my master thesis, because I in my master thesis defined $N_F$ as the density of states \emph{per spin} at the Fermi level.}\footnote{The derivation of this relationship is the same as for eq.~(3.13) in my Master thesis.}
 \begin{align}
-  \U{I}^K = -\frac{i}{2} N_0 \int\d\epsilon\, \avg[\Big]{ -\frac{i\bm{p}}{m} \U{G}^K + \frac{i}{2m} \big\{ \U{G}^K ,\, \BU{A} \} }_F.
+  F(\UV{G}) \rightarrow -\frac{i}{4}N_F \int\d\epsilon\,\avg[\big]{F(\UV{g})}_F,
 \end{align}
+where the angle brackets refer to an average over the Fermi surface.
+Substituting in the expression for $\B{I}^K$, and writing $\B{p}_F \equiv mv_F\hat{\B{p}}$, we find that:
 \begin{align}
-  \U{I}^K = -\frac{N_0}{4m} \int\d\epsilon\, \avg[\Big]{ 2\bm{p} \U{G}^K - \big\{ \U{G}^K ,\, \BU{A} \} }_F.
+  \BU{I}^K = -\frac{1}{4}N_Fv_F \int\d\epsilon\,\avg[\big]{\hat{\B{p}}\U{g}^K}_F.
 \end{align}
+We then perform a first-order expansion in momentum $\U{g}^K \equiv \U{g}_s^K + \BU{g}_p^K\cdot\hat{\B{p}}$, and perform the Fermi-surface average over the transport direction $\hat{p}$:
+\begin{align}
+  \BU{I}^K = -\frac{1}{12}N_Fv_F \int\d\epsilon\,\BU{g}_p^K.
+\end{align}
+In the diffusive limit, we can also write $\BUV{g}_p \approx -\tau v_F\UV{g}_s \tc\nabla \UV{g}_s$.\footnote{See the derivation of eq.~(4.95) in my project thesis.}
+Extracting the appropriate Nambu and Keldysh components of this equation:
+\begin{align}
+  \BU{I}^K = +\frac{1}{12}N_F\tau v_F^2 \int\d\epsilon\, \big[ \UV{g}_s\tc\nabla\UV{g}_s \big]^K_{ee}.
+\end{align}
+Introducing the diffusion constant $D \equiv \tau v_F^2/3$, and dropping the subscripts:
+\begin{align}
+  \BU{I}^K = \frac{1}{4}N_FD \int\d\epsilon\, \big[ \UV{g}\tc\nabla\UV{g} \big]^K_{ee}.
+\end{align}
+We may then substitute back the results for $\BU{I}^K$ into the equation for the current tensor~$\B{J}_i$.
+Formally, the derivation should be repeated for $\epsilon \BU{I}^K$ for the heat and spin-heat currents, resulting in $\epsilon$ ending up inside the integral.
+
+The above result only involves the electron block $[\cdots]_{ee}$ in Nambu space, and not the hole block $[\cdots]_{hh}$.
+However, it does include an integral over both positive and negative energies $\epsilon \in \mathbb{R}$, and this can be used to rewrite the results as integrals over both electron and hole blocks at positive energies:
+\begin{align}
+  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \Big\{ \big[ \U\sigma_i \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^K_{ee} + \big[ \U\sigma_i \UV{g}(-\epsilon)\tc\nabla\UV{g}(-\epsilon) \big]^K_{ee} \Big\}.
+\end{align}
+If we explicitly write out the Nambu-space structure of $\BU{I}^K$ in terms of the propagators, we find that $\U{I}^K_{ee} = -\TU{I}^K_{hh}$, or equivalently $\U{I}^K(-\epsilon) = - \U{I}^{K\ast}_{hh}(+\epsilon)$:
+\begin{align}
+  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \Big\{ \U{\sigma}_i \big[ \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^K_{ee} - \U{\sigma}_i^* \big[ \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^{K\ast}_{hh} \Big\}.
+\end{align}
+In terms of the Pauli matrices $\hat{\tau}_3 = \text{diag}(+1,-1)$ and $\hat{\BU{\sigma}} \equiv \text{diag}(\BU{\sigma},\BU{\sigma}^*)$:
+\begin{align}
+  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \big[ \hat{\tau}_3 \hat{\U{\sigma}}_i  \big( \UV{g}\tc\nabla\UV{g} \big)^K \big].
+\end{align}
+The exact same analysis can be done for heat and spin-heat currents; but in that case, the energy prefactor~$\epsilon$ also switches sign between positive- and negative-energy contributions to the integral, and we therefore get an extra factor~$\hat{\tau}_3$ in the final trace.
+The final current densities are thus:
+\begin{align}
+  \B{J}_e    &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,e\, \tr \big[ \hat{\tau}_3 \hat{\U{\sigma}}_0 \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
+  \B{J}_s    &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \frac{\hbar}{2} \tr \big[ \hat{\tau}_3 \hat{\BU{\sigma}}  \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
+  \B{J}_{eh} &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,\epsilon\,\tr \big[ \hat{\tau}_0 \hat{\U{\sigma}}_0 \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
+  \B{J}_{sh} &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,\epsilon\,\tr \big[ \hat{\tau}_0 \hat{\BU{\sigma}} \big( \UV{g}\tc\nabla\UV{g} \big)^K \big].
+\end{align}
+As usual, one might also use the Drude conductivity $\sigma_0 = e^2N_FD$ to rewrite the prefactors in the current densities when this turns out to be convenient.
+
+\textbf{\textcolor{red}{Note to Jacob: Compared to the standard expressions for the current densities, e.g. equations~(27--30) in \href{https://arxiv.org/abs/1706.08245}{arXiv:1706.08245}, this result is identical except for two differences. One is that we have clarified which currents should have $\hat\tau_0$ and $\hat\tau_3$ in the trace, and verified that it is indeed $\hat{\U{\sigma}}_i = \text{diag}(\U\sigma_i,\U\sigma_i^*)}$ that must appear in the trace. The second is that we have a prefactor $1/4$ and integrate over $(0,+\infty)$, while Bergeret et al. have a prefactor $1/8$ and integrate over $(-\infty, +\infty)$. If we assume that all currents are real, I have previously derived that these two results are identical.}}
+
