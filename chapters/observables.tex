@@ -845,11 +845,11 @@ When we have a linear function of the propagator~$F(\UV{G})$, and go to the quas
   F(\UV{G}) \rightarrow -\frac{i}{4}N_F \int\d\epsilon\,\avg[\big]{F(\UV{g})}_F,
 \end{align}
 where the angle brackets refer to an average over the Fermi surface.
-Substituting in the expression for $\B{I}^K$, and writing $\B{p}_F \equiv mv_F\hat{\B{p}}$, we find that:
+Substituting in the expression for $\BU{I}^K$, and writing $\B{p}_F \equiv mv_F\hat{\B{p}}$, we find that:
 \begin{align}
   \BU{I}^K = -\frac{1}{4}N_Fv_F \int\d\epsilon\,\avg[\big]{\hat{\B{p}}\U{g}^K}_F.
 \end{align}
-We then perform a first-order expansion in momentum $\U{g}^K \equiv \U{g}_s^K + \BU{g}_p^K\cdot\hat{\B{p}}$, and perform the Fermi-surface average over the transport direction $\hat{p}$:
+We then perform a first-order expansion in momentum $\U{g}^K \equiv \U{g}_s^K + \BU{g}_p^K\cdot\hat{\B{p}}$, and perform the Fermi-surface average over the transport direction $\hat{\B{p}}$:
 \begin{align}
   \BU{I}^K = -\frac{1}{12}N_Fv_F \int\d\epsilon\,\BU{g}_p^K.
 \end{align}
@@ -868,23 +868,26 @@ Formally, the derivation should be repeated for $\epsilon \BU{I}^K$ for the heat
 The above result only involves the electron block $[\cdots]_{ee}$ in Nambu space, and not the hole block $[\cdots]_{hh}$.
 However, it does include an integral over both positive and negative energies $\epsilon \in \mathbb{R}$, and this can be used to rewrite the results as integrals over both electron and hole blocks at positive energies:
 \begin{align}
-  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \Big\{ \big[ \U\sigma_i \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^K_{ee} + \big[ \U\sigma_i \UV{g}(-\epsilon)\tc\nabla\UV{g}(-\epsilon) \big]^K_{ee} \Big\}.
+  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \Big\{  \big[\hat{\U\sigma}_i \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^K_{ee} + \big[ \hat{\U\sigma}_i \UV{g}(-\epsilon)\tc\nabla\UV{g}(-\epsilon) \big]^K_{ee} \Big\}.
 \end{align}
-If we explicitly write out the Nambu-space structure of $\BU{I}^K$ in terms of the propagators, we find that $\U{I}^K_{ee} = -\TU{I}^K_{hh}$, or equivalently $\U{I}^K(-\epsilon) = - \U{I}^{K\ast}_{hh}(+\epsilon)$:
+If we explicitly write out the Nambu-space structure of $\big[ \UV{g}\tc\nabla\UV{g} \big]^K$ in terms of the $2\times2$ retarded, advanced, and Keldysh propagators, we find that the electron--hole symmetries of the integrand implies that we can write:\footnote{\textcolor{red}{Double-check this step. (It was originally checked without the spin-prefactor $\hat{\U{\sigma}}_i$.)}}
 \begin{align}
-  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \Big\{ \U{\sigma}_i \big[ \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^K_{ee} - \U{\sigma}_i^* \big[ \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^{K\ast}_{hh} \Big\}.
+  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \Big\{ \big[ \hat{\U{\sigma}}_i \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^K_{ee} - \big[ \hat{\U\sigma}_i \UV{g}(+\epsilon)\tc\nabla\UV{g}(+\epsilon) \big]^{K\ast}_{hh} \Big\}.
 \end{align}
-In terms of the Pauli matrices $\hat{\tau}_3 = \text{diag}(+1,-1)$ and $\hat{\BU{\sigma}} \equiv \text{diag}(\BU{\sigma},\BU{\sigma}^*)$:
+The current above must necessarily be real, meaning that we can safely take the real part of the current density.\footnote{\textcolor{red}{Is it possible to reach this conclusion without adding~Re manually? This should follow from an inherent energy-symmetry in the integrand, but is not easy to see at a glance.}}
+Inside Re, the complex-conjugation of the second term is not important, and can be dropped.
+We can therefore rewrite the above as a trace over Nambu and spin space.
+In terms of the Pauli matrices $\hat{\tau}_3 = \text{diag}(+1,-1)$ and $\hat{\BU{\sigma}} \equiv \text{diag}(\BU{\sigma},\BU{\sigma}^*)$, we therefore obtain:
 \begin{align}
-  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \tr \big[ \hat{\tau}_3 \hat{\U{\sigma}}_i  \big( \UV{g}\tc\nabla\UV{g} \big)^K \big].
+  \B{J}_i = \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \re\tr \big[ \hat{\tau}_3 \hat{\U{\sigma}}_i  \big( \UV{g}\tc\nabla\UV{g} \big)^K \big].
 \end{align}
-The exact same analysis can be done for heat and spin-heat currents; but in that case, the energy prefactor~$\epsilon$ also switches sign between positive- and negative-energy contributions to the integral, and we therefore get an extra factor~$\hat{\tau}_3$ in the final trace.
+The exact same analysis can be done for heat and spin-heat currents; but in that case, the energy prefactor~$\epsilon$ also switches sign between positive- and negative-energy contributions to the integral, and we therefore get an extra factor~$\epsilon\hat{\tau}_3$ in the final trace.
 The final current densities are thus:
 \begin{align}
-  \B{J}_e    &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,e\, \tr \big[ \hat{\tau}_3 \hat{\U{\sigma}}_0 \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
-  \B{J}_s    &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \frac{\hbar}{2} \tr \big[ \hat{\tau}_3 \hat{\BU{\sigma}}  \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
-  \B{J}_{eh} &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,\epsilon\,\tr \big[ \hat{\tau}_0 \hat{\U{\sigma}}_0 \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
-  \B{J}_{sh} &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,\epsilon\,\tr \big[ \hat{\tau}_0 \hat{\BU{\sigma}} \big( \UV{g}\tc\nabla\UV{g} \big)^K \big].
+  \B{J}_e    &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,e\, \re\tr \big[ \hat{\tau}_3 \hat{\U{\sigma}}_0 \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
+  \B{J}_s    &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \frac{\hbar}{2} \re\tr \big[ \hat{\tau}_3 \hat{\BU{\sigma}}  \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
+  \B{J}_{eh} &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,\epsilon\,\re\tr \big[ \hat{\tau}_0 \hat{\U{\sigma}}_0 \big( \UV{g}\tc\nabla\UV{g} \big)^K \big], \\
+  \B{J}_{sh} &= \frac{1}{4}N_FD \int_0^\infty \d\epsilon\, \,\epsilon\,\re\tr \big[ \hat{\tau}_0 \hat{\BU{\sigma}} \big( \UV{g}\tc\nabla\UV{g} \big)^K \big].
 \end{align}
 As usual, one might also use the Drude conductivity $\sigma_0 = e^2N_FD$ to rewrite the prefactors in the current densities when this turns out to be convenient.
 
