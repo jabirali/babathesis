@@ -538,6 +538,29 @@ We then set $n=3, m=0$ for charge accumulation, $n=3, m=3$ for spin accumulation
 
 
 \chapter{Physical observables}
+\section{TODO}
+\begin{itemize}
+  \item
+    Motivation: consider making a simple sketch defining changes to chemical potential instead of charge and spin.
+    For instance: an electron moving to the right, and relaxing to the Fermi surface, will release energy $\epsilon$ and adjust Fermi level by $1/N_0$ or so?
+    (But charge is easier to motivate, so scrap that, and only use this picture for heat.)
+  \item
+    Before any derivations: define particle concentration $n_{e\sigma}$ and $n_{h\sigma}$, and physically motivate the definitions of charge, spin, energy transport in terms of these.
+    Then define currents as whatever makes the continuity equations work, and motivate their definitions accordingly.
+    This should serve as a pedagogical introduction to the nonequilibrium topic.
+    Then do the accumulation + current math afterwards.
+  \item 
+    Show that $j_{e\sigma} - j_{h\sigma}$ is a real quantity, using $\avg{AB} = \cc{\avg{\hc B \hc A}}$.
+    Use this to rewrite hole part.
+  \item 
+    Check if non-quasiclassical term is imaginary and therefore zero.
+  \item
+    ``Represent energies of lacking electrosn at $\epsilon<0$''
+  \item 
+    Fix canonical (p) vs. mechanical (p-A) momentum
+\end{itemize}
+
+
 \section{Quasiparticle currents}
 Let us again start by considering the spin-resolved quasiparticle densities:\
 \begin{align}
@@ -893,3 +916,4 @@ As usual, one might also use the Drude conductivity $\sigma_0 = e^2N_FD$ to rewr
 
 \textbf{\textcolor{red}{Note to Jacob: Compared to the standard expressions for the current densities, e.g. equations~(27--30) in \href{https://arxiv.org/abs/1706.08245}{arXiv:1706.08245}, this result is identical except for two differences. One is that we have clarified which currents should have $\hat\tau_0$ and $\hat\tau_3$ in the trace, and verified that it is indeed $\hat{\U{\sigma}}_i = \text{diag}(\U\sigma_i,\U\sigma_i^*)}$ that must appear in the trace. The second is that we have a prefactor $1/4$ and integrate over $(0,+\infty)$, while Bergeret et al. have a prefactor $1/8$ and integrate over $(-\infty, +\infty)$. If we assume that all currents are real, I have previously derived that these two results are identical.}}
 
+$\UV{G}_\text{ex} = (-i/4)N_0\int\d\epsilon\,\UV{G}_\text{qc}$
