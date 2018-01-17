@@ -1,4 +1,14 @@
 \chapter{Physical observables}
+\section{Motivation}
+In this 
+
+Since each quantity above is related to its quasi/
+
+\section{Quasiparticle }
+
+
+
+\chapter{Physical observables}
 \section{Introduction}
 My equilibrium simulation program currently supports the calculation of the following physical observables:
   selfconsistent superconducting gap;
@@ -728,8 +738,6 @@ And we can again rewrite this as just:
 Both results involve differences between electron and hole currents, which means that we can reuse the results we derived for the charge and spin currents.
 In total, we therefore just find that the spectral heat and spin-heat currents are given by $\epsilon\B{J}_i$, where $\B{J}_i$ is defined in \cref{eq:current-tensor-def}.
 
-\textbf{\textcolor{red}{Question to Jacob: Do you think my definition of heat current is reasonable? What about the above result for the heat current?}}
-
 
 
 \section{Gauge corrections}
@@ -839,8 +847,7 @@ This gauge correction may therefore be included by simply revising the matrix cu
 \end{equation}
 This result is only a function of the canonical momentum $\B{p} - \BU{A}$ and therefore manifestly gauge covariant.
 In the spin-orbit case, the result above seems to indicate that a spin-orbit field can directly produce a spontaneous spin current in the system.
-For instance, if $\BU{A} = -\alpha \B{e}_z \U{\sigma}_z$, then the canonical momentum in the $z$-direction is $p_z\pm\alpha$ depending on spin, which should lead to a spontaneous spin-$z$ current in the $z$-direction.
-\textcolor{red}{\textbf{Question to Jacob: based on the physical consequences of this term, is this just a manifestation of ``spin-momentum locking'' in strongly spin-orbit coupled systems? Or do you think that this might be an artifact of the gauge formalism, which is somehow cancelled by the gauge-dependence in the solution $\U{G}^K$?}}
+For instance, if $\BU{A} = -\alpha \B{e}_z \U{\sigma}_z$, then the MECHANICAL momentum in the $z$-direction is $p_z\pm\alpha$ depending on spin, which should lead to a spontaneous spin-$z$ current in the $z$-direction.
 
 We are interested in the quasiclassical limit, where one might argue that the second term is a higher-order contribution that can be neglected.
 Letting $\B{p} \rightarrow \B{p}_F$, we can write the Hamiltonian for a spin-orbit coupled system as
@@ -853,7 +860,6 @@ Going back to the matrix current, this means that in the quasiclassical limit $\
 \begin{equation}
   \BU{I}^K \approx -\frac{i\B{p}_F}{m} \U{G}^K .
 \end{equation}
-\textcolor{red}{\textbf{Question to Jacob: do you agree with this conclusion, i.e. that the anticommutator contribution can be discarded in the quasiclassical limit?}}
 
 %For later convenience, we can also rewrite the above in terms of a velocity~$v \equiv p/m$:
 %\begin{equation}

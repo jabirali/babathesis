@@ -7,273 +7,8 @@
 % Use 'KOMA-Script Book' as the document class
 \documentclass[toc=bibliography,toc=indentunnumbered,listof=totoc]{scrbook}
 
-% All modern documents should start with this (unless you use XeTeX/LuaTeX)
-\usepackage[utf8]{inputenc}      % UTF-8 file encoding
-\usepackage[T1]{fontenc}         % 8-bit font encoding
-
 % This package is useful for modding standard environments
-\usepackage{etoolbox}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Page design
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Font size
-\KOMAoptions{fontsize=11pt}
-
-% Line spacing
-\linespread{1.07} 
-
-% Paper format
-\KOMAoptions{paper=B5}
-
-% Duplex layout
-\KOMAoptions{twoside}
-
-% Page layout (Golden aspect ratio)
-\areaset[5mm]{358.40pt}{579.89pt} 
-
-% Page layout (ISO B5 aspect ratio)
-%\KOMAoptions{BCOR=6mm}
-%\KOMAoptions{DIV=11}
-
-% Disable headers
-\pagestyle{plain}
-
-% Page numbers
-\addtokomafont{pagenumber}{\vspace{3.5ex}\footnotesize\sffamily\bfseries}
-
-% Left-justify equations
-\PassOptionsToPackage{fleqn}{amsmath}
-
-% Integral limits
-\PassOptionsToPackage{intlimits}{amsmath}
-
-% Use spacing instead of indentation to separate paragraphs
-%\KOMAoptions{parskip=half+} 
-
-% Don't stretch the content to fill entire pages
-\raggedbottom
-
-% Don't break paragraphs because of a single line
-\PassOptionsToPackage{defaultlines=2,all}{nowidow}
-
-% Permit some hyphenation in ragged-right blocks
-\PassOptionsToPackage{newcommands}{ragged2e}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Document fonts
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Text: Merriweather
-%\usepackage{merriweather}
-
-% Serif: Palatino
-\usepackage[largesc]{newpxtext}
-
-% Serif: Kepler
-%\usepackage{kpfonts}
-
-% Sans: Optima
-%\usepackage{classico}
-
-% Sans: Biolinum
-\usepackage[scaled=1.07]{biolinum}
-
-% Math: Euler
-\usepackage[utf8]{eulerpx/eulerpx}
-
-% Mono: Vera
-\usepackage[scaled=0.84]{beramono}
-
-% Calligraphic: Boondox
-%\usepackage[cal=boondoxo]{mathalfa}
-
-% Microtypographic tweaks
-\usepackage{microtype}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Table of contents
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
-% Load a package for styling the table of contents
-\usepackage{tocstyle}
-
-% Place page numbers right after the section entries
-\usetocstyle{nopagecolumn}
-
-% Do not include subsections in the table of contents
-\setcounter{tocdepth}{1}
-
-% Use tabular lining figures for the sections, but oldstyle figures for the pages
-\settocstylefeature{entryhook}{\sffamily\biolinumLF}
-\settocstylefeature{pagenumberhook}{\sffamily\biolinumOsF}
-\settocstylefeature[0]{entryhook}{\sffamily\bfseries\biolinumLF}
-\settocstylefeature[0]{pagenumberhook}{\sffamily\bfseries\biolinumOsF}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Headings
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Make sure all headings use sans text and math
-\addtokomafont{disposition}{\sffamily}
-
-% Render chapter headings in smallcaps
-\addtokomafont{chapter}{\scshape}
-
-% Change the sizes of chapters and sections
-\addtokomafont{chapter}{\LARGE}
-\addtokomafont{section}{\large}
-
-% Change spacing around chapters and sections
-\RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.7\baselineskip]{chapter}
-\RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
-
-% Bringhurst-style chapter numbers
-\makeatletter
-\newsavebox{\feline@chapter}
-\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.8cm}}}
-%\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
-\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+0.5cm\relax][r]{\usebox\feline@chapter}}}
-\preto\chapterheadendvskip{\vspace*{-\parskip}{\noindent\setlength\parfillskip{0pt plus 1fil}}}
-\makeatother
-
-% Use all lowercase for chapter headings, except in the table of contents
-\makeatletter
-  \newcommand*{\Chapter}{}
-  \let\Chapter=\chapter
-  \renewcommand*{\chapter}{\@ifstar{\star@chapter}{\@dblarg\nonstar@chapter}}
-  \newcommand*{\star@chapter}[1]{\Chapter*{\MakeLowercase{#1}}}
-  \newcommand*{\nonstar@chapter}[2][]{\Chapter[{#1}]{\MakeLowercase{#1}}}
-\makeatother
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Captions
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Switch to a sans font for captions
-\addtokomafont{caption}{\sffamily\small}
-
-% Use a bold font for caption labels
-\addtokomafont{captionlabel}{\sffamily\bfseries\small}
-
-% Redefine the caption label delimiter
-%\renewcommand*{\captionformat}{\hspace{0.3em}\rule[-0.30ex]{0.085em}{1.80ex}\hspace{0.3em}}
-
-% Add 2em margins on each side of the caption. (Since the default \parindent is 1em, this
-% implies that the left end of the caption will always look one \parindent indented if it
-% comes right before/after a new paragraph, and can therefore prevent weird indentation.)
-\setcapdynwidth{\dimexpr\textwidth-4em\relax}
-
-% Disable extra indentation of the subsequent lines in a multiline caption
-\setcapindent{0em}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Footnotes
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Make sure footnote marks are separated by commas and kerned properly
-\usepackage{fnpct}
-
-% Switch to a sans font for footnotes
-\addtokomafont{footnote}{\sffamily}
-
-% Change footnote marks to letters (recommended if using superscript citations)
-%\renewcommand{\thefootnote}{\alph{footnote}}
-
-% Set the footnote rule length to the text width
-\setfootnoterule{\textwidth}
-
-% Remove the footnote rule entirely
-%\setfootnoterule{0pt}
-
-% Adjust the footnote formatting and spacing
-\deffootnote{2.15em}{2.15em}{\textbf{\thefootnotemark.}\kern0.75em}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Hyperlinks
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Enable clickable hyperlinks (useful if the document is read on a computer)
-\usepackage{hyperref}
-
-% Do not color links (suitable for documents that will primarily be printed)
-\hypersetup{hidelinks}
-
-% Generate links in the table of contents
-\hypersetup{linktoc=all}
-
-% Generate links to footnotes
-\hypersetup{hyperfootnotes}
-
-% Generate bookmarks (also useful if the document is read on a computer)
-\hypersetup{bookmarks,bookmarksopen,bookmarksnumbered}
-
-% Switch to a sans font for hyperlinks
-\urlstyle{sf}
-
-% Fix kerning problems for backslashes and redefine underscores in hyperlinks
-\makeatletter
-\let\UrlSpecialsOld\UrlSpecials
-\def\UrlSpecials{\UrlSpecialsOld\do\/{\Url@slash}\do\_{\Url@underscore}}%
-\def\Url@slash{\@ifnextchar/{\kern+0.05em\mathchar47\kern-0.10em}%
-    {\kern0.08em\mathchar47\penalty\UrlBigBreakPenalty}}
-\def\Url@underscore{\nfss@text{\leavevmode \kern.06em\vbox{\hrule height 0.12ex width 0.4em}}}
-\makeatother
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   References
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Bibliography backend (e.g. 'biber' or 'bibtex')
-\PassOptionsToPackage{backend=biber}{biblatex}
-
-% Bibliography style (e.g. 'phys' or 'nature')
-\PassOptionsToPackage{style=bababib}{biblatex}
-
-% Citation style (e.g. 'plain' or 'superscript')
-\PassOptionsToPackage{autocite=plain}{biblatex} 
-
-% Enable multiple bibliographies with separate numbering
-\PassOptionsToPackage{defernumbers=true}{biblatex}
-
-% Format for cross-references with \cref
-\PassOptionsToPackage{noabbrev}{cleveref}
-\newcommand{\crefrangeconjunction}{--}
-
+% \usepackage{etoolbox}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -283,186 +18,438 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load the required packages
-\usepackage{amsmath}    % Common mathematical environments
-\usepackage{biblatex}   % Produces the bibliography
-\usepackage{ragged2e}   % Permits ragged-right with hyphenation
-\usepackage{nowidow}    % Prevents widows and orphans in text
-\usepackage{cleveref}   % Easy and consistent cross-references
-\usepackage{graphicx}   % Loads and displays figures
-\usepackage{pdfpages}   % Enables embedding of documents
-\usepackage{xcolor}     % Enables coloring of text and pages
-\usepackage{booktabs}   % Proper formatting of tables
-\usepackage{siunitx}    % Proper formatting of units
-\usepackage{mhchem}     % Proper formatting of chemicals
+%\usepackage{mathtools}    % Common mathematical environments
+% \usepackage{biblatex}   % Produces the bibliography
+% \usepackage{ragged2e}   % Permits ragged-right with hyphenation
+% \usepackage{nowidow}    % Prevents widows and orphans in text
+% \usepackage{cleveref}   % Easy and consistent cross-references
+% \usepackage{graphicx}   % Loads and displays figures
+% \usepackage{pdfpages}   % Enables embedding of documents
+% \usepackage{xcolor}     % Enables coloring of text and pages
+% \usepackage{booktabs}   % Proper formatting of tables
+% \usepackage{siunitx}    % Proper formatting of units
+% \usepackage{mhchem}     % Proper formatting of chemicals
 \usepackage{bm}         % Flexible boldface notation
 \usepackage{lipsum}     % Random content
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   List of publications
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Macros for printing bibliographies
-\defbibheading{pubs}[Publications]{\chapter*{#1}}
-\newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
-\newcommand{\printpapers}{\printbibliography[type=customa,heading=pubs,resetnumbers=true]}
-
-% Declare how to compactly cite my own papers (format: "Paper I")
-\DeclareCiteCommand{\papercite}
-  {Paper~\usebibmacro{cite:init}\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}\usebibmacro{cite:comp}}{}
-  {\usebibmacro{cite:dump}\usebibmacro{postnote}}
-
-% Declare how to verbosely cite my own papers (format: full citation)
-\makeatletter
-\DeclareCiteCommand{\fullpapercite}%
-{\usebibmacro{prenote}}%
-{{\defcounter{maxnames}{\blx@maxbibnames}%
-  \sffamily
-  \raggedright
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{title}%
-  \newblock
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit\newblock
-  \usebibmacro{journal+issuetitle}%
-  \newunit
-  \usebibmacro{byeditor+others}%
-  \newunit
-  \usebibmacro{note+pages}%
-  \newunit
-  \setunit{\addspace}
-  \usebibmacro{issue+date}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \newunit\newblock
-  \usebibmacro{related}%
-  \newunit\newblock
-  \usebibmacro{doi+eprint+url}%
-  \usebibmacro{finentry}%
-	\nopunct
-}} 
-{\multicitedelim}
-{\usebibmacro{postnote}}
-\makeatother
-
-% Macro for embedding papers
-\newenvironment{paper}[2]
-{
-  \def\paperpath{#1}
-  \chapter*{\papercite{#2}}
-  \pagecolor{whiteish}
-  \noindent\\[-2ex]
-  \fullpapercite{#2}\\[2ex]
-  \noindent
-  \textbf{Contribution}\\
-}
-{
-  \cleardoublepage
-  \nopagecolor
-  \color{black}
-  \includepdf[pages={-}]{\paperpath}
-  \cleardoublepage
-}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Page design
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Font size
+% \KOMAoptions{fontsize=11pt}
+% 
+% % Line spacing
+% \linespread{1.07} 
+% 
+% % Paper format
+% \KOMAoptions{paper=B5}
+% 
+% % Duplex layout
+% \KOMAoptions{twoside}
+% 
+% % Page layout (Golden aspect ratio)
+% \areaset[5mm]{358.40pt}{579.89pt} 
+% 
+% % Page layout (ISO B5 aspect ratio)
+% %\KOMAoptions{BCOR=6mm}
+% %\KOMAoptions{DIV=11}
+% 
+% % Disable headers
+% \pagestyle{plain}
+% 
+% % Page numbers
+% \addtokomafont{pagenumber}{\vspace{3.5ex}\footnotesize\sffamily\bfseries}
+% 
+% % Left-justify equations
+% \PassOptionsToPackage{fleqn}{amsmath}
+% 
+% % Integral limits
+% \PassOptionsToPackage{intlimits}{amsmath}
+% 
+% % Use spacing instead of indentation to separate paragraphs
+% %\KOMAoptions{parskip=half+} 
+% 
+% % Don't stretch the content to fill entire pages
+% \raggedbottom
+% 
+% % Don't break paragraphs because of a single line
+% \PassOptionsToPackage{defaultlines=2,all}{nowidow}
+% 
+% % Permit some hyphenation in ragged-right blocks
+% \PassOptionsToPackage{newcommands}{ragged2e}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Miscellaneous
+%   Document fonts
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Set tables in a sans font
-\AtBeginEnvironment{tabular}{\sffamily}
-\AtBeginEnvironment{tabular*}{\sffamily}
+% Load font management packages
+\usepackage[no-math]{fontspec} 
+\usepackage[math-style=ISO]{unicode-math}
 
-% Format for typesetting physical units
-\sisetup{range-units=single}
-\sisetup{range-phrase=--}
-\sisetup{detect-all} 
+% Microtypographic tweaks
+% \usepackage{microtype}
 
-% Use 2em equation indentation
-\makeatletter
-\setlength\@mathmargin{2em}
-\makeatother
-
-% Replace \cite with the more flexible \autocite
-\let\cite=\autocite
-
-% Define a custom color palette
-\definecolor{whiteish}{rgb}{1.000, 0.964, 0.859}
-\definecolor{rosewood}{rgb}{0.396, 0.000, 0.043}
-
-% Declare a custom article format for my papers
-\DeclareBibliographyAlias{customa}{article}
-\DeclareFieldFormat[customa]{labelnumber}{\textsc{\Rn{#1}}}
+% Set main font to STIX2
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}%
+[
+  StylisticSet=2
+]
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Custom macros
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Table of contents
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  
+% % Load a package for styling the table of contents
+% \usepackage{tocstyle}
+% 
+% % Place page numbers right after the section entries
+% \usetocstyle{nopagecolumn}
+% 
+% % Do not include subsections in the table of contents
+% \setcounter{tocdepth}{1}
+% 
+% % Use tabular lining figures for the sections, but oldstyle figures for the pages
+% \settocstylefeature{entryhook}{\sffamily\biolinumLF}
+% \settocstylefeature{pagenumberhook}{\sffamily\biolinumOsF}
+% \settocstylefeature[0]{entryhook}{\sffamily\bfseries\biolinumLF}
+% \settocstylefeature[0]{pagenumberhook}{\sffamily\bfseries\biolinumOsF}
 
-% Brackets
-\newcommand{\avg}[2][]{#1\langle #2 #1\rangle}
 
-% Mathematical markup
-\newcommand{\B}[1]{\bm{#1}}
-\newcommand{\C}[1]{\mathcal{#1}}
-\newcommand{\U}[1]{\underline{#1}}
-\newcommand{\V}[1]{\check{#1}}
-\newcommand{\T}[1]{\tilde{#1}}
-\newcommand{\BC}[1]{\bm{\mathcal{#1}}}
-\newcommand{\BU}[1]{\U{\B{#1}}}
-\newcommand{\BUV}[1]{\V{\U{\B{#1}}}}
-\newcommand{\BCU}[1]{\U{\B{\C{#1}}}} 
-\newcommand{\CU}[1]{\U{\C{#1}}}
-\newcommand{\CUV}[1]{\V{\U{\C{#1}}}}
-\newcommand{\UV}[1]{\V{\U{#1}}}
-\newcommand{\BV}[1]{\V{\B{#1}}}
-\newcommand{\TU}[1]{\T{\U{#1}}}
 
-\renewcommand{\S}[1]{\U{\sigma}_{#1}}
-\newcommand{\N}[1]{\tau_{#1}}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Headings
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Make sure all headings use sans text and math
+% \addtokomafont{disposition}{\sffamily}
+% 
+% % Render chapter headings in smallcaps
+% \addtokomafont{chapter}{\scshape}
+% 
+% % Change the sizes of chapters and sections
+% \addtokomafont{chapter}{\LARGE}
+% \addtokomafont{section}{\large}
+% 
+% % Change spacing around chapters and sections
+% \RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.7\baselineskip]{chapter}
+% \RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
+% 
+% % Bringhurst-style chapter numbers
+% \makeatletter
+% \newsavebox{\feline@chapter}
+% \newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.8cm}}}
+% %\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+% \renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+0.5cm\relax][r]{\usebox\feline@chapter}}}
+% \preto\chapterheadendvskip{\vspace*{-\parskip}{\noindent\setlength\parfillskip{0pt plus 1fil}}}
+% \makeatother
+% 
+% % Use all lowercase for chapter headings, except in the table of contents
+% \makeatletter
+%   \newcommand*{\Chapter}{}
+%   \let\Chapter=\chapter
+%   \renewcommand*{\chapter}{\@ifstar{\star@chapter}{\@dblarg\nonstar@chapter}}
+%   \newcommand*{\star@chapter}[1]{\Chapter*{\MakeLowercase{#1}}}
+%   \newcommand*{\nonstar@chapter}[2][]{\Chapter[{#1}]{\MakeLowercase{#1}}}
+% \makeatother
 
-% Short-hand notation
-\renewcommand{\d}[1]{d#1}
-\renewcommand{\p}[1]{\partial_{#1}}
-\newcommand{\up}{\uparrow}
-\newcommand{\dn}{\downarrow}
 
-\newcommand{\tc}[1]{\tilde{#1}}
-\newcommand{\hc}[1]{#1^{\dagger}}
-\newcommand{\cc}[1]{#1^{\ast}}
-\newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
 
-% Phantom notation
-\newcommand{\PM}{\phantom{-}}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Captions
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Switch to a sans font for captions
+% \addtokomafont{caption}{\sffamily\small}
+% 
+% % Use a bold font for caption labels
+% \addtokomafont{captionlabel}{\sffamily\bfseries\small}
+% 
+% % Redefine the caption label delimiter
+% %\renewcommand*{\captionformat}{\hspace{0.3em}\rule[-0.30ex]{0.085em}{1.80ex}\hspace{0.3em}}
+% 
+% % Add 2em margins on each side of the caption. (Since the default \parindent is 1em, this
+% % implies that the left end of the caption will always look one \parindent indented if it
+% % comes right before/after a new paragraph, and can therefore prevent weird indentation.)
+% \setcapdynwidth{\dimexpr\textwidth-4em\relax}
+% 
+% % Disable extra indentation of the subsequent lines in a multiline caption
+% \setcapindent{0em}
 
-% Mathematical structure
-\newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
 
-% Mathematical operations
-\DeclareMathOperator{\tr}{Tr}
-\DeclareMathOperator{\re}{Re}
-\DeclareMathOperator{\im}{Im}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Footnotes
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Make sure footnote marks are separated by commas and kerned properly
+% \usepackage{fnpct}
+% 
+% % Switch to a sans font for footnotes
+% \addtokomafont{footnote}{\sffamily}
+% 
+% % Change footnote marks to letters (recommended if using superscript citations)
+% %\renewcommand{\thefootnote}{\alph{footnote}}
+% 
+% % Set the footnote rule length to the text width
+% \setfootnoterule{\textwidth}
+% 
+% % Remove the footnote rule entirely
+% %\setfootnoterule{0pt}
+% 
+% % Adjust the footnote formatting and spacing
+% \deffootnote{2.15em}{2.15em}{\textbf{\thefootnotemark.}\kern0.75em}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Hyperlinks
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Enable clickable hyperlinks (useful if the document is read on a computer)
+% \usepackage{hyperref}
+% 
+% % Do not color links (suitable for documents that will primarily be printed)
+% \hypersetup{hidelinks}
+% 
+% % Generate links in the table of contents
+% \hypersetup{linktoc=all}
+% 
+% % Generate links to footnotes
+% \hypersetup{hyperfootnotes}
+% 
+% % Generate bookmarks (also useful if the document is read on a computer)
+% \hypersetup{bookmarks,bookmarksopen,bookmarksnumbered}
+% 
+% % Switch to a sans font for hyperlinks
+% \urlstyle{sf}
+% 
+% % Fix kerning problems for backslashes and redefine underscores in hyperlinks
+% \makeatletter
+% \let\UrlSpecialsOld\UrlSpecials
+% \def\UrlSpecials{\UrlSpecialsOld\do\/{\Url@slash}\do\_{\Url@underscore}}%
+% \def\Url@slash{\@ifnextchar/{\kern+0.05em\mathchar47\kern-0.10em}%
+%     {\kern0.08em\mathchar47\penalty\UrlBigBreakPenalty}}
+% \def\Url@underscore{\nfss@text{\leavevmode \kern.06em\vbox{\hrule height 0.12ex width 0.4em}}}
+% \makeatother
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   References
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Bibliography backend (e.g. 'biber' or 'bibtex')
+% \PassOptionsToPackage{backend=biber}{biblatex}
+% 
+% % Bibliography style (e.g. 'phys' or 'nature')
+% \PassOptionsToPackage{style=bababib}{biblatex}
+% 
+% % Citation style (e.g. 'plain' or 'superscript')
+% \PassOptionsToPackage{autocite=plain}{biblatex} 
+% 
+% % Enable multiple bibliographies with separate numbering
+% \PassOptionsToPackage{defernumbers=true}{biblatex}
+% 
+% % Format for cross-references with \cref
+% \PassOptionsToPackage{noabbrev}{cleveref}
+% \newcommand{\crefrangeconjunction}{--}
+
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   List of publications
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Macros for printing bibliographies
+% \defbibheading{pubs}[Publications]{\chapter*{#1}}
+% \newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
+% \newcommand{\printpapers}{\printbibliography[type=customa,heading=pubs,resetnumbers=true]}
+% 
+% % Declare how to compactly cite my own papers (format: "Paper I")
+% \DeclareCiteCommand{\papercite}
+%   {Paper~\usebibmacro{cite:init}\usebibmacro{prenote}}
+%   {\usebibmacro{citeindex}\usebibmacro{cite:comp}}{}
+%   {\usebibmacro{cite:dump}\usebibmacro{postnote}}
+% 
+% % Declare how to verbosely cite my own papers (format: full citation)
+% \makeatletter
+% \DeclareCiteCommand{\fullpapercite}%
+% {\usebibmacro{prenote}}%
+% {{\defcounter{maxnames}{\blx@maxbibnames}%
+%   \sffamily
+%   \raggedright
+%   \usebibmacro{bibindex}%
+%   \usebibmacro{begentry}%
+%   \usebibmacro{author/translator+others}%
+%   \setunit{\labelnamepunct}\newblock
+%   \usebibmacro{title}%
+%   \newblock
+%   \printlist{language}%
+%   \newunit\newblock
+%   \usebibmacro{byauthor}%
+%   \newunit\newblock
+%   \usebibmacro{bytranslator+others}%
+%   \newunit\newblock
+%   \printfield{version}%
+%   \newunit\newblock
+%   \usebibmacro{journal+issuetitle}%
+%   \newunit
+%   \usebibmacro{byeditor+others}%
+%   \newunit
+%   \usebibmacro{note+pages}%
+%   \newunit
+%   \setunit{\addspace}
+%   \usebibmacro{issue+date}%
+%   \newunit\newblock
+%   \usebibmacro{addendum+pubstate}%
+%   \setunit{\bibpagerefpunct}\newblock
+%   \usebibmacro{pageref}%
+%   \newunit\newblock
+%   \usebibmacro{related}%
+%   \newunit\newblock
+%   \usebibmacro{doi+eprint+url}%
+%   \usebibmacro{finentry}%
+% 	\nopunct
+% }} 
+% {\multicitedelim}
+% {\usebibmacro{postnote}}
+% \makeatother
+% 
+% % Macro for embedding papers
+% \newenvironment{paper}[2]
+% {
+%   \def\paperpath{#1}
+%   \chapter*{\papercite{#2}}
+%   \pagecolor{whiteish}
+%   \noindent\\[-2ex]
+%   \fullpapercite{#2}\\[2ex]
+%   \noindent
+%   \textbf{Contribution}\\
+% }
+% {
+%   \cleardoublepage
+%   \nopagecolor
+%   \color{black}
+%   \includepdf[pages={-}]{\paperpath}
+%   \cleardoublepage
+% }
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Miscellaneous
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Set tables in a sans font
+% \AtBeginEnvironment{tabular}{\sffamily}
+% \AtBeginEnvironment{tabular*}{\sffamily}
+% 
+% % Format for typesetting physical units
+% \sisetup{range-units=single}
+% \sisetup{range-phrase=--}
+% \sisetup{detect-all} 
+% 
+% % Use 2em equation indentation
+% \makeatletter
+% \setlength\@mathmargin{2em}
+% \makeatother
+% 
+% % Replace \cite with the more flexible \autocite
+% \let\cite=\autocite
+% 
+% % Define a custom color palette
+% \definecolor{whiteish}{rgb}{1.000, 0.964, 0.859}
+% \definecolor{rosewood}{rgb}{0.396, 0.000, 0.043}
+% 
+% % Declare a custom article format for my papers
+% \DeclareBibliographyAlias{customa}{article}
+% \DeclareFieldFormat[customa]{labelnumber}{\textsc{\Rn{#1}}}
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %
+% %   Custom macros
+% %
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+% % Brackets
+% \newcommand{\avg}[2][]{#1\langle #2 #1\rangle}
+% \newcommand{\comm}[2][]{#1[ #2 ,\, #1]}
+% \newcommand{\anticomm}[2][]{#1\{ #2 ,\, #1\}}
+% 
+% % Mathematical markup
+% \newcommand{\B}[1]{\bm{#1}}
+% \newcommand{\C}[1]{\mathcal{#1}}
+% \newcommand{\U}[1]{\underline{#1}}
+% \newcommand{\V}[1]{\check{#1}}
+% \newcommand{\T}[1]{\tilde{#1}}
+% \newcommand{\BC}[1]{\bm{\mathcal{#1}}}
+% \newcommand{\BU}[1]{\U{\B{#1}}}
+% \newcommand{\BUV}[1]{\V{\U{\B{#1}}}}
+% \newcommand{\BCU}[1]{\U{\B{\C{#1}}}} 
+% \newcommand{\CU}[1]{\U{\C{#1}}}
+% \newcommand{\CUV}[1]{\V{\U{\C{#1}}}}
+% \newcommand{\UV}[1]{\V{\U{#1}}}
+% \newcommand{\BV}[1]{\V{\B{#1}}}
+% \newcommand{\TU}[1]{\T{\U{#1}}}
+% 
+% \renewcommand{\S}[1]{\U{\sigma}_{#1}}
+% \newcommand{\N}[1]{\tau_{#1}}
+% 
+% % Short-hand notation
+% \renewcommand{\d}[1]{d#1}
+% \renewcommand{\p}[1]{\partial_{#1}}
+% \newcommand{\up}{\uparrow}
+% \newcommand{\dn}{\downarrow}
+% 
+% \newcommand{\tc}[1]{\tilde{#1}}
+% \newcommand{\hc}[1]{#1^{\dagger}}
+% \newcommand{\cc}[1]{#1^{\ast}}
+% \newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
+% 
+% % Phantom notation
+% \newcommand{\PM}{\phantom{-}}
+% 
+% % Mathematical structure
+% \newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
+% 
+% % Mathematical operations
+% \DeclareMathOperator{\tr}{Tr}
+% \DeclareMathOperator{\re}{Re}
+% \DeclareMathOperator{\im}{Im}
 
 
 
@@ -472,22 +459,22 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\addbibresource{chapters/references.bib}
-\addbibresource{papers/references.bib}
+%\addbibresource{chapters/references.bib}
+%\addbibresource{papers/references.bib}
 
 \begin{document}
   \frontmatter
-    \include{chapters/abstract}
-    \include{chapters/preface}
-    \printpapers
+    %\include{chapters/abstract}
+    %\include{chapters/preface}
+    %\printpapers
     \tableofcontents
   \mainmatter 
     \include{chapters/introduction} 
-    \include{chapters/theory}
-    \include{chapters/equilibrium}
-    \include{chapters/nonequilibrium} 
-    \include{chapters/observables}
-    \include{chapters/algorithms} 
+    %\include{chapters/theory}
+    %\include{chapters/equilibrium}
+    %\include{chapters/nonequilibrium} 
+    %\include{chapters/observables}
+    %\include{chapters/algorithms} 
     \include{chapters/test}
   %\backmatter
   %  \printcites
