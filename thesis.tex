@@ -86,8 +86,8 @@
 % Load the fonts themselves
 \setsansfont{Linux Biolinum O}[Scale=1.06]
 \setmainfont{STIX Two Text}
-\setmathfont{STIX Two Math}[StylisticSet=5]
-\setmathfont{STIX Two Math}[StylisticSet=8,range={\uparrow,\downarrow}]
+\setmathfont{STIX Two Math}[StylisticSet=8]
+\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -187,8 +187,8 @@
 % Make sure footnote marks are separated by commas and kerned properly
 \usepackage{fnpct}
 
-% Switch to a sans font for footnotes
-%\addtokomafont{footnote}{\sffamily}
+% Switch to an italic font for footnotes
+\addtokomafont{footnote}{\itshape}
 
 % Change footnote marks to letters (recommended if using superscript citations)
 %\renewcommand{\thefootnote}{\alph{footnote}}
@@ -200,7 +200,7 @@
 %\setfootnoterule{0pt}
 
 % Adjust the footnote formatting and spacing
-\deffootnote{2.15em}{2.15em}{\textbf{\thefootnotemark.}\kern0.75em}
+\deffootnote{2.15em}{2.15em}{\thefootnotemark.\kern0.75em}
 
 
 

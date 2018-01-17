@@ -14,7 +14,7 @@
 \RequireBibliographyStyle{nature}
 
 % Select the bibliography font
-\renewcommand*{\bibfont}{\sffamily\raggedright}
+\renewcommand*{\bibfont}{\raggedright}
 
 % Sacrifice a tree to obtain better readability
 \ExecuteBibliographyOptions{block=nbpar}
@@ -49,8 +49,8 @@
 \DeclareFieldFormat[book]{volume}{#1}
 \DeclareFieldFormat[book,collection]{number}{\mkbibbold{#1}}
 \DeclareFieldFormat*{pages}{#1}
-\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{\textsf{\nolinkurl{doi:#1}}}\nopunct}
-\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{isbn:#1}\nopunct}
+\DeclareFieldFormat{doi}{\href{https://dx.doi.org/#1}{DOI:#1}\nopunct}
+\DeclareFieldFormat{isbn}{\href{https://isbnsearch.org/isbn/#1}{\textsc{ISBN}:#1}\nopunct}
 
 % Simple modifications to punctuation, etc.
 \renewcommand*{\finalnamedelim}{,\addspace}
