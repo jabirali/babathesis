@@ -16,9 +16,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load the required packages
-\usepackage{etoolbox}   % Modding standard environments
-\usepackage[fleqn,intlimits]{amsmath}    % Common mathematical environments
-\usepackage[svgnames]{xcolor}     % Enables coloring of text and pages
+\usepackage{etoolbox}                   % Modding standard environments
+\usepackage[fleqn,intlimits]{amsmath}   % Common mathematical environments
+\usepackage[svgnames]{xcolor}           % Enables coloring of text and pages
+\usepackage{hyperref}                   % Enables hyperlink generation
 
 
 
@@ -110,10 +111,10 @@
 \setcounter{tocdepth}{1}
 
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
-\settocstylefeature{entryhook}{\oldstylenums}
-\settocstylefeature{pagenumberhook}{\oldstylenums}
+\settocstylefeature{entryhook}{\addfontfeature{Numbers=OldStyle}}
+\settocstylefeature{pagenumberhook}{\addfontfeature{Numbers=OldStyle}}
 \settocstylefeature[0]{entryhook}{\bfseries}
-\settocstylefeature[0]{pagenumberhook}{\bfseries\oldstylenums}
+\settocstylefeature[0]{pagenumberhook}{\bfseries\addfontfeature{Numbers=OldStyle}}
 
 
 
@@ -228,11 +229,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Enable clickable hyperlinks (useful if the document is read on a computer)
-\usepackage{hyperref}
-
-% Do not color links (suitable for documents that will primarily be printed)
-\hypersetup{hidelinks}
+% Table of contents links
+\hypersetup{linktoc=page}
 
 % Color the hyperlinks
 \hypersetup{colorlinks}
