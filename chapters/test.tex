@@ -12,8 +12,8 @@ Both sections include tests related to cross-references, figures and tables.
 \section{Here be random text about \textsc{srt/lrt}}\label{sec:test}
 This is a test. Let's see how this goes! Btw, $e^{i\pi} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
 Also calligraphic $\mathcal{A} = \mathcal{F}x$.
-Bold $\B{A}\B{\xi} = \B{\eta}$ and spins $f_{\uparrow\downarrow}+g_{\downarrow\uparrow} \in \mathbb{S}_{\parallel\perp}$ and $n\in\mathbb{N}$.
-Also $\partial_z I = \partial_z \Delta = 0$.
+Bold $\B{A}\B{\xi} = \B{\Delta}\B{\eta}$ and spins $\nabla^2 f_{\uparrow\downarrow}^{\vphantom{*}}+g_{\downarrow\uparrow}^{\vphantom{*}} \in \mathbb{S}_{\parallel\perp}$ and $n\in\mathbb{N}$.
+Also $\partial_z I \sim \partial_z \Delta = 0$.
 Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.\footnote{This is simply just a simple test, with an equation $\sin a = \cos(2b-1)/\cos(2b+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }%\footnote{Testing}\footnote{Testing again}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}
 %Also we can point out $I = \{ 1 \pm [\sin(a)\tan(b)]^2\} $.
 Here is another equation:
@@ -21,11 +21,11 @@ Here is another equation:
 %  Δ(z) = \int_0^{ω_c} \mathrm{d}ε\;\mathrm{Re}\; f_s(ε) \tanh\!\left(\frac{π}{2e^γ} \frac{ε/Δ_0}{T/T_c}\right)
 %\end{equation}
 \begin{equation}
-  \Delta(z) = \int_0^{\infty} \mathrm{d}\epsilon\,\mathrm{Re}\, f_s(\epsilon) \tanh\!\left(\frac{\pi}{2e^\gamma} \frac{\epsilon/\Delta_0}{T/T_c}\right)
+  \Delta(z) = \int_0^{\infty} \mathrm{d}\epsilon\,\mathrm{Re}\big[\,f_s(\epsilon)\big] \tanh\!\left(\frac{\pi}{2e^\gamma} \frac{\epsilon/\Delta_0}{T/T_c}\right)
 \end{equation}
 Some references are given in \cref{ch:test}, and more specifically \cref{sec:test,sec:test2}.
 \begin{equation}
-  \int f(x) dx \sum_i n_i \prod_j p_j
+  \int \mathrm{d}x\, f(x) \sum_i n_i^\beta \prod_j p_j^\alpha
 \end{equation}
 Here is some normal text. \textit{And here is some emphasized text 1234567890}. Normal 123456789. 
 Say something about the \textsc{bcs} theory and \textsc{bcs-bec} transition \emph{and \textsc{srt/lrt} in italics}.
@@ -35,6 +35,10 @@ This is another test: $1 < 2 > 0 \leq 1 \geq 2$, and here is an url: \url{http:/
   \textit{e}e\mathrm{e}\textsf{e}%\texttt{e}\;
   \textit{I}I\mathrm{I}\textsf{I}%\texttt{I}\;
   \textit{m}m\mathrm{m}\textsf{m}%\texttt{m}
+\end{equation}
+Here is another one:
+\begin{equation}
+  a\alpha b\beta d\delta e\epsilon \chi\psi bd \phi\theta v\nu u p\rho
 \end{equation}
 \textsf{And here is some sans-serif text with math $e^{i\varphi}=\cos\varphi+i\sin\varphi$ and so on.} And here is some normal text again.
 Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{23e23}{m/s}$ also.

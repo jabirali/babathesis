@@ -81,8 +81,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load font management packages
-%\usepackage[no-math]{fontspec} 
-%\usepackage[math-style=ISO]{unicode-math}
+\usepackage[scaled=0.96]{newtxmath}
+\usepackage[no-math]{fontspec} 
+\usepackage[math-style=ISO]{unicode-math}
 \usepackage{microtype}
 
 % Load the fonts themselves
@@ -90,16 +91,37 @@
 %\setsansfont{Libertinus Sans}
 %\setmathfont{Libertinus Math}
 
+\let\mathbb=\varmathbb
+
+%\usepackage[MnSymbol]{mathspec}
+\defaultfontfeatures{Scale=MatchLowercase}%,Numbers={Lining,Proportional}}
+%\setmainfont[Renderer=Basic,Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
+\setmainfont[Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
+%\setmonofont[Scale=0.95]{Prestige Elite Std}
+%\setmathfont{STIX Two Math}
+%\setmathfont[range=\mathup/{latin,Latin,greek,Greek,num}]{WarnockPro-Disp}
+
 %\setsansfont{Linux Biolinum O}[Scale=1.06]
 %\setmainfont{STIX Two Text}
 %\setmathfont{STIX Two Math}[StylisticSet=8]
 %\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 
+\setsansfont{Linux Biolinum O}[Scale=1.03]
+%\setsansfont[Scale=MatchUppercase]{Fira Sans}
+\setmathfont{STIX Two Math}[StylisticSet=8]
+\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
+\setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin},\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
+\setmathfont{WarnockPro-It}[range=\mathit/{num,latin,Latin}]
+\setmathfont{WarnockPro-Bold}[range=\mathbfup/{num,latin,Latin}]
+\setmathfont{WarnockPro-BoldIt}[range=\mathbfit/{num,latin,Latin}]
+
 %\setmainfont{Minion Pro}
 %\setsansfont{Myriad Pro}
+%\setmathfont{Minion Pro}
 %\usepackage{MyriadPro}
-\usepackage{biolinum}
-\usepackage[minionint,openg,footnotefigures,italicgreek,swash,textosf,mathosf]{MinionPro}
+%\usepackage{biolinum}
+%\usepackage{MyriadPro}
+%\usepackage[openg,footnotefigures,italicgreek,swash,textosf,mathlf]{MinionPro}
 %\usepackage{MnSymbol}
 
 % Decorations
@@ -432,7 +454,7 @@
 \newcommand{\anticomm}[2][]{#1\{ #2 ,\, #1\}}
 
 % Mathematical markup
-\newcommand{\B}[1]{\boldsymbol{#1}}
+\newcommand{\B}[1]{\symbf{#1}}
 \newcommand{\C}[1]{\mathcal{#1}}
 \newcommand{\U}[1]{\underline{#1}}
 \newcommand{\V}[1]{\check{#1}}
