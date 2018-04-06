@@ -109,7 +109,7 @@
 
 \setsansfont{Linux Biolinum O}[,Numbers={Lining,Proportional},Scale=1.015]
 %\setsansfont[Scale=MatchUppercase]{Fira Sans}
-\setmathfont{STIX Two Math}[StylisticSet=8]
+\setmathfont{STIX Two Math}[StylisticSet={4,8}]
 \setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 \setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin,Greek},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
 \setmathfont{WarnockPro-It}[range=\mathit/{num,latin,Latin,Greek}]
@@ -247,8 +247,12 @@
 % Switch to an italic font for footnotes
 \addtokomafont{footnote}{\itshape}
 
-% Change footnote marks to letters (recommended if using superscript citations)
-%\renewcommand{\thefootnote}{\alph{footnote}}
+% Change footnote marks to letters
+%\renewcommand{\thefootnote}{\textit{\alph{footnote}}}
+
+% Change footnote marks to symbols
+%\usepackage[symbol]{footmisc}
+%\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % Set the footnote rule length to the text width
 \setfootnoterule{\textwidth}
