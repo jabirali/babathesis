@@ -52,7 +52,7 @@
 \pagestyle{plain}
 
 % Page numbers
-\addtokomafont{pagenumber}{\vspace{3.5ex}}
+\addtokomafont{pagenumber}{\addfontfeatures{Numbers=Lining}\vspace{3.5ex}}
 
 % Left-justify equations
 \PassOptionsToPackage{fleqn}{amsmath}
@@ -107,7 +107,7 @@
 %\setmathfont{STIX Two Math}[StylisticSet=8]
 %\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 
-\setsansfont{Linux Biolinum O}[,Numbers={Lining,Proportional},Scale=1.015]
+\setsansfont{Linux Biolinum O}[Numbers={Lining,Proportional},Scale=1.015]
 %\setsansfont[Scale=MatchUppercase]{Fira Sans}
 \setmathfont{STIX Two Math}[StylisticSet={4,8}]
 \setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
@@ -242,16 +242,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Make sure footnote marks are separated by commas and kerned properly
-\usepackage{fnpct}
+\usepackage[multiple=true]{fnpct}
 
-% Switch to an italic font for footnotes
-\addtokomafont{footnote}{\itshape}
+% Customize footnote font
+%\addtokomafont{footnote}{\itshape}
 
-% Change footnote marks to letters
+% Change footnote marks to lining numbers
+\renewcommand{\thefootnote}{\addfontfeature{Numbers={Lining}}{\arabic{footnote}}}
+
+% Change footnote marks to Latin letters
 %\renewcommand{\thefootnote}{\textit{\alph{footnote}}}
 
 % Change footnote marks to symbols
-%\usepackage[symbol]{footmisc}
+%\usepackage[wiley]{footmisc}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
 % Set the footnote rule length to the text width
@@ -261,7 +264,7 @@
 %\setfootnoterule{0pt}
 
 % Adjust the footnote formatting and spacing
-\deffootnote{2.15em}{2.15em}{\addfontfeature{Numbers={Lining}}\thefootnotemark.\kern0.75em\addfontfeature{Numbers=OldStyle}}
+\deffootnote{2.15em}{2.15em}{\thefootnotemark.\kern0.75em}
 
 
 
@@ -429,7 +432,7 @@
 %\AtBeginEnvironment{tabular*}{\sffamily}
 
 % Use lining numerals for chemicals and units
-\mhchemoptions{textfontcommand=\addfontfeatures{Numbers={Lining,Proportional}}}
+\mhchemoptions{textfontcommand=\addfontfeatures{Numbers={Lining}}}
 \sisetup{text-rm=\addfontfeature{Numbers=Lining}}
 
 % Format for typesetting physical units
