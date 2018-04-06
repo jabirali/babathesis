@@ -111,10 +111,10 @@
 %\setsansfont[Scale=MatchUppercase]{Fira Sans}
 \setmathfont{STIX Two Math}[StylisticSet=8]
 \setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
-\setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
-\setmathfont{WarnockPro-It}[range=\mathit/{num,latin,Latin}]
-\setmathfont{WarnockPro-Bold}[range=\mathbfup/{num,latin,Latin}]
-\setmathfont{WarnockPro-BoldIt}[range=\mathbfit/{num,latin,Latin}]
+\setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin,Greek},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
+\setmathfont{WarnockPro-It}[range=\mathit/{num,latin,Latin,Greek}]
+\setmathfont{WarnockPro-Bold}[range=\mathbfup/{num,latin,Latin,Greek}]
+\setmathfont{WarnockPro-BoldIt}[range=\mathbfit/{num,latin,Latin,Greek}]
 \setmathfont{WarnockPro-It}[range=\mathcal,Style=Swash]
 \setmathfont{WarnockPro-BoldIt}[range=\mathbfcal,Style=Swash]
 
@@ -130,8 +130,10 @@
 % Decorations
 \usepackage{fourier-orns}
 
-% Blackboard math
+% Remap fonts
 \let\mathbb=\mathbfup
+\AtBeginDocument{\let\phi=\varphi}
+\AtBeginDocument{\let\varepsilon=\epsilon}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
