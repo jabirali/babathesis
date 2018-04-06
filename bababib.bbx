@@ -38,7 +38,7 @@
 }
 
 % Field formats for the bibliography environment
-\DeclareFieldFormat{labelnumberwidth}{\mkbibbold{#1\adddot}}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbold{\addfontfeatures{Numbers={Lining,Tabular}}\phantom{.}#1.}}
 
 % Custom field formats 
 \DeclareFieldFormat*{booktitle}{\mkbibemph{#1}\nopunct}

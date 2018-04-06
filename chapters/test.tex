@@ -1,20 +1,21 @@
-\chapter{Introduction and motivation}
-In this chapter, we investigate how LaTeX renders random mathematical expressions and cross-references that we throw at it.
+\chapter{Introduction and motivation}\label{ch:test}\noindent
+In this chapter, we investigate how LaTeX renders random mathematical expressions and cross-references and citations and stuff that we throw at it.
 Furthermore, we evaluate how adequate \textsc{otf} fonts are for mathematical publishing.
-Finally, this is used to ascertain whether \textsc{\oldstylenums{stix2}} or libertinus is most suitable for thesis writing.
+%Finally, this is used to ascertain whether \textsc{\oldstylenums{stix2}} or libertinus is most suitable for thesis writing.
+The chapter starts with a test of mathematical expressions in \cref{sec:test}, and continues with a \emph{Lorem Ipsum} citation in \cref{sec:test2}, and has miscellaneous footnotes inbetween.
+%Both sections include tests related to cross-references, figures and tables.
+In its current iteration, I'm using Warnock Pro as a serif font, including in math contexts as Arabic numerals, Latin letters, calligraphic letters (the latter is just remapped swash capitals).
+Biolinum is used as a sans font, and \textsc{stix2} covers Greek letters and miscellaneous mathematical symbols.
 
-The chapter starts with a test of mathematical expressions in \cref{sec:test}, and continues with a \emph{Lorem Ipsum} citation in \cref{sec:test2}.
-Both sections include tests related to cross-references, figures and tables.
 
 
-
-\clearpage
 \section{Here be random text about \textsc{srt/lrt}}\label{sec:test}
 This is a test. Let's see how this goes! Btw, $e^{i\pi} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
-Also calligraphic $\mathcal{A} = \mathcal{F}x$.
-Bold $\B{A}\B{\xi} = \B{\Delta}\B{\eta}$ and spins $\nabla^2 f_{\uparrow\downarrow}^{\vphantom{*}}+g_{\downarrow\uparrow}^{\vphantom{*}} \in \mathbb{S}_{\parallel\perp}$ and $n\in\mathbb{N}$.
+Also calligraphic $\mathbfcal{A}\mathcal{A} = \mathcal{F}x$.
+Bold $\B{A}\B{\xi} = \B{\Delta}\B{\eta}$ and spins $\nabla^2 f_{\uparrow\downarrow}^{\vphantom{*}}+g_{\downarrow\uparrow}^{\vphantom{*}} - h_\perp^{\vphantom{*}} \times v_\parallel^{\vphantom{*}}.$
+Some not-really-blackboard fonts $n \in \mathbb{N}_+$, $q \in \mathbb{Z}_2$, $r \in \mathbb{R}\,\backslash\,\{0\}$, $z \in \mathbb{C}$, $s \in \mathbb{S}$. 
 Also $\partial_z I \sim \partial_z \Delta = 0$.
-Also, we know well that $I(\varphi) = I_0 \sin \varphi$.  And also $\mathbf{R}\mathbb{R} \otimes \mathbf{C}\mathbb{C} \oplus \mathbf{N}\mathbb{N}_+$.\footnote{This is simply just a simple test, with an equation $\sin a = \cos(2b-1)/\cos(2b+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }%\footnote{Testing}\footnote{Testing again}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}
+Also, we know well that $I(\varphi) = I_0 \sin(\varphi) + I_1' \sin(\delta\varphi/2)$.\footnote{This is simply just a simple test, with an equation $\sin a = \cos(2b-1)/\cos(2b+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }%\footnote{Testing}\footnote{Testing again}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}\footnote{Test}
 %Also we can point out $I = \{ 1 \pm [\sin(a)\tan(b)]^2\} $.
 Here is another equation:
 %\begin{equation}
@@ -32,15 +33,15 @@ Say something about the \textsc{bcs} theory and \textsc{bcs-bec} transition \emp
 This is another test: $1 < 2 > 0 \leq 1 \geq 2$, and here is an url: \url{http://www.google.com/interesting_something/else/and/even/more/stuff}
 %\verb+for i=[0:0.1:1.0] do f(i,j) = 1/g(j,i)+
 \begin{equation}
-  \textit{e}e\mathrm{e}\textsf{e}%\texttt{e}\;
-  \textit{I}I\mathrm{I}\textsf{I}%\texttt{I}\;
-  \textit{m}m\mathrm{m}\textsf{m}%\texttt{m}
+  \textit{e}e\mathrm{e}\textsf{e}\;%\texttt{e}\;
+  \textit{I}I\mathrm{I}\textsf{I}\;%\texttt{I}\;
+  \textit{m}m\mathrm{m}\textsf{m}\;%\texttt{m}
 \end{equation}
 Here is another one:
 \begin{equation}
-  a\alpha b\beta d\delta e\epsilon \chi\psi bd \phi\theta v\nu u p\rho
+  a\alpha b\beta d\delta e\epsilon \chi\psi bd \phi\theta v\nu u p\rho \Gamma[P(\Psi)]
 \end{equation}
-\textsf{And here is some sans-serif text with math $e^{i\varphi}=\cos\varphi+i\sin\varphi$ and so on.} And here is some normal text again.
+\textsf{And here is some sans-serif text with math $e^{i\varphi}=\cos\varphi+i\sin\varphi$ and so on etc.} And here is some normal text again.
 Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{23e23}{m/s}$ also.
 
 %\subsection{Miscellaneous symbols}
@@ -202,7 +203,7 @@ Sed dictum erat quis diam faucibus bibendum.
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.\cite{feynman,statistics}\footnote{test}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit~\cite{feynman,statistics}.\!\footnote{test}
 Donec malesuada magna sem.
 Fusce vitae lectus id magna convallis euismod.
 Quisque viverra sollicitudin turpis, vel ultricies mauris dictum quis.
@@ -215,7 +216,7 @@ Morbi non tortor volutpat, mattis odio at, tincidunt libero.
 Donec pulvinar et mi at varius.
 Sed vulputate lectus eu libero gravida, vel porta tortor bibendum.
 Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
-Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\footnote{This is another footnote test.} %\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(2a+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}%\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ $\sin x$  $\cos x$}
+Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.\!\footnote{This is another footnote test.} %\footnote{This is simply just a simple test, with an equation $\sin \alpha = \cos(2a-1)/\cos(2a+1)$. And here is a chemical element \ce{CrO23} and physical unit \SI{12e3}{m}. }\footnote{Here is another footnote, also set in sans-serif.}%\footnote{$ABCDEFGHIJKLMOPQRSTUVWXYZ$ $abcdefghijklmopqrstuvwxyz$ $\alpha\beta\gamma\delta$ $\Gamma\Delta$ $\int_0^\infty \mathrm{d}x\,\sum_{ij} f(x_{ij}) \leq 0 \mathbf{xyz} \hat{x}+\check{y}\cdot\bar{u} \mathcal{F} \mathbf{x\sigma}$ $\sin x$  $\cos x$}
 Nam sed ante vitae eros imperdiet bibendum. 
 Fusce pretium semper leo eget lobortis.
 Sed dictum erat quis diam faucibus bibendum.
@@ -238,7 +239,7 @@ Quisque dictum ex id quam ultrices, ut commodo nisl euismod.
 Aliquam vulputate, urna quis sodales rhoncus, orci metus pulvinar velit, feugiat sollicitudin dui massa interdum tortor.
 Nam sed ante vitae eros imperdiet bibendum.
 Fusce pretium semper leo eget lobortis.
-Sed dictum erat quis diam faucibus bibendum.\footnote{Test}\cite{particle}
+Sed dictum erat quis diam faucibus bibendum~\cite{particle}.\!\footnote{Test}
 Integer vitae enim euismod, ornare augue quis, pharetra ante.
 Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
 

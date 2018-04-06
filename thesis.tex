@@ -80,8 +80,11 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Load fallback font
+%\usepackage[scaled=0.96]{newtxmath}
+%\let\mathbb=\varmathbb
+
 % Load font management packages
-\usepackage[scaled=0.96]{newtxmath}
 \usepackage[no-math]{fontspec} 
 \usepackage[math-style=ISO]{unicode-math}
 \usepackage{microtype}
@@ -90,8 +93,6 @@
 %\setmainfont{Libertinus Serif}
 %\setsansfont{Libertinus Sans}
 %\setmathfont{Libertinus Math}
-
-\let\mathbb=\varmathbb
 
 %\usepackage[MnSymbol]{mathspec}
 \defaultfontfeatures{Scale=MatchLowercase}%,Numbers={Lining,Proportional}}
@@ -106,14 +107,16 @@
 %\setmathfont{STIX Two Math}[StylisticSet=8]
 %\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 
-\setsansfont{Linux Biolinum O}[Scale=1.03]
+\setsansfont{Linux Biolinum O}[,Numbers={Lining,Proportional},Scale=1.015]
 %\setsansfont[Scale=MatchUppercase]{Fira Sans}
 \setmathfont{STIX Two Math}[StylisticSet=8]
 \setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
-\setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin},\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
+\setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
 \setmathfont{WarnockPro-It}[range=\mathit/{num,latin,Latin}]
 \setmathfont{WarnockPro-Bold}[range=\mathbfup/{num,latin,Latin}]
 \setmathfont{WarnockPro-BoldIt}[range=\mathbfit/{num,latin,Latin}]
+\setmathfont{WarnockPro-It}[range=\mathcal,Style=Swash]
+\setmathfont{WarnockPro-BoldIt}[range=\mathbfcal,Style=Swash]
 
 %\setmainfont{Minion Pro}
 %\setsansfont{Myriad Pro}
@@ -127,6 +130,8 @@
 % Decorations
 \usepackage{fourier-orns}
 
+% Blackboard math
+\let\mathbb=\mathbfup
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -144,10 +149,10 @@
 \setcounter{tocdepth}{1}
 
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
-%\settocstylefeature{entryhook}{\addfontfeature{Numbers=OldStyle}}
-%\settocstylefeature{pagenumberhook}{\addfontfeature{Numbers=OldStyle}}
-%\settocstylefeature[0]{entryhook}{\bfseries}
-%\settocstylefeature[0]{pagenumberhook}{\bfseries\addfontfeature{Numbers=OldStyle}}
+\settocstylefeature{entryhook}{\addfontfeature{Numbers={Lining,Tabular}}}
+\settocstylefeature{pagenumberhook}{\addfontfeature{Numbers={OldStyle,Proportional}}}
+\settocstylefeature[0]{entryhook}{\bfseries\addfontfeature{Numbers={Lining,Tabular}}}
+\settocstylefeature[0]{pagenumberhook}{\bfseries\addfontfeature{Numbers={OldStyle,Proportional}}}
 
 
 
@@ -168,28 +173,26 @@
 \addtokomafont{section}{\large}
 
 % Change spacing around chapters and sections
-\RedeclareSectionCommand[beforeskip=-0.5\baselineskip,afterskip=0.0\baselineskip]{chapter}
+\RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.5\baselineskip]{chapter}
 \RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
 
 % Bringhurst-style chapter numbers
-%\makeatletter
-%\newsavebox{\feline@chapter}
-%\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.8cm}}}
-%%\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
-%\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+0.5cm\relax][r]{\usebox\feline@chapter}}}
-%\preto\chapterheadendvskip{\vspace*{-\parskip}{\noindent\setlength\parfillskip{0pt plus 1fil}}}
-%\makeatother
+\makeatletter
+\newsavebox{\feline@chapter}
+\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.5cm}}}
+\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+\makeatother
 
 % Custom chapter headings
-\renewcommand{\chapterlinesformat}[3]{%
-  \begin{center}
-    \ifblank{#2}{}
-    {%
-      \decofourleft\;\,\mbox{Chapter~{#2}\!}\decofourright \\
-    }
-    \mbox{#3}
-  \end{center}
-}%
+%\renewcommand{\chapterlinesformat}[3]{%
+%  \begin{center}
+%    \ifblank{#2}{}
+%    {%
+%      \decofourleft\;\,\mbox{Chapter~{#2}\!}\decofourright \\
+%    }
+%    \mbox{#3}
+%  \end{center}
+%}%
 
 
 %\clearpage
@@ -252,7 +255,7 @@
 %\setfootnoterule{0pt}
 
 % Adjust the footnote formatting and spacing
-\deffootnote{2.15em}{2.15em}{\thefootnotemark.\kern0.75em}
+\deffootnote{2.15em}{2.15em}{\addfontfeature{Numbers={Lining}}\thefootnotemark.\kern0.75em\addfontfeature{Numbers=OldStyle}}
 
 
 
@@ -270,7 +273,7 @@
 \hypersetup{allcolors=Navy}
 
 % Switch font used for hyperlinks
-\urlstyle{rm}
+\urlstyle{sf}
 
 % Fix kerning problems for backslashes and redefine underscores in hyperlinks
 \makeatletter
@@ -419,10 +422,14 @@
 %\AtBeginEnvironment{tabular}{\sffamily}
 %\AtBeginEnvironment{tabular*}{\sffamily}
 
+% Use lining numerals for chemicals and units
+\mhchemoptions{textfontcommand=\addfontfeatures{Numbers={Lining,Proportional}}}
+\sisetup{text-rm=\addfontfeature{Numbers=Lining}}
+
 % Format for typesetting physical units
 \sisetup{range-units=single}
 \sisetup{range-phrase=--}
-\sisetup{detect-all} 
+\sisetup{detect-all=true} 
 
 % Use 2em equation indentation
 \makeatletter
