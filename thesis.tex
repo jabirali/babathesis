@@ -86,7 +86,7 @@
 
 % Load font management packages
 \usepackage[no-math]{fontspec} 
-\usepackage[math-style=ISO]{unicode-math}
+\usepackage{unicode-math}
 \usepackage{microtype}
 
 % Load the fonts themselves
@@ -95,9 +95,7 @@
 %\setmathfont{Libertinus Math}
 
 %\usepackage[MnSymbol]{mathspec}
-\defaultfontfeatures{Scale=MatchLowercase}%,Numbers={Lining,Proportional}}
 %\setmainfont[Renderer=Basic,Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
-\setmainfont[Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
 %\setmonofont[Scale=0.95]{Prestige Elite Std}
 %\setmathfont{STIX Two Math}
 %\setmathfont[range=\mathup/{latin,Latin,greek,Greek,num}]{WarnockPro-Disp}
@@ -107,16 +105,42 @@
 %\setmathfont{STIX Two Math}[StylisticSet=8]
 %\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 
+% General font settings
+\unimathsetup{math-style=ISO}
+\defaultfontfeatures{Scale=MatchLowercase}
+\AtBeginDocument{\let\epsilon=\varepsilon}
+\AtBeginDocument{\let\phi=\varphi}
+
+% Serif font used for regular text
+\setmainfont[Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
+
+% Sans-serif font used for titling
 \setsansfont{Linux Biolinum O}[Numbers={Lining,Proportional},Scale=1.015]
-%\setsansfont[Scale=MatchUppercase]{Fira Sans}
+
+% Mathematical fallback font
 \setmathfont{STIX Two Math}[StylisticSet={4,8}]
-\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
-\setmathfont{WarnockPro-Regular}[range={\mathup/{num,latin,Latin,Greek},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
-\setmathfont{WarnockPro-It}[range=\mathit/{num,latin,Latin,Greek}]
-\setmathfont{WarnockPro-Bold}[range=\mathbfup/{num,latin,Latin,Greek}]
-\setmathfont{WarnockPro-BoldIt}[range=\mathbfit/{num,latin,Latin,Greek}]
-\setmathfont{WarnockPro-It}[range=\mathcal,Style=Swash]
-\setmathfont{WarnockPro-BoldIt}[range=\mathbfcal,Style=Swash]
+
+% Mathematical font used for Latin letters and Arabic numerals
+\setmathfont{WarnockPro-Regular}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
+\setmathfont{WarnockPro-It}[range={it/{Latin,latin,num}}]
+\setmathfont{WarnockPro-Bold}[range={bfup/{Latin,latin,num}}]
+\setmathfont{WarnockPro-BoldIt}[range={bfit/{Latin,latin,num}}]
+
+% Mathematical font used for Greek letters
+\setmathfont{MinionPro-Regular}[range={up/{Greek,greek}}]
+\setmathfont{MinionPro-It}[range={it/{Greek,greek}}]
+\setmathfont{MinionPro-Bold}[range={bfup/{Greek,greek}}]
+\setmathfont{MinionPro-BoldIt}[range={bfit/{Greek,greek}}]
+
+% Mathematical font used for specific glyphs
+\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow,"1D713,"1D74D,"1D6D9,"03C8}]
+
+% Mathematical font used for calligraphic letters
+\setmathfont{WarnockPro-It}[range=cal,Style=Swash]
+\setmathfont{WarnockPro-BoldIt}[range=bfcal,Style=Swash]
+
+% Mathematical font used for blackboard letters
+\setmathfont{WarnockPro-Bold}[range=bb->bfup]
 
 %\setmainfont{Minion Pro}
 %\setsansfont{Myriad Pro}
@@ -127,13 +151,6 @@
 %\usepackage[openg,footnotefigures,italicgreek,swash,textosf,mathlf]{MinionPro}
 %\usepackage{MnSymbol}
 
-% Decorations
-\usepackage{fourier-orns}
-
-% Remap fonts
-\let\mathbb=\mathbfup
-\AtBeginDocument{\let\phi=\varphi}
-\AtBeginDocument{\let\varepsilon=\epsilon}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
