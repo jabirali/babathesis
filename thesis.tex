@@ -198,7 +198,7 @@
 % Bringhurst-style chapter numbers
 \makeatletter
 \newsavebox{\feline@chapter}
-\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][1.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.5cm}}}
+\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.75cm}}}
 \renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
 \makeatother
 
@@ -545,13 +545,13 @@
     \printpapers
     \tableofcontents
   \mainmatter 
-    %\include{chapters/introduction} 
+    \include{chapters/test}
+    \include{chapters/introduction} 
     %\include{chapters/theory}
     %\include{chapters/equilibrium}
     %\include{chapters/nonequilibrium} 
     %\include{chapters/observables}
     %\include{chapters/algorithms} 
-    \include{chapters/test}
   \backmatter
     \printcites
   %  \include{papers/include}
