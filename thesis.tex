@@ -111,8 +111,15 @@
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
-% Serif font used for regular text
-\setmainfont[Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
+% Serif font used for regular text 
+\setmainfont{WarnockPro-Regular.otf}%
+[
+  BoldFont       = WarnockPro-Bold.otf,
+  ItalicFont     = WarnockPro-Italic.otf,
+  BoldItalicFont = WarnockPro-BoldItalic.otf,
+  Numbers        = {OldStyle,Proportional},
+  Ligatures      = TeX
+]
 
 % Sans-serif font used for titling
 \setsansfont{Linux Biolinum O}[Numbers={Lining,Proportional},Scale=1.015]
@@ -121,26 +128,26 @@
 \setmathfont{STIX Two Math}[StylisticSet={4,8}]
 
 % Mathematical font used for Latin letters and Arabic numerals
-\setmathfont{WarnockPro-Regular}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
-\setmathfont{WarnockPro-It}[range={it/{Latin,latin,num}}]
-\setmathfont{WarnockPro-Bold}[range={bfup/{Latin,latin,num}}]
-\setmathfont{WarnockPro-BoldIt}[range={bfit/{Latin,latin,num}}]
+\setmathfont{WarnockPro-Regular.otf}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
+\setmathfont{WarnockPro-Italic.otf}[range={it/{Latin,latin,num}}]
+\setmathfont{WarnockPro-Bold.otf}[range={bfup/{Latin,latin,num}}]
+\setmathfont{WarnockPro-BoldItalic.otf}[range={bfit/{Latin,latin,num}}]
 
 % Mathematical font used for Greek letters
-\setmathfont{MinionPro-Regular}[range={up/{Greek,greek}}]
-\setmathfont{MinionPro-It}[range={it/{Greek,greek}}]
-\setmathfont{MinionPro-Bold}[range={bfup/{Greek,greek}}]
-\setmathfont{MinionPro-BoldIt}[range={bfit/{Greek,greek}}]
+\setmathfont{MinionPro-Regular.otf}[range={up/{Greek,greek}}]
+\setmathfont{MinionPro-Italic.otf}[range={it/{Greek,greek}}]
+\setmathfont{MinionPro-Bold.otf}[range={bfup/{Greek,greek}}]
+\setmathfont{MinionPro-BoldItalic.otf}[range={bfit/{Greek,greek}}]
 
 % Mathematical font used for specific glyphs
-\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow,"1D713,"1D74D,"1D6D9,"03C8}]
+\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,"1D713,"1D74D,"1D6D9,"03C8}]
 
 % Mathematical font used for calligraphic letters
-\setmathfont{WarnockPro-It}[range=cal,Style=Swash]
-\setmathfont{WarnockPro-BoldIt}[range=bfcal,Style=Swash]
+\setmathfont{WarnockPro-Italic.otf}[range=cal,Style=Swash]
+\setmathfont{WarnockPro-BoldItalic.otf}[range=bfcal,Style=Swash]
 
 % Mathematical font used for blackboard letters
-\setmathfont{WarnockPro-Bold}[range=bb->bfup]
+\setmathfont{WarnockPro-Bold.otf}[range=bb->bfup]
 
 %\setmainfont{Minion Pro}
 %\setsansfont{Myriad Pro}
@@ -450,7 +457,7 @@
 
 % Use lining numerals for chemicals and units
 \mhchemoptions{textfontcommand=\addfontfeatures{Numbers={Lining}}}
-\sisetup{text-rm=\addfontfeature{Numbers=Lining}}
+\sisetup{text-rm=\addfontfeature{Numbers={Lining}}}
 
 % Format for typesetting physical units
 \sisetup{range-units=single}
