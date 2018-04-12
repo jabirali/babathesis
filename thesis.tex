@@ -11,11 +11,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Preload packages
+%   Preload essentials
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Load the required packages
+% Load some required packages
 \usepackage{etoolbox}                   % Modding standard environments
 \usepackage[fleqn,intlimits]{amsmath}   % Common mathematical environments
 \usepackage[svgnames]{xcolor}           % Enables coloring of text and pages
@@ -54,12 +54,6 @@
 % Page numbers
 \addtokomafont{pagenumber}{\addfontfeatures{Numbers=Lining}\vspace{3.5ex}}
 
-% Left-justify equations
-\PassOptionsToPackage{fleqn}{amsmath}
-
-% Integral limits
-\PassOptionsToPackage{intlimits}{amsmath}
-
 % Use spacing instead of indentation to separate paragraphs
 %\KOMAoptions{parskip=half+} 
 
@@ -80,31 +74,11 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Load fallback font
-%\usepackage[scaled=0.96]{newtxmath}
-%\let\mathbb=\varmathbb
-
 % Load font management packages
 \usepackage[no-math]{fontspec} 
 \usepackage{unicode-math}
 \usepackage{microtype}
 \usepackage{realscripts}
-
-% Load the fonts themselves
-%\setmainfont{Libertinus Serif}
-%\setsansfont{Libertinus Sans}
-%\setmathfont{Libertinus Math}
-
-%\usepackage[MnSymbol]{mathspec}
-%\setmainfont[Renderer=Basic,Ligatures=TeX,Numbers={OldStyle,Proportional}]{WarnockPro} 
-%\setmonofont[Scale=0.95]{Prestige Elite Std}
-%\setmathfont{STIX Two Math}
-%\setmathfont[range=\mathup/{latin,Latin,greek,Greek,num}]{WarnockPro-Disp}
-
-%\setsansfont{Linux Biolinum O}[Scale=1.06]
-%\setmainfont{STIX Two Text}
-%\setmathfont{STIX Two Math}[StylisticSet=8]
-%\setmathfont{STIX Two Math}[StylisticSet=5,range={\uparrow,\downarrow}]
 
 % General font settings
 \unimathsetup{math-style=ISO}
@@ -140,10 +114,6 @@
 \setmathfont{MinionPro-Bold.otf}[range={bfup/{Greek,greek}}]
 \setmathfont{MinionPro-BoldItalic.otf}[range={bfit/{Greek,greek}}]
 
-% Mathematical font used for specific glyphs
-\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,"1D713,"1D74D,"1D6D9,"03C8}]
-\AtBeginDocument{\def\cdot{\kern0.1em\textrm{·}\kern0.1em}}
-
 % Mathematical font used for calligraphic letters
 \setmathfont{WarnockPro-Italic.otf}[range=cal,Style=Swash]
 \setmathfont{WarnockPro-BoldItalic.otf}[range=bfcal,Style=Swash]
@@ -151,14 +121,10 @@
 % Mathematical font used for blackboard letters
 \setmathfont{WarnockPro-Bold.otf}[range=bb->bfup]
 
-%\setmainfont{Minion Pro}
-%\setsansfont{Myriad Pro}
-%\setmathfont{Minion Pro}
-%\usepackage{MyriadPro}
-%\usepackage{biolinum}
-%\usepackage{MyriadPro}
-%\usepackage[openg,footnotefigures,italicgreek,swash,textosf,mathlf]{MinionPro}
-%\usepackage{MnSymbol}
+% Override fonts used for specific glyphs
+\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,"1D713,"1D74D,"1D6D9,"03C8}]
+\AtBeginDocument{\def\cdot{\kern0.1em\textrm{·}\kern0.1em}}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,29 +176,6 @@
 \newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.75cm}}}
 \renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
 \makeatother
-
-% Custom chapter headings
-%\renewcommand{\chapterlinesformat}[3]{%
-%  \begin{center}
-%    \ifblank{#2}{}
-%    {%
-%      \decofourleft\;\,\mbox{Chapter~{#2}\!}\decofourright \\
-%    }
-%    \mbox{#3}
-%  \end{center}
-%}%
-
-
-%\clearpage
-
-% Use all lowercase for chapter headings, except in the table of contents
-%\makeatletter
-%  \newcommand*{\Chapter}{}
-%  \let\Chapter=\chapter
-%  \renewcommand*{\chapter}{\@ifstar{\star@chapter}{\@dblarg\nonstar@chapter}}
-%  \newcommand*{\star@chapter}[1]{\Chapter*{\MakeLowercase{#1}}}
-%  \newcommand*{\nonstar@chapter}[2][]{\Chapter[{#1}]{\MakeLowercase{#1}}}
-%\makeatother
 
 
 
@@ -457,7 +400,7 @@
 %\AtBeginEnvironment{tabular}{\sffamily}
 %\AtBeginEnvironment{tabular*}{\sffamily}
 
-% Use lining numerals for chemicals and units
+% Use lining numerals for chemical formulas and physical units
 \mhchemoptions{textfontcommand=\addfontfeatures{Numbers={Lining}}}
 \sisetup{text-rm=\addfontfeature{Numbers={Lining}}}
 
@@ -468,7 +411,7 @@
 
 % Use 2em equation indentation
 \makeatletter
-\setlength\@mathmargin{2em}
+  \setlength\@mathmargin{2em}
 \makeatother
 
 % Replace \cite with the more flexible \autocite
@@ -545,7 +488,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \addbibresource{chapters/references.bib}
-\addbibresource{papers/references.bib}
+%\addbibresource{papers/references.bib}
 
 \begin{document}
   \frontmatter
@@ -555,7 +498,7 @@
     \tableofcontents
   \mainmatter 
     \include{chapters/test}
-    \include{chapters/introduction} 
+    %\include{chapters/introduction} 
     %\include{chapters/theory}
     %\include{chapters/equilibrium}
     %\include{chapters/nonequilibrium} 
