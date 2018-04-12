@@ -82,25 +82,33 @@
 
 % General font settings
 \unimathsetup{math-style=ISO}
-\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures{Scale=MatchLowercase,Path=fonts/}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
 % Serif font used for regular text 
-\setmainfont{WarnockPro-Regular.otf}%
+\setmainfont{WarnockPro}%
 [
-  BoldFont       = WarnockPro-Bold.otf,
-  ItalicFont     = WarnockPro-Italic.otf,
-  BoldItalicFont = WarnockPro-BoldItalic.otf,
+  UprightFont    = *-Regular.otf,
+  BoldFont       = *-Bold.otf,
+  ItalicFont     = *-Italic.otf,
+  BoldItalicFont = *-BoldItalic.otf,
   Numbers        = {OldStyle,Proportional},
   Ligatures      = TeX
 ]
 
 % Sans-serif font used for titling
-\setsansfont{Linux Biolinum O}[Numbers={Lining,Proportional},Scale=1.015]
+\setsansfont{Linux Biolinum O}%
+[
+  UprightFont    = *-Regular.otf,
+  BoldFont       = *-Bold.otf,
+  ItalicFont     = *-Italic.otf,
+  Numbers={Lining,Proportional},
+  Scale=1.015
+]
 
 % Mathematical fallback font
-\setmathfont{STIX Two Math}[StylisticSet={4,8}]
+\setmathfont{STIX2Math.otf}[StylisticSet={4,8}]
 
 % Mathematical font used for Latin letters and Arabic numerals
 \setmathfont{WarnockPro-Regular.otf}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
