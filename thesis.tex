@@ -81,24 +81,13 @@
 \usepackage{realscripts}
 
 % General font settings
-\unimathsetup{math-style=ISO}
-\defaultfontfeatures{Scale=MatchLowercase,Path=fonts/}
+\unimathsetup{math-style=upright}
+\defaultfontfeatures{Scale=MatchLowercase}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
-% Serif font used for regular text 
-\setmainfont{WarnockPro}%
-[
-  UprightFont    = *-Regular.otf,
-  BoldFont       = *-Bold.otf,
-  ItalicFont     = *-Italic.otf,
-  BoldItalicFont = *-BoldItalic.otf,
-  Numbers        = {OldStyle,Proportional},
-  Ligatures      = TeX
-]
-
 % Sans-serif font used for titling
-\setsansfont{Linux Biolinum O}%
+\setsansfont{Libertinus Sans}%
 [
   UprightFont    = *-Regular.otf,
   BoldFont       = *-Bold.otf,
@@ -107,31 +96,51 @@
   Scale=1.015
 ]
 
+% Serif font used for regular text 
+\setmainfont{WarnockPro}%
+[
+  UprightFont    = *-Regular.otf,
+  BoldFont       = *-Bold.otf,
+  ItalicFont     = *-Italic.otf,
+  BoldItalicFont = *-BoldItalic,
+  Numbers        = {OldStyle,Proportional},
+  Ligatures      = TeX
+]
+
+% Serif font used for mathematics
+%\setmathfont{TeX Gyre Pagella Math}
+\setmathfont{Libertinus Math}
+%\setmathfont{Neo Euler} 
+\setmathfont[range={up,bfup,cal,bfcal,\nabla,\partial}]{Neo Euler} 
+\setmathfont[range={up/{num},\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathpercent,\mathampersand,\times}]{WarnockPro}
+\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow}]
+
 % Mathematical fallback font
-\setmathfont{STIX2Math.otf}[StylisticSet={4,8}]
+%\setmathfont{STIX2Math.otf}[StylisticSet={4,8}]
 
-% Mathematical font used for Latin letters and Arabic numerals
-\setmathfont{WarnockPro-Regular.otf}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
-\setmathfont{WarnockPro-Italic.otf}[range={it/{Latin,latin,num}}]
-\setmathfont{WarnockPro-Bold.otf}[range={bfup/{Latin,latin,num}}]
-\setmathfont{WarnockPro-BoldItalic.otf}[range={bfit/{Latin,latin,num}}]
-
-% Mathematical font used for Greek letters
-\setmathfont{MinionPro-Regular.otf}[range={up/{Greek,greek}}]
-\setmathfont{MinionPro-Italic.otf}[range={it/{Greek,greek}}]
-\setmathfont{MinionPro-Bold.otf}[range={bfup/{Greek,greek}}]
-\setmathfont{MinionPro-BoldItalic.otf}[range={bfit/{Greek,greek}}]
-
+% % Mathematical font used for Latin letters and Arabic numerals
+% \setmathfont{WarnockPro-Regular.otf}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
+% \setmathfont{WarnockPro-Italic.otf}[range={it/{Latin,latin,num}}]
+% \setmathfont{WarnockPro-Bold.otf}[range={bfup/{Latin,latin,num}}]
+% \setmathfont{WarnockPro-BoldItalic.otf}[range={bfit/{Latin,latin,num}}]
+% 
+% % Mathematical font used for Greek letters
+% \setmathfont{MinionPro-Regular.otf}[range={up/{Greek,greek}}]
+% \setmathfont{MinionPro-Italic.otf}[range={it/{Greek,greek}}]
+% \setmathfont{MinionPro-Bold.otf}[range={bfup/{Greek,greek}}]
+% \setmathfont{MinionPro-BoldItalic.otf}[range={bfit/{Greek,greek}}]
+% 
 % Mathematical font used for calligraphic letters
-\setmathfont{WarnockPro-Italic.otf}[range=cal,Style=Swash]
-\setmathfont{WarnockPro-BoldItalic.otf}[range=bfcal,Style=Swash]
-
+%\setmathfont{WarnockPro-Italic.otf}[range=cal,Style=Swash]
+%\setmathfont{WarnockPro-BoldItalic.otf}[range=bfcal,Style=Swash]
+ 
 % Mathematical font used for blackboard letters
 \setmathfont{WarnockPro-Bold.otf}[range=bb->bfup]
-
-% Override fonts used for specific glyphs
-\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,"1D713,"1D74D,"1D6D9,"03C8}]
-\AtBeginDocument{\def\cdot{\kern0.1em\textrm{·}\kern0.1em}}
+% 
+% % Override fonts used for specific glyphs
+%\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,\nabla}]
+% \setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,\nabla,"1D713,"1D74D,"1D6D9,"03C8}]
+% \AtBeginDocument{\def\cdot{\kern0.1em\textrm{·}\kern0.1em}}
 
 
 
