@@ -81,7 +81,7 @@
 \usepackage{realscripts}
 
 % General font settings
-\unimathsetup{math-style=ISO}
+\unimathsetup{math-style=upright}
 \defaultfontfeatures{Scale=MatchLowercase}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
@@ -97,7 +97,7 @@
 ]
 
 % Serif font used for regular text 
-\setmainfont{Libertinus Serif}%
+\setmainfont{Warnock Pro}%
 [
   UprightFont    = *-Regular.otf,
   BoldFont       = *-Bold.otf,
@@ -108,11 +108,12 @@
 ]
 
 % Serif font used for mathematics
-%\setmathfont{TeX Gyre Pagella Math}
-\setmathfont{Libertinus Math}
+\setmathfont{TeX Gyre Pagella Math}
+%\setmathfont{Libertinus Math}
 %\setmathfont{Neo Euler} 
-%\setmathfont[range={up,bfup,cal,bfcal,\nabla,\partial}]{Neo Euler} 
-%\setmathfont[range={up/{num},\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathpercent,\mathampersand,\times}]{WarnockPro}
+\setmathfont[range={up,bfup,cal,bfcal,\nabla,\partial,\mathslash}]{Neo Euler} 
+\setmathfont[range={up/{num},\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathpercent,\mathampersand,\times}]{WarnockPro}
+%\setmathfont[range={\hat,\tilde,\sum,\prod,\int,\dagger,\ast}]{TeX Gyre Pagella Math}
 \setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow}]
 
 % Mathematical fallback font
