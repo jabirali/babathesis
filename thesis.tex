@@ -83,39 +83,45 @@
 % General font settings
 \unimathsetup{math-style=upright}
 \defaultfontfeatures{Scale=MatchLowercase}
-\AtBeginDocument{\let\approx=\cong}
-\AtBeginDocument{\def\ll{<\kern-0.34em<}}
-\AtBeginDocument{\def\gg{>\kern-0.34em>}}
+%\AtBeginDocument{\let\approx=\cong}
+%\AtBeginDocument{\def\ll{<\kern-0.34em<}}
+%\AtBeginDocument{\def\gg{>\kern-0.34em>}}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
+
+\setmainfont{STIX Two Text}[Numbers={OldStyle,Proportional}]
+\setmathfont{STIX Two Math}[math-style=ISO,StylisticSet={2,8}]
+\setmathfont{STIX Two Math}[range={it/Greek,bfit/Greek,up/Greek,bfup/Greek},math-style=upright]
+\setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
 
 % Sans-serif font used for titling
 \setsansfont{Libertinus Sans}%
 [
-  UprightFont    = *-Regular.otf,
-  BoldFont       = *-Bold.otf,
-  ItalicFont     = *-Italic.otf,
+  Extension      = .otf,
+  UprightFont    = *-Regular,
+  BoldFont       = *-Bold,
+  ItalicFont     = *-Italic,
   Numbers={Lining,Proportional},
   Scale=1.015
 ]
 
-% Serif font used for regular text 
-\setmainfont{Warnock Pro}%
-[
-  UprightFont    = *-Regular.otf,
-  BoldFont       = *-Bold.otf,
-  ItalicFont     = *-Italic.otf,
-  BoldItalicFont = *-BoldItalic,
-  Numbers        = {OldStyle,Proportional},
-  Ligatures      = TeX
-]
-
-% Serif font used for mathematics
-\setmathfont{Neo Euler}
-\setmathfont{TeX Gyre Pagella Math}[range={\check,\hat,\int,\oint,\sum,\prod,\dagger,\ddagger}]
-\setmathfont{Libertinus Math}[range={\lparen,\rparen,\lbrace,\rbrace,\lbrack,\rbrack,\langle,\rangle,\lceil,\rceil,\lfloor,\rfloor,\vert,\parallel,\perp}]
-\setmathfont{WarnockPro}[range={\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathexclam,\mathampersand}]
-\setmathfont[StylisticSet=5,range={\uparrow,\downarrow}]{STIX2Math.otf}
+% % Serif font used for regular text 
+% \setmainfont{Warnock Pro}%
+% [
+%   UprightFont    = *-Regular.otf,
+%   BoldFont       = *-Bold.otf,
+%   ItalicFont     = *-Italic.otf,
+%   BoldItalicFont = *-BoldItalic,
+%   Numbers        = {OldStyle,Proportional},
+%   Ligatures      = TeX
+% ]
+% 
+% % Serif font used for mathematics
+% \setmathfont{Neo Euler}
+% \setmathfont{TeX Gyre Pagella Math}[range={\check,\hat,\int,\oint,\sum,\prod,\dagger,\ddagger}]
+% \setmathfont{Libertinus Math}[range={\lparen,\rparen,\lbrace,\rbrace,\lbrack,\rbrack,\langle,\rangle,\lceil,\rceil,\lfloor,\rfloor,\vert,\parallel,\perp}]
+% \setmathfont{WarnockPro}[range={\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathexclam,\mathampersand}]
+% \setmathfont[StylisticSet=5,range={\uparrow,\downarrow}]{STIX2Math.otf}
 
 %\setmathfont{Libertinus Math}
 %\setmathfont{Neo Euler} 
@@ -141,7 +147,7 @@
 %\setmathfont{WarnockPro-BoldItalic.otf}[range=bfcal,Style=Swash]
  
 % Mathematical font used for blackboard letters
-\setmathfont{WarnockPro-Bold.otf}[range=bb->bfup]
+%\setmathfont{WarnockPro-Bold.otf}[range=bb->bfup]
 % 
 % % Override fonts used for specific glyphs
 %\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,\nabla}]
