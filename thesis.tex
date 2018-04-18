@@ -83,6 +83,9 @@
 % General font settings
 \unimathsetup{math-style=upright}
 \defaultfontfeatures{Scale=MatchLowercase}
+\AtBeginDocument{\let\approx=\cong}
+\AtBeginDocument{\def\ll{<\kern-0.34em<}}
+\AtBeginDocument{\def\gg{>\kern-0.34em>}}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
@@ -108,11 +111,11 @@
 ]
 
 % Serif font used for mathematics
-\setmathfont{TeX Gyre Pagella Math}
-\setmathfont[range={\lparen,\rparen,\lbrace,\rbrace,\lbrack,\rbrack,\langle,\rangle,\vert,\pm,\mp}]{Libertinus Math}
-\setmathfont[range={up,bfup,cal,bfcal,\nabla,\partial,\mathslash}]{Neo Euler} 
-\setmathfont[range={\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathpercent,\mathampersand}]{WarnockPro}
-\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow}]
+\setmathfont{Neo Euler}
+\setmathfont{TeX Gyre Pagella Math}[range={\check,\hat,\int,\oint,\sum,\prod,\dagger,\ddagger}]
+\setmathfont{Libertinus Math}[range={\lparen,\rparen,\lbrace,\rbrace,\lbrack,\rbrack,\langle,\rangle,\lceil,\rceil,\lfloor,\rfloor,\vert}]
+\setmathfont{WarnockPro}[range={\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathexclam,\mathampersand}]
+\setmathfont[StylisticSet=5,range={\uparrow,\downarrow}]{STIX2Math.otf}
 
 %\setmathfont{Libertinus Math}
 %\setmathfont{Neo Euler} 
