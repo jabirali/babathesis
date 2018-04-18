@@ -52,7 +52,7 @@
 \pagestyle{plain}
 
 % Page numbers
-\addtokomafont{pagenumber}{\addfontfeatures{Numbers=Lining}\vspace{3.5ex}}
+\addtokomafont{pagenumber}{\lining\vspace{3.5ex}}
 
 % Use spacing instead of indentation to separate paragraphs
 %\KOMAoptions{parskip=half+} 
@@ -78,31 +78,36 @@
 \usepackage[no-math]{fontspec} 
 \usepackage{unicode-math}
 \usepackage{microtype}
-\usepackage{realscripts}
+%\usepackage{realscripts}
+
 
 % General font settings
-\unimathsetup{math-style=upright}
-\defaultfontfeatures{Scale=MatchLowercase}
+\unimathsetup{math-style=ISO}
+\defaultfontfeatures{Scale=MatchLowercase,Ligatures=TeX}
 %\AtBeginDocument{\let\approx=\cong}
 %\AtBeginDocument{\def\ll{<\kern-0.34em<}}
 %\AtBeginDocument{\def\gg{>\kern-0.34em>}}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
-\setmainfont{STIX Two Text}[Numbers={OldStyle,Proportional}]
-\setmathfont{STIX Two Math}[math-style=ISO,StylisticSet={2,8}]
-\setmathfont{STIX Two Math}[range={it/Greek,bfit/Greek,up/Greek,bfup/Greek},math-style=upright]
+
+\setmainfont{STIX Two Text}[Numbers=OldStyle]
+\newfontfamily\lining{STIX Two Text}[Numbers=Lining]
+\newfontfamily\oldstyle{STIX Two Text}[Numbers=OldStyle]
+
+\setmathfont{STIX Two Math}[StylisticSet={2,8}]
+%\setmathfont{STIX Two Math}[range={it/Greek,bfit/Greek,up/Greek,bfup/Greek},math-style=upright]
 \setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
+\setmathfont{STIX Two Math}[range=bb->bfup]
 
 % Sans-serif font used for titling
 \setsansfont{Libertinus Sans}%
 [
-  Extension      = .otf,
   UprightFont    = *-Regular,
   BoldFont       = *-Bold,
   ItalicFont     = *-Italic,
-  Numbers={Lining,Proportional},
-  Scale=1.015
+  Numbers        = Lining,
+  Scale          = 1.015
 ]
 
 % % Serif font used for regular text 
@@ -155,7 +160,6 @@
 % \AtBeginDocument{\def\cdot{\kern0.1em\textrm{·}\kern0.1em}}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Table of contents
@@ -172,10 +176,10 @@
 \setcounter{tocdepth}{1}
 
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
-\settocstylefeature{entryhook}{\addfontfeature{Numbers={Lining,Tabular}}}
-\settocstylefeature{pagenumberhook}{\addfontfeature{Numbers={OldStyle,Proportional}}}
-\settocstylefeature[0]{entryhook}{\bfseries\addfontfeature{Numbers={Lining,Tabular}}}
-\settocstylefeature[0]{pagenumberhook}{\bfseries\addfontfeature{Numbers={OldStyle,Proportional}}}
+\settocstylefeature{entryhook}{\lining}
+\settocstylefeature{pagenumberhook}{\oldstyle}
+\settocstylefeature[0]{entryhook}{\lining\bfseries}
+\settocstylefeature[0]{pagenumberhook}{\oldstyle\bfseries}
 
 
 
@@ -246,7 +250,7 @@
 %\addtokomafont{footnote}{\itshape}
 
 % Change footnote marks to lining numbers
-\renewcommand{\thefootnote}{\addfontfeature{Numbers={Lining}}{\arabic{footnote}}}
+\renewcommand{\thefootnote}{\lining{\arabic{footnote}}}
 
 % Change footnote marks to Latin letters
 %\renewcommand{\thefootnote}{\textit{\alph{footnote}}}
@@ -430,8 +434,8 @@
 %\AtBeginEnvironment{tabular*}{\sffamily}
 
 % Use lining numerals for chemical formulas and physical units
-\mhchemoptions{textfontcommand=\addfontfeatures{Numbers={Lining}}}
-\sisetup{text-rm=\addfontfeature{Numbers={Lining}}}
+\mhchemoptions{textfontcommand=\lining}
+\sisetup{text-rm=\lining}
 
 % Format for typesetting physical units
 \sisetup{range-units=single}
