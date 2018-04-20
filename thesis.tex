@@ -74,31 +74,39 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[T1]{fontenc}
+\usepackage{fourier} 
+
 % Load font management packages
 \usepackage[no-math]{fontspec} 
-\usepackage{unicode-math}
 \usepackage{microtype}
-%\usepackage{realscripts}
+\usepackage{realscripts}
 
-
-% General font settings
-\unimathsetup{math-style=ISO}
-\defaultfontfeatures{Scale=MatchLowercase,Ligatures=TeX}
+%\usepackage{unicode-math}
+%\unimathsetup{math-style=ISO}
 %\AtBeginDocument{\let\approx=\cong}
 %\AtBeginDocument{\def\ll{<\kern-0.34em<}}
 %\AtBeginDocument{\def\gg{>\kern-0.34em>}}
+
+% General font settings
+\defaultfontfeatures{Scale=MatchLowercase}
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
+\setmainfont[Scale=0.98,Numbers={OldStyle,Proportional}]{Utopia Std}
+\newcommand{\lining}{\addfontfeature{Numbers={Lining}}}
+\newcommand{\oldstyle}{\addfontfeature{Numbers={OldStyle}}}
+%\newfontfamily\lining{Utopia Std}[Scale=0.98,Numbers={Lining,Proportional}]
+%\newfontfamily\oldstyle{Utopia Std}[Scale=0.98,Numbers={OldStyle,Proportional}]
 
-\setmainfont{STIX Two Text}[Numbers=OldStyle]
-\newfontfamily\lining{STIX Two Text}[Numbers=Lining]
-\newfontfamily\oldstyle{STIX Two Text}[Numbers=OldStyle]
+%\setmainfont{STIX Two Text}[Numbers=OldStyle]
+%\newfontfamily\lining{stix two text}[numbers=lining]
+%\newfontfamily\oldstyle{stix two text}[numbers=oldstyle]
 
-\setmathfont{STIX Two Math}[StylisticSet={2,8}]
+%\setmathfont{STIX Two Math}[StylisticSet={2,8}]
 %\setmathfont{STIX Two Math}[range={it/Greek,bfit/Greek,up/Greek,bfup/Greek},math-style=upright]
-\setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
-\setmathfont{STIX Two Math}[range=bb->bfup]
+%\setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
+%\setmathfont{STIX Two Math}[range=bb->bfup]
 %\setmathfont{Libertinus Math}[range={\parallel,\perp}]
 
 % Sans-serif font used for titling
@@ -108,7 +116,8 @@
   BoldFont       = *-Bold,
   ItalicFont     = *-Italic,
   Numbers        = Lining,
-  Scale          = 1.015
+  Scale          = MatchLowercase
+%  Scale          = 1.015
 ]
 
 % % Serif font used for regular text 
@@ -473,7 +482,8 @@
 \newcommand{\anticomm}[2][]{#1\{ #2 ,\, #1\}}
 
 % Mathematical markup
-\newcommand{\B}[1]{\symbf{#1}}
+\usepackage{bm}
+\newcommand{\B}[1]{\bm{#1}}
 \newcommand{\C}[1]{\mathcal{#1}}
 \newcommand{\U}[1]{\underline{#1}}
 \newcommand{\V}[1]{\check{#1}}
