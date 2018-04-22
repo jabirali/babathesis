@@ -77,6 +77,9 @@
 %\usepackage[T1]{fontenc}
 %\usepackage{fourier} 
 
+%\usepackage[T1]{fontenc}
+%\usepackage[libertine]{newtxmath}
+
 % Load font management packages
 \usepackage[no-math]{fontspec} 
 \usepackage{microtype}
@@ -124,7 +127,11 @@
 ]
 \setsansfont{Libertinus Sans}[Numbers={Lining}]
 \setmathfont{Libertinus Math}
-\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla}]
+\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla}] 
+\setmathfont{STIX Two Math}[range={"0067,"1D488,"1D454},StylisticSet=2]
+%\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,"0067,"1D488,"1D454}] 
+
+
 %\setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
 %\setmathfont{Libertinus Serif}[range={"0261->"0067}]
 %\setsansfont{Libertinus Sans}%
