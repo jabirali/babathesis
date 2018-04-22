@@ -42,7 +42,7 @@
 \KOMAoptions{twoside}
 
 % Page layout (Golden aspect ratio)
-\areaset[7mm]{332.80pt}{538.47pt} 
+\areaset[7.5mm]{332.80pt}{538.47pt} 
 
 % Page layout (ISO B5 aspect ratio)
 %\KOMAoptions{BCOR=6mm}
@@ -258,8 +258,8 @@
 % Bringhurst-style chapter numbers
 \makeatletter
 \newsavebox{\feline@chapter}
-\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-0.75cm}}}
-\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.3cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+1.5\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-1.25cm}}}
+\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+2.0\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
 \makeatother
 
 
@@ -296,10 +296,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Make sure footnote marks are separated by commas and kerned properly
-\usepackage[multiple=true]{fnpct}
+%\usepackage[multiple=true]{fnpct}
+\usepackage{fnpct}
 
 % Customize footnote font
-\addtokomafont{footnote}{\sffamily}
+%\addtokomafont{footnote}{\sffamily}
 
 % Change footnote marks to lining numbers
 \renewcommand{\thefootnote}{\lining{\arabic{footnote}}}
