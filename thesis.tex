@@ -74,13 +74,15 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[T1]{fontenc}
-\usepackage{fourier} 
+%\usepackage[T1]{fontenc}
+%\usepackage{fourier} 
 
 % Load font management packages
 \usepackage[no-math]{fontspec} 
 \usepackage{microtype}
+\usepackage{unicode-math}
 \usepackage{realscripts}
+%\usepackage{sansmath}
 
 %\usepackage{unicode-math}
 %\unimathsetup{math-style=ISO}
@@ -93,7 +95,7 @@
 \AtBeginDocument{\let\epsilon=\varepsilon}
 \AtBeginDocument{\let\phi=\varphi}
 
-\setmainfont[Scale=0.98,Numbers={OldStyle,Proportional}]{Utopia Std}
+%\setmainfont[Scale=0.98,Numbers={OldStyle,Proportional}]{Utopia Std}
 \newcommand{\lining}{\addfontfeature{Numbers={Lining}}}
 \newcommand{\oldstyle}{\addfontfeature{Numbers={OldStyle}}}
 %\newfontfamily\lining{Utopia Std}[Scale=0.98,Numbers={Lining,Proportional}]
@@ -110,14 +112,29 @@
 %\setmathfont{Libertinus Math}[range={\parallel,\perp}]
 
 % Sans-serif font used for titling
-\setsansfont{Libertinus Sans}%
+%\setsansfont[Scale=MatchLowercase,BoldFont={*-Semibold}]{Sanserata}
+%\setsansfont[Scale=MatchLowercase,BoldFont={*-Semibold},StylisticSet={1},Numbers={OldStyle}]{Sanserata}
+\defaultfontfeatures{Scale=MatchLowercase,RawFeature=+calt}
+\unimathsetup{math-style=ISO}
+\setmainfont{Libertinus Serif}%
 [
-  UprightFont    = *-Regular,
-  BoldFont       = *-Bold,
-  ItalicFont     = *-Italic,
-  Numbers        = Lining,
-  Scale          = MatchLowercase %1.015
+  Numbers={OldStyle},
+  BoldFont={*-Semibold},
+  BoldItalicFont={*-SemiboldItalic}
 ]
+\setsansfont{Libertinus Sans}[Numbers={Lining}]
+\setmathfont{Libertinus Math}
+\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla}]
+%\setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
+%\setmathfont{Libertinus Serif}[range={"0261->"0067}]
+%\setsansfont{Libertinus Sans}%
+%[
+%  UprightFont    = *-Regular,
+%  BoldFont       = *-Bold,
+%  ItalicFont     = *-Italic,
+%  Numbers        = Lining,
+%  Scale          = MatchLowercase %1.015
+%]
 %\setsansfont{Fira Sans}%
 %[
 %  UprightFont    = *-Regular,
@@ -137,13 +154,15 @@
 %   Numbers        = {OldStyle,Proportional},
 %   Ligatures      = TeX
 % ]
-% 
-% % Serif font used for mathematics
-% \setmathfont{Neo Euler}
+
+% Serif font used for mathematics
+% \unimathsetup{math-style=ISO}
+% \setmathfont{Neo Euler}[range={up->it,bfup->bfit}]
 % \setmathfont{TeX Gyre Pagella Math}[range={\check,\hat,\int,\oint,\sum,\prod,\dagger,\ddagger}]
 % \setmathfont{Libertinus Math}[range={\lparen,\rparen,\lbrace,\rbrace,\lbrack,\rbrack,\langle,\rangle,\lceil,\rceil,\lfloor,\rfloor,\vert,\parallel,\perp}]
 % \setmathfont{WarnockPro}[range={\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathexclam,\mathampersand}]
 % \setmathfont[StylisticSet=5,range={\uparrow,\downarrow}]{STIX2Math.otf}
+% %\setoperatorfont\mathrm
 
 %\setmathfont{Libertinus Math}
 %\setmathfont{Neo Euler} 
@@ -235,11 +254,11 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Switch to a sans font for captions
+% Font used for caption content
 \addtokomafont{caption}{\small}
 
-% Use a bold font for caption labels
-\addtokomafont{captionlabel}{\sffamily\bfseries\small}
+% Font used for caption labels
+\addtokomafont{captionlabel}{\sffamily\bfseries}
 
 % Redefine the caption label delimiter
 %\renewcommand*{\captionformat}{\hspace{0.3em}\rule[-0.30ex]{0.085em}{1.80ex}\hspace{0.3em}}
@@ -264,7 +283,7 @@
 \usepackage[multiple=true]{fnpct}
 
 % Customize footnote font
-%\addtokomafont{footnote}{\itshape}
+\addtokomafont{footnote}{\sffamily}
 
 % Change footnote marks to lining numbers
 \renewcommand{\thefootnote}{\lining{\arabic{footnote}}}
@@ -490,7 +509,8 @@
 
 % Mathematical markup
 \usepackage{bm}
-\newcommand{\B}[1]{\bm{#1}}
+\newcommand{\B}[1]{\symbf{#1}}
+%\newcommand{\B}[1]{\bm{#1}}
 \newcommand{\C}[1]{\mathcal{#1}}
 \newcommand{\U}[1]{\underline{#1}}
 \newcommand{\V}[1]{\check{#1}}
