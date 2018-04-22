@@ -274,7 +274,8 @@
 \addtokomafont{caption}{\small}
 
 % Font used for caption labels
-\addtokomafont{captionlabel}{\sffamily\bfseries}
+%\addtokomafont{captionlabel}{\sffamily\bfseries}
+\addtokomafont{captionlabel}{\bfseries\lining}
 
 % Redefine the caption label delimiter
 %\renewcommand*{\captionformat}{\hspace{0.3em}\rule[-0.30ex]{0.085em}{1.80ex}\hspace{0.3em}}
@@ -485,9 +486,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Set tables in a sans font
-%\AtBeginEnvironment{tabular}{\sffamily}
-%\AtBeginEnvironment{tabular*}{\sffamily}
+% Font used for tables
+\AtBeginEnvironment{tabular}{\small}
+\AtBeginEnvironment{tabular*}{\small}
 
 % Use lining numerals for chemical formulas and physical units
 \mhchemoptions{textfontcommand=\lining}
