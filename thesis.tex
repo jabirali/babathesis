@@ -112,8 +112,7 @@
 
 % Math font (used for equations)
 \setmathfont{Libertinus Math}
-\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,"0302,"0303,"030C}] 
-\setmathfont{STIX2Baba.otf}[range={"0067,"1D488,"1D454},StylisticSet=2]
+\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,"0302,"0303,"030C,"0067,"1D488,"1D454}] 
 
 
 
@@ -382,8 +381,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Enforce a consistent Greek style
-\AtBeginDocument{\let\epsilon=\varepsilon}
-\AtBeginDocument{\let\phi=\varphi}
+%\AtBeginDocument{\let\nabla=𝛁}
+\AtBeginDocument%
+{
+  \let\epsilon=\varepsilon
+  \let\phi=\varphi
+}
 
 % Change the font used for tables
 \AtBeginEnvironment{tabular}{\small}
