@@ -45,14 +45,14 @@
 \areaset[7.5mm]{332.80pt}{538.47pt} 
 
 % Page layout (ISO B5 aspect ratio)
-%\KOMAoptions{BCOR=6mm}
+%\KOMAoptions{BCOR=7.5mm}
 %\KOMAoptions{DIV=11}
 
 % Disable headers
 \pagestyle{plain}
 
-% Page numbers
-\addtokomafont{pagenumber}{\lining\vspace{3.5ex}}
+% Font used for page numbers
+\addtokomafont{pagenumber}{\lining}
 
 % Use spacing instead of indentation to separate paragraphs
 %\KOMAoptions{parskip=half+} 
@@ -74,142 +74,47 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\usepackage[T1]{fontenc}
-%\usepackage{fourier} 
-
-%\usepackage[T1]{fontenc}
-%\usepackage[libertine]{newtxmath}
-
 % Load font management packages
 \usepackage[no-math]{fontspec} 
-\usepackage{microtype}
 \usepackage{unicode-math}
 \usepackage{realscripts}
-%\usepackage{sansmath}
+\usepackage{microtype}
 
-%\usepackage{unicode-math}
-%\unimathsetup{math-style=ISO}
-%\AtBeginDocument{\let\approx=\cong}
-%\AtBeginDocument{\def\ll{<\kern-0.34em<}}
-%\AtBeginDocument{\def\gg{>\kern-0.34em>}}
-
-% General font settings
+% Scale all fonts to the same x-height
 \defaultfontfeatures{Scale=MatchLowercase}
-\AtBeginDocument{\let\epsilon=\varepsilon}
-\AtBeginDocument{\let\phi=\varphi}
 
-%\setmainfont[Scale=0.98,Numbers={OldStyle,Proportional}]{Utopia Std}
+% Use italics for all math letters
+\unimathsetup{math-style=ISO}
+
+% Turn on "contextual alternates"
+\defaultfontfeatures{RawFeature=+calt}
+
+% Define commands to switch number style
 \newcommand{\lining}{\addfontfeature{Numbers={Lining}}}
 \newcommand{\oldstyle}{\addfontfeature{Numbers={OldStyle}}}
-%\newfontfamily\lining{Utopia Std}[Scale=0.98,Numbers={Lining,Proportional}]
-%\newfontfamily\oldstyle{Utopia Std}[Scale=0.98,Numbers={OldStyle,Proportional}]
 
-%\setmainfont{STIX Two Text}[Numbers=OldStyle]
-%\newfontfamily\lining{stix two text}[numbers=lining]
-%\newfontfamily\oldstyle{stix two text}[numbers=oldstyle]
-
-%\setmathfont{STIX Two Math}[StylisticSet={2,8}]
-%\setmathfont{STIX Two Math}[range={it/Greek,bfit/Greek,up/Greek,bfup/Greek},math-style=upright]
-%\setmathfont{STIX Two Math}[range={\uparrow,\downarrow},StylisticSet=5]
-%\setmathfont{STIX Two Math}[range=bb->bfup]
-%\setmathfont{Libertinus Math}[range={\parallel,\perp}]
-
-% Sans-serif font used for titling
-%\setsansfont[Scale=MatchLowercase,BoldFont={*-Semibold}]{Sanserata}
-%\setsansfont[Scale=MatchLowercase,BoldFont={*-Semibold},StylisticSet={1},Numbers={OldStyle}]{Sanserata}
-\defaultfontfeatures{Scale=MatchLowercase,RawFeature=+calt}
-%\defaultfontfeatures{Scale=MatchLowercase}
-\unimathsetup{math-style=ISO}
+% Serif font (used for body text)
 \setmainfont{Libertinus Serif}%
 [
-  Numbers={OldStyle},
-  BoldFont={*-Semibold},
-  BoldItalicFont={*-SemiboldItalic}
+  UprightFont    = {*-Regular},
+  ItalicFont     = {*-Italic},
+  BoldFont       = {*-Semibold},
+  BoldItalicFont = {*-SemiboldItalic},
+  Numbers        = {OldStyle}
 ]
-%\setmainfont{Warnock Pro}%
-%[
-%  UprightFont    = *-Regular,
-%  BoldFont       = *-Bold,
-%  ItalicFont     = *-Italic,
-%  BoldItalicFont = *-BoldItalic,
-%  Numbers        = {OldStyle,Proportional},
-%]
-\setsansfont{Libertinus Sans}[Numbers={Lining},Scale=MatchUppercase]
-%\setsansfont{Alegreya Sans}[Scale=MatchUppercase,BoldFont={*-Medium.otf}]
+
+% Sans font (used for titling)
+\setsansfont{Libertinus Sans}%
+[
+  Numbers = {Lining},
+  Scale   = MatchUppercase
+]
+
+% Math font (used for equations)
 \setmathfont{Libertinus Math}
 \setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,"0302,"0303,"030C}] 
 \setmathfont{STIX2Baba.otf}[range={"0067,"1D488,"1D454},StylisticSet=2]
 
-
-%\setmathfont{STIX Two Math}[StylisticSet=5]
-%\setmathfont{Libertinus Serif}[range={"0261->"0067}]
-%\setsansfont{Libertinus Sans}%
-%[
-%  UprightFont    = *-Regular,
-%  BoldFont       = *-Bold,
-%  ItalicFont     = *-Italic,
-%  Numbers        = Lining,
-%  Scale          = MatchLowercase %1.015
-%]
-%\setsansfont{Fira Sans}%
-%[
-%  UprightFont    = *-Regular,
-%  BoldFont       = *-Medium,
-%  ItalicFont     = *-Italic,
-%  Numbers        = OldStyle,
-%  Scale          = MatchUppercase
-%]
-
-% % Serif font used for regular text 
-% \setmainfont{Warnock Pro}%
-% [
-%   UprightFont    = *-Regular.otf,
-%   BoldFont       = *-Bold.otf,
-%   ItalicFont     = *-Italic.otf,
-%   BoldItalicFont = *-BoldItalic,
-%   Numbers        = {OldStyle,Proportional},
-%   Ligatures      = TeX
-% ]
-
-% Serif font used for mathematics
-% \unimathsetup{math-style=ISO}
-% \setmathfont{Neo Euler}[range={up->it,bfup->bfit}]
-% \setmathfont{TeX Gyre Pagella Math}[range={\check,\hat,\int,\oint,\sum,\prod,\dagger,\ddagger}]
-% \setmathfont{Libertinus Math}[range={\lparen,\rparen,\lbrace,\rbrace,\lbrack,\rbrack,\langle,\rangle,\lceil,\rceil,\lfloor,\rfloor,\vert,\parallel,\perp}]
-% \setmathfont{WarnockPro}[range={\mathcomma,\mathperiod,\mathcolon,\mathsemicolon,\mathexclam,\mathampersand}]
-% \setmathfont[StylisticSet=5,range={\uparrow,\downarrow}]{STIX2Math.otf}
-% %\setoperatorfont\mathrm
-
-%\setmathfont{Libertinus Math}
-%\setmathfont{Neo Euler} 
-%\setmathfont[range={\hat,\tilde,\sum,\prod,\int,\dagger,\ast}]{TeX Gyre Pagella Math}
-
-% Mathematical fallback font
-%\setmathfont{STIX2Math.otf}[StylisticSet={4,8}]
-
-% % Mathematical font used for Latin letters and Arabic numerals
-% \setmathfont{WarnockPro-Regular.otf}[range={up/{Latin,latin,num},\times,\mathdollar,\mathpercent,\mathampersand,\mathcomma,\mathperiod,\mathslash,\mathcolon,\mathsemicolon,\backslash,\mathatsign,\ell,\dagger,\ddagger}]
-% \setmathfont{WarnockPro-Italic.otf}[range={it/{Latin,latin,num}}]
-% \setmathfont{WarnockPro-Bold.otf}[range={bfup/{Latin,latin,num}}]
-% \setmathfont{WarnockPro-BoldItalic.otf}[range={bfit/{Latin,latin,num}}]
-% 
-% % Mathematical font used for Greek letters
-% \setmathfont{MinionPro-Regular.otf}[range={up/{Greek,greek}}]
-% \setmathfont{MinionPro-Italic.otf}[range={it/{Greek,greek}}]
-% \setmathfont{MinionPro-Bold.otf}[range={bfup/{Greek,greek}}]
-% \setmathfont{MinionPro-BoldItalic.otf}[range={bfit/{Greek,greek}}]
-% 
-% Mathematical font used for calligraphic letters
-%\setmathfont{WarnockPro-Italic.otf}[range=cal,Style=Swash]
-%\setmathfont{WarnockPro-BoldItalic.otf}[range=bfcal,Style=Swash]
- 
-% Mathematical font used for blackboard letters
-%\setmathfont{WarnockPro-Bold.otf}[range=bb->bfup]
-% 
-% % Override fonts used for specific glyphs
-%\setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,\nabla}]
-% \setmathfont{STIX2Math.otf}[StylisticSet=5,range={\uparrow,\downarrow,\nabla,"1D713,"1D74D,"1D6D9,"03C8}]
-% \AtBeginDocument{\def\cdot{\kern0.1em\textrm{·}\kern0.1em}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -241,11 +146,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Make sure all headings use sans text and math
+% Change the font used for headings
 \addtokomafont{disposition}{\sffamily}
-
-% Render chapter headings in smallcaps
-%\addtokomafont{chapter}{\scshape}
 
 % Change the sizes of chapters and sections
 \addtokomafont{chapter}{\LARGE}
@@ -255,11 +157,11 @@
 \RedeclareSectionCommand[beforeskip=-0.0\baselineskip,afterskip=0.5\baselineskip]{chapter}
 \RedeclareSectionCommand[beforeskip=-1.0\baselineskip,afterskip=0.5\baselineskip]{section}
 
-% Bringhurst-style chapter numbers
+% Bringhurst-style chapter numbers in the margin
 \makeatletter
-\newsavebox{\feline@chapter}
-\newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-1.25cm}}}
-\renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+2.0\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
+  \newsavebox{\feline@chapter}
+  \newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-1.25cm}}}
+  \renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+2.0\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
 \makeatother
 
 
@@ -270,22 +172,19 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Font used for caption content
+% Change the font used for captions
 \addtokomafont{caption}{\small}
 
-% Font used for caption labels
-%\addtokomafont{captionlabel}{\sffamily\bfseries}
+% Change the font used for labels
 \addtokomafont{captionlabel}{\bfseries\lining}
 
-% Redefine the caption label delimiter
-%\renewcommand*{\captionformat}{\hspace{0.3em}\rule[-0.30ex]{0.085em}{1.80ex}\hspace{0.3em}}
-
-% Add 2em margins on each side of the caption. (Since the default \parindent is 1em, this
-% implies that the left end of the caption will always look one \parindent indented if it
-% comes right before/after a new paragraph, and can therefore prevent weird indentation.)
+% Add 2em margins on each side of the caption. (Since the default 
+% \parindent is 1em, this implies that the left end of the caption 
+% will always look one \parindent indented if it comes right before
+% or after a new paragraph, and can thus prevent weird indentation.)
 \setcapdynwidth{\dimexpr\textwidth-4em\relax}
 
-% Disable extra indentation of the subsequent lines in a multiline caption
+% Disable extra indentation of subsequent lines in a multiline caption
 \setcapindent{0em}
 
 
@@ -299,16 +198,16 @@
 % Make sure footnote marks are separated by commas and kerned properly
 \usepackage[multiple=true,mult-fn-sep=${}^{,\kern-0.07em}$]{fnpct}
 
-% Customize footnote font
+% Change the font used for footnotes
 %\addtokomafont{footnote}{\sffamily}
 
-% Change footnote marks to lining numbers
+% Change the footnote marks to lining numbers
 \renewcommand{\thefootnote}{\lining{\arabic{footnote}}}
 
-% Change footnote marks to Latin letters
+% Change the footnote marks to Latin letters
 %\renewcommand{\thefootnote}{\textit{\alph{footnote}}}
 
-% Change footnote marks to symbols
+% Change the footnote marks to symbols
 %\usepackage[wiley]{footmisc}
 %\renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
@@ -334,10 +233,7 @@
 
 % Color the hyperlinks
 \hypersetup{colorlinks}
-%\hypersetup{allcolors=black}
 \hypersetup{allcolors=Navy}
-%\definecolor{link}{HTML}{b}
-%\hypersetup{allcolors=link}
 
 % Font used for hyperlinks
 \urlstyle{rm}
@@ -393,7 +289,7 @@
 \usepackage{booktabs}   % Proper formatting of tables
 \usepackage{siunitx}    % Proper formatting of units
 \usepackage{mhchem}     % Proper formatting of chemicals
-\usepackage{lipsum}     % Random content
+\usepackage{lipsum}     % Insertion of arbitrary content
 
 
 
@@ -485,11 +381,15 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Font used for tables
+% Enforce a consistent Greek style
+\AtBeginDocument{\let\epsilon=\varepsilon}
+\AtBeginDocument{\let\phi=\varphi}
+
+% Change the font used for tables
 \AtBeginEnvironment{tabular}{\small}
 \AtBeginEnvironment{tabular*}{\small}
 
-% Use lining numerals for chemical formulas and physical units
+% Use lining numbers for chemistry and physics
 \mhchemoptions{textfontcommand=\lining}
 \sisetup{text-rm=\lining}
 
@@ -528,10 +428,8 @@
 \newcommand{\anticomm}[2][]{#1\{ #2 ,\, #1\}}
 
 % Mathematical markup
-\usepackage{bm}
 \newcommand{\B}[1]{\symbf{#1}}
-%\newcommand{\B}[1]{\bm{#1}}
-\newcommand{\C}[1]{\mathcal{#1}}
+\newcommand{\C}[1]{\symcal{#1}}
 \newcommand{\U}[1]{\underline{#1}}
 \newcommand{\V}[1]{\check{#1}}
 \newcommand{\T}[1]{\tilde{#1}}
@@ -559,16 +457,16 @@
 \newcommand{\cc}[1]{#1^{\ast}}
 \newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
 
-% Phantom notation
-\newcommand{\PM}{\phantom{-}}
-
-% Mathematical structure
-\newcommand{\tensor}[1]{\overset{\text{\scriptsize$\leftrightarrow$}}{#1}}
-
 % Mathematical operations
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\re}{Re}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\atan}{atan}
+\DeclareMathOperator{\atanh}{atanh}
+\DeclareMathOperator{\asin}{asin}
+\DeclareMathOperator{\asinh}{asinh}
+\DeclareMathOperator{\acos}{acos}
+\DeclareMathOperator{\acosh}{acosh}
 
 
 
