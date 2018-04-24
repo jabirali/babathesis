@@ -84,7 +84,12 @@
 \defaultfontfeatures{Scale=MatchLowercase}
 
 % Use italics for all math letters
-\unimathsetup{math-style=ISO}
+\unimathsetup%
+{
+  math-style=ISO,
+  nabla=upright,
+  partial=upright
+}
 
 % Turn on "contextual alternates"
 \defaultfontfeatures{RawFeature=+calt}
@@ -425,6 +430,24 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Mathematical symbols
+\newcommand{\e}{\symup{e}}
+\renewcommand{\i}{\symup{i}}
+\newcommand{\p}{\symup{\pi}}
+\renewcommand{\d}[1]{d#1}
+%\newcommand{\p}[1]{\partial_{#1}}
+
+% Mathematical operations
+\DeclareMathOperator{\tr}{Tr}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\atan}{atan}
+\DeclareMathOperator{\atanh}{atanh}
+\DeclareMathOperator{\asin}{asin}
+\DeclareMathOperator{\asinh}{asinh}
+\DeclareMathOperator{\acos}{acos}
+\DeclareMathOperator{\acosh}{acosh}
+
 % Brackets
 \newcommand{\avg}[2][]{#1\langle #2 #1\rangle}
 \newcommand{\comm}[2][]{#1[ #2 ,\, #1]}
@@ -450,8 +473,6 @@
 \newcommand{\N}[1]{\tau_{#1}}
 
 % Short-hand notation
-\renewcommand{\d}[1]{d#1}
-\newcommand{\p}[1]{\partial_{#1}}
 \newcommand{\up}{\uparrow}
 \newcommand{\dn}{\downarrow}
 
@@ -459,17 +480,6 @@
 \newcommand{\hc}[1]{#1^{\dagger}}
 \newcommand{\cc}[1]{#1^{\ast}}
 \newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
-
-% Mathematical operations
-\DeclareMathOperator{\tr}{Tr}
-\DeclareMathOperator{\re}{Re}
-\DeclareMathOperator{\im}{Im}
-\DeclareMathOperator{\atan}{atan}
-\DeclareMathOperator{\atanh}{atanh}
-\DeclareMathOperator{\asin}{asin}
-\DeclareMathOperator{\asinh}{asinh}
-\DeclareMathOperator{\acos}{acos}
-\DeclareMathOperator{\acosh}{acosh}
 
 
 
