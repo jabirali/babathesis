@@ -14,7 +14,7 @@ The chapter starts with a test of mathematical expressions in \cref{sec:test}, a
 \section{Here be random text about \textsc{srt/lrt}}\label{sec:test}
 This is a Rapid Jabby Quaint Poem Kalif test.
 Written by \textsc{jabir ali ouassou}.
-Let's see how this goes! Btw, $\e^{\i\p} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
+Let's see how this goes! Btw, $e^{i\pi} = -1$ and $(\partial_\mu \partial^\mu - m^2) \psi = 0$.
 Also calligraphic $\mathcal{A} = \mathcal{F}x$.
 Bold $\B{A}\B{\xi} = \B{\Delta}\B{\eta}$ and spins $\nabla^2 f_{\uparrow\downarrow}^{\vphantom{\dagger}}+\hat{\B{f}}_t\check{\B{g}}_s\hat{g}_{\downarrow\uparrow}^{\vphantom{\dagger}} - h_\perp^{\vphantom{*}} \times v_\parallel^{\vphantom{*}}.$
 Some not-really-blackboard fonts $n \in \mathbb{N}_+$, $q \in \mathbb{Z}_2$, $r \in \mathbb{R}\,\backslash\,\{0\}$, $z \in \mathbb{C}$, $s \in \mathbb{S}$. 
@@ -39,7 +39,11 @@ Also, we know well that $I(\phi) = I_0 \sin(\phi) + I_1' \sin(\delta\phi/2)$\foo
 = \begin{pmatrix} \phantom{-}N(1+\gamma\tilde{\gamma}) & \phantom{-}2N\gamma\;\; \\ -\tilde{N}(1+\tilde{\gamma}\gamma) & -2\tilde{N}\tilde\gamma\;\; \end{pmatrix} 
 \end{equation}
 \begin{equation}
-  \Delta(z) = \int_0^{\infty} \mathrm{d}\epsilon\,\mathrm{Re}\big[f_{\symup{s}}(\epsilon)\big] \tanh\!\left(\frac{\symup\pi}{2\e^{\symup{\gamma}}} \frac{\epsilon/\Delta_0}{T/T_{\symup{c}}}\right)
+  \Delta(z) = \int_0^{\infty} \mathrm{d}\epsilon\,\mathrm{Re}\big[f_{\symup{s}}(\epsilon)\big] \tanh\!\left(\frac{\symup\pi}{2e^{\symup{\gamma}}} \frac{\epsilon/\Delta_0}{T/T_{\symup{c}}}\right)
+\end{equation}
+Alternatively without any \textsc{iso} standards complicance (i.e. multiletter as only criterion for upright):
+\begin{equation}
+  \Delta(z) = \int_0^{\infty} \mathop{d\kern-0.02em\epsilon}\mathrm{Re}\big[f_s(\epsilon)\big] \tanh\!\left(\frac{\pi}{2e^{\gamma}} \frac{\epsilon/\Delta_0}{T/T_{c}}\right)
 \end{equation}
 Testing super and subscripts:
 \begin{equation}
@@ -68,7 +72,7 @@ Here is another one:
   ABCDEFGHIJKLMOPQRSTUVWXYZ\\
   abcdefghijklmopqrstuvwxyz
 \end{align}
-\textsf{And here is some sans-serif text with math $\e^{\i\phi}=\cos\phi+\i\sin\phi$ and so on etc.} And here is some normal text again.
+\textsf{And here is some sans-serif text with math $e^{i\phi}=\cos\phi+i\sin\phi$ and so on etc.} And here is some normal text again.
 Here is a chemical equation \ce{CrO23} and unit \SI{23e23}{m/s} but $J_0 = \SI{23e23}{m/s}$ also.
 
 Selfconsistency equation:
@@ -401,8 +405,65 @@ Phasellus venenatis tellus ut velit faucibus, posuere porttitor lacus hendrerit.
   \hat{g}^{\textsc{k}\ast}_{\up\dn}(\B{r},t) &= \big\langle\big[ \Psi^\dagger_{\up}(\B{r},t),\, \Psi_\dn^{\vphantom{\dagger}}(\B{r},t) \big]\big\rangle, \\
   \Delta^\ast_s &= \big\langle c^\dagger_{\up} c^{\vphantom{\dagger}}_{\dn} \big\rangle.\\
   e^{2\pi i n} = 1^n\\
-  \symup{e}^{2\symup{\pi}\symup{i}θ} = 1+2\symup{i}
+  \symup{e}^{2\symup{\pi}\symup{i}θ} = 1+2\symup{i}\\
+  1■2□3, \Delta = \Delta_0 e^{i\phi}, \Delta = \Delta_0e^{i\phi} \\
+  f(x) \coloneq \sin(x) \phi\symup{i\pi\delta}(x) \symup{\delta}_{ij}
+\end{align}
+Perhaps using \textsc{iso} standard for standard functions is cumbersome...
+Especially stuff like π-junction vs φ-junction, or $\symup{\pi}$-junction vs. $\phi$-junction is strange...
+Most people don't know the up vs. slant notation, so even though it might clear up some index/imaginary and electron/euler ambiguities, it's a typographic nightmare for little gain.
+Especially the distinction between standard math functions (like the deltas) and my own functions is weird.
+
+\begin{align}
+  \hat{\tau}_0 &= 
+  \begin{pmatrix}
+    +\sigma_0 & 0 \\
+    0 & +\sigma_0
+  \end{pmatrix}
+  &
+  \hat{\tau}_1 &= 
+  \begin{pmatrix}
+    0 & +\sigma_0 \\
+    +\sigma_0 & 0 
+  \end{pmatrix}
+  &
+  \hat{\tau}_2 &= 
+  \begin{pmatrix}
+    0 & -i\sigma_0 \\
+    +i\sigma_0 & 0 
+  \end{pmatrix}
+  &
+  \hat{\tau}_3 &= 
+  \begin{pmatrix}
+    +\sigma_0 & 0 \\
+    0 & -\sigma_0
+  \end{pmatrix}
+  \\
+  \hat{\sigma}_0 &=
+  \begin{pmatrix}
+    +\sigma_0 & 0 \\
+    0 & +\sigma_0
+  \end{pmatrix}
+  &
+  \hat{\sigma}_1 &=
+  \begin{pmatrix}
+    +\sigma_1 & 0 \\
+    0 & +\sigma_1
+  \end{pmatrix}
+  &
+  \hat{\sigma}_2 &=
+  \begin{pmatrix}
+    +\sigma_2 & 0 \\
+    0 & -\sigma_2
+  \end{pmatrix}
+  &
+  \hat{\sigma}_3 &=
+  \begin{pmatrix}
+    +\sigma_3 & 0 \\
+    0 & +\sigma_3
+  \end{pmatrix}
 \end{align}
 
+NOT Kronecker products because of cc.
 
 

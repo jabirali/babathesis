@@ -1,4 +1,50 @@
 \chapter{Algorithms}
+
+\cleardoublepage
+\section*{Steffensen's method with linear mixing}
+The selfconsistent solution for the superconducting gap~$Δ$ can be expressed
+\[
+  Δ = f(Δ),
+\]
+where the mean field $Δ = Δ(\B{r})$ in general is a function of position, and the function evaluation $f(Δ)$ implies solving both the Usadel equation and selfconsistency equation for the gap.
+This fixpoint equation can be rewritten\\[-2ex]
+\[
+  d(Δ) \deq f(Δ) - Δ = 0,
+\]
+where the function $d(Δ)$ quantifies the difference after one fixpoint iteration for a gap~$Δ$.
+This can be solved more efficiently using \eg Newton's method,
+\[
+  Δ_{n+1} = Δ_n - \frac{d(Δ_n)}{d'(Δ_n)}.
+\]
+In general, we do not know the exact form of $d'(Δ_n)$, so it has to be estimated numerically. 
+For this, we may use a forward difference approximation,
+\[
+  d'(Δ_n) \approx \frac{d(Δ_{n+1}) - d(Δ_n)}{Δ_{n+1} - Δ_n},
+\]
+so that the Steffensen equation for convergence acceleration can be written
+\[
+  Δ_{n+3} = Δ_n - \frac{d(Δ_n)(Δ_{n+1} - Δ_n) }{d(Δ_{n+1}) - d(Δ_{n})}.
+  \label{eq:steffensen}
+\]
+In the special case that we use regular fixpoint iterations between Steffensen boosts, we simply have $d(Δ_n) = Δ_{n+1} - Δ_n$, so this equation simplifies to
+\[
+  Δ_{n+3} = Δ_n - \frac{(Δ_{n+1} - Δ_n)^2 }{Δ_{n+2} - 2Δ_{n+1} + Δ_n} .
+\]
+Another alternative is to use \emph{linear mixing}.
+We then perform fixpoint iterations as usual, but restrain the changes using a mixing factor~$α\in[0,1]$:\\[-2ex]
+\[
+  Δ_{n+1} = αf(Δ_n) + (1-α)Δ_n 
+\]
+Note that using an iteration pattern like this, $d(Δ_n) = Δ_{n+1} - Δ_n$ does not hold anymore.
+However, by solving the equation above for $f(Δ_n) - Δ_n$, we just find that the corresponding expression just has an extra factor~$1/α$:
+\[
+  d(Δ_n) \deq f(Δ_n) - Δ_n = [Δ_{n+1} - Δ_n]/α.
+\]
+Going back to \cref{eq:steffensen}, we see that since there is only one factor~$d(\,\cdot\,)$ in the numerator and one in the denominator, the resulting factors~$α$ cancel out, leading to the same Steffensen iteration equation as before.
+
+\clearpage
+
+
 \section{Critical temperature calculations}
 \section{Steffensen's method}
 

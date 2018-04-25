@@ -430,10 +430,14 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Text macros
+\newcommand{\eg}{e.g.\ }
+\newcommand{\ie}{i.e.\ }
+\newcommand{\cf}{c.f.\ }
+\renewcommand{\[}{\begin{equation}}
+\renewcommand{\]}{\end{equation}}
+
 % Mathematical symbols
-\newcommand{\e}{\symup{e}}
-\renewcommand{\i}{\symup{i}}
-\newcommand{\p}{\symup{\pi}}
 \renewcommand{\d}[1]{d#1}
 %\newcommand{\p}[1]{\partial_{#1}}
 
@@ -481,6 +485,9 @@
 \newcommand{\cc}[1]{#1^{\ast}}
 \newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
 
+% Definition
+\newcommand{\deq}{\coloneq}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -505,7 +512,7 @@
     %\include{chapters/equilibrium}
     %\include{chapters/nonequilibrium} 
     %\include{chapters/observables}
-    %\include{chapters/algorithms} 
+    \include{chapters/algorithms} 
   \backmatter
     \printcites
   %  \include{papers/include}
