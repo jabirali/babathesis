@@ -49,7 +49,7 @@
 \DeclareFieldFormat[book]{volume}{#1}
 \DeclareFieldFormat[book,collection]{number}{#1}
 \DeclareFieldFormat*{pages}{#1}
-\DeclareFieldFormat{doi}{\textsc{doi}:~\href{https://dx.doi.org/#1}{#1}\nopunct}
+\DeclareFieldFormat{doi}{\textsc{doi}:~\href{https://dx.doi.org/#1}{\MakeLowercase{#1}}\nopunct}
 \DeclareFieldFormat{isbn}{\textsc{isbn}:~\href{https://isbnsearch.org/isbn/#1}{#1}\nopunct}
 
 % Simple modifications to punctuation, etc.
