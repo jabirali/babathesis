@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1156455862
-ModificationTime: 1524651811
+ModificationTime: 1524866114
 PfmFamily: 17
 TTFWeight: 400
 TTFWidth: 5
@@ -452,7 +452,7 @@ DisplaySize: -96
 AntiAlias: 1
 FitToEm: 0
 ExtremaBound: 50
-WinInfo: 8151 19 8
+WinInfo: 8550 19 8
 BeginPrivate: 9
 BlueValues 47 [-12 0 429 442 460 472 600 610 645 658 688 698]
 OtherBlues 11 [-238 -227]
@@ -44252,7 +44252,7 @@ EndChar
 StartChar: dagger
 Encoding: 8224 8224 1058
 Width: 358
-Flags: HMWO
+Flags: HMW
 LayerCount: 2
 Fore
 SplineSet
@@ -137497,45 +137497,43 @@ EndChar
 StartChar: uni2254
 Encoding: 8788 8788 3482
 Width: 674
-Flags: MW
+Flags: HMW
 LayerCount: 2
 Fore
 SplineSet
-60 339 m 0
- 60 368 84 392 113 392 c 0
- 142 392 166 368 166 339 c 0
- 166 310 142 286 113 286 c 0
- 84 286 60 310 60 339 c 0
-60 168 m 0
- 60 197 84 221 113 221 c 0
- 142 221 166 197 166 168 c 0
- 166 139 142 115 113 115 c 0
- 84 115 60 139 60 168 c 0
+46 339 m 0
+ 46 368 70 392 99 392 c 0
+ 128 392 152 368 152 339 c 0
+ 152 310 128 286 99 286 c 0
+ 70 286 46 310 46 339 c 0
+46 168 m 0
+ 46 197 70 221 99 221 c 0
+ 128 221 152 197 152 168 c 0
+ 152 139 128 115 99 115 c 0
+ 70 115 46 139 46 168 c 0
 EndSplineSet
-Refer: 20 61 N 1 0 0 1 124 0 2
-Validated: 1
+Refer: 20 61 S 1 0 0 1 138 0 2
 EndChar
 
 StartChar: uni2255
 Encoding: 8789 8789 3483
 Width: 674
-Flags: MW
+Flags: HMWO
 LayerCount: 2
 Fore
 SplineSet
-508 339 m 0
- 508 368 532 392 561 392 c 0
- 590 392 614 368 614 339 c 0
- 614 310 590 286 561 286 c 0
- 532 286 508 310 508 339 c 0
-508 168 m 0
- 508 197 532 221 561 221 c 0
- 590 221 614 197 614 168 c 0
- 614 139 590 115 561 115 c 0
- 532 115 508 139 508 168 c 0
+522 339 m 0
+ 522 368 546 392 575 392 c 0
+ 604 392 628 368 628 339 c 0
+ 628 310 604 286 575 286 c 0
+ 546 286 522 310 522 339 c 0
+522 168 m 0
+ 522 197 546 221 575 221 c 0
+ 604 221 628 197 628 168 c 0
+ 628 139 604 115 575 115 c 0
+ 546 115 522 139 522 168 c 0
 EndSplineSet
-Refer: 20 61 N 1 0 0 1 0 0 2
-Validated: 1
+Refer: 20 61 S 1 0 0 1 -14 0 2
 EndChar
 
 StartChar: uni2256

@@ -47,13 +47,13 @@ Going back to \cref{eq:steffensen}, we see that since there is only one factor~$
 
 \clearpage
 \section{Quasi-Newton least squares method}
-Steffensen's method works very well for problems where only the magnitude of the order parameter~$|\Delta|$ changes between iterations.
-However, it tends to struggle or even diverge if the phase~$\arg\phi$ changes as well, \ie for systems where a superconductor is subjected to a phase-bias or voltage-bias.
-This leads to an extremely slow convergence for such systems, where the safe option is to simply turn the convergence acceleration off.
+Steffensen's method for convergence acceleration is excellent when only the magnitude of the order parameter changes between iterations.
+However, in systems containing phase-biased or voltage-biased superconducting elements, the phase-winding of the order parameter changes between iterations as well.
+In this case, Steffensen's method typically diverges, and we have to revert to slow fixed-point iterations.
 
 However, there exist some generalized convergence acceleration methods as well, which can handle fixpoint iteration equations for arbitrary real vectors.
 Here, we will consider the relatively recently derived \emph{Quasi-Newton least squares} (\textsc{qnls}) method.\footnote{See papers by R.~Haelterman from 2009--2014, \eg \emph{J.\ Comp.\ App.\ Math.\ }\textbf{257}, 129 (2014).}
-To keep things as simple and memory-efficient as possible, we focus on the evolution of the order parameter $\Delta \in \symbb{C}$ in a single spatial point~$\B{r}$, and disregard what happens elsewhere.
+To keep things as simple and memory-efficient as possible, we focus on the evolution of the order parameter $Δ \in \symbb{C}$ in a single spatial point~$\B{r}$, and disregard what happens elsewhere.
 
 Since the \textsc{qnls} method was derived for functions~$\B{f}: \symbb{R}^n \rightarrow \symbb{R}^n$, we have to decompose the order parameter to a real vector $\B{Δ} \in \symbb{R}^2$ to use it,
 \[
