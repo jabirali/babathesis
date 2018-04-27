@@ -52,7 +52,7 @@
 \pagestyle{plain}
 
 % Font used for page numbers
-\addtokomafont{pagenumber}{\lining}
+\addtokomafont{pagenumber}{\lining\scshape}
 
 % Use spacing instead of indentation to separate paragraphs
 %\KOMAoptions{parskip=half+} 
@@ -431,6 +431,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Text macros
+\newcommand{\etal}{et al.\ }
 \newcommand{\eg}{e.g.\ }
 \newcommand{\ie}{i.e.\ }
 \newcommand{\cf}{c.f.\ }
@@ -479,6 +480,7 @@
 % Short-hand notation
 \newcommand{\up}{\uparrow}
 \newcommand{\dn}{\downarrow}
+\newcommand{\trans}{{\symsfup{T}}}
 
 \newcommand{\tc}[1]{\tilde{#1}}
 \newcommand{\hc}[1]{#1^{\dagger}}
