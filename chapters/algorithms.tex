@@ -113,6 +113,7 @@ This yields a simplified least-squares estimate for the Jacobian expressed entir
   \B{J}_n \approx \B{d}_{2,n} \big( \B{d}_{1,n-1}^\trans \B{d}_{1,n-1} \big)^{-1} \B{d}_{1,n-1}^\trans - \B{1}.
   \label{eq:jacobian-approx-approx}
 \]
+Note that the matrices $\B{d}_{1,n-1}$ and $\B{d}_{2,n}$ have dimensions $2 \times (n-1)$, so that the Jacobian ends up with the dimensions $2\times2$ as expected.
 
 To summarize: the proposed iteration scheme for systems with a phase-winding consists of a number of simple and stable fixed-point iterations,\\[-2ex]
 \[
@@ -123,7 +124,7 @@ followed by occasional convergence boosts using an \textsc{qnls} method,
   \B{Δ}_{n+1} = \B{Δ}_{n} - \B{J}^{-1}_n \B{f}(\B{Δ}_n),
 \]
 where the Jacobian $\B{J}$ is found using \cref{eq:jacobian-approx-approx}.
-How often one should perform these boosts to optimize convergence time and not sacrifice numerical stability should be determined empirically.
+How often one should perform these boosts to optimize convergence time without sacrificing any numerical stability should be determined empirically.
 Comparing with our results using Steffensen's method, one might expect that at least 7 fixed-point iterations between boosts should be required.
 
 
