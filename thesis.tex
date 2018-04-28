@@ -41,12 +41,16 @@
 % Duplex layout
 \KOMAoptions{twoside}
 
-% Page layout (Golden aspect ratio)
-\areaset[7.5mm]{332.80pt}{538.47pt} 
+% Page layout [1/sqrt(3)]
+\usepackage[text={108.25mm,187.50mm},hmarginratio=1:1,vmarginratio=1:2]{geometry}
 
-% Page layout (ISO B5 aspect ratio)
-%\KOMAoptions{BCOR=7.5mm}
+% Page layout [1/sqrt(2)]
+%\KOMAoptions{BCOR=15mm}
 %\KOMAoptions{DIV=11}
+
+% Page layout [Classic circle]
+%\KOMAoptions{BCOR=15mm}
+%\KOMAoptions{DIV=classic}
 
 % Disable headers
 \pagestyle{plain}
@@ -164,7 +168,7 @@
 % Bringhurst-style chapter numbers in the margin
 \makeatletter
   \newsavebox{\feline@chapter}
-  \newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-1.25cm}}}
+  \newcommand{\feline@chapter@marker}[1][4cm]{\sbox\feline@chapter{\resizebox{!}{#1}{\setlength{\fboxsep}{0pt}\color{gray}\thechapter}}\parbox[b][0.5cm]{1.5cm}{\usebox{\feline@chapter}\vspace*{-1.325cm}}}
   \renewcommand*{\chapterformat}{\sbox\feline@chapter{\feline@chapter@marker[1.6cm]}\makebox[0pt][l]{\makebox[\dimexpr\textwidth+2.0\marginparsep+\wd\feline@chapter\relax][r]{\usebox\feline@chapter}}}
 \makeatother
 
