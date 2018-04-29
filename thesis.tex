@@ -121,7 +121,8 @@
 
 % Math font (used for equations)
 \setmathfont{Libertinus Math}
-\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,\coloneq,\eqcolon,"0302,"0303,"030C,"0067,"1D488,"1D454}] 
+\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\coloneq,\eqcolon,"0302,"0303,"030C,"0067,"1D488,"1D454}] 
+%\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,\coloneq,\eqcolon,"0302,"0303,"030C,"0067,"1D488,"1D454}] 
 
 
 
@@ -443,7 +444,7 @@
 \renewcommand{\]}{\end{equation}}
 
 % Mathematical symbols
-\renewcommand{\d}[1]{d#1}
+\renewcommand{\d}[1]{\mathop{d\kern0em#1}}
 %\newcommand{\p}[1]{\partial_{#1}}
 
 % Mathematical operations
