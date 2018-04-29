@@ -113,9 +113,9 @@
 ]
 
 % Sans font (used for titling)
-\setsansfont{Libertinus Sans}%
+\setsansfont{URW Classico}%
 [
-  Numbers = {Lining},
+  Numbers = {Lining,Proportional},
   Scale   = MatchUppercase
 ]
 
@@ -140,6 +140,9 @@
 
 % Do not include subsections in the table of contents
 \setcounter{tocdepth}{1}
+
+% Fix vertical spacing after table of contents title
+\BeforeTOCHead[toc]{\RedeclareSectionCommand[beforeskip=1sp,afterskip=1sp]{chapter}}
 
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
 \settocstylefeature{entryhook}{\lining}
