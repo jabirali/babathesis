@@ -84,6 +84,9 @@
 \usepackage{realscripts}
 \usepackage{microtype}
 
+% Where to look for fonts
+\defaultfontfeatures{Path={fonts/}}
+
 % Scale all fonts to the same x-height
 \defaultfontfeatures{Scale=MatchLowercase}
 
@@ -105,24 +108,26 @@
 % Serif font (used for body text)
 \setmainfont{Libertinus Serif}%
 [
-  UprightFont    = {*-Regular},
-  ItalicFont     = {*-Italic},
-  BoldFont       = {*-Semibold},
-  BoldItalicFont = {*-SemiboldItalic},
-  Numbers        = {OldStyle}
+  UprightFont      = {*-Regular},
+  ItalicFont       = {*-Italic},
+  BoldFont         = {*-Semibold},
+  BoldItalicFont   = {*-SemiboldItalic},
+  Numbers          = {OldStyle},
+  PunctuationSpace = 1.5
 ]
 
 % Sans font (used for titling)
 \setsansfont{URW Classico}%
 [
-  Numbers = {Lining,Proportional},
-  Scale   = MatchUppercase
+  UprightFont    = {*-Regular},
+  ItalicFont     = {*-Italic},
+  BoldFont       = {*-Bold},
+  Numbers        = {Proportional,Lining},
+  Scale          = MatchUppercase
 ]
 
 % Math font (used for equations)
 \setmathfont{Libertinus Math}
-\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\coloneq,\eqcolon,"0302,"0303,"030C,"0067,"1D488,"1D454}] 
-%\setmathfont{LibertinusBaba.otf}[range={\uparrow,\downarrow,\dagger,\ast,\nabla,\coloneq,\eqcolon,"0302,"0303,"030C,"0067,"1D488,"1D454}] 
 
 
 
@@ -307,88 +312,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   List of publications
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Macros for printing bibliographies
-\defbibheading{pubs}[Publications]{\chapter*{#1}}
-\newcommand{\printcites}{\printbibliography[nottype=customa,resetnumbers=true]}
-\newcommand{\printpapers}{\printbibliography[type=customa,heading=pubs,resetnumbers=true]}
-
-% Declare how to compactly cite my own papers (format: "Paper I")
-\DeclareCiteCommand{\papercite}
-  {Paper~\usebibmacro{cite:init}\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}\usebibmacro{cite:comp}}{}
-  {\usebibmacro{cite:dump}\usebibmacro{postnote}}
-
-% Declare how to verbosely cite my own papers (format: full citation)
-\makeatletter
-\DeclareCiteCommand{\fullpapercite}%
-{\usebibmacro{prenote}}%
-{{\defcounter{maxnames}{\blx@maxbibnames}%
-  \sffamily
-  \raggedright
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{title}%
-  \newblock
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit\newblock
-  \usebibmacro{journal+issuetitle}%
-  \newunit
-  \usebibmacro{byeditor+others}%
-  \newunit
-  \usebibmacro{note+pages}%
-  \newunit
-  \setunit{\addspace}
-  \usebibmacro{issue+date}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \newunit\newblock
-  \usebibmacro{related}%
-  \newunit\newblock
-  \usebibmacro{doi+eprint+url}%
-  \usebibmacro{finentry}%
-	\nopunct
-}} 
-{\multicitedelim}
-{\usebibmacro{postnote}}
-\makeatother
-
-% Macro for embedding papers
-\newenvironment{paper}[2]
-{
-  \def\paperpath{#1}
-  \chapter*{\papercite{#2}}
-  \pagecolor{whiteish}
-  \noindent\\[-2ex]
-  \fullpapercite{#2}\\[2ex]
-  \noindent
-  \textbf{Contribution}\\
-}
-{
-  \cleardoublepage
-  \nopagecolor
-  \color{black}
-  \includepdf[pages={-}]{\paperpath}
-  \cleardoublepage
-}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 %   Miscellaneous
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -430,6 +353,8 @@
 \DeclareBibliographyAlias{customa}{article}
 \DeclareFieldFormat[customa]{labelnumber}{\textsc{\Rn{#1}}}
 
+% Where to look for figure files
+\graphicspath{{./figures/}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -438,19 +363,19 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Text macros
-\newcommand{\etal}{et al.\ }
+% Abbreviations
 \newcommand{\eg}{e.g.\ }
 \newcommand{\ie}{i.e.\ }
 \newcommand{\cf}{c.f.\ }
-\renewcommand{\[}{\begin{equation}}
-\renewcommand{\]}{\end{equation}}
+\newcommand{\etal}{et al.\ }
 
-% Mathematical symbols
-\renewcommand{\d}[1]{\mathop{\textrm{d}\kern0em#1}}
-%\newcommand{\p}[1]{\partial_{#1}}
+% Common notation
+\renewcommand{\d}[1]{\mathop{\textrm{d}\kern0em#1\kern0.1em}}
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
+\newcommand{\trans}{{\symsfup{T}}}
 
-% Mathematical operations
+% Common functions
 \DeclareMathOperator{\tr}{Tr}
 \DeclareMathOperator{\re}{Re}
 \DeclareMathOperator{\im}{Im}
@@ -461,43 +386,6 @@
 \DeclareMathOperator{\acos}{acos}
 \DeclareMathOperator{\acosh}{acosh}
 
-% Brackets
-\newcommand{\avg}[2][]{#1\langle #2 #1\rangle}
-\newcommand{\comm}[2][]{#1[ #2 ,\, #1]}
-\newcommand{\anticomm}[2][]{#1\{ #2 ,\, #1\}}
-
-% Mathematical markup
-\newcommand{\B}[1]{\symbf{#1}}
-\newcommand{\C}[1]{\symcal{#1}}
-\newcommand{\U}[1]{\underline{#1}}
-\newcommand{\V}[1]{\check{#1}}
-\newcommand{\T}[1]{\tilde{#1}}
-\newcommand{\BC}[1]{\B{\C{#1}}}
-\newcommand{\BU}[1]{\U{\B{#1}}}
-\newcommand{\BUV}[1]{\V{\U{\B{#1}}}}
-\newcommand{\BCU}[1]{\U{\B{\C{#1}}}} 
-\newcommand{\CU}[1]{\U{\C{#1}}}
-\newcommand{\CUV}[1]{\V{\U{\C{#1}}}}
-\newcommand{\UV}[1]{\V{\U{#1}}}
-\newcommand{\BV}[1]{\V{\B{#1}}}
-\newcommand{\TU}[1]{\T{\U{#1}}}
-
-\renewcommand{\S}[1]{\U{\sigma}_{#1}}
-\newcommand{\N}[1]{\tau_{#1}}
-
-% Short-hand notation
-\newcommand{\up}{\uparrow}
-\newcommand{\dn}{\downarrow}
-\newcommand{\trans}{{\symsfup{T}}}
-
-\newcommand{\tc}[1]{\tilde{#1}}
-\newcommand{\hc}[1]{#1^{\dagger}}
-\newcommand{\cc}[1]{#1^{\ast}}
-\newcommand{\pc}[1]{#1^{\phantom{\dagger}}}
-
-% Definition
-\newcommand{\deq}{\coloneq}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -506,24 +394,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\addbibresource{chapters/references.bib}
-%\addbibresource{papers/references.bib}
+% Import bibliographies
+\addbibresource{references.bib}
 
 \begin{document}
   \frontmatter
     \include{chapters/abstract}
     \include{chapters/preface}
-    \printpapers
     \tableofcontents
   \mainmatter 
+    \include{chapters/introduction} 
     \include{chapters/test}
-    %\include{chapters/introduction} 
-    %\include{chapters/theory}
-    %\include{chapters/equilibrium}
-    %\include{chapters/nonequilibrium} 
-    %\include{chapters/observables}
-    \include{chapters/algorithms} 
+    \include{chapters/conclusion} 
   \backmatter
-    \printcites
-  %  \include{papers/include}
+    \printbibliography
 \end{document}
