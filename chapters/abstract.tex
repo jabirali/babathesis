@@ -1,2 +1,17 @@
 \chapter*{Abstract}\noindent
-\lipsum
+This is a \textsc{latex} template intended for academic theses, and was put together by \href{https://github.com/jabirali}{Jabir Ali Ouassou} while preparing his PhD dissertation.
+The template itself is released under a Creative Commons Attribution licence (\href{https://creativecommons.org/licenses/by/4.0/}{\textsc{cc by 4.0}}).
+This basically means that you are free to use the template for any purpose as long as you give appropriate credit.
+
+The template bundles the \href{https://github.com/libertinus-fonts/libertinus}{Libertinus fonts}, which is used for all regular text and mathematics, and the \href{https://ctan.org/tex-archive/fonts/urw/classico}{\textsc{urw} classico} fonts, which are used for chapter and section headings.
+The former is available under the Open Font Licence (\textsc{sil ofl 1.1}), and is free for both private and commercial use.
+The latter is available under the Aladdin Free Public Licence (\textsc{afpl}), and is only free for non-commercial use.
+If commercial use is of importance, a suitable replacement for \textsc{urw} classico would be the Libertinus Sans fonts, which are also bundled with the template.
+
+Note that this template relies on \textsc{lualatex} for \eg font customization, and on \textsc{bibtex} for reference handling.
+For command-line users, the easiest way to compile the document is to run \texttt{latexmk -lualatex thesis.tex}.
+If using an \textsc{ide}, please check the program settings for how to enable compilation with \textsc{lualatex} and \textsc{bibtex}.
+The template is based on the \textsc{koma-script} book class (\texttt{scrbook}), so for further customization of the template, please check out \href{https://ctan.org/pkg/koma-script}{their documentation}.
+
+The template does not include a title page.
+This is because the style requirements typically varies between universities, and many institutions will anyway autogenerate a titlepage upon thesis submission.
