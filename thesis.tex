@@ -138,10 +138,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 % Load a package for styling the table of contents
-\usepackage{tocstyle}
-
-% Place page numbers right after the section entries
-\usetocstyle{nopagecolumn}
+\usepackage{tocbasic}
 
 % Do not include subsections in the table of contents
 \setcounter{tocdepth}{1}
@@ -149,11 +146,22 @@
 % Fix vertical spacing after table of contents title
 \BeforeTOCHead[toc]{\RedeclareSectionCommand[beforeskip=1sp,afterskip=1sp]{chapter}}
 
+% Place page numbers right after the section entries
 % Use tabular lining figures for the sections, but oldstyle figures for the pages
-\settocstylefeature{entryhook}{\lining}
-\settocstylefeature{pagenumberhook}{\oldstyle}
-\settocstylefeature[0]{entryhook}{\lining\bfseries}
-\settocstylefeature[0]{pagenumberhook}{\oldstyle\bfseries}
+\DeclareTOCStyleEntry[
+  entryformat=\lining\bfseries,
+  linefill=\quad,
+  pagenumberbox={},
+  raggedpagenumber,
+  pagenumberformat=\bfseries,
+  ]{tocline}{chapter}
+\DeclareTOCStyleEntry[
+  entryformat=\lining,
+  linefill=\quad,
+  pagenumberbox={},
+  raggedpagenumber,
+  pagenumberformat=,
+  ]{tocline}{section}
 
 
 
